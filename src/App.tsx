@@ -1,15 +1,15 @@
-import Header from './components/header';
-import GlobalStyle from './styles/GlobalStyles';
-import AppRoutes from './routes';
+import Header from "./components/header";
+import AppRoutes from "./routes";
+import GlobalStyle from "./styles/GlobalStyles";
 
 function App() {
-	return (
-		<>
-			<GlobalStyle />
-			<Header />
-			<AppRoutes />
-		</>
-	);
+  return (
+    <>
+      <GlobalStyle />
+      <Header />
+      <AppRoutes />
+    </>
+  );
 }
 
 export default App;
