@@ -1,5 +1,7 @@
-import Logo from '../../assets/logo.png';
+import LogoImg from '../../assets/logo.png';
+import flag from '../../assets/flag.png';
 import { motion } from 'framer-motion';
+import { Container, Flag, Logo, Brand, Menu } from './styles';
 
 const Header = () => {
 	return (
@@ -9,16 +11,17 @@ const Header = () => {
 			exit={{ opacity: 0 }}
 			transition={{ duration: 1 }}
 		>
-			<div>
-				<div>
-					<img src={Logo} alt="Logo" />
+			<Flag src={flag} alt="flag" />
+			<Container>
+				<Brand>
+					<Logo src={LogoImg} alt="Logo" />
 					<h1>Healthy Go</h1>
-				</div>
-				<div>
-					<p>Cadastro</p>
+				</Brand>
+				<Menu>
 					<p>Login</p>
-				</div>
-			</div>
+					<p>Cadastro</p>
+				</Menu>
+			</Container>
 		</motion.div>
 	);
 };

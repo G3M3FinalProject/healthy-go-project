@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 :root {
     --brand-green: rgba(36, 133, 64, 1);
     --brand-yellow: rgba(227, 229, 34, 1);
@@ -12,7 +12,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
 }
 
-body, #root {
+body {
     -webkit-font-smoothing: antialiased;
     overflow-y: auto;
     width: 100vw;
@@ -32,3 +32,5 @@ ul {
     list-style: none;
 }
 `;
+
+export default GlobalStyle;
