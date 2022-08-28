@@ -5,6 +5,10 @@ export const Container = styled.div`
   position: absolute;
   width: 100vw;
 
+  @media (max-width: 440px) {
+    width: 100%;    
+  }
+
   div {
     display: inline-block;
     position: relative;
@@ -12,6 +16,7 @@ export const Container = styled.div`
     padding: 2%;
     width: 50%;
 
+    
     h3 {
       font-family: "Inter";
       font-style: normal;
@@ -20,6 +25,11 @@ export const Container = styled.div`
       line-height: 39px;
       text-transform: capitalize;
       color: #000000;
+      @media (max-width: 440px) {
+     
+      font-size: 18px;
+    
+    }
     }
   }
 `;
@@ -67,5 +77,21 @@ export const Form = styled.form`
     border-radius: 40px;
     margin-top: 4%;
     cursor: pointer;
+  }
+  
+  @media (max-width: 440px) {
+    width: 80vw;
+    margin-left: -35%;
+    
+    label {
+      width: 100%;
+      font-size: 12px;
+    }
+
+    button {
+      width: 50%;
+      font-size: 12px;
+      height: 2rem;
+    }
   }
 `;

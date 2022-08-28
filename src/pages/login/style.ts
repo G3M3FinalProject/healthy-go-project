@@ -13,6 +13,13 @@ export const ContainerApp = styled.div`
     width: 25vw;
     height: 50vh;
   }
+  @media (max-width: 440px) {
+    flex-direction: column;
+    margin-top: 0%;
+    position: absolute;
+    margin-left: 5%;
+  }
+  
 `;
 export const Form = styled.form`
   display: flex;
@@ -21,6 +28,14 @@ export const Form = styled.form`
   justify-content: center;
   padding: 2%;
 
+  @media (max-width: 440px) {
+    width: 20rem;
+    margin-top: -55%;
+    input {
+      width: 20%;
+    }
+    
+  }
 
   h3 {
     font-family: "Inter";
@@ -93,5 +108,7 @@ export const Section = styled.section`
       margin-bottom: 2%;
       margin-top: 0%;
     }
+
   }
+  
 `;
