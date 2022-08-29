@@ -19,6 +19,7 @@ const Header = () => {
           <h1>Healthy Go</h1>
         </Brand>
         <Menu>
+          <p>Sobre Nós</p>
           <p>Login</p>
           <p>Cadastro</p>
         </Menu>
