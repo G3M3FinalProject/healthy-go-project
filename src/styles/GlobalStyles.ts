@@ -17,6 +17,7 @@ body {
     overflow-y: auto;
     width: 100vw;
     height: 100vh;
+    font-family: 'Petrona', serif;
 }
 
 button {
