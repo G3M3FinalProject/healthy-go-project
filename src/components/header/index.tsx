@@ -36,15 +36,13 @@ const Header = () => {
           <BrandName src={HealthyGo} alt="brand name" />
         </Brand>
         <Menu>
-          <p>Sobre Nós</p>
-          <p>Login</p>
-          <p>Cadastro</p>
           <HamburguerMenu>
             <HamburguerLine className="line-1" />
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />
           </HamburguerMenu>
           <Paragraph>
+            <p>Sobre nós</p>
             <p>Login</p>
             <p>Cadastro</p>
           </Paragraph>
