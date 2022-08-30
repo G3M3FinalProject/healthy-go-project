@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsBoxArrowRight } from "react-icons/bs";
 import { BsFilePersonFill } from "react-icons/bs";
 import { FaRunning, FaPencilAlt } from "react-icons/fa";
@@ -17,6 +17,7 @@ const DropDownModal = () => {
       animate={{ opacity: 1, y: ["-125px", "-110px"] }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
+      style={{ position: "absolute", right: 0 }}
     >
       <Container>
         <Arrow />

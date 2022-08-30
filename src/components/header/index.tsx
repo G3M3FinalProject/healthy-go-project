@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { motion } from "framer-motion";
 
@@ -23,13 +23,21 @@ import {
 const Header = () => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
 
-  function handleOpenModal() {
-    setisModalOpen(true);
-  }
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
-  function handleCloseModal() {
-    setisModalOpen(false);
-  }
+  useEffect(() => {
+    const handler = (event: any) => {
+      if (!modalRef.current?.contains(event.target)) {
+        setisModalOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handler);
+
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  });
 
   return (
     <motion.div
@@ -48,8 +56,8 @@ const Header = () => {
           <Logo src={LogoImg} alt="Logo" />
           <BrandName src={HealthyGo} alt="brand name" />
         </Brand>
-        <Menu onClick={() => setisModalOpen(!isModalOpen)}>
-          <HamburguerMenu>
+        <Menu ref={modalRef} onClick={() => setisModalOpen(!isModalOpen)}>
+          <HamburguerMenu open={isModalOpen}>
             <HamburguerLine className="line-1" />
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />

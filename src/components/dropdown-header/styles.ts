@@ -36,11 +36,15 @@ export const Arrow = styled.div`
   padding: 3px;
   transform: rotate(-135deg);
 
-  @media screen and (max-width: 321px) {
-    right: 2rem;
+  @media screen and (max-width: 281px) {
+    right: 1.8rem;
   }
 
-  @media screen and (min-width: 321px) {
+  @media screen and (min-width: 281px) {
+    right: 1.8rem;
+  }
+
+  @media screen and (min-width: 319px) {
     right: 2rem;
   }
 
@@ -61,7 +65,7 @@ export const Arrow = styled.div`
   }
 
   @media screen and (min-width: 411px) {
-    right: 3rem;
+    right: 2.6rem;
   }
 
   @media screen and (min-width: 413px) {
@@ -69,6 +73,6 @@ export const Arrow = styled.div`
   }
 
   @media screen and (min-width: 424px) {
-    right: 3.4rem;
+    right: 2.6rem;
   }
 `;
