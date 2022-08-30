@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     --brand-green: rgba(36, 133, 64, 1);
     --brand-yellow: rgba(227, 229, 34, 1);
 }
+
 * { 
     margin:0;
     padding: 0;
@@ -17,6 +18,8 @@ body {
     overflow-y: auto;
     width: 100vw;
     height: 100vh;
+    font-family: 'Petrona', serif;
+    background: #f7f6f3;
 }
 
 button {
