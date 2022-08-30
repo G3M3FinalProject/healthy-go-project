@@ -1,13 +1,11 @@
-import { FacebookAuthLogin } from "../../components/facebookAuthLogin";
-import { FormLogin } from "../../components/formLogin";
-import { GoogleAuthLogin } from "../../components/googleAuthLogin";
+import { FormLogin } from "../../components/form-login";
+import { GoogleAuthLogin } from "../../components/google-auth-login";
 
 export const Login = () => {
   return (
     <div>
       <FormLogin />
-      {/* <GoogleAuthLogin />
-      <FacebookAuthLogin /> */}
+      <GoogleAuthLogin />
     </div>
   );
 };
