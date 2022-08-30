@@ -13,7 +13,7 @@ export const Input = styled.input`
   font-size: 17px;
 
   &::placeholder {
-    color: rgba(67, 66, 66, 0.9);
+    color: var(--placeholder);
   }
 `;
 
@@ -29,4 +29,32 @@ export const Button = styled.button`
   background-color: var(--button-green);
 
   padding: 1rem 4.5%;
+`;
+
+export const Search = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  width: 28.438rem;
+  height: 3.375rem;
+
+  gap: 1rem;
+
+  border-radius: 25px;
+  border: none;
+
+  background-color: var(--brand-light-green);
+
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+
+  color: white;
+
+  padding: 0.7rem;
+
+  input {
+    font-size: 15px;
+    font-weight: 600;
+    background-color: var(--brand-light-green);
+  }
 `;

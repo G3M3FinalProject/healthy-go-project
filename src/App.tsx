@@ -1,4 +1,3 @@
-import { GlobalButton, GlobalInput } from "./components/global-inputs";
 import Header from "./components/header";
 import { Providers } from "./contexts";
 import AppRoutes from "./routes";
