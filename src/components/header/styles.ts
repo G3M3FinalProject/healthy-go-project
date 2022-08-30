@@ -51,7 +51,7 @@ export const Flag = styled.img`
 export const Logo = styled.img`
   max-width: 40%;
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     min-width: 40%;
   }
 `;
@@ -59,7 +59,7 @@ export const Logo = styled.img`
 export const BrandName = styled.img`
   max-width: 40%;
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     min-width: 40%;
   }
 `;
@@ -111,7 +111,7 @@ export const HamburguerLine = styled.div`
   box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
   transition: all 0.5s ease-in-out;
 
-  @media screen and (min-width: 425px) {
+  @media screen and (min-width: 426px) {
     display: none;
   }
 `;
@@ -134,7 +134,7 @@ export const Paragraph = styled.div`
 
   gap: 2rem;
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     display: none;
   }
 `;

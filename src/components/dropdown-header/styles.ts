@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: fit-content;
   position: absolute;
   right: 0;
-  top: 5rem;
+  top: 5.2rem;
 
   background: #fafafa;
 
@@ -22,6 +22,7 @@ export const Menu = styled.div`
 
   p {
     margin: 0 0.4rem;
+    color: black;
   }
 `;
 
@@ -29,8 +30,21 @@ export const Arrow = styled.div`
   border: solid #fafafa;
   position: absolute;
   top: -4px;
+  right: 54px;
   border-width: 0 7px 7px 0;
   display: inline-block;
   padding: 3px;
   transform: rotate(-135deg);
+
+  @media screen and (min-width: 319px) {
+    right: 44.69px;
+  }
+
+  @media screen and (min-width: 374px) {
+    right: 49.59px;
+  }
+
+  @media screen and (min-width: 425px) {
+    right: 54px;
+  }
 `;

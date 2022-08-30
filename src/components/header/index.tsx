@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 import { motion } from "framer-motion";
 
 import flag from "../../assets/flag.png";
 import HealthyGo from "../../assets/healthygo.png";
 import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
+import DropDownModal from "../dropdown-header";
 import {
   Container,
   Flag,
@@ -18,6 +21,16 @@ import {
 } from "./styles";
 
 const Header = () => {
+  // const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+
+  // function handleOpenModal() {
+  //   setisModalOpen(true);
+  // }
+
+  // function handleCloseModal() {
+  //   setisModalOpen(false);
+  // }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -41,6 +54,7 @@ const Header = () => {
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />
           </HamburguerMenu>
+
           <Paragraph>
             <p>Sobre nós</p>
             <p>Login</p>
