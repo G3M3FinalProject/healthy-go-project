@@ -6,8 +6,8 @@ export const Login = () => {
   return (
     <div>
       <FormLogin />
-      {/* <GoogleAuthLogin />
-      <FacebookAuthLogin /> */}
+      <GoogleAuthLogin />
+      <FacebookAuthLogin />
     </div>
   );
 };
