@@ -1,12 +1,11 @@
-<<<<<<< HEAD
 import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { GoogleLogin } from "@react-oauth/google";
 import { motion } from "framer-motion";
 import * as yup from "yup";
 
 import Image from "../../assets/order-food.png";
+import { GoogleAuthLogin } from "../../components/google-auth-login";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import {
   CenteringContainer,
@@ -16,10 +15,6 @@ import {
   Input,
   Button,
 } from "./styles";
-=======
-import { FormLogin } from "../../components/form-login";
-import { GoogleAuthLogin } from "../../components/google-auth-login";
->>>>>>> 5d656d9760166019ece43a10e6e56a41d30f6a8e
 
 export const Login = () => {
   const { loginUser } = useAuthUserContext();
@@ -32,7 +27,6 @@ export const Login = () => {
     resolver: yupResolver(formSchema),
   });
   return (
-<<<<<<< HEAD
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -53,17 +47,11 @@ export const Login = () => {
             <Button type="submit">Acessar Conta</Button>
             <p>Não tem conta cadastro? Faça aqui!</p>
             <p>Ou entre com:</p>
-            <GoogleLogin />
+            <GoogleAuthLogin />
           </Form>
         </FormDiv>
       </CenteringContainer>
     </motion.div>
-=======
-    <div>
-      <FormLogin />
-      <GoogleAuthLogin />
-    </div>
->>>>>>> 5d656d9760166019ece43a10e6e56a41d30f6a8e
   );
 };
 
