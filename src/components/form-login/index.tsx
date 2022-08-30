@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
+import { GlobalInput } from "../global-inputs";
+import { FormLoginSyled } from "./styles";
 
 export const FormLogin = () => {
   const { loginUser } = useAuthUserContext();
@@ -16,7 +18,7 @@ export const FormLogin = () => {
     resolver: yupResolver(formSchema),
   });
   return (
-    <div>
+    <FormLoginSyled>
       <form onSubmit={handleSubmit(loginUser)}>
         <input type="email" placeholder="email" {...register("email")} />
         <input
@@ -25,7 +27,8 @@ export const FormLogin = () => {
           {...register("password")}
         />
         <button type="submit">Login</button>
+        <GlobalInput label="Testeee" />
       </form>
-    </div>
+    </FormLoginSyled>
   );
 };
