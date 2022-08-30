@@ -1,10 +1,6 @@
-import {
-  GlobalButton,
-  GlobalInput,
-  SearchBar,
-} from "./components/global-inputs";
 import Header from "./components/header";
 import { Providers } from "./contexts";
+import Login from "./pages/login";
 import AppRoutes from "./routes";
 import GlobalStyle from "./styles/GlobalStyles";
 
@@ -13,9 +9,7 @@ function App() {
     <Providers>
       <GlobalStyle />
       <Header />
-      <GlobalInput label="Teste" />
-      <GlobalButton>Teste</GlobalButton>
-      <SearchBar />
+      <Login />
       <AppRoutes />
     </Providers>
   );
