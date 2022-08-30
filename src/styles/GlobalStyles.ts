@@ -17,11 +17,11 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
+    font-family: 'Petrona', serif;
     -webkit-font-smoothing: antialiased;
     overflow-y: auto;
     width: 100vw;
     height: 100vh;
-    font-family: 'Petrona', serif;
     background: #f7f6f3;
 }
 

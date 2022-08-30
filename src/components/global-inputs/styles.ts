@@ -1,19 +1,75 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
-  width: fit-content;
-  height: fit-content;
+export const FormGroupStyled = styled.div`
+  position: relative;
 
-  border-radius: 10px;
+  width: 100%;
+  height: 70px;
 
-  border: 0.8px solid #434242;
-  background-color: #f7f6f3;
+  input {
+    width: 100%;
+    height: 40px;
 
-  padding: 0.7rem;
-  font-size: 17px;
+    position: absolute;
 
-  &::placeholder {
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+
+    border-radius: 10px;
+    border: 1px solid rgba(67, 66, 66, 1);
+
+    background-color: #f7f6f3;
+    color: black;
+
+    padding: 0.7rem 0 0 0.813rem;
+
+    font-size: 17px;
+
+    outline: none;
+
+    &::placeholder {
+      color: var(--placeholder);
+    }
+
+    &:focus {
+      background-color: #f7f6f3;
+    }
+
+    &:focus ~ label {
+      top: -0.5rem;
+      font-size: 19px;
+      left: 0.8rem;
+      color: var(--placeholder);
+    }
+
+    &:not(:placeholder-shown) ~ label {
+      top: -0.65rem;
+      font-size: 19px;
+      left: 0.8rem;
+    }
+  }
+
+  label {
+    position: absolute;
+    left: 1rem;
+    top: 0.4rem;
+
+    border-radius: 6px;
+
+    padding: 0 0.5em;
+
     color: var(--placeholder);
+    background-color: #f7f6f3;
+
+    pointer-events: none;
+
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+
+    z-index: 1;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 25px;
   }
 `;
 
@@ -44,17 +100,17 @@ export const Search = styled.div`
   border-radius: 25px;
   border: none;
 
-  background-color: var(--brand-light-green);
+  background-color: rgba(228, 249, 234, 1);
 
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 
-  color: white;
+  color: rgba(110, 110, 110, 1);
 
-  padding: 0.7rem;
+  padding: 0.7rem 2rem;
 
   input {
     font-size: 15px;
-    font-weight: 600;
-    background-color: var(--brand-light-green);
+    font-weight: 500;
+    background-color: rgba(228, 249, 234, 1);
   }
 `;
