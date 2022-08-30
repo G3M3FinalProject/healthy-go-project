@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-    font-family: 'Petrona', serif;
+    font-family: 'Petrona';
     -webkit-font-smoothing: antialiased;
     overflow-y: auto;
     width: 100vw;

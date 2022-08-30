@@ -19,6 +19,7 @@ export const GlobalInput = ({ label }: InputProps) => {
 
 interface IPropsButton {
   children: ReactNode;
+  type: string;
 }
 
 export const GlobalButton = ({ children }: IPropsButton) => {
