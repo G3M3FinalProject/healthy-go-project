@@ -148,6 +148,8 @@ export const BtnBurguer = styled.div`
 export const Paragraph = styled.div`
   display: flex;
 
+  font-size: 20px;
+
   gap: 1rem;
 
   & > p {
@@ -176,7 +178,8 @@ export const Paragraph = styled.div`
   }
 
   p:nth-child(1) {
-    width: 4.8rem;
+    text-align: center;
+    width: 6rem;
   }
 
   @media screen and (max-width: 426px) {

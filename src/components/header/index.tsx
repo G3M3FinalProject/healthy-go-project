@@ -56,8 +56,8 @@ const Header = () => {
           <Logo src={LogoImg} alt="Logo" />
           <BrandName src={HealthyGo} alt="brand name" />
         </Brand>
-        <Menu ref={modalRef} onClick={() => setisModalOpen(!isModalOpen)}>
-          <HamburguerMenu open={isModalOpen}>
+        <Menu onClick={() => setisModalOpen(!isModalOpen)}>
+          <HamburguerMenu ref={modalRef} open={isModalOpen}>
             <HamburguerLine className="line-1" />
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />
