@@ -45,7 +45,7 @@ export const Flag = styled.img`
   z-index: -1;
   position: absolute;
   width: 100%;
-  height: 20%;
+  height: 25%;
 `;
 
 export const Logo = styled.img`
@@ -61,6 +61,11 @@ export const BrandName = styled.img`
 
   @media screen and (max-width: 426px) {
     min-width: 40%;
+  }
+
+  @media screen and (max-width: 625px) {
+    width: 7rem;
+    max-width: unset;
   }
 `;
 
@@ -132,7 +137,11 @@ export const BtnBurguer = styled.div`
 export const Paragraph = styled.div`
   display: flex;
 
-  gap: 2rem;
+  gap: 1rem;
+
+  p:nth-child(1) {
+    width: 4.8rem;
+  }
 
   @media screen and (max-width: 426px) {
     display: none;
