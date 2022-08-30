@@ -4,8 +4,8 @@ export const Container = styled.div`
   width: fit-content;
   height: fit-content;
   position: absolute;
-  right: 0;
-  top: 5.2rem;
+  right: 0.78rem;
+  top: 11.7rem;
 
   background: #fafafa;
 
@@ -36,15 +36,39 @@ export const Arrow = styled.div`
   padding: 3px;
   transform: rotate(-135deg);
 
-  @media screen and (min-width: 319px) {
-    right: 44.69px;
+  @media screen and (max-width: 321px) {
+    right: 2rem;
+  }
+
+  @media screen and (min-width: 321px) {
+    right: 2rem;
+  }
+
+  @media screen and (min-width: 359px) {
+    right: 2.2rem;
   }
 
   @media screen and (min-width: 374px) {
-    right: 49.59px;
+    right: 2.3rem;
   }
 
-  @media screen and (min-width: 425px) {
-    right: 54px;
+  @media screen and (min-width: 389px) {
+    right: 2.5rem;
+  }
+
+  @media screen and (min-width: 405px) {
+    right: 2.8rem;
+  }
+
+  @media screen and (min-width: 411px) {
+    right: 3rem;
+  }
+
+  @media screen and (min-width: 413px) {
+    right: 3.1rem;
+  }
+
+  @media screen and (min-width: 424px) {
+    right: 3.4rem;
   }
 `;

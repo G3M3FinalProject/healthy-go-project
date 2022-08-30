@@ -21,15 +21,15 @@ import {
 } from "./styles";
 
 const Header = () => {
-  // const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setisModalOpen] = useState<boolean>(false);
 
-  // function handleOpenModal() {
-  //   setisModalOpen(true);
-  // }
+  function handleOpenModal() {
+    setisModalOpen(true);
+  }
 
-  // function handleCloseModal() {
-  //   setisModalOpen(false);
-  // }
+  function handleCloseModal() {
+    setisModalOpen(false);
+  }
 
   return (
     <motion.div
@@ -48,7 +48,7 @@ const Header = () => {
           <Logo src={LogoImg} alt="Logo" />
           <BrandName src={HealthyGo} alt="brand name" />
         </Brand>
-        <Menu>
+        <Menu onClick={() => setisModalOpen(!isModalOpen)}>
           <HamburguerMenu>
             <HamburguerLine className="line-1" />
             <HamburguerLine className="line-2" />
@@ -61,6 +61,8 @@ const Header = () => {
             <p>Cadastro</p>
           </Paragraph>
         </Menu>
+
+        {isModalOpen && <DropDownModal />}
       </Container>
     </motion.div>
   );
