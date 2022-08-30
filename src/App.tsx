@@ -1,4 +1,4 @@
-import { GlobalButton, GlobalInput } from "./components/global-inputs";
+import { SeachBar } from "./components/global-inputs";
 import Header from "./components/header";
 import AppRoutes from "./routes";
 import GlobalStyle from "./styles/GlobalStyles";
@@ -8,8 +8,7 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
-      <GlobalButton>Acessar Conta</GlobalButton>
-      <GlobalInput placeholder="Senha *" />
+      <SeachBar />
       <AppRoutes />
     </>
   );
