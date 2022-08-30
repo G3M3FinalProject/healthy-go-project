@@ -8,7 +8,6 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
-      <SeachBar />
       <AppRoutes />
     </>
   );
