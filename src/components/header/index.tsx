@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -22,6 +23,8 @@ import {
 
 const Header = () => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 

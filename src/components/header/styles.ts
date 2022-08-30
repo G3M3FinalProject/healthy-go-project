@@ -51,6 +51,7 @@ export const Flag = styled.img`
 
 export const Logo = styled.img`
   max-width: 40%;
+  cursor: pointer;
 
   @media screen and (max-width: 426px) {
     min-width: 40%;
@@ -58,6 +59,7 @@ export const Logo = styled.img`
 `;
 
 export const BrandName = styled.img`
+  cursor: pointer;
   max-width: 40%;
 
   @media screen and (max-width: 426px) {
@@ -184,5 +186,11 @@ export const Paragraph = styled.div`
 
   @media screen and (max-width: 426px) {
     display: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding-top: 1rem;
+    flex-direction: column;
+    align-items: center;
   }
 `;
