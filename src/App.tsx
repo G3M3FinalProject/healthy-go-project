@@ -8,8 +8,6 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
-      <GlobalButton>Acessar Conta</GlobalButton>
-      <GlobalInput placeholder="Senha *" />
       <AppRoutes />
     </>
   );
