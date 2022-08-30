@@ -15,8 +15,6 @@ export const GoogleAuthLogin = () => {
 
   const responseGmail = (userInfo: IUserInfoGmail) => {
     // Verificar Registro ... => Está registrado?
-
-    console.log(userInfo);
     const userInfoFixed: IUser = {
       email: userInfo.email,
       password: userInfo.sub,
@@ -24,9 +22,7 @@ export const GoogleAuthLogin = () => {
       name: userInfo.name,
       type: "",
     };
-    // Fazer login
     registerUser(userInfoFixed);
-
     loginUser(userInfoFixed);
   };
 

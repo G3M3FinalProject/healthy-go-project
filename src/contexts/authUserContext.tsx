@@ -22,7 +22,7 @@ export interface IUserLogin {
 }
 interface IUserResponse {
   data: {
-    acessToken: string;
+    accessToken: string;
     user: IUserRes;
   };
 }
@@ -54,14 +54,14 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
-        localStorage.setItem("@healthyGo-token", res.data.acessToken);
+        console.log(res.data.accessToken);
+        localStorage.setItem("@healthyGo-token", res.data.accessToken);
 
         api.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${res.data.acessToken}`;
+        ] = `Bearer ${res.data.accessToken}`;
 
         setIsLoading(false);
-
         navigate("/homepage", { replace: true });
       })
       .catch((err) =>
