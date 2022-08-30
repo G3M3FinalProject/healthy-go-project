@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
 body {
     -webkit-font-smoothing: antialiased;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 100vw;
     height: 100vh;
     font-family: 'Petrona', serif;
