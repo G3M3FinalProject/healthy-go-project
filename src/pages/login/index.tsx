@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,10 +15,6 @@ import {
   Input,
   Button,
 } from "./styles";
-=======
-import { FormLogin } from "../../components/form-login";
-import { GoogleAuthLogin } from "../../components/google-auth-login";
->>>>>>> 5d656d9760166019ece43a10e6e56a41d30f6a8e
 
 export const Login = () => {
   const { loginUser } = useAuthUserContext();
@@ -32,7 +27,6 @@ export const Login = () => {
     resolver: yupResolver(formSchema),
   });
   return (
-<<<<<<< HEAD
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -58,12 +52,6 @@ export const Login = () => {
         </FormDiv>
       </CenteringContainer>
     </motion.div>
-=======
-    <div>
-      <FormLogin />
-      <GoogleAuthLogin />
-    </div>
->>>>>>> 5d656d9760166019ece43a10e6e56a41d30f6a8e
   );
 };
 
