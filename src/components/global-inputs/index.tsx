@@ -1,13 +1,20 @@
 import { ReactNode } from "react";
 import { InputHTMLAttributes } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
-import { Input, Button } from "./styles";
+import { FormGroupStyled, Button, Search } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  placeholder: string;
+  label?: string;
 }
-export const GlobalInput = ({ placeholder }: InputProps) => {
-  return <Input placeholder={placeholder} />;
+
+export const GlobalInput = ({ label }: InputProps) => {
+  return (
+    <FormGroupStyled>
+      <input placeholder=" " />
+      <label>{label}</label>
+    </FormGroupStyled>
+  );
 };
 
 interface IPropsButton {
@@ -16,4 +23,13 @@ interface IPropsButton {
 
 export const GlobalButton = ({ children }: IPropsButton) => {
   return <Button>{children}</Button>;
+};
+
+export const SearchBar = () => {
+  return (
+    <Search>
+      <AiOutlineSearch style={{ width: "25px", height: "25px" }} />
+      <input placeholder="Pesquisar por..." />
+    </Search>
+  );
 };
