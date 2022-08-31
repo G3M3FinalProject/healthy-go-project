@@ -1,16 +1,14 @@
-import { createContext, useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { motion } from "framer-motion";
 
+import { GlobalInputLg } from "../../components/global-inputs";
+import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
-import { api } from "../../services";
 import { registerFormSchema } from "../../validations";
-
-const navigate = useNavigate();
-
+import { CenteringContainer, FormDiv, Form, Paragragh, Back } from "./style";
 type UserContextType = {
   registerFunction: (data: IRegisterData) => void;
 };
@@ -34,10 +32,6 @@ function Submit(data: IRegisterData) {
   };
 }
 
-export const UserContext = createContext<UserContextType>(
-  {} as UserContextType,
-);
-
 const UserRegister = () => {
   const { registerUser } = useAuthUserContext();
   const {
@@ -46,7 +40,56 @@ const UserRegister = () => {
     formState: { errors },
   } = useForm<IFormData>({ resolver: yupResolver(registerFormSchema) });
 
-  return <h1>Teste</h1>;
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <CenteringContainer>
+        <FormDiv>
+          <p>CADASTRO</p>
+          <Form onSubmit={handleSubmit(Submit)}>
+            <GlobalInputLg
+              type="text"
+              label="Nome *"
+              register={register}
+              registerName="name"
+            />
+            <Paragragh>{errors.name && errors.name.message}</Paragragh>
+            <GlobalInputLg
+              type="email"
+              label="E-mail *"
+              register={register}
+              registerName="email"
+            />
+            <Paragragh>{errors.email && errors.email.message}</Paragragh>
+            <GlobalInputLg
+              type="password"
+              label="Senha *"
+              register={register}
+              registerName="password"
+            />
+            <Paragragh>{errors.password && errors.password.message}</Paragragh>
+            <GlobalInputLg
+              type="password"
+              label="Confirmação de senha *"
+              register={register}
+              registerName="password"
+            />
+            <Paragragh>
+              {errors.confirmPassword && errors.confirmPassword.message}
+            </Paragragh>
+            <ButtonLg type="submit">CADASTRAR</ButtonLg>
+          </Form>
+        </FormDiv>
+      </CenteringContainer>
+      <Link to="/login">
+        <Back>Já tem cadastro? Faça o login</Back>
+      </Link>
+    </motion.div>
+  );
 };
 
 export default UserRegister;
