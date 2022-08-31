@@ -15,7 +15,7 @@ import {
   Paragragh,
   EffectDiv,
   Back,
-} from "./style";
+} from "./styles";
 
 type UserContextType = {
   registerFunction: (data: IRegisterData) => void;

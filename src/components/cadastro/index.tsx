@@ -1,8 +1,10 @@
-import { Container, Form } from "./styles";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import { Container, Form } from "./styles";
 //import { useContext } from "react";
 //import { AuthContext, IRegister } from "../../contexts/interface";
 
@@ -30,14 +32,14 @@ export function Cadastro() {
       .required("E-mail obrigatório")
       .matches(
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-        "Email inválido"
+        "Email inválido",
       ),
     password: yup
       .string()
       .required("Senha obrigatória")
       .matches(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$/,
-        "Senha invalida"
+        "Senha invalida",
       ),
     confirme: yup
       .string()
@@ -64,72 +66,73 @@ export function Cadastro() {
 
   return (
     <Container>
-        <div>
-          <h3>Cadastro</h3>
-        
-      <Form onSubmit={handleSubmit}>
-        
-        <label>
-          Nome
-          <input
-            id="name"
-            type="text"
-            //placeholder="Digite aqui seu nome"
-            {...register("name")}
-          ></input>
-          {errors.name?.message}
-        </label>
-        <label>
-          E-mail
-          <input
-            id="email"
-            type="text"
-            //placeholder="Digite aqui seu email"
-            {...register("email")}
-          ></input>
-          {errors.email?.message}
-        </label>
-        <label>
-          Senha
-          <input
-            id="password"
-            type="password"
-            //placeholder="Digite aqui sua senha"
-            {...register("password")}
-          ></input>
-          {errors.password?.message}
-        </label>
-        <label>
-          Confirmação de Senha
-          <input
-            id="confirme"
-            type="text"
-            //placeholder="Digite novamente sua senha"
-            {...register("confirme")}
-          ></input>
-          {errors.confirme?.message}
-        </label>
-        <label>
-          Endereço
-          <input
-            id="adress"
-            type="text"
-            //placeholder="Fale sobre você"
-            {...register("adress")}
-          ></input>
-        </label>
-        <label>
-          Contato
-          <input
-            id="contact"
-            type="text"
-            //placeholder="Opção de contato"
-            {...register("contact")}
-          ></input>
-          {errors.contact?.message}
-        </label>
-        <button type="submit" onClick={backLogin}>Cadastrar</button>
-      </Form>
+      <div>
+        <h3>Cadastro</h3>
+
+        <Form onSubmit={handleSubmit}>
+          <label>
+            Nome
+            <input
+              id="name"
+              type="text"
+              //placeholder="Digite aqui seu nome"
+              {...register("name")}
+            ></input>
+            {errors.name?.message}
+          </label>
+          <label>
+            E-mail
+            <input
+              id="email"
+              type="text"
+              //placeholder="Digite aqui seu email"
+              {...register("email")}
+            ></input>
+            {errors.email?.message}
+          </label>
+          <label>
+            Senha
+            <input
+              id="password"
+              type="password"
+              //placeholder="Digite aqui sua senha"
+              {...register("password")}
+            ></input>
+            {errors.password?.message}
+          </label>
+          <label>
+            Confirmação de Senha
+            <input
+              id="confirme"
+              type="text"
+              //placeholder="Digite novamente sua senha"
+              {...register("confirme")}
+            ></input>
+            {errors.confirme?.message}
+          </label>
+          <label>
+            Endereço
+            <input
+              id="adress"
+              type="text"
+              //placeholder="Fale sobre você"
+              {...register("adress")}
+            ></input>
+          </label>
+          <label>
+            Contato
+            <input
+              id="contact"
+              type="text"
+              //placeholder="Opção de contato"
+              {...register("contact")}
+            ></input>
+            {errors.contact?.message}
+          </label>
+          <button type="submit" onClick={backLogin}>
+            Cadastrar
+          </button>
+        </Form>
       </div>
     </Container>
   );
