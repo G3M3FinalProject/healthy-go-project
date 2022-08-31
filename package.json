@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+<<<<<<< HEAD
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
@@ -16,6 +17,15 @@
     "axios": "^0.27.2",
     "framer-motion": "^7.2.1",
     "jwt-decode": "^3.1.2",
+=======
+    "@types/jest": "^28.1.8",
+    "@types/node": "^18.7.13",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "axios": "^0.27.2",
+    "framer-motion": "^7.2.1",
+    "hook-form": "^0.0.1",
+>>>>>>> e0b9b9048a42bb9ee7048c45755fbdfd7a1bdc57
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-facebook-login": "^4.1.1",
@@ -24,9 +34,10 @@
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.8",
+    "style-components": "^0.1.0",
     "styled-components": "^5.3.5",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0",
+    "typescript": "^4.8.2",
+    "web-vitals": "^3.0.0",
     "yup": "^0.32.11"
   },
   "scripts": {
