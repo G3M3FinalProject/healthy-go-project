@@ -21,7 +21,6 @@ export const FormDiv = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
-  width: 30%;
   height: 100%;
 
   gap: 3rem;
@@ -34,10 +33,6 @@ export const FormDiv = styled.div`
     font-size: 32px;
     line-height: 36px;
   }
-
-  @media screen and (max-width: 768px) {
-    width: 80%;
-  }
 `;
 
 export const Form = styled.form`
@@ -45,7 +40,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
 
-  width: 100%;
+  width: 140%;
   height: 100%;
 
   gap: 1rem;
@@ -64,7 +59,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 26.125rem;
+  width: 32.125rem;
   height: 2.5rem;
 
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
@@ -115,23 +110,46 @@ export const Button = styled.button`
     width: 20rem;
   }
 `;
+export const Paragragh = styled.p`
+  width: 80%;
+  margin-top: -35px;
+`;
 
-export const Img = styled.img`
-  display: block;
+export const EffectDiv = styled.div`
+  text-align: center;
 
-  @media screen and (max-width: 768px) {
-    width: 45%;
+  & > p {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
   }
 
-  @media screen and (max-width: 426px) {
-    display: none;
+  & > p::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
   }
 
-  @media screen and (min-width: 776px) and (max-width: 920px) {
-    width: 55%;
+  & > p:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
+`;
 
-  @media screen and (min-width: 921px) {
-    width: unset;
-  }
+export const Back = styled.p`
+  font-size: 1.2rem;
+
+  text-align: center;
+
+  margin-top: 15px;
+
+  cursor: pointer;
 `;
