@@ -150,10 +150,11 @@ export const BtnBurguer = styled.div`
 
 export const Paragraph = styled.div`
   display: flex;
+  align-items: center;
 
   font-size: 20px;
 
-  gap: 1rem;
+  gap: ${(props) => (props.isLoggedIn ? "4rem" : "1rem")};
 
   & > p {
     cursor: pointer;
@@ -197,6 +198,8 @@ export const Paragraph = styled.div`
 `;
 
 export const CartBackground = styled.div`
+  display: flex;
+
   background: #54a656;
 
   padding: 0.7rem;
