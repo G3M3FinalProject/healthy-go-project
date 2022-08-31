@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 import * as yup from "yup";
 
 import Image from "../../assets/order-food.png";
+
 import { GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { GoogleAuthLogin } from "../../components/google-auth-login";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import { CenteringContainer, FormDiv, Form, Img } from "./styles";
+
 
 export const Login = () => {
   const { loginUser } = useAuthUserContext();
