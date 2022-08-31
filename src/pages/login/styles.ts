@@ -142,7 +142,10 @@ export const ShowPassword = styled.div`
 
   button {
     position: absolute;
+
     top: 0.8rem;
     right: 1rem;
+
+    background: #f7f6f3;
   }
 `;
