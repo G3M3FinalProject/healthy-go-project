@@ -6,6 +6,7 @@ import { HiUserGroup } from "react-icons/hi";
 
 import { motion } from "framer-motion";
 
+import Cart from "../cart";
 import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
