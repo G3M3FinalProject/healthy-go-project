@@ -2,18 +2,18 @@ import { ReactNode } from "react";
 import { InputHTMLAttributes } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import { FormGroupStyled, Button, Search } from "./styles";
+import { InputLg, Button, Search } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-export const GlobalInput = ({ label }: InputProps) => {
+export const GlobalInputLg = ({ label }: InputProps) => {
   return (
-    <FormGroupStyled>
+    <InputLg>
       <input placeholder=" " />
       <label>{label}</label>
-    </FormGroupStyled>
+    </InputLg>
   );
 };
 

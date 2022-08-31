@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import * as yup from "yup";
 
 import Image from "../../assets/order-food.png";
+import { GlobalInputLg } from "../../components/global-inputs";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import {
   CenteringContainer,
@@ -38,12 +39,8 @@ export const Login = () => {
         <FormDiv>
           <p>Já tenho cadastro</p>
           <Form onSubmit={handleSubmit(loginUser)}>
-            <Input type="email" placeholder="E-mail" {...register("email")} />
-            <Input
-              type="password"
-              placeholder="Password"
-              {...register("password")}
-            />
+            <GlobalInputLg label="E-mail" {...register("email")} />
+            <GlobalInputLg label="Password" {...register("password")} />
             <Button type="submit">Acessar Conta</Button>
             <p>Não tem conta cadastro? Faça aqui!</p>
             <p>Ou entre com:</p>
