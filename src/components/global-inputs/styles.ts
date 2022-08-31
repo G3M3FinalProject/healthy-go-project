@@ -46,6 +46,13 @@ export const InputLg = styled.div`
     }
   }
 
+  button {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    background-color: #f7f6f3;
+  }
+
   label {
     position: absolute;
     left: 1rem;
