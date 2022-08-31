@@ -1,15 +1,19 @@
 import Header from "./components/header";
-import { Providers } from "./contexts";
+//import Providers from "./contexts/authUserContext";
+import { RestaurantedaMamae } from "./pages/restaurantedaMamae";
 import AppRoutes from "./routes";
 import GlobalStyle from "./styles/GlobalStyles";
 
 function App() {
   return (
-    <Providers>
+    //<Providers>
+    <>
       <GlobalStyle />
       <Header />
       <AppRoutes />
-    </Providers>
+      <RestaurantedaMamae />
+    </>
+    //</Providers>
   );
 }
 
