@@ -44,7 +44,7 @@ export const Login = () => {
               type="text"
               label="E-mail"
               register={register}
-              registerName="password"
+              registerName="email"
             />
             <GlobalInputLg
               type="password"
