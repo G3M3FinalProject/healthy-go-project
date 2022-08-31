@@ -1,19 +1,37 @@
 import { ReactNode } from "react";
 import { InputHTMLAttributes } from "react";
+import { UseFormRegister } from "react-hook-form";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import { FormGroupStyled, Button, Search } from "./styles";
+import { InputLg, ButtonLg, ButtonMd, Search } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  errors?: string;
+  registerName: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  register: UseFormRegister<any>;
+  type: string;
+  defaultValue?: string;
 }
 
-export const GlobalInput = ({ label }: InputProps) => {
+export const GlobalInputLg = ({
+  label,
+  registerName,
+  register,
+  type,
+  defaultValue,
+}: InputProps) => {
   return (
-    <FormGroupStyled>
-      <input placeholder=" " />
+    <InputLg>
+      <input
+        type={type}
+        {...register(registerName)}
+        placeholder=" "
+        defaultValue={defaultValue}
+      />
       <label>{label}</label>
-    </FormGroupStyled>
+    </InputLg>
   );
 };
 
@@ -22,8 +40,12 @@ interface IPropsButton {
   type: string;
 }
 
-export const GlobalButton = ({ children }: IPropsButton) => {
-  return <Button>{children}</Button>;
+export const GlobalButtonLg = ({ children }: IPropsButton) => {
+  return <ButtonLg>{children}</ButtonLg>;
+};
+
+export const GlobalButtonMd = ({ children }: IPropsButton) => {
+  return <ButtonMd>{children}</ButtonMd>;
 };
 
 export const SearchBar = () => {
