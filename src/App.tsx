@@ -8,8 +8,8 @@ function App() {
   return (
     <Providers>
       <GlobalStyle />
-      <Header />
       <Cart />
+      <Header />
       <AppRoutes />
     </Providers>
   );
