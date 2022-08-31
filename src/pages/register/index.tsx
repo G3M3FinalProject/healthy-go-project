@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
@@ -8,15 +8,25 @@ import { GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
-import { CenteringContainer, FormDiv, Form, Paragragh, Back } from "./style";
+import {
+  CenteringContainer,
+  FormDiv,
+  Form,
+  Paragragh,
+  EffectDiv,
+  Back,
+} from "./style";
+
 type UserContextType = {
   registerFunction: (data: IRegisterData) => void;
 };
+
 interface IRegisterData {
   email: string;
   password: string;
   name: string;
 }
+
 export interface IFormData {
   name: string;
   email: string;
@@ -34,6 +44,9 @@ function Submit(data: IRegisterData) {
 
 const UserRegister = () => {
   const { registerUser } = useAuthUserContext();
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -81,13 +94,13 @@ const UserRegister = () => {
             <Paragragh>
               {errors.confirmPassword && errors.confirmPassword.message}
             </Paragragh>
-            <ButtonLg type="submit">CADASTRAR</ButtonLg>
+            <ButtonLg type="submit">Cadastrar</ButtonLg>
           </Form>
         </FormDiv>
       </CenteringContainer>
-      <Link to="/login">
+      <EffectDiv onClick={() => navigate("/login", { replace: true })}>
         <Back>Já tem cadastro? Faça o login</Back>
-      </Link>
+      </EffectDiv>
     </motion.div>
   );
 };
