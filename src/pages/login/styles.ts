@@ -21,6 +21,7 @@ export const FormDiv = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
+  width: 30%;
   height: 100%;
 
   gap: 3rem;
@@ -32,6 +33,10 @@ export const FormDiv = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
   }
 `;
 
