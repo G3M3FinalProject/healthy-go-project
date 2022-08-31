@@ -195,3 +195,11 @@ export const Paragraph = styled.div`
     align-items: center;
   }
 `;
+
+export const CartBackground = styled.div`
+  background: #54a656;
+
+  padding: 0.7rem;
+
+  border-radius: 20px;
+`;
