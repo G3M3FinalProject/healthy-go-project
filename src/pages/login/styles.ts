@@ -146,6 +146,6 @@ export const ShowPassword = styled.div`
     top: 0.8rem;
     right: 1rem;
 
-    background: #f7f6f3;
+    background: trasparent;
   }
 `;
