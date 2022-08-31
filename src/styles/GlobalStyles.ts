@@ -4,6 +4,10 @@ const GlobalStyle = createGlobalStyle`
 :root {
     --brand-green: rgba(36, 133, 64, 1);
     --brand-yellow: rgba(227, 229, 34, 1);
+    --brand-light-green: rgba(146, 227, 169, 1);
+    --button-green: rgba(18, 117, 58, 1);
+    --brand-yellow: rgba(227, 229, 34, 1);
+    --placeholder: rgba(67, 66, 66, 1);
 }
 
 * { 
@@ -14,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
+
     -webkit-font-smoothing: antialiased;
     overflow-y: auto;
     width: 100vw;

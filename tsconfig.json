@@ -17,6 +17,9 @@
     "jsx": "react-jsx",
     "noImplicitAny": false
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 47e1b18934463a903bfc5b12fa23cf7911bb454a
   "include": ["src"]
 }
