@@ -75,7 +75,7 @@ const Header = () => {
 
             <Paragraph isLoggedIn>
               <p>Sobre nós</p>
-              <p>Olá, user</p>
+              <p>Olá, {user.name}</p>
               <CartBackground>
                 <AiOutlineShoppingCart
                   style={{ width: "30px", height: "30px" }}
