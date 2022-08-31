@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -24,11 +24,12 @@ import {
 const Header = () => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (event: any) => {
       if (!modalRef.current?.contains(event.target)) {
         setisModalOpen(false);
