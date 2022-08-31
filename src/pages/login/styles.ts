@@ -135,3 +135,14 @@ export const Img = styled.img`
     width: unset;
   }
 `;
+
+export const ShowPassword = styled.div`
+  width: 100%;
+  position: relative;
+
+  button {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+  }
+`;
