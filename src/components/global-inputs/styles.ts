@@ -71,8 +71,8 @@ export const InputLg = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  width: fit-content;
+export const ButtonLg = styled.button`
+  width: 100%;
   height: fit-content;
 
   border-radius: 15px;
@@ -111,4 +111,18 @@ export const Search = styled.div`
     font-weight: 500;
     background-color: rgba(228, 249, 234, 1);
   }
+`;
+
+export const ButtonMd = styled.button`
+  width: 80%;
+  height: fit-content;
+
+  border-radius: 15px;
+
+  font-weight: 700;
+
+  color: white;
+  background-color: var(--button-green);
+
+  padding: 1rem 4.5%;
 `;
