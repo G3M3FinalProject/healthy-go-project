@@ -1,4 +1,4 @@
-import { IMenuProps } from "../../pages/restaurantedaMamae";
+import { IMenuProps } from "../../pages/restaurantes";
 import {
   ContainerP,
   ContainerPreco,
@@ -25,12 +25,10 @@ export const ListProduct = ({ menu }: IMenuProps) => {
           ({ item, price, promo, photo_url, category, description }) => {
             return (
               <li key={item}>
-                <img src={photo_url} />
                 <div>
-                  <section>
-                    <h4>{item}</h4>
-                  </section>
+                  <img src={photo_url} />
                   <ContainerSection>
+                    <h4>{item}</h4>
                     <ContainerP>{category}</ContainerP>
                     <ContainerPreco>
                       {price.toLocaleString("pt-br", {
@@ -39,9 +37,9 @@ export const ListProduct = ({ menu }: IMenuProps) => {
                       })}
                     </ContainerPreco>
                     <ContainerPreco>{promo}</ContainerPreco>
-                    <button>Adicionar ao carrinho</button>
                   </ContainerSection>
                 </div>
+                <button>Adicionar ao carrinho</button>
               </li>
             );
           },
@@ -52,23 +50,21 @@ export const ListProduct = ({ menu }: IMenuProps) => {
           ({ item, price, promo, photo_url, category, description }) => {
             return (
               <li key={item}>
-                <img src={photo_url} />
                 <div>
-                  <section>
-                    <h4>{item}</h4>
-                    <p>{category}</p>
-                  </section>
+                  <img src={photo_url} />
                   <ContainerSection>
-                    <p>
+                    <h4>{item}</h4>
+                    <ContainerP>{category}</ContainerP>
+                    <ContainerPreco>
                       {price.toLocaleString("pt-br", {
                         style: "currency",
                         currency: "BRL",
                       })}
-                    </p>
-                    <p>{promo}</p>
-                    <button>Adicionar ao carrinho</button>
+                    </ContainerPreco>
+                    <ContainerPreco>{promo}</ContainerPreco>
                   </ContainerSection>
                 </div>
+                <button>Adicionar ao carrinho</button>
               </li>
             );
           },
@@ -79,23 +75,21 @@ export const ListProduct = ({ menu }: IMenuProps) => {
           ({ item, price, promo, photo_url, category, description }) => {
             return (
               <li key={item}>
-                <img src={photo_url} />
                 <div>
-                  <section>
-                    <h4>{item}</h4>
-                    <p>{category}</p>
-                  </section>
+                  <img src={photo_url} />
                   <ContainerSection>
-                    <p>
+                    <h4>{item}</h4>
+                    <ContainerP>{category}</ContainerP>
+                    <ContainerPreco>
                       {price.toLocaleString("pt-br", {
                         style: "currency",
                         currency: "BRL",
                       })}
-                    </p>
-                    <p>{promo}</p>
-                    <button>Adicionar ao carrinho</button>
+                    </ContainerPreco>
+                    <ContainerPreco>{promo}</ContainerPreco>
                   </ContainerSection>
                 </div>
+                <button>Adicionar ao carrinho</button>
               </li>
             );
           },

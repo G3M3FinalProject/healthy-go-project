@@ -30,11 +30,11 @@ export const ContainerUl = styled.ul`
   }
 
   li {
-    width: 31%;
+    width: 23%;
     height: 8rem;
     padding: 1%;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     border: 1px solid var(--brand-light-green);
     border-radius: 25px;
 
@@ -42,65 +42,38 @@ export const ContainerUl = styled.ul`
       width: 100%;
       height: 30%;
       align-items: center;
+      flex-direction: row;
     }
 
-    img {
-      width: 6rem;
-      height: 7rem;
-      padding: 1%;
-      border-radius: 25px;
-
-      @media screen and (max-width: 425px) {
-        width: 25%;
-        height: 50%;
-      }
-    }
     div {
       width: 100%;
-      padding: 4%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3%;
 
       @media screen and (max-width: 425px) {
         width: 100%;
       }
 
-      section {
-        width: 100%;
-        margin-bottom: 1%;
+      img {
+        width: 5rem;
+        height: 5rem;
+        padding: 1%;
+        border-radius: 25px;
 
         @media screen and (max-width: 425px) {
-          width: 100%;
-          margin-left: 1%;
-        }
-
-        h4 {
-          margin-left: 0%;
-          font-family: "Petrona";
-          font-style: normal;
-          font-weight: 700;
-          font-size: 14px;
-          text-transform: capitalize;
-
-          @media screen and (max-width: 425px) {
-            font-size: 14px;
-          }
+          width: 40%;
+          height: 50%;
         }
       }
     }
   }
-`;
-
-export const ContainerSection = styled.section`
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 2%;
-
   button {
+    width: 70%;
+    padding: 1%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
     background: #12753a;
     border-radius: 16px;
     font-family: "Petrona";
@@ -110,11 +83,33 @@ export const ContainerSection = styled.section`
     line-height: 17px;
     text-align: center;
     color: #ffffff;
-    padding: 2%;
 
     @media screen and (max-width: 425px) {
-      width: 50%;
+      width: 30%;
       margin-right: 3%;
+    }
+  }
+`;
+
+export const ContainerSection = styled.section`
+  display: flex;
+  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 4rem;
+  margin-top: 2%;
+
+  h4 {
+    margin-left: 0%;
+    font-family: "Petrona";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: capitalize;
+
+    @media screen and (max-width: 425px) {
+      font-size: 14px;
     }
   }
 `;
@@ -125,7 +120,7 @@ export const ContainerP = styled.p`
   font-size: 10px;
   text-transform: capitalize;
   color: #000000;
-  margin: 1%;
+  margin-bottom: 10%;
 
   @media screen and (max-width: 425px) {
     font-size: 10px;
@@ -133,17 +128,13 @@ export const ContainerP = styled.p`
 `;
 
 export const ContainerPreco = styled.p`
-  p {
-    font-family: "Petrona";
-    font-style: normal;
-    font-size: 10px;
-    text-transform: capitalize;
-    color: #000000;
-    margin: 1%;
-    margin-left: 80%;
+  font-family: "Petrona";
+  font-style: normal;
+  font-size: 12px;
+  text-transform: capitalize;
+  color: #000000;
 
-    @media screen and (max-width: 425px) {
-      font-size: 10px;
-    }
+  @media screen and (max-width: 425px) {
+    font-size: 10px;
   }
 `;

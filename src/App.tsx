@@ -1,6 +1,6 @@
 import Header from "./components/header";
 //import Providers from "./contexts/authUserContext";
-import { RestaurantedaMamae } from "./pages/restaurantedaMamae";
+import { RestaurantedaMamae } from "./pages/restaurantes";
 import AppRoutes from "./routes";
 import GlobalStyle from "./styles/GlobalStyles";
 
