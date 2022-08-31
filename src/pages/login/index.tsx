@@ -7,6 +7,7 @@ import * as yup from "yup";
 
 import Image from "../../assets/order-food.png";
 import { GlobalInputLg } from "../../components/global-inputs";
+import { GoogleAuthLogin } from "../../components/google-auth-login";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import {
   CenteringContainer,
@@ -44,7 +45,7 @@ export const Login = () => {
             <Button type="submit">Acessar Conta</Button>
             <p>Não tem conta cadastro? Faça aqui!</p>
             <p>Ou entre com:</p>
-            <GoogleLogin />
+            <GoogleAuthLogin />
           </Form>
         </FormDiv>
       </CenteringContainer>
