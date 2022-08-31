@@ -4,24 +4,29 @@ export const ContainerHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
-  margin-top: 8%;
+  width: 76.81rem;
+  margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
   border-radius: 16px 16px 0 0;
   border-color: var(--brand-light-green);
 
   div {
     margin-left: 1%;
+    margin-left: 2rem;
     h3 {
       font-family: "Courgette";
       font-weight: 400;
-      font-size: 38px;
+      font-size: 54px;
     }
     p {
       font-family: "Petrona";
-      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
     }
   }
   figure {

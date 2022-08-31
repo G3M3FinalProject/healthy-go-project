@@ -3,14 +3,16 @@ import styled from "styled-components";
 export const ContainerUl = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
   padding: 1%;
-  width: 80%;
+  width: 76.81rem;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
   border-color: var(--brand-light-green);
 
   @media screen and (max-width: 425px) {
@@ -20,6 +22,7 @@ export const ContainerUl = styled.ul`
   h2 {
     width: 100%;
     margin-top: 2%;
+    margin-left: 2rem;
     font-family: "Petrona";
     font-style: normal;
     font-weight: 400;
@@ -30,9 +33,11 @@ export const ContainerUl = styled.ul`
   }
 
   li {
-    width: 23%;
-    height: 8rem;
-    padding: 1%;
+    width: 23.37rem;
+    height: 13.68rem;
+    padding: 2%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--brand-light-green);
@@ -56,8 +61,8 @@ export const ContainerUl = styled.ul`
       }
 
       img {
-        width: 5rem;
-        height: 5rem;
+        width: 8.75rem;
+        height: 9.06rem;
         padding: 1%;
         border-radius: 25px;
 
@@ -69,9 +74,10 @@ export const ContainerUl = styled.ul`
     }
   }
   button {
-    width: 70%;
+    width: 15.12rem;
+    height: 2.25rem;
     padding: 1%;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
     background: #12753a;
@@ -79,8 +85,7 @@ export const ContainerUl = styled.ul`
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
-    font-size: 10px;
-    line-height: 17px;
+    font-size: 20px;
     text-align: center;
     color: #ffffff;
 
@@ -105,8 +110,7 @@ export const ContainerSection = styled.section`
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
-    text-transform: capitalize;
+    font-size: 20px;
 
     @media screen and (max-width: 425px) {
       font-size: 14px;
@@ -117,10 +121,9 @@ export const ContainerSection = styled.section`
 export const ContainerP = styled.p`
   font-family: "Petrona";
   font-style: normal;
-  font-size: 10px;
-  text-transform: capitalize;
-  color: #000000;
-  margin-bottom: 10%;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 3.5rem;
 
   @media screen and (max-width: 425px) {
     font-size: 10px;
@@ -130,9 +133,8 @@ export const ContainerP = styled.p`
 export const ContainerPreco = styled.p`
   font-family: "Petrona";
   font-style: normal;
-  font-size: 12px;
-  text-transform: capitalize;
-  color: #000000;
+  font-weight: 600;
+  font-size: 20px;
 
   @media screen and (max-width: 425px) {
     font-size: 10px;

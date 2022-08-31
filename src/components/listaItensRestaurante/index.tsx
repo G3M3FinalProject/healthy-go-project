@@ -1,4 +1,4 @@
-import { IMenuProps } from "../../pages/restaurantes";
+import { IMenu, IMenuProps } from "../../pages/restaurantes";
 import {
   ContainerP,
   ContainerPreco,
@@ -15,85 +15,79 @@ export interface IProduct {
   description: string;
 }
 
-export const ListProduct = ({ menu }: IMenuProps) => {
-  console.log(menu);
+export const ListProduct = ({ food, drinks, deserts }: IMenu) => {
   return (
     <ContainerUl>
       <h2>Pratos</h2>
-      {!!menu.food &&
-        menu.food.map(
-          ({ item, price, promo, photo_url, category, description }) => {
-            return (
-              <li key={item}>
-                <div>
-                  <img src={photo_url} />
-                  <ContainerSection>
-                    <h4>{item}</h4>
-                    <ContainerP>{category}</ContainerP>
-                    <ContainerPreco>
-                      {price.toLocaleString("pt-br", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
-                    </ContainerPreco>
-                    <ContainerPreco>{promo}</ContainerPreco>
-                  </ContainerSection>
-                </div>
-                <button>Adicionar ao carrinho</button>
-              </li>
-            );
-          },
-        )}
+      {food?.map(({ item, price, promo, photo_url, category, description }) => {
+        return (
+          <li key={item}>
+            <div>
+              <img src={photo_url} />
+              <ContainerSection>
+                <h4>{item}</h4>
+                <ContainerP>{category}</ContainerP>
+                <ContainerPreco>
+                  {price.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </ContainerPreco>
+                <ContainerPreco>{promo}</ContainerPreco>
+              </ContainerSection>
+            </div>
+            <button>Adicionar ao carrinho</button>
+          </li>
+        );
+      })}
       <h2>Bebidas</h2>
-      {!!menu.drinks &&
-        menu.drinks.map(
-          ({ item, price, promo, photo_url, category, description }) => {
-            return (
-              <li key={item}>
-                <div>
-                  <img src={photo_url} />
-                  <ContainerSection>
-                    <h4>{item}</h4>
-                    <ContainerP>{category}</ContainerP>
-                    <ContainerPreco>
-                      {price.toLocaleString("pt-br", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
-                    </ContainerPreco>
-                    <ContainerPreco>{promo}</ContainerPreco>
-                  </ContainerSection>
-                </div>
-                <button>Adicionar ao carrinho</button>
-              </li>
-            );
-          },
-        )}
+      {drinks?.map(
+        ({ item, price, promo, photo_url, category, description }) => {
+          return (
+            <li key={item}>
+              <div>
+                <img src={photo_url} />
+                <ContainerSection>
+                  <h4>{item}</h4>
+                  <ContainerP>{category}</ContainerP>
+                  <ContainerPreco>
+                    {price.toLocaleString("pt-br", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
+                  </ContainerPreco>
+                  <ContainerPreco>{promo}</ContainerPreco>
+                </ContainerSection>
+              </div>
+              <button>Adicionar ao carrinho</button>
+            </li>
+          );
+        },
+      )}
       <h2>Sobremesas</h2>
-      {!!menu.deserts &&
-        menu.deserts.map(
-          ({ item, price, promo, photo_url, category, description }) => {
-            return (
-              <li key={item}>
-                <div>
-                  <img src={photo_url} />
-                  <ContainerSection>
-                    <h4>{item}</h4>
-                    <ContainerP>{category}</ContainerP>
-                    <ContainerPreco>
-                      {price.toLocaleString("pt-br", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
-                    </ContainerPreco>
-                    <ContainerPreco>{promo}</ContainerPreco>
-                  </ContainerSection>
-                </div>
-                <button>Adicionar ao carrinho</button>
-              </li>
-            );
-          },
-        )}
+      {deserts?.map(
+        ({ item, price, promo, photo_url, category, description }) => {
+          return (
+            <li key={item}>
+              <div>
+                <img src={photo_url} />
+                <ContainerSection>
+                  <h4>{item}</h4>
+                  <ContainerP>{category}</ContainerP>
+                  <ContainerPreco>
+                    {price.toLocaleString("pt-br", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
+                  </ContainerPreco>
+                  <ContainerPreco>{promo}</ContainerPreco>
+                </ContainerSection>
+              </div>
+              <button>Adicionar ao carrinho</button>
+            </li>
+          );
+        },
+      )}
     </ContainerUl>
   );
 };
