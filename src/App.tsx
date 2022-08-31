@@ -8,7 +8,7 @@ function App() {
   return (
     <Providers>
       <GlobalStyle />
-      <Cart />
+      {/* <Cart /> */}
       <Header />
       <AppRoutes />
     </Providers>
