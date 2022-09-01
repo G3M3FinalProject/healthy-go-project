@@ -78,5 +78,3 @@ export const Login = () => {
     </motion.div>
   );
 };
-
-export default Login;

@@ -1,24 +1,56 @@
-import ImgInicial from "../../assets/eatinghealthyfood.gif";
-import pessoasremovebgpreview from "../../assets/pessoasremovebgpreview.png";
-import { Containerdash, Img } from "./style";
+import { useEffect, useState } from "react";
+
+import { motion } from "framer-motion";
+
+import WomanEating from "../../assets/womanaboutus.png";
+import { Container, Paragraph } from "./styles";
 
 export const AboutUs = () => {
+  const [isMobile, setMobile] = useState(window.innerWidth < 426);
+
+  const updateMedia = () => {
+    setMobile(window.innerWidth < 426);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
   return (
-    <>
-      <Containerdash>
-        <div>
-          <section>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <Container>
+        {isMobile ? (
+          <p>
+            MAIS PRATICIDADE E CONFORTO PARA VOCÊ QUE POSSUI UMA NECESSIDADE
+            ALIMENTAR
+          </p>
+        ) : (
+          <Paragraph>
+            <h1>Sobre nós</h1>
             <p>
-              Trazemos a praticidade para os usuários com restrição alimentar.
+              Alimentar-se bem é saber fazer boas escolhas e a missão da
+              Healthygo é te ajudar nessa decisão tão importante!
             </p>
             <p>
-              Restaurantes que viabilizam a procura por pratos na plama da mão.
+              Em um mundo em que a diversidade de pratos nublam o poder de
+              decisão, nós nos propomos a viabilizar seu almoço ou jantar da
+              maneira mais saudável possível! Quer encontrar restaurantes
+              Gluten-free, veganos, vegetarianos ou zero lactose?
             </p>
-          </section>
-          <img src={ImgInicial} alt="Mulher comendo salada" />
-        </div>
-      </Containerdash>
-      <Img src={pessoasremovebgpreview} alt="Amigos comendo juntos" />
-    </>
+            <p>
+              Vem para <strong>Healthygo</strong> que nós temos isso, e muito
+              mais!!
+            </p>
+          </Paragraph>
+        )}
+        <img src={WomanEating} alt="Pessoa comendo" />
+      </Container>
+    </motion.div>
   );
 };
