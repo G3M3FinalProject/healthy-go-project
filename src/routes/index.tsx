@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Login } from "../pages/login";
 import UserRegister from "../pages/register";
+import { Restaurants } from "../pages/restaurants";
 
 const AppRoutes = () => {
   return (
@@ -11,7 +12,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/checkout" />
       <Route path="/profile" />
-      <Route path="restaurants:id" />
+      <Route path="/restaurants/:id" element={<Restaurants />} />
       <Route path="*" element={<Navigate to="/homepage" />} />
     </Routes>
   );

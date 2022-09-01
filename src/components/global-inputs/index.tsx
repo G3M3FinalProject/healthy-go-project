@@ -35,6 +35,26 @@ export const GlobalInputLg = ({
   );
 };
 
+export const GlobalInputPassword = ({
+  type,
+  label,
+  register,
+  registerName,
+  defaultValue,
+}: InputProps) => {
+  return (
+    <InputLg>
+      <input
+        type={type}
+        {...register(registerName)}
+        placeholder=" "
+        defaultValue={defaultValue}
+      />
+      <label>{label}</label>
+    </InputLg>
+  );
+};
+
 interface IPropsButton {
   children: ReactNode;
   type: string;
