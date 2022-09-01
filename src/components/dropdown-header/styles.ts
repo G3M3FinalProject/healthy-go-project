@@ -4,8 +4,8 @@ export const Container = styled.div`
   width: fit-content;
   height: fit-content;
   position: absolute;
-  right: 0.78rem;
-  top: 11.7rem;
+  right: 0.3rem;
+  top: 8.7rem;
 
   background: #fafafa;
 
@@ -17,12 +17,17 @@ export const Container = styled.div`
 
 export const Menu = styled.div`
   display: flex;
+  align-items: center;
 
   padding: 0.6rem 0 0 0;
 
   p {
+    width: 6rem;
+
     margin: 0 0.4rem;
+
     color: black;
+    font-weight: 500;
   }
 `;
 

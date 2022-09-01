@@ -1,18 +1,25 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { BiHide, BiShow } from "react-icons/bi";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 import * as yup from "yup";
 
 import Image from "../../assets/order-food.png";
-import { GlobalInputLg } from "../../components/global-inputs";
+import {
+  GlobalInputLg,
+  GlobalInputPassword,
+} from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { GoogleAuthLogin } from "../../components/google-auth-login";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
-import { CenteringContainer, FormDiv, Form, Img } from "./styles";
+import { CenteringContainer, FormDiv, Form, Img, ShowPassword } from "./styles";
 
 export const Login = () => {
   const { loginUser } = useAuthUserContext();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const formSchema = yup.object().shape({
     email: yup.string(),
@@ -44,14 +51,23 @@ export const Login = () => {
               type="text"
               label="E-mail"
               register={register}
-              registerName="password"
+              registerName="email"
             />
-            <GlobalInputLg
-              type="password"
-              label="Password"
-              register={register}
-              registerName="password"
-            />
+            <ShowPassword>
+              <GlobalInputPassword
+                type={showPassword ? "text" : "password"}
+                label="Password"
+                register={register}
+                registerName="password"
+              />
+              <button
+                type="button"
+                className="password-show__button"
+                onClick={() => setShowPassword((old) => !old)}
+              >
+                {showPassword ? <BiShow /> : <BiHide />}
+              </button>
+            </ShowPassword>
             <ButtonLg type="submit">Acessar Conta</ButtonLg>
             <p>Não tem conta cadastro? Faça aqui!</p>
             <p>Ou entre com:</p>

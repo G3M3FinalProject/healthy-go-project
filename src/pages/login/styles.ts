@@ -50,6 +50,31 @@ export const Form = styled.form`
 
   gap: 1rem;
 
+  & > p {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+
+  & > p::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  & > p:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
   p:nth-child(4) {
     cursor: pointer;
     font-size: 18px;
@@ -133,5 +158,19 @@ export const Img = styled.img`
 
   @media screen and (min-width: 921px) {
     width: unset;
+  }
+`;
+
+export const ShowPassword = styled.div`
+  width: 100%;
+  position: relative;
+
+  button {
+    position: absolute;
+
+    top: 0.8rem;
+    right: 1rem;
+
+    background: trasparent;
   }
 `;
