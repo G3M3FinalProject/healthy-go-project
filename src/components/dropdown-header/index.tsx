@@ -3,6 +3,7 @@ import { BsBoxArrowRight } from "react-icons/bs";
 import { BsFilePersonFill } from "react-icons/bs";
 import { FaRunning, FaPencilAlt } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -11,6 +12,8 @@ import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
   const { user } = useAuthUserContext();
+
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -28,7 +31,7 @@ const DropDownModal = () => {
               <FaPencilAlt style={{ color: "black" }} />
               <p>Editar perfil</p>
             </Menu>
-            <Menu>
+            <Menu onClick={() => navigate("/aboutus", { replace: true })}>
               <BiBookOpen style={{ color: "black" }} />
               <p>Sobre nós</p>
             </Menu>
@@ -41,13 +44,13 @@ const DropDownModal = () => {
           <>
             <Menu>
               <BsBoxArrowRight style={{ color: "black" }} />
-              <p>Login</p>
+              <p onClick={() => navigate("/login", { replace: true })}>Login</p>
             </Menu>
-            <Menu>
+            <Menu onClick={() => navigate("/register", { replace: true })}>
               <BsFilePersonFill style={{ color: "black" }} />
               <p>Cadastro</p>
             </Menu>
-            <Menu>
+            <Menu onClick={() => navigate("/aboutus", { replace: true })}>
               <HiUserGroup style={{ color: "black" }} />
               <p>Sobre nós</p>
             </Menu>
