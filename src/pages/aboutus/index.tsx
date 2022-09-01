@@ -1,25 +1,32 @@
-import ImgInicial from "../../assets/eatinghealthyfood.gif";
-import pessoasremovebgpreview from "../../assets/pessoasremovebgpreview.png";
-import { Containerdash, Img } from "./style";
-import { Containerdash, Img } from "./style";
+import { motion } from "framer-motion";
 
-export const Home = () => {
+import WomanEating from "../../assets/womanaboutus.png";
+
+export const AboutUs = () => {
   return (
-    <>
-      <Containerdash>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <div>
         <div>
-          <section>
-            <p>
-              Trazemos a praticidade para os usuários com restrição alimentar.
-            </p>
-            <p>
-              Restaurantes que viabilizam a procura por pratos na plama da mão.
-            </p>
-          </section>
-          <img src={ImgInicial} alt="Mulher comendo salada" />
+          <h1>Sobre nós</h1>
+          <p>
+            Alimentar-se bem é saber fazer boas escolhas e a missão da Healthygo
+            é te ajudar nessa decisão tão importante!
+          </p>
+          <p>
+            Em um mundo em que a diversidade de pratos nublam o poder de
+            decisão, nós nos propomos a viabilizar seu almoço ou jantar da
+            maneira mais saudável possível! Quer encontrar restaurantes
+            Gluten-free, veganos, vegetarianos ou zero lactose?
+          </p>
+          <p> Vem para Healthygo que nós temos isso, e muito mais!!</p>
         </div>
-      </Containerdash>
-      <Img src={pessoasremovebgpreview} alt="Amigos comendo juntos" />
-    </>
+        <img src={WomanEating} alt="Pessoa comendo" />
+      </div>
+    </motion.div>
   );
 };
