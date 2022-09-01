@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -7,6 +9,7 @@ import flag from "../../assets/flag.png";
 import HealthyGo from "../../assets/healthygo.png";
 import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
+import { useAuthUserContext } from "../../contexts/authUserContext";
 import DropDownModal from "../dropdown-header";
 import {
   Container,
@@ -19,9 +22,12 @@ import {
   HamburguerMenu,
   HamburguerLine,
   Paragraph,
+  CartBackground,
 } from "./styles";
 
 const Header = () => {
+  const { user } = useAuthUserContext();
+
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -29,6 +35,7 @@ const Header = () => {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (event: any) => {
       if (!modalRef.current?.contains(event.target)) {
         setisModalOpen(false);
@@ -54,27 +61,65 @@ const Header = () => {
         <Source media="(min-width: 426px)" srcSet={flag} />
         <Flag src={flag} alt="flag" />
       </picture>
-      <Container>
-        <Brand>
-          <Logo src={LogoImg} alt="Logo" />
-          <BrandName src={HealthyGo} alt="brand name" />
-        </Brand>
-        <Menu onClick={() => setisModalOpen(!isModalOpen)}>
-          <HamburguerMenu ref={modalRef} open={isModalOpen}>
-            <HamburguerLine className="line-1" />
-            <HamburguerLine className="line-2" />
-            <HamburguerLine className="line-3" />
-          </HamburguerMenu>
+      {user ? (
+        <Container>
+          <Brand>
+            <Logo src={LogoImg} alt="Logo" />
+            <BrandName src={HealthyGo} alt="brand name" />
+          </Brand>
+          <Menu>
+            <HamburguerMenu
+              onClick={() => setisModalOpen(!isModalOpen)}
+              ref={modalRef}
+              open={isModalOpen}
+            >
+              <HamburguerLine className="line-1" />
+              <HamburguerLine className="line-2" />
+              <HamburguerLine className="line-3" />
+            </HamburguerMenu>
 
-          <Paragraph>
-            <p>Sobre nós</p>
-            <p>Login</p>
-            <p>Cadastro</p>
-          </Paragraph>
-        </Menu>
+            <Paragraph isLoggedIn>
+              <p>Sobre nós</p>
+              <CartBackground
+                onClick={() => setisModalOpen(!isModalOpen)}
+                ref={modalRef}
+              >
+                {isModalOpen && <DropDownModal />}
+                <p>Olá, {user.name}</p>
+                <MdKeyboardArrowDown />
+              </CartBackground>
+              <CartBackground>
+                <AiOutlineShoppingCart
+                  style={{ width: "30px", height: "30px" }}
+                />
+              </CartBackground>
+            </Paragraph>
+          </Menu>
+        </Container>
+      ) : (
+        <Container>
+          <Brand>
+            <Logo src={LogoImg} alt="Logo" />
+            <BrandName src={HealthyGo} alt="brand name" />
+          </Brand>
+          <Menu onClick={() => setisModalOpen(!isModalOpen)}>
+            <HamburguerMenu ref={modalRef} open={isModalOpen}>
+              <HamburguerLine className="line-1" />
+              <HamburguerLine className="line-2" />
+              <HamburguerLine className="line-3" />
+            </HamburguerMenu>
+            {isModalOpen && <DropDownModal />}
 
-        {isModalOpen && <DropDownModal />}
-      </Container>
+            <Paragraph>
+              <p>Sobre nós</p>
+              <p onClick={() => navigate("/login", { replace: true })}>Login</p>
+              <p onClick={() => navigate("/register", { replace: true })}>
+                Cadastro
+              </p>
+            </Paragraph>
+          </Menu>
+        </Container>
+      )}
     </motion.div>
   );
 };

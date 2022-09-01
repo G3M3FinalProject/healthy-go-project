@@ -47,6 +47,7 @@ export const Flag = styled.img`
   position: absolute;
   width: 100%;
   height: 25%;
+  top: -1px;
 `;
 
 export const Logo = styled.img`
@@ -149,10 +150,11 @@ export const BtnBurguer = styled.div`
 
 export const Paragraph = styled.div`
   display: flex;
+  align-items: center;
 
   font-size: 20px;
 
-  gap: 1rem;
+  gap: ${(props) => (props.isLoggedIn ? "4rem" : "1rem")};
 
   & > p {
     cursor: pointer;
@@ -179,9 +181,9 @@ export const Paragraph = styled.div`
     transform-origin: bottom left;
   }
 
-  p:nth-child(1) {
+  & > p {
     text-align: center;
-    width: 6rem;
+    padding: 0 1rem;
   }
 
   @media screen and (max-width: 426px) {
@@ -190,7 +192,35 @@ export const Paragraph = styled.div`
 
   @media screen and (max-width: 500px) {
     padding-top: 1rem;
-    flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  @media screen and (min-width: 501px) and (max-width: 624px) {
+    padding-top: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+  }
+`;
+
+export const CartBackground = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  cursor: pointer;
+
+  background: #54a656;
+
+  padding: 0.7rem;
+
+  border-radius: 20px;
+
+  p {
+    width: 13rem;
   }
 `;
