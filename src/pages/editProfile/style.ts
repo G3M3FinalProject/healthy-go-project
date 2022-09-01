@@ -123,11 +123,14 @@ export const Back = styled.p`
 export const ContainerCenter = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    margin-right: 20%;
   }
 `;
 
@@ -140,7 +143,7 @@ export const CardAdress = styled.div`
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    margin: 20% 0 0 5%;
+    margin: 20% 0 10% 5%;
   }
 `;
 
@@ -168,15 +171,16 @@ export const ButtonSave = styled.button`
 `;
 export const Card = styled.div`
   border-radius: 10px;
-  background-color: rgba(146, 227, 160, 1);
+  background-color: rgba(202, 255, 215, 1);
   width: 18rem;
   border-left: 5px solid rgba(18, 117, 58, 1);
   text-align: left;
+  margin-right: 20%;
 `;
 
 export const TitleCard = styled.h4`
   font-family: "Petrona", serif;
-  margin: 0.75rem 0 0.75rem 0.75rem;
+  margin: 0.75rem 1rem 1rem 0.75rem;
 `;
 
 export const InfoCard = styled.h4`

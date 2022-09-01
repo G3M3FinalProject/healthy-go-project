@@ -14,27 +14,46 @@ interface IAuthUserProviderData {
   loginUser: (user: IUserLogin) => void;
   registerUser: (user: IUser) => void;
   isLoading: boolean;
+  editUser: (data: IUser, id: string) => void;
+  getUser: (id: string) => void;
 }
 
 export interface IUserLogin {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 }
 interface IUserResponse {
   data: {
     accessToken: string;
-    user: IUserRes;
+    user: IUserEdit;
   };
+}
+
+interface IUserEdit {
+  name: string;
+  birthday?: string;
+  cellphone?: string;
+  email2?: string;
+  id: string;
+  email: string;
 }
 
 export interface IUser extends IUserLogin {
   type?: string;
   avatar?: string;
   name: string;
+  birthday?: string;
+  cellphone?: string;
+  email2?: string;
+  id?: string;
 }
 
 interface IUserRes extends IUser {
   id: string;
+}
+
+interface IUserEditRes {
+  data: IUser;
 }
 
 interface IAuthUserProps {
@@ -54,7 +73,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
-        console.log(res.data.accessToken);
+        localStorage.setItem("@healthyGo-userid", res.data.user.id);
         localStorage.setItem("@healthyGo-token", res.data.accessToken);
 
         api.defaults.headers.common[
@@ -88,7 +107,6 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
           .get("/login")
           .then()
           .catch(() => {
-            localStorage.clear();
             setIsLoading(false);
           })
           .finally(() => {
@@ -98,18 +116,29 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   };
   isUserLoggedIn();
 
-  //   const editUser = (data: IUser) => {
-  //     api
-  //     .patch("/", data)
-  //     .then(() => {
-  //       navigate("/login", { replace: true });
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const editUser = (data: IUser, id: string) => {
+    api
+      .patch(`/users/${id}`, data)
+      .then((res: IUserEditRes) => {
+        setUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getUser = (id: string) => {
+    useEffect(() => {
+      api
+        .get(`/users/${id}`)
+        .then((res: IUserEditRes) => {
+          setUser(res.data);
+        })
+        .catch((err) => console.log(err));
+    }, []);
+  };
 
   return (
     <AuthUserContext.Provider
-      value={{ user, loginUser, registerUser, isLoading }}
+      value={{ user, loginUser, registerUser, isLoading, editUser, getUser }}
     >
       {children}
     </AuthUserContext.Provider>

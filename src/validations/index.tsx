@@ -14,7 +14,7 @@ export const registerFormSchema = yup.object().shape({
 });
 
 export const editFormSchema = yup.object().shape({
-  name: yup.string().required("Nome é um campo necessário"),
+  name: yup.string(),
   birthdate: yup.string().required("Data de nascimento é um campo necessário"),
   email: yup.string().required("E-mail é um campo necessário"),
 });
