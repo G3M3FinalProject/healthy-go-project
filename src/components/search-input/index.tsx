@@ -1,15 +1,10 @@
 import { useState } from "react";
 
-import {
-  IMenu,
-  useRestaurantProductsContext,
-} from "../../contexts/restaurantProductsContext";
+import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
 import { Container } from "./styles";
 
 const SearchInput = () => {
-  const { restaurantInfo, filteredMenu, setFilteredMenu } =
-    useRestaurantProductsContext();
-  const [showNotFound, setShowNotFound] = useState(false);
+  const { restaurantInfo, setFilteredMenu } = useRestaurantProductsContext();
   const [productSearched, setProductSearched] = useState("");
 
   const removeAccents = (string: string) => {
@@ -19,7 +14,7 @@ const SearchInput = () => {
       .toLowerCase();
   };
 
-  const getFilteredProduct = (e) => {
+  const getFilteredProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const menu = restaurantInfo.menu;
 
@@ -50,7 +45,6 @@ const SearchInput = () => {
     newMenuArray;
 
     setFilteredMenu(newMenuObj);
-    filteredMenu ? setShowNotFound(true) : setShowNotFound(false);
   };
 
   return (
