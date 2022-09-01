@@ -57,11 +57,21 @@ export const Logo = styled.img`
   @media screen and (max-width: 426px) {
     min-width: 40%;
   }
+
+  @media screen and (min-width: 426px) and (max-width: 625px) {
+    min-width: unset;
+    width: unset;
+    max-width: unset;
+  }
 `;
 
 export const BrandName = styled.img`
   cursor: pointer;
   max-width: 40%;
+
+  @media screen and (min-width: 426px) and (max-width: 625px) {
+    display: none;
+  }
 
   @media screen and (max-width: 426px) {
     min-width: 40%;
@@ -219,8 +229,4 @@ export const CartBackground = styled.div`
   padding: 0.7rem;
 
   border-radius: 20px;
-
-  p {
-    width: 13rem;
-  }
 `;

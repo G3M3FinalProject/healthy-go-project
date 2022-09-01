@@ -79,9 +79,6 @@ const Header = () => {
             </HamburguerMenu>
 
             <Paragraph isLoggedIn>
-              <p onClick={() => navigate("/aboutus", { replace: true })}>
-                Sobre nós
-              </p>
               <CartBackground
                 onClick={() => setisModalOpen(!isModalOpen)}
                 ref={modalRef}

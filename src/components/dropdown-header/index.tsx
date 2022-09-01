@@ -1,3 +1,4 @@
+import { BiBookOpen } from "react-icons/bi";
 import { BsBoxArrowRight } from "react-icons/bs";
 import { BsFilePersonFill } from "react-icons/bs";
 import { FaRunning, FaPencilAlt } from "react-icons/fa";
@@ -25,7 +26,11 @@ const DropDownModal = () => {
           <>
             <Menu>
               <FaPencilAlt style={{ color: "black" }} />
-              <p>Editar Perfil</p>
+              <p>Editar perfil</p>
+            </Menu>
+            <Menu>
+              <BiBookOpen style={{ color: "black" }} />
+              <p>Sobre nós</p>
             </Menu>
             <Menu>
               <FaRunning style={{ color: "black" }} />

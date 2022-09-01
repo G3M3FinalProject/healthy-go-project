@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: fit-content;
+  width: 11rem;
   height: fit-content;
   position: absolute;
   right: 0.3rem;
@@ -22,12 +22,34 @@ export const Menu = styled.div`
   padding: 0.6rem 0 0 0;
 
   p {
-    width: 6rem;
-
     margin: 0 0.4rem;
 
-    color: black;
     font-weight: 500;
+  }
+
+  & > p {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+
+  & > p::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  & > p:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 `;
 
@@ -50,7 +72,7 @@ export const Arrow = styled.div`
   }
 
   @media screen and (min-width: 319px) {
-    right: 2rem;
+    right: 2.6rem;
   }
 
   @media screen and (min-width: 359px) {
@@ -78,6 +100,6 @@ export const Arrow = styled.div`
   }
 
   @media screen and (min-width: 424px) {
-    right: 2.6rem;
+    right: 0.6rem;
   }
 `;
