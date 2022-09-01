@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -66,8 +67,12 @@ const Header = () => {
             <Logo src={LogoImg} alt="Logo" />
             <BrandName src={HealthyGo} alt="brand name" />
           </Brand>
-          <Menu onClick={() => setisModalOpen(!isModalOpen)}>
-            <HamburguerMenu ref={modalRef} open={isModalOpen}>
+          <Menu>
+            <HamburguerMenu
+              onClick={() => setisModalOpen(!isModalOpen)}
+              ref={modalRef}
+              open={isModalOpen}
+            >
               <HamburguerLine className="line-1" />
               <HamburguerLine className="line-2" />
               <HamburguerLine className="line-3" />
@@ -75,7 +80,14 @@ const Header = () => {
 
             <Paragraph isLoggedIn>
               <p>Sobre nós</p>
-              <p>Olá, {user.name}</p>
+              <CartBackground
+                onClick={() => setisModalOpen(!isModalOpen)}
+                ref={modalRef}
+              >
+                {isModalOpen && <DropDownModal />}
+                <p>Olá, {user.name}</p>
+                <MdKeyboardArrowDown />
+              </CartBackground>
               <CartBackground>
                 <AiOutlineShoppingCart
                   style={{ width: "30px", height: "30px" }}
@@ -83,8 +95,6 @@ const Header = () => {
               </CartBackground>
             </Paragraph>
           </Menu>
-
-          {isModalOpen && <DropDownModal />}
         </Container>
       ) : (
         <Container>
@@ -98,6 +108,7 @@ const Header = () => {
               <HamburguerLine className="line-2" />
               <HamburguerLine className="line-3" />
             </HamburguerMenu>
+            {isModalOpen && <DropDownModal />}
 
             <Paragraph>
               <p>Sobre nós</p>
@@ -107,8 +118,6 @@ const Header = () => {
               </p>
             </Paragraph>
           </Menu>
-
-          {isModalOpen && <DropDownModal />}
         </Container>
       )}
     </motion.div>

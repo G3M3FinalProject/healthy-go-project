@@ -181,9 +181,9 @@ export const Paragraph = styled.div`
     transform-origin: bottom left;
   }
 
-  p:nth-child(1) {
+  & > p {
     text-align: center;
-    width: 6rem;
+    padding: 0 1rem;
   }
 
   @media screen and (max-width: 426px) {
@@ -209,10 +209,18 @@ export const Paragraph = styled.div`
 
 export const CartBackground = styled.div`
   display: flex;
+  align-items: center;
+  position: relative;
+
+  cursor: pointer;
 
   background: #54a656;
 
   padding: 0.7rem;
 
   border-radius: 20px;
+
+  p {
+    width: 13rem;
+  }
 `;
