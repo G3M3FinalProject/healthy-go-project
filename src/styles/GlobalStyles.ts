@@ -18,7 +18,6 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-
     -webkit-font-smoothing: antialiased;
     overflow-y: auto;
     width: 100vw;
