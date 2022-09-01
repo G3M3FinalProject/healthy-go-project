@@ -6,13 +6,13 @@ import { Container, Modal } from "./styles";
 
 export {};
 
-const Cart = () => {
+const Cart = ({ setisOpenCart }) => {
   return (
     <Modal>
       <Container>
         <div className="header-cart">
           <button className="back-cart">
-            <AiOutlineLeft />
+            <AiOutlineLeft onClick={() => setisOpenCart(false)} />
           </button>
           <h3>Carrinho</h3>
         </div>

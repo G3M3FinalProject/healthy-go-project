@@ -10,6 +10,7 @@ import HealthyGo from "../../assets/healthygo.png";
 import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
 import { useAuthUserContext } from "../../contexts/authUserContext";
+import Cart from "../cart";
 import DropDownModal from "../dropdown-header";
 import {
   Container,
@@ -29,6 +30,7 @@ const Header = () => {
   const { user } = useAuthUserContext();
 
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+  const [isopenCart, setisOpenCart] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -90,11 +92,13 @@ const Header = () => {
               </CartBackground>
               <CartBackground>
                 <AiOutlineShoppingCart
+                  onClick={() => setisOpenCart(true)}
                   style={{ width: "30px", height: "30px" }}
                 />
               </CartBackground>
             </Paragraph>
           </Menu>
+          {isopenCart && <Cart setisOpenCart={setisOpenCart} />}
         </Container>
       ) : (
         <Container>
