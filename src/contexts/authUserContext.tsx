@@ -28,8 +28,8 @@ interface IUserResponse {
 }
 
 export interface IUser extends IUserLogin {
-  type: string;
-  avatar: string;
+  type?: string;
+  avatar?: string;
   name: string;
 }
 
@@ -97,6 +97,15 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
     }, []);
   };
   isUserLoggedIn();
+
+  //   const editUser = (data: IUser) => {
+  //     api
+  //     .patch("/", data)
+  //     .then(() => {
+  //       navigate("/login", { replace: true });
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <AuthUserContext.Provider

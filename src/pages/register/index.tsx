@@ -9,6 +9,7 @@ import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
 import { CenteringContainer, FormDiv, Form, Paragragh, Back } from "./style";
+
 type UserContextType = {
   registerFunction: (data: IRegisterData) => void;
 };
@@ -24,14 +25,6 @@ export interface IFormData {
   confirmPassword: string;
 }
 
-function Submit(data: IRegisterData) {
-  const register = {
-    email: data.email,
-    password: data.password,
-    name: data.name,
-  };
-}
-
 const UserRegister = () => {
   const { registerUser } = useAuthUserContext();
   const {
@@ -40,6 +33,15 @@ const UserRegister = () => {
     formState: { errors },
   } = useForm<IFormData>({ resolver: yupResolver(registerFormSchema) });
 
+  function Submit(data: IRegisterData) {
+    const register = {
+      email: data.email,
+      password: data.password,
+      name: data.name,
+    };
+    console.log(register);
+    registerUser(register);
+  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -76,7 +78,7 @@ const UserRegister = () => {
               type="password"
               label="Confirmação de senha *"
               register={register}
-              registerName="password"
+              registerName="confirmPassword"
             />
             <Paragragh>
               {errors.confirmPassword && errors.confirmPassword.message}
