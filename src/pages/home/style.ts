@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Containerdash = styled.main`
-  
   width: 100vw;
   @media (max-width: 440px) {
     margin-top: 0;
