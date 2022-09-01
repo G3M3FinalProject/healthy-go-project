@@ -1,6 +1,7 @@
 import ImgInicial from "../../assets/eatinghealthyfood.gif";
 import pessoasremovebgpreview from "../../assets/pessoasremovebgpreview.png";
 import { Containerdash, Img } from "./style";
+import { Containerdash, Img } from "./style";
 
 export const Home = () => {
   return (
