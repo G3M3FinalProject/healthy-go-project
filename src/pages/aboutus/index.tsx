@@ -1,11 +1,11 @@
-import { Containerdash, Img } from "./style";
 import ImgInicial from "../../assets/eatinghealthyfood.gif";
 import pessoasremovebgpreview from "../../assets/pessoasremovebgpreview.png";
+import { Containerdash, Img } from "./style";
 
-export const Home = () => {
-  return (<>
-    <Containerdash>
-     
+export const AboutUs = () => {
+  return (
+    <>
+      <Containerdash>
         <div>
           <section>
             <p>
@@ -17,8 +17,8 @@ export const Home = () => {
           </section>
           <img src={ImgInicial} alt="Mulher comendo salada" />
         </div>
-      
-    </Containerdash>
-    <Img src={pessoasremovebgpreview} alt="Amigos comendo juntos" />
-    </>);
+      </Containerdash>
+      <Img src={pessoasremovebgpreview} alt="Amigos comendo juntos" />
+    </>
+  );
 };
