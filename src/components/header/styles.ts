@@ -192,8 +192,18 @@ export const Paragraph = styled.div`
 
   @media screen and (max-width: 500px) {
     padding-top: 1rem;
-    flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  @media screen and (min-width: 501px) and (max-width: 624px) {
+    padding-top: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
   }
 `;
 
