@@ -13,6 +13,10 @@ export const CenteringContainer = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
+
+  @media screen and (min-width: 1441px) and (max-width: 3000px) {
+    margin: 20rem 0 0 0;
+  }
 `;
 
 export const FormDiv = styled.div`
