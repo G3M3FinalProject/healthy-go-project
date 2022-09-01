@@ -79,7 +79,9 @@ const Header = () => {
             </HamburguerMenu>
 
             <Paragraph isLoggedIn>
-              <p>Sobre nós</p>
+              <p onClick={() => navigate("/aboutus", { replace: true })}>
+                Sobre nós
+              </p>
               <CartBackground
                 onClick={() => setisModalOpen(!isModalOpen)}
                 ref={modalRef}
@@ -111,7 +113,9 @@ const Header = () => {
             {isModalOpen && <DropDownModal />}
 
             <Paragraph>
-              <p>Sobre nós</p>
+              <p onClick={() => navigate("/aboutus", { replace: true })}>
+                Sobre nós
+              </p>
               <p onClick={() => navigate("/login", { replace: true })}>Login</p>
               <p onClick={() => navigate("/register", { replace: true })}>
                 Cadastro
