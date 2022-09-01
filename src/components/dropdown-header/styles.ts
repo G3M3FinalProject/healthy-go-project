@@ -99,7 +99,7 @@ export const Arrow = styled.div`
     right: 3.1rem;
   }
 
-  @media screen and (min-width: 424px) {
+  @media screen and (min-width: 426px) {
     right: 0.6rem;
   }
 `;
