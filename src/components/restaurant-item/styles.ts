@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-
   a {
     cursor: pointer;
     border: 1px solid #c2c2c2;
@@ -45,12 +44,6 @@ export const Container = styled.div`
         }
       }
     }
-  }
-  @media (min-width: 768px) {
-    width: 46%;
-  }
-  @media (min-width: 768px) {
-    width: 100%;
   }
 `;
 

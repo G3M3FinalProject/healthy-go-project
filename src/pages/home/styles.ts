@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 100px;
+  margin-top: 80px;
+
   & > figure {
     display: none;
   }
@@ -11,23 +12,23 @@ export const Container = styled.div`
   }
   @media (min-width: 1024px) {
     display: grid;
-    grid-template-areas: "mainList figure" "secList secList";
-    grid-template-columns: 500px auto;
-
-    ul:nth-child(1) {
-      grid-area: mainList;
-    }
-    ul:nth-child(2) {
-      grid-area: secList;
-    }
+    grid-template-areas: "filters figureMain" "mainList figureMain" "secList secList";
+    grid-template-columns: 48% 47%;
+    grid-template-rows: 180px auto auto;
 
     & > figure {
-      grid-area: figure;
+      grid-area: figureMain;
       display: block;
       width: 100%;
       img {
         width: 100%;
+        max-width: 640px;
       }
     }
+  }
+  @media (min-width: 1440px) {
+    max-width: 1440px;
+
+    margin: 100px auto;
   }
 `;
