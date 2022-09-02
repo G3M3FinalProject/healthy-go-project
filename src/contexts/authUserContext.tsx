@@ -14,27 +14,46 @@ interface IAuthUserProviderData {
   loginUser: (user: IUserLogin) => void;
   registerUser: (user: IUser) => void;
   isLoading: boolean;
+  editUser: (data: IUser, id: string) => void;
+  getUser: (id: string) => void;
 }
 
 export interface IUserLogin {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 }
 interface IUserResponse {
   data: {
     accessToken: string;
-    user: IUserRes;
+    user: IUserEdit;
   };
 }
 
-export interface IUser extends IUserLogin {
-  type: string;
-  avatar: string;
+interface IUserEdit {
   name: string;
+  birthday?: string;
+  cellphone?: string;
+  email2?: string;
+  id: string;
+  email: string;
+}
+
+export interface IUser extends IUserLogin {
+  type?: string;
+  avatar?: string;
+  name: string;
+  birthday?: string;
+  cellphone?: string;
+  email2?: string;
+  id?: string;
 }
 
 interface IUserRes extends IUser {
   id: string;
+}
+
+interface IUserEditRes {
+  data: IUser;
 }
 
 interface IAuthUserProps {
@@ -93,7 +112,11 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
             setUser(res.data);
           })
           .catch(() => {
+
             localStorage.clear();
+
+            setIsLoading(false);
+
           })
           .finally(() => {
             setIsLoading(false);
@@ -102,9 +125,29 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   };
   isUserLoggedIn();
 
+  const editUser = (data: IUser, id: string) => {
+    api
+      .patch(`/users/${id}`, data)
+      .then((res: IUserEditRes) => {
+        setUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getUser = (id: string) => {
+    useEffect(() => {
+      api
+        .get(`/users/${id}`)
+        .then((res: IUserEditRes) => {
+          setUser(res.data);
+        })
+        .catch((err) => console.log(err));
+    }, []);
+  };
+
   return (
     <AuthUserContext.Provider
-      value={{ user, loginUser, registerUser, isLoading }}
+      value={{ user, loginUser, registerUser, isLoading, editUser, getUser }}
     >
       {children}
     </AuthUserContext.Provider>
