@@ -11,9 +11,9 @@ import { api } from "../services";
 
 interface IAuthUserProviderData {
   user: IUser | undefined;
+  isLoading: boolean;
   loginUser: (user: IUserLogin) => void;
   registerUser: (user: IUser) => void;
-  isLoading: boolean;
   editUser: (data: IUser, id: string) => void;
   getUser: (id: string) => void;
 }
@@ -112,11 +112,9 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
             setUser(res.data);
           })
           .catch(() => {
-
             localStorage.clear();
 
             setIsLoading(false);
-
           })
           .finally(() => {
             setIsLoading(false);
