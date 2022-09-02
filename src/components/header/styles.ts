@@ -162,9 +162,11 @@ export const Paragraph = styled.div`
   display: flex;
   align-items: center;
 
+  position: relative;
+
   font-size: 20px;
 
-  gap: ${(props) => (props.isLoggedIn ? "4rem" : "1rem")};
+  gap: 1rem;
 
   & > p {
     cursor: pointer;
@@ -194,10 +196,6 @@ export const Paragraph = styled.div`
   & > p {
     text-align: center;
     padding: 0 1rem;
-  }
-
-  @media screen and (max-width: 426px) {
-    display: none;
   }
 
   @media screen and (max-width: 500px) {

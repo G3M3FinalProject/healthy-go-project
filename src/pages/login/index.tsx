@@ -8,10 +8,10 @@ import * as yup from "yup";
 
 import Image from "../../assets/order-food.png";
 import {
+  GlobalButtonLg,
   GlobalInputLg,
   GlobalInputPassword,
 } from "../../components/global-inputs";
-import { ButtonLg } from "../../components/global-inputs/styles";
 import { GoogleAuthLogin } from "../../components/google-auth-login";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import { CenteringContainer, FormDiv, Form, Img, ShowPassword } from "./styles";
@@ -68,7 +68,7 @@ export const Login = () => {
                 {showPassword ? <BiShow /> : <BiHide />}
               </button>
             </ShowPassword>
-            <ButtonLg type="submit">Acessar Conta</ButtonLg>
+            <GlobalButtonLg type="submit">Acessar Conta</GlobalButtonLg>
             <p>Não tem conta cadastro? Faça aqui!</p>
             <p>Ou entre com:</p>
             <GoogleAuthLogin />
@@ -78,5 +78,3 @@ export const Login = () => {
     </motion.div>
   );
 };
-
-export default Login;

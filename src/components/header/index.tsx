@@ -32,6 +32,17 @@ const Header = () => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
   const [isopenCart, setisOpenCart] = useState<boolean>(false);
 
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 425);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
   const navigate = useNavigate();
 
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -63,23 +74,23 @@ const Header = () => {
         <Source media="(min-width: 426px)" srcSet={flag} />
         <Flag src={flag} alt="flag" />
       </picture>
-      {user ? (
-        <Container>
-          <Brand>
-            <Logo src={LogoImg} alt="Logo" />
-            <BrandName src={HealthyGo} alt="brand name" />
-          </Brand>
-          <Menu>
-            <HamburguerMenu
-              onClick={() => setisModalOpen(!isModalOpen)}
-              ref={modalRef}
-              open={isModalOpen}
-            >
-              <HamburguerLine className="line-1" />
-              <HamburguerLine className="line-2" />
-              <HamburguerLine className="line-3" />
-            </HamburguerMenu>
+      <Container>
+        <Brand>
+          <Logo src={LogoImg} alt="Logo" />
+          <BrandName src={HealthyGo} alt="brand name" />
+        </Brand>
+        <Menu>
+          <HamburguerMenu
+            onClick={() => setisModalOpen(!isModalOpen)}
+            ref={modalRef}
+            open={isModalOpen}
+          >
+            <HamburguerLine className="line-1" />
+            <HamburguerLine className="line-2" />
+            <HamburguerLine className="line-3" />
+          </HamburguerMenu>
 
+<<<<<<< HEAD
             <Paragraph isLoggedIn>
               <CartBackground
                 onClick={() => setisModalOpen(!isModalOpen)}
@@ -112,19 +123,45 @@ const Header = () => {
               <HamburguerLine className="line-3" />
             </HamburguerMenu>
             {isModalOpen && <DropDownModal />}
+=======
+          {(() => {
+            if (isDesktop) {
+              return user ? (
+                <Paragraph>
+                  <CartBackground
+                    onClick={() => setisModalOpen(!isModalOpen)}
+                    ref={modalRef}
+                  >
+                    <p>Olá, {user.name}</p>
+                    <MdKeyboardArrowDown />
+                  </CartBackground>
+>>>>>>> bc39407b5ba6437fa0599138a067c5a71191a778
 
-            <Paragraph>
-              <p onClick={() => navigate("/aboutus", { replace: true })}>
-                Sobre nós
-              </p>
-              <p onClick={() => navigate("/login", { replace: true })}>Login</p>
-              <p onClick={() => navigate("/register", { replace: true })}>
-                Cadastro
-              </p>
-            </Paragraph>
-          </Menu>
-        </Container>
-      )}
+                  <CartBackground>
+                    <AiOutlineShoppingCart
+                      style={{ width: "30px", height: "30px" }}
+                    />
+                  </CartBackground>
+                </Paragraph>
+              ) : (
+                <Paragraph>
+                  <p onClick={() => navigate("/aboutus", { replace: true })}>
+                    Sobre nós
+                  </p>
+                  <p onClick={() => navigate("/login", { replace: true })}>
+                    Login
+                  </p>
+                  <p onClick={() => navigate("/register", { replace: true })}>
+                    Cadastro
+                  </p>
+                </Paragraph>
+              );
+            }
+          })()}
+
+          {isModalOpen && <DropDownModal />}
+        </Menu>
+      </Container>
     </motion.div>
   );
 };
