@@ -85,15 +85,15 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       const id = localStorage.getItem("@healthyGo-userId");
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
       if (token)
         api
           .get(`/users/${id}`)
           .then((res) => {
-            setUser(res.data.user);
+            setUser(res.data);
           })
           .catch(() => {
             localStorage.clear();
-            setIsLoading(false);
           })
           .finally(() => {
             setIsLoading(false);

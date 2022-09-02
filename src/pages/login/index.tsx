@@ -78,8 +78,5 @@ export const Login = () => {
     </motion.div>
   );
 };
-<<<<<<< HEAD
 
 export default Login;
-=======
->>>>>>> f791ef2a7fc6349fb1a88c696b6e63cb3f4128d1
