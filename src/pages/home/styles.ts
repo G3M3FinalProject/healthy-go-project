@@ -14,11 +14,12 @@ export const Container = styled.div`
     display: grid;
     grid-template-areas: "filters figureMain" "mainList figureMain" "secList secList";
     grid-template-columns: 48% 47%;
-    grid-template-rows: 180px auto auto;
+    grid-template-rows: 150px auto auto;
 
     & > figure {
       grid-area: figureMain;
-      display: block;
+      display: flex;
+      align-items: center;
       width: 100%;
       img {
         width: 100%;

@@ -3,18 +3,28 @@ import { RestaurantItem } from "../restaurant-item";
 import { SecondaryItem, SecondaryList } from "./styles";
 
 export const RestaurantListSecondary = () => {
-  const { filteredRestaurants } = useRestaurantsContext();
+  const { filteredRestaurants, allRestaurants } = useRestaurantsContext();
 
-  const OtherRestaurants = filteredRestaurants.slice(4);
+  const OtherRestaurantsFiltered = filteredRestaurants.slice(4);
+  const OtherRestaurants = allRestaurants.slice(4);
+
   return (
     <SecondaryList>
-      {OtherRestaurants?.map((restaurant) => {
-        return (
-          <SecondaryItem key={restaurant.id}>
-            <RestaurantItem restaurant={restaurant} />
-          </SecondaryItem>
-        );
-      })}
+      {OtherRestaurantsFiltered
+        ? OtherRestaurantsFiltered?.map((restaurant) => {
+            return (
+              <SecondaryItem key={restaurant.id}>
+                <RestaurantItem restaurant={restaurant} />
+              </SecondaryItem>
+            );
+          })
+        : OtherRestaurants?.map((restaurant) => {
+            return (
+              <SecondaryItem key={restaurant.id}>
+                <RestaurantItem restaurant={restaurant} />
+              </SecondaryItem>
+            );
+          })}
     </SecondaryList>
   );
 };

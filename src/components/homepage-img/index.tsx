@@ -1,9 +1,10 @@
 import homeImage from "../../assets/homeImage.png";
+import { Figure } from "./styles";
 
 export const HomePageImage = () => {
   return (
-    <figure>
+    <Figure>
       <img src={homeImage} alt="homeImage" />
-    </figure>
+    </Figure>
   );
 };

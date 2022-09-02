@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const ContainerFilters = styled.div`
-  height: 180px;
+  height: 150px;
   grid-area: filters;
 `;

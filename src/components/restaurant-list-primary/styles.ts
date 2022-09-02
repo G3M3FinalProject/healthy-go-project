@@ -16,6 +16,7 @@ export const MainList = styled.ul`
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;
+    justify-content: flex-start;
     grid-area: mainList;
     padding-left: 20px;
   }
