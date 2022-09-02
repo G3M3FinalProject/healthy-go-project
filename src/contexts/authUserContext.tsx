@@ -1,21 +1,21 @@
 import {
-  createContext,
+  useState,
+  useEffect,
   ReactNode,
   useContext,
-  useEffect,
-  useState,
+  createContext,
 } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../services";
 
 interface IAuthUserProviderData {
-  user: IUser | undefined;
-  loginUser: (user: IUserLogin) => void;
-  registerUser: (user: IUser) => void;
   isLoading: boolean;
-  editUser: (data: IUser, id: string) => void;
+  user: IUser | undefined;
   getUser: (id: string) => void;
+  registerUser: (user: IUser) => void;
+  loginUser: (user: IUserLogin) => void;
+  editUser: (data: IUser, id: string) => void;
 }
 
 export interface IUserLogin {
@@ -24,28 +24,28 @@ export interface IUserLogin {
 }
 interface IUserResponse {
   data: {
-    accessToken: string;
     user: IUserEdit;
+    accessToken: string;
   };
 }
 
 interface IUserEdit {
+  id: string;
   name: string;
+  email: string;
+  email2?: string;
   birthday?: string;
   cellphone?: string;
-  email2?: string;
-  id: string;
-  email: string;
 }
 
 export interface IUser extends IUserLogin {
+  id?: string;
+  name: string;
   type?: string;
   avatar?: string;
-  name: string;
+  email2?: string;
   birthday?: string;
   cellphone?: string;
-  email2?: string;
-  id?: string;
 }
 
 interface IUserRes extends IUser {
@@ -73,8 +73,8 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
-        localStorage.setItem("@healthyGo-token", res.data.accessToken);
         localStorage.setItem("@healthyGo-userId", res.data.user.id);
+        localStorage.setItem("@healthyGo-token", res.data.accessToken);
 
         api.defaults.headers.common[
           "Authorization"
@@ -100,8 +100,8 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
 
   const isUserLoggedIn = () => {
     useEffect(() => {
-      const token = localStorage.getItem("@healthyGo-token");
       const id = localStorage.getItem("@healthyGo-userId");
+      const token = localStorage.getItem("@healthyGo-token");
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -112,11 +112,9 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
             setUser(res.data);
           })
           .catch(() => {
-
             localStorage.clear();
 
             setIsLoading(false);
-
           })
           .finally(() => {
             setIsLoading(false);
