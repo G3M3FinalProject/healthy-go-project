@@ -1,39 +1,76 @@
-import { AiOutlineLeft } from "react-icons/ai";
+import { useEffect, useRef, useState } from "react";
+import { AiOutlineLeft, AiOutlineMinus } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
 
 import { motion } from "framer-motion";
 
 import { useCart } from "../../contexts/cartContext";
-import { Container, Modal } from "./styles";
+import { Container, DiscountBar, Modal } from "./styles";
 
 const Cart = ({ setisOpenCart }) => {
-  const { cart, removeFromCart } = useCart();
+  const {
+    cart,
+    freightCart,
+    addOneProduct,
+    minusOneProduct,
+    totalCart,
+    subTotalCart,
+  } = useCart();
+  const priceToDiscount = 80 - totalCart;
+  const hasDiscount = 80 - totalCart >= 0;
+  // const modalRef = useRef();
+  const modalRef = useRef<HTMLHeadingElement>(null);
+  const value = modalRef?.current;
 
-  const total = cart.reduce((a, b) => a + Number(b.price), 0);
+  useEffect(() => {
+    function handleOutClick(event) {
+      console.log(modalRef);
+      if (value && !value.contains(event.target)) {
+        setisOpenCart(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutClick);
+    };
+  }, []);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0 }}
       style={{ position: "absolute" }}
     >
       <Modal>
-        <Container>
+        <Container ref={modalRef}>
           <div className="header-cart">
-            <button className="back-cart">
-              <AiOutlineLeft onClick={() => setisOpenCart(false)} />
+            <button className="back-cart" onClick={() => setisOpenCart(false)}>
+              <AiOutlineLeft />
             </button>
             <h3>Carrinho</h3>
           </div>
           <div className="container-itens">
             <>
               <div className="desconto">
-                <p>
-                  Gaste mais R$ 50,00 e ganhe <strong>10% de desconto</strong>{" "}
-                </p>
+                {hasDiscount ? (
+                  <div>
+                    <p>
+                      Gaste mais R$ {priceToDiscount.toFixed(2)} e ganhe
+                      <strong> 10% de desconto</strong>
+                    </p>
+                    <DiscountBar width={100 - (priceToDiscount / 80) * 100}>
+                      <div className="discount-variable"></div>
+                    </DiscountBar>
+                  </div>
+                ) : (
+                  <p>
+                    Parabéns! Você ganhou <strong>10% de desconto</strong>
+                  </p>
+                )}
               </div>
               {console.log(cart)}
               {cart?.map((item, index, arr) => {
@@ -45,13 +82,14 @@ const Cart = ({ setisOpenCart }) => {
                 ) {
                   restaurantTitle = (
                     <>
+                      {index === 0 ? <></> : <div className="divider"></div>}
                       <h2>{item.restaurant}</h2>
                       <button className="retornar">Retornar para a Loja</button>
                     </>
                   );
                 }
                 return (
-                  <div key={index} className="cart-restaurantes">
+                  <div key={item.id} className="cart-restaurantes">
                     {restaurantTitle}
                     <div className="card-item">
                       <div className="item">
@@ -61,11 +99,15 @@ const Cart = ({ setisOpenCart }) => {
                           <strong>{`${item.price.toFixed(2)}`}</strong>
                         </div>
                         <div className="quantidade">
-                          <button>
-                            <FaTrashAlt onClick={() => removeFromCart(index)} />
+                          <button onClick={() => minusOneProduct(item.id)}>
+                            {item.amount === 1 ? (
+                              <FaTrashAlt />
+                            ) : (
+                              <AiOutlineMinus />
+                            )}
                           </button>
-                          <p>1</p>
-                          <button>
+                          <p>{item.amount}</p>
+                          <button onClick={() => addOneProduct(item.id)}>
                             <MdAdd />
                           </button>
                         </div>
@@ -80,17 +122,17 @@ const Cart = ({ setisOpenCart }) => {
             <div className="info-total">
               <div className="subtotal">
                 <p>Subtotal</p>
-                <p>{`R$ ${total.toFixed(2)}`}</p>
+                <p>{`R$ ${subTotalCart.toFixed(2)}`}</p>
               </div>
               <div className="frete">
                 <p>Frete</p>
-                <p>{`R$ ${total.toFixed(2)}`}</p>
+                <p>{`R$ ${freightCart.toFixed(2)}`}</p>
               </div>
             </div>
             <div className="finalizar-cart">
               <div className="total">
                 <p>Total</p>
-                <strong className="soma">{`R$ ${total.toFixed(2)}`}</strong>
+                <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
               </div>
               <button>Finalizar Pedido</button>
             </div>

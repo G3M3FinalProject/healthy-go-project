@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -65,10 +65,12 @@ const Header = () => {
         <Flag src={flag} alt="flag" />
       </picture>
       <Container>
-        <Brand>
-          <Logo src={LogoImg} alt="Logo" />
-          <BrandName src={HealthyGo} alt="brand name" />
-        </Brand>
+        <Link to={"/home"}>
+          <Brand>
+            <Logo src={LogoImg} alt="Logo" />
+            <BrandName src={HealthyGo} alt="brand name" />
+          </Brand>
+        </Link>
         <Menu>
           <HamburguerMenu
             onClick={() => setisModalOpen(!isModalOpen)}

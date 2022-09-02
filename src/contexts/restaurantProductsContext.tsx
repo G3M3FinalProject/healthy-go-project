@@ -27,6 +27,9 @@ export interface IProduct {
   category: string[];
   description: string;
   restaurant: string;
+  id: number;
+  amount: number;
+  amountPrice: number;
 }
 
 export interface IMenu {
