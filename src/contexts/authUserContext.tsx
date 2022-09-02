@@ -73,8 +73,8 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
-        localStorage.setItem("@healthyGo-userid", res.data.user.id);
         localStorage.setItem("@healthyGo-token", res.data.accessToken);
+        localStorage.setItem("@healthyGo-userId", res.data.user.id);
 
         api.defaults.headers.common[
           "Authorization"
@@ -101,11 +101,15 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   const isUserLoggedIn = () => {
     useEffect(() => {
       const token = localStorage.getItem("@healthyGo-token");
+      const id = localStorage.getItem("@healthyGo-userId");
+
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       if (token)
         api
-          .get("/login")
-          .then()
+          .get(`/users/${id}`)
+          .then((res) => {
+            setUser(res.data.user);
+          })
           .catch(() => {
             setIsLoading(false);
           })

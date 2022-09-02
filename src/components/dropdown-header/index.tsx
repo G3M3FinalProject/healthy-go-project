@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { BiBookOpen } from "react-icons/bi";
 import { BsBoxArrowRight } from "react-icons/bs";
 import { BsFilePersonFill } from "react-icons/bs";
 import { FaRunning, FaPencilAlt } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
+import { useAuthUserContext } from "../../contexts/authUserContext";
 import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
-  const [isLoggedIn] = useState<boolean>(true);
+  const { user } = useAuthUserContext();
+
+  const navigate = useNavigate();
 
   return (
     <motion.div
@@ -21,30 +25,34 @@ const DropDownModal = () => {
     >
       <Container>
         <Arrow />
-        {isLoggedIn ? (
+        {user ? (
           <>
             <Menu>
-              <BsBoxArrowRight style={{ color: "black" }} />
-              <p>Login</p>
+              <FaPencilAlt style={{ color: "black" }} />
+              <p>Editar perfil</p>
             </Menu>
-            <Menu>
-              <BsFilePersonFill style={{ color: "black" }} />
-              <p>Cadastro</p>
-            </Menu>
-            <Menu>
-              <HiUserGroup style={{ color: "black" }} />
+            <Menu onClick={() => navigate("/aboutus", { replace: true })}>
+              <BiBookOpen style={{ color: "black" }} />
               <p>Sobre nós</p>
+            </Menu>
+            <Menu>
+              <FaRunning style={{ color: "black" }} />
+              <p>Sair</p>
             </Menu>
           </>
         ) : (
           <>
             <Menu>
-              <FaPencilAlt style={{ color: "black" }} />
-              <p>Editar Perfil</p>
+              <BsBoxArrowRight style={{ color: "black" }} />
+              <p onClick={() => navigate("/login", { replace: true })}>Login</p>
             </Menu>
-            <Menu>
-              <FaRunning style={{ color: "black" }} />
-              <p>Sair</p>
+            <Menu onClick={() => navigate("/register", { replace: true })}>
+              <BsFilePersonFill style={{ color: "black" }} />
+              <p>Cadastro</p>
+            </Menu>
+            <Menu onClick={() => navigate("/aboutus", { replace: true })}>
+              <HiUserGroup style={{ color: "black" }} />
+              <p>Sobre nós</p>
             </Menu>
           </>
         )}
