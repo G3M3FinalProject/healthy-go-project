@@ -26,6 +26,7 @@ export interface IProduct {
   photo_url: string;
   category: string[];
   description: string;
+  restaurant: string;
 }
 
 export interface IMenu {

@@ -25,28 +25,21 @@ import {
   Paragraph,
   CartBackground,
 } from "./styles";
-
 const Header = () => {
   const { user } = useAuthUserContext();
-
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
-  const [isopenCart, setisOpenCart] = useState<boolean>(false);
-
   const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
-
+  const [isOpenCart, setisOpenCart] = useState<boolean>(false);
+  console.log(isOpenCart);
   const updateMedia = () => {
     setDesktop(window.innerWidth > 425);
   };
-
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
-
   const navigate = useNavigate();
-
   const modalRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (event: any) => {
@@ -54,14 +47,11 @@ const Header = () => {
         setisModalOpen(false);
       }
     };
-
     document.addEventListener("click", handler);
-
     return () => {
       document.removeEventListener("click", handler);
     };
   });
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -89,41 +79,6 @@ const Header = () => {
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />
           </HamburguerMenu>
-
-<<<<<<< HEAD
-            <Paragraph isLoggedIn>
-              <CartBackground
-                onClick={() => setisModalOpen(!isModalOpen)}
-                ref={modalRef}
-              >
-                {isModalOpen && <DropDownModal />}
-                <p>Olá, {user.name}</p>
-                <MdKeyboardArrowDown />
-              </CartBackground>
-              <CartBackground>
-                <AiOutlineShoppingCart
-                  onClick={() => setisOpenCart(true)}
-                  style={{ width: "30px", height: "30px" }}
-                />
-              </CartBackground>
-            </Paragraph>
-          </Menu>
-          {isopenCart && <Cart setisOpenCart={setisOpenCart} />}
-        </Container>
-      ) : (
-        <Container>
-          <Brand>
-            <Logo src={LogoImg} alt="Logo" />
-            <BrandName src={HealthyGo} alt="brand name" />
-          </Brand>
-          <Menu onClick={() => setisModalOpen(!isModalOpen)}>
-            <HamburguerMenu ref={modalRef} open={isModalOpen}>
-              <HamburguerLine className="line-1" />
-              <HamburguerLine className="line-2" />
-              <HamburguerLine className="line-3" />
-            </HamburguerMenu>
-            {isModalOpen && <DropDownModal />}
-=======
           {(() => {
             if (isDesktop) {
               return user ? (
@@ -135,10 +90,11 @@ const Header = () => {
                     <p>Olá, {user.name}</p>
                     <MdKeyboardArrowDown />
                   </CartBackground>
->>>>>>> bc39407b5ba6437fa0599138a067c5a71191a778
-
                   <CartBackground>
                     <AiOutlineShoppingCart
+                      onClick={() => {
+                        setisOpenCart(true);
+                      }}
                       style={{ width: "30px", height: "30px" }}
                     />
                   </CartBackground>
@@ -158,12 +114,11 @@ const Header = () => {
               );
             }
           })()}
-
           {isModalOpen && <DropDownModal />}
+          {/* <Cart /> */}
         </Menu>
       </Container>
     </motion.div>
   );
 };
-
 export default Header;

@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-=======
 import AdressModal from "./components/adress-modal";
->>>>>>> bc39407b5ba6437fa0599138a067c5a71191a778
+import Cart from "./components/cart";
 import Header from "./components/header";
 import { Providers } from "./contexts";
 import AppRoutes from "./routes";
@@ -12,7 +10,7 @@ function App() {
     <Providers>
       <GlobalStyle />
       <Header />
-      <AdressModal />
+      {/* <AdressModal /> */}
       <AppRoutes />
     </Providers>
   );

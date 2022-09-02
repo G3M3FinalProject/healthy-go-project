@@ -215,7 +215,7 @@ export const Paragraph = styled.div`
   }
 `;
 
-export const CartBackground = styled.div`
+export const CartBackground = styled.button`
   display: flex;
   align-items: center;
   position: relative;

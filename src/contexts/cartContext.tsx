@@ -1,9 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
-import {
-  IProduct,
-  useRestaurantProductsContext,
-} from "./restaurantProductsContext";
+import { IProduct } from "./restaurantProductsContext";
 
 const CartContext = createContext<ICartProviderData>({} as ICartProviderData);
 export const useCart = () => useContext(CartContext);
@@ -16,21 +13,23 @@ interface ICartProviderData {
   cart: IProduct[];
   addToCart: (product: IProduct) => void;
   removeFromCart: (product: IProduct) => void;
+  setCart: React.Dispatch<React.SetStateAction<IProduct[]>>;
 }
 
 const CartProvider = ({ children }: ICartProps) => {
-  const [cart, setIsCart] = useState<IProduct[]>([]);
+  const [cart, setCart] = useState<IProduct[]>([]);
 
   const addToCart = (product: IProduct) => {
-    setIsCart([...cart, product]);
+    setCart([...cart, product]);
+    console.log(cart);
   };
   const removeFromCart = (removeItem: IProduct) => {
     const newCart = cart.filter((product) => product.item !== removeItem.item);
-    setIsCart(newCart);
+    setCart(newCart);
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, removeFromCart, cart }}>
+    <CartContext.Provider value={{ addToCart, removeFromCart, cart, setCart }}>
       {children}
     </CartContext.Provider>
   );
