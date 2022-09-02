@@ -115,7 +115,41 @@ export const Paragragh = styled.p`
   margin-top: -35px;
 `;
 
+export const EffectDiv = styled.div`
+  text-align: center;
+
+  & > p {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+
+  & > p::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  & > p:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+`;
+
 export const Back = styled.p`
-  margin-left: 40%;
+  font-size: 1.2rem;
+
+  text-align: center;
+
   margin-top: 15px;
+
+  cursor: pointer;
 `;

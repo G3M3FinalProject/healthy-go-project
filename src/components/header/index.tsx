@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -7,6 +9,7 @@ import flag from "../../assets/flag.png";
 import HealthyGo from "../../assets/healthygo.png";
 import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
+import { useAuthUserContext } from "../../contexts/authUserContext";
 import DropDownModal from "../dropdown-header";
 import {
   Container,
@@ -19,10 +22,24 @@ import {
   HamburguerMenu,
   HamburguerLine,
   Paragraph,
+  CartBackground,
 } from "./styles";
 
 const Header = () => {
+  const { user } = useAuthUserContext();
+
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 425);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
 
   const navigate = useNavigate();
 
@@ -59,21 +76,53 @@ const Header = () => {
           <Logo src={LogoImg} alt="Logo" />
           <BrandName src={HealthyGo} alt="brand name" />
         </Brand>
-        <Menu onClick={() => setisModalOpen(!isModalOpen)}>
-          <HamburguerMenu ref={modalRef} open={isModalOpen}>
+        <Menu>
+          <HamburguerMenu
+            onClick={() => setisModalOpen(!isModalOpen)}
+            ref={modalRef}
+            open={isModalOpen}
+          >
             <HamburguerLine className="line-1" />
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />
           </HamburguerMenu>
 
-          <Paragraph>
-            <p>Sobre nós</p>
-            <p>Login</p>
-            <p>Cadastro</p>
-          </Paragraph>
-        </Menu>
+          {(() => {
+            if (isDesktop) {
+              return user ? (
+                <Paragraph>
+                  <CartBackground
+                    onClick={() => setisModalOpen(!isModalOpen)}
+                    ref={modalRef}
+                  >
+                    <p>Olá, {user.name}</p>
+                    <MdKeyboardArrowDown />
+                  </CartBackground>
 
-        {isModalOpen && <DropDownModal />}
+                  <CartBackground>
+                    <AiOutlineShoppingCart
+                      style={{ width: "30px", height: "30px" }}
+                    />
+                  </CartBackground>
+                </Paragraph>
+              ) : (
+                <Paragraph>
+                  <p onClick={() => navigate("/aboutus", { replace: true })}>
+                    Sobre nós
+                  </p>
+                  <p onClick={() => navigate("/login", { replace: true })}>
+                    Login
+                  </p>
+                  <p onClick={() => navigate("/register", { replace: true })}>
+                    Cadastro
+                  </p>
+                </Paragraph>
+              );
+            }
+          })()}
+
+          {isModalOpen && <DropDownModal />}
+        </Menu>
       </Container>
     </motion.div>
   );
