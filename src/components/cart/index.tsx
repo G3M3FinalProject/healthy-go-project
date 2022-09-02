@@ -9,16 +9,15 @@ import { Container, Modal } from "./styles";
 
 export {};
 
-const { cart } = useCart();
-console.log(cart);
-
-const Cart = () => {
+const Cart = ({ setisOpenCart }) => {
+  const { cart } = useCart();
+  console.log(cart);
   return (
     <Modal>
       <Container>
         <div className="header-cart">
           <button className="back-cart">
-            <AiOutlineLeft />
+            <AiOutlineLeft onClick={() => setisOpenCart(false)} />
           </button>
           <h3>Carrinho</h3>
         </div>
@@ -29,11 +28,12 @@ const Cart = () => {
                 Gaste mais R$ 50,00 e ganhe <strong>10% de desconto</strong>{" "}
               </p>
             </div>
-            {cart.map((item, index) => {
+
+            {cart?.map((item, index) => {
               <div key={index} className="cart-restaurantes">
                 <h2>{item.restaurant}</h2>
                 <button className="retornar">Retornar para a Loja </button>
-                <ul className="card-item">
+                <div className="card-item">
                   <div className="item">
                     <img src={item.photo_url} alt="" />
                     <div className="info">
@@ -50,7 +50,7 @@ const Cart = () => {
                       </button>
                     </div>
                   </div>
-                </ul>
+                </div>
               </div>;
             })}
           </>

@@ -21,7 +21,6 @@ const CartProvider = ({ children }: ICartProps) => {
 
   const addToCart = (product: IProduct) => {
     setCart([...cart, product]);
-    console.log(cart);
   };
   const removeFromCart = (removeItem: IProduct) => {
     const newCart = cart.filter((product) => product.item !== removeItem.item);

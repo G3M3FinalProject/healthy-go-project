@@ -30,7 +30,7 @@ const Header = () => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
   const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
   const [isOpenCart, setisOpenCart] = useState<boolean>(false);
-  console.log(isOpenCart);
+
   const updateMedia = () => {
     setDesktop(window.innerWidth > 425);
   };
@@ -115,8 +115,8 @@ const Header = () => {
             }
           })()}
           {isModalOpen && <DropDownModal />}
-          {/* <Cart /> */}
         </Menu>
+        {isOpenCart && <Cart setisOpenCart={setisOpenCart} />}
       </Container>
     </motion.div>
   );

@@ -23,7 +23,7 @@ export interface IProduct {
 export const MenuRestaurant = () => {
   const { findRestaurantInfo, filteredMenu } = useRestaurantProductsContext();
   const { id } = useParams();
-  const { addToCart, setCart, cart } = useCart();
+  const { addToCart } = useCart();
 
   findRestaurantInfo(id);
 
