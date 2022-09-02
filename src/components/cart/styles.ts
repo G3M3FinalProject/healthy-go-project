@@ -69,11 +69,12 @@ export const Container = styled.div`
 
     padding: 0.5rem;
     margin: 1rem;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
 
     h2 {
       font-size: 120%;
       margin-bottom: 0.5rem;
+      border-top: 1px solid black;
     }
 
     .retornar {
@@ -93,6 +94,9 @@ export const Container = styled.div`
         justify-content: space-between;
         align-items: center;
 
+        img {
+          width: 100px;
+        }
         .info {
           p {
             font-size: 13px;

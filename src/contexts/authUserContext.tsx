@@ -89,7 +89,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         api
           .get(`/users/${id}`)
           .then((res) => {
-            setUser(res.data.user);
+            setUser(res.data);
           })
           .catch(() => {
             localStorage.clear();
