@@ -1,3 +1,4 @@
+import AdressModal from "./components/adress-modal";
 import Header from "./components/header";
 import { Providers } from "./contexts";
 import AppRoutes from "./routes";
@@ -8,6 +9,7 @@ function App() {
     <Providers>
       <GlobalStyle />
       <Header />
+      <AdressModal />
       <AppRoutes />
     </Providers>
   );
