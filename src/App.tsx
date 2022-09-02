@@ -8,9 +8,7 @@ function App() {
     <Providers>
       <GlobalStyle />
       <Header />
-      <AdressModal />
       <AppRoutes />
-      <CheckOut />
     </Providers>
   );
 }
