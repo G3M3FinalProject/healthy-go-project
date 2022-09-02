@@ -6,8 +6,6 @@ export const Container = styled.div`
 
   padding: 0.5rem 0rem 0 0;
   width: 100%;
-
-  z-index: 1;
 `;
 
 export const Brand = styled.div`

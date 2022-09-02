@@ -8,6 +8,7 @@ import {
   ContainerP,
   ContainerPreco,
   ContainerSection,
+  ContainerDivMenu,
 } from "./styles";
 
 export interface IProduct {
@@ -48,9 +49,9 @@ export const MenuRestaurant = () => {
         Object.entries(filteredMenu).map(([key, value]) => {
           return (
             !!value.length && (
-              <div key={value}>
-                <h2>{subTitles[key]}</h2>
+              <ContainerDivMenu key={value}>
                 <ul>
+                  <h2>{subTitles[key]}</h2>
                   {value?.map(({ item, price, photo_url, category }) => {
                     return (
                       <li key={item}>
@@ -59,20 +60,20 @@ export const MenuRestaurant = () => {
                           <ContainerSection>
                             <h4>{item}</h4>
                             <ContainerP>{categoryFix(category)}</ContainerP>
-                            <ContainerPreco>
-                              {price.toLocaleString("pt-br", {
-                                style: "currency",
-                                currency: "BRL",
-                              })}
-                            </ContainerPreco>
                           </ContainerSection>
+                          <ContainerPreco>
+                            {price.toLocaleString("pt-br", {
+                              style: "currency",
+                              currency: "BRL",
+                            })}
+                          </ContainerPreco>
                         </div>
                         <button>Adicionar ao carrinho</button>
                       </li>
                     );
                   })}
                 </ul>
-              </div>
+              </ContainerDivMenu>
             )
           );
         })}

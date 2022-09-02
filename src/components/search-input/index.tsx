@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import searchIcon from "../../assets/searchIcon.svg";
 import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
 import { Container } from "./styles";
 
@@ -50,13 +51,15 @@ const SearchInput = () => {
   return (
     <Container>
       <form onSubmit={(e) => getFilteredProduct(e)}>
+        <button type="submit">
+          <img src={searchIcon} />
+        </button>
         <input
           onChange={(event) => setProductSearched(event.target.value)}
           value={productSearched}
           type="text"
           placeholder="Digitar Pesquisa"
         />
-        <button type="submit">Pesquisar</button>
       </form>
     </Container>
   );
