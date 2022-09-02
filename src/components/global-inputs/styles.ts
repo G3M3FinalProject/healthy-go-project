@@ -68,6 +68,10 @@ export const InputLg = styled.div`
     font-weight: 300;
     font-size: 22px;
     line-height: 25px;
+
+    @media screen and (max-width: 420px) {
+      padding: 0;
+    }
   }
 `;
 

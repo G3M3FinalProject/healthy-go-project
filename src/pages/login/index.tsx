@@ -12,7 +12,6 @@ import {
   GlobalInputLg,
   GlobalInputPassword,
 } from "../../components/global-inputs";
-import { ButtonLg } from "../../components/global-inputs/styles";
 import { GoogleAuthLogin } from "../../components/google-auth-login";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import { CenteringContainer, FormDiv, Form, Img, ShowPassword } from "./styles";
