@@ -13,6 +13,48 @@ export const Container = styled.div`
   padding: 1rem;
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  @media screen and (max-width: 42px) {
+    right: 9rem;
+    top: 8.7rem;
+  }
+
+  @media screen and (min-width: 424px) and (max-width: 624px) {
+    right: 4.3rem;
+    top: 6.7rem;
+  }
+
+  @media screen and (min-width: 625px) and (max-width: 1023px) {
+    right: 10rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    right: 13rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    right: 13.2rem;
+  }
+
+  @media screen and (min-width: 1500px) {
+    right: 14.2rem;
+  }
+
+  @media screen and (min-width: 1700px) {
+    right: 15.2rem;
+  }
+
+  @media screen and (min-width: 1700px) {
+    right: 16rem;
+  }
+
+  @media screen and (min-width: 2000px) {
+    right: 20rem;
+  }
+
+  @media screen and (min-width: 2600px) {
+    right: 25rem;
+  }
 `;
 
 export const Menu = styled.div`
@@ -101,5 +143,9 @@ export const Arrow = styled.div`
 
   @media screen and (min-width: 426px) {
     right: 0.6rem;
+  }
+
+  @media screen and (min-width: 445px) {
+    right: 1rem;
   }
 `;
