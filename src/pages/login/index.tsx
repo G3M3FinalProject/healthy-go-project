@@ -8,6 +8,7 @@ import * as yup from "yup";
 
 import Image from "../../assets/order-food.png";
 import {
+  GlobalButtonLg,
   GlobalInputLg,
   GlobalInputPassword,
 } from "../../components/global-inputs";
@@ -68,7 +69,7 @@ export const Login = () => {
                 {showPassword ? <BiShow /> : <BiHide />}
               </button>
             </ShowPassword>
-            <ButtonLg type="submit">Acessar Conta</ButtonLg>
+            <GlobalButtonLg type="submit">Acessar Conta</GlobalButtonLg>
             <p>Não tem conta cadastro? Faça aqui!</p>
             <p>Ou entre com:</p>
             <GoogleAuthLogin />
