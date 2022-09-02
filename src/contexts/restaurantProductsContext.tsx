@@ -35,12 +35,14 @@ export interface IMenu {
 }
 
 export interface IRestaurantInfo {
+  category: string[];
   name: string;
   "logo-image": string;
   rate: number;
   id: number;
   menu: IMenu;
   "opening-hours": string;
+  description: string;
 }
 
 const RestaurantProductsContext = createContext(

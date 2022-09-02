@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
     --button-green: rgba(18, 117, 58, 1);
     --brand-yellow: rgba(227, 229, 34, 1);
     --placeholder: rgba(67, 66, 66, 1);
+    --text-black: rgba(0,0,0,1);
+    --background-color:  #f7f6f3;
 }
 
 * { 
@@ -38,6 +40,9 @@ input {
 
 ul {
     list-style: none;
+}
+a{
+    text-decoration: none;
 }
 `;
 
