@@ -55,11 +55,21 @@ export const Logo = styled.img`
   @media screen and (max-width: 426px) {
     min-width: 40%;
   }
+
+  @media screen and (min-width: 426px) and (max-width: 625px) {
+    min-width: unset;
+    width: unset;
+    max-width: unset;
+  }
 `;
 
 export const BrandName = styled.img`
   cursor: pointer;
   max-width: 40%;
+
+  @media screen and (min-width: 426px) and (max-width: 625px) {
+    display: none;
+  }
 
   @media screen and (max-width: 426px) {
     min-width: 40%;
@@ -148,6 +158,9 @@ export const BtnBurguer = styled.div`
 
 export const Paragraph = styled.div`
   display: flex;
+  align-items: center;
+
+  position: relative;
 
   font-size: 20px;
 
@@ -178,18 +191,38 @@ export const Paragraph = styled.div`
     transform-origin: bottom left;
   }
 
-  p:nth-child(1) {
+  & > p {
     text-align: center;
-    width: 6rem;
-  }
-
-  @media screen and (max-width: 426px) {
-    display: none;
+    padding: 0 1rem;
   }
 
   @media screen and (max-width: 500px) {
     padding-top: 1rem;
-    flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
   }
+
+  @media screen and (min-width: 501px) and (max-width: 624px) {
+    padding-top: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+  }
+`;
+
+export const CartBackground = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  cursor: pointer;
+
+  background: #54a656;
+
+  padding: 0.7rem;
+
+  border-radius: 20px;
 `;

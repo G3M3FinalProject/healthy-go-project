@@ -1,24 +1,18 @@
-import { Containerdash, Img } from "./style";
-import ImgInicial from "../../assets/eatinghealthyfood.gif";
-import pessoasremovebgpreview from "../../assets/pessoasremovebgpreview.png";
+import HomePageFilters from "../../components/homepage-filters";
+import { HomePageImage } from "../../components/homepage-img";
+import { RestaurantListPrimary } from "../../components/restaurant-list-primary";
+import { RestaurantListSecondary } from "../../components/restaurant-list-secondary";
+import { Container } from "./styles";
 
-export const Home = () => {
-  return (<>
-    <Containerdash>
-     
-        <div>
-          <section>
-            <p>
-              Trazemos a praticidade para os usuários com restrição alimentar.
-            </p>
-            <p>
-              Restaurantes que viabilizam a procura por pratos na plama da mão.
-            </p>
-          </section>
-          <img src={ImgInicial} alt="Mulher comendo salada" />
-        </div>
-      
-    </Containerdash>
-    <Img src={pessoasremovebgpreview} alt="Amigos comendo juntos" />
-    </>);
+const Home = () => {
+  return (
+    <Container>
+      <HomePageFilters />
+      <RestaurantListPrimary />
+      <RestaurantListSecondary />
+      <HomePageImage />
+    </Container>
+  );
 };
+
+export default Home;

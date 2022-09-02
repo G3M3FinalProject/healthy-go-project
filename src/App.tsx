@@ -1,4 +1,3 @@
-import { CheckOut } from "./components/checkout";
 import Header from "./components/header";
 import { Providers } from "./contexts";
 import AppRoutes from "./routes";
@@ -9,6 +8,7 @@ function App() {
     <Providers>
       <GlobalStyle />
       <Header />
+      <AdressModal />
       <AppRoutes />
       <CheckOut />
     </Providers>

@@ -8,10 +8,14 @@ export const CenteringContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  margin: 7rem 0 0 0;
+  margin: 10rem 0 0 0;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+  }
+
+  @media screen and (min-width: 1921px) and (max-width: 3000px) {
+    margin: 20rem 0 0 0;
   }
 `;
 
@@ -49,6 +53,31 @@ export const Form = styled.form`
   height: 100%;
 
   gap: 1rem;
+
+  & > p {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+
+  & > p::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  & > p:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 
   p:nth-child(4) {
     cursor: pointer;
@@ -133,5 +162,19 @@ export const Img = styled.img`
 
   @media screen and (min-width: 921px) {
     width: unset;
+  }
+`;
+
+export const ShowPassword = styled.div`
+  width: 100%;
+  position: relative;
+
+  button {
+    position: absolute;
+
+    top: 0.8rem;
+    right: 1rem;
+
+    background: trasparent;
   }
 `;
