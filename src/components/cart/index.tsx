@@ -4,8 +4,6 @@ import { MdAdd } from "react-icons/md";
 
 import { Container, Modal } from "./styles";
 
-export {};
-
 const Cart = () => {
   return (
     <Modal>
