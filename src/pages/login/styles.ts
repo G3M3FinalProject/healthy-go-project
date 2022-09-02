@@ -8,10 +8,14 @@ export const CenteringContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  margin: 7rem 0 0 0;
+  margin: 10rem 0 0 0;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+  }
+
+  @media screen and (min-width: 1921px) and (max-width: 3000px) {
+    margin: 20rem 0 0 0;
   }
 `;
 
