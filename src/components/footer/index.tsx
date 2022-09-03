@@ -84,13 +84,7 @@ const Footer = () => {
                 >
                   <img src={GitHub} alt="GitHub Icon" />
                 </a>
-                <a
-                  target="_blank"
-                  href="https://www.linkedin.com/in/guilhermewustro/"
-                  rel="noreferrer"
-                >
-                  <img src={Linkedin} alt="Linkedin Icon" />
-                </a>
+                <img src={Linkedin} alt="Linkedin Icon" />
               </Icons>
             </Frame>
             <Frame>
