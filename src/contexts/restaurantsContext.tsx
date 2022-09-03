@@ -26,13 +26,11 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
   const [filteredRestaurants, setFilteredRestaurants] = useState<
     IRestaurantInfo[]
   >([]);
-  const [categoriesFiltered, setCategoriesFiltered] = useState<string[]>([]);
 
   useEffect(() => {
     api
       .get("/restaurants")
       .then((response) => {
-        console.log(response);
         setAllRestaurants(response.data);
         // Ver isso
         setFilteredRestaurants(response.data);

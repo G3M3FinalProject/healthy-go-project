@@ -29,11 +29,10 @@ export const Container = styled.div`
     font-weight: 500;
     font-family: "Petrona", serif;
 
-    background: var(--brand-light-green);
+    background: var(--brand-light-green-2);
 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     transition: all 250ms;
-
-    cursor: pointer;
 
     &:hover {
       color: white;
