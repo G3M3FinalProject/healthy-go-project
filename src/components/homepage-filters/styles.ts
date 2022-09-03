@@ -31,6 +31,8 @@ export const Container = styled.div`
 
     background: var(--brand-light-green);
 
+    transition: all 250ms;
+
     cursor: pointer;
 
     &:hover {
