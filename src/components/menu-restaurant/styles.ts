@@ -68,7 +68,7 @@ export const ContainerDivMenu = styled.div`
         flex-direction: row;
       }
 
-      @media screen and (max-width: 765px) {
+      @media screen and (max-width: 770px) {
         width: 100%;
         height: 30%;
         align-items: center;
