@@ -20,8 +20,8 @@ export const Positioning = styled.div`
 export const Paragraph = styled.div`
   text-align: center;
 
-  padding: 0.5rem 0 0 0;
   margin: 0 0 1rem 0;
+  padding: 0.5rem 0 0 0;
 
   p {
     font-style: normal;
