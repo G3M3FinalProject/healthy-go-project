@@ -44,11 +44,13 @@ export const ContainerHeader = styled.header`
   border-left: 1px solid;
   border-right: 1px solid;
   border-radius: 16px 16px 0 0;
+
   border-color: var(--brand-light-green);
 
   div {
     margin-left: 1%;
     margin-left: 2rem;
+
     h3 {
       font-family: "Courgette";
       font-weight: 400;
@@ -69,10 +71,12 @@ export const ContainerHeader = styled.header`
       font-size: 12px;
     }
   }
+
   figure {
     width: 9rem;
     height: 7.79rem;
     border-radius: 0 16px 0 0;
+
     img {
       width: 100%;
       height: 100%;

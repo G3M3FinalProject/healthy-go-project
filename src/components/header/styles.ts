@@ -45,7 +45,6 @@ export const Flag = styled.img`
   position: absolute;
   width: 100%;
   height: 25%;
-  top: -1px;
 `;
 
 export const Logo = styled.img`
@@ -213,7 +212,7 @@ export const Paragraph = styled.div`
   }
 `;
 
-export const CartBackground = styled.div`
+export const CartBackground = styled.button`
   display: flex;
   align-items: center;
   position: relative;
