@@ -44,6 +44,18 @@ export const InputLg = styled.div`
       font-size: 19px;
       left: 0.8rem;
     }
+
+    @media screen and (max-width: 770px) {
+      width: 89%;
+      padding: 0;
+      font-size: 8px;
+    }
+
+    @media screen and (max-width: 420px) {
+      width: 89%;
+      padding: 0;
+      font-size: 8px;
+    }
   }
 
   label {
@@ -66,11 +78,19 @@ export const InputLg = styled.div`
 
     font-style: normal;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 25px;
 
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: 770px) {
+      width: 89%;
       padding: 0;
+      font-size: 8px;
+    }
+
+    @media screen and (max-width: 420px) {
+      width: 89%;
+      padding: 0;
+      font-size: 8px;
     }
   }
 `;

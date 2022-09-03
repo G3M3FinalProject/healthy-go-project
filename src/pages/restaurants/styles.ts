@@ -14,7 +14,7 @@ export const ContainerTop = styled.div`
 
   width: 40vw;
 
-  @media screen and (max-width: 765px) {
+  @media screen and (max-width: 770px) {
     width: 100%;
     margin-right: 3%;
     font-size: 8px;
@@ -56,7 +56,7 @@ export const ContainerHeader = styled.header`
       font-weight: 400;
       font-size: 48px;
 
-      @media screen and (max-width: 765px) {
+      @media screen and (max-width: 770px) {
         font-size: 36px;
       }
 
