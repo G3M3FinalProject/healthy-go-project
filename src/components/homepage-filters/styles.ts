@@ -7,7 +7,7 @@ export const PositioningDiv = styled.div`
   align-items: center;
   gap: 1rem;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1023px) {
     margin: 8rem 0 1rem 0;
   }
 `;
