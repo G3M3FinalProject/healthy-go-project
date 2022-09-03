@@ -2,13 +2,13 @@ import { FilteredSearch } from "../../components/filtered-serach";
 import { MenuRestaurant } from "../../components/menu-restaurant";
 import SearchInput from "../../components/search-input";
 import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
-import { ContainerHeader, ContainerTop } from "./styles";
+import { ContainerHeader, ContainerRestaurants, ContainerTop } from "./styles";
 
 export const Restaurants = () => {
   const { restaurantInfo } = useRestaurantProductsContext();
 
   return (
-    <>
+    <ContainerRestaurants>
       <ContainerTop>
         <FilteredSearch />
         <SearchInput />
@@ -23,6 +23,6 @@ export const Restaurants = () => {
         </figure>
       </ContainerHeader>
       {!!restaurantInfo && <MenuRestaurant />}
-    </>
+    </ContainerRestaurants>
   );
 };

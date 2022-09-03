@@ -1,13 +1,32 @@
 import styled from "styled-components";
 
+export const ContainerRestaurants = styled.div`
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+`;
+
 export const ContainerTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  width: 50vw;
+  width: 40vw;
 
-  margin: 8rem 0 0 5%;
+  @media screen and (max-width: 765px) {
+    width: 100%;
+    margin-right: 3%;
+    font-size: 8px;
+  }
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    margin-right: 3%;
+    font-size: 8px;
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const ContainerHeader = styled.header`
@@ -15,9 +34,11 @@ export const ContainerHeader = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  width: 90vw;
+  width: 100%;
 
-  margin: 1% auto 0 auto;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
 
   border-top: 1px solid;
   border-left: 1px solid;
@@ -33,14 +54,21 @@ export const ContainerHeader = styled.header`
     h3 {
       font-family: "Courgette";
       font-weight: 400;
-      font-size: 54px;
-    }
+      font-size: 48px;
 
+      @media screen and (max-width: 765px) {
+        font-size: 36px;
+      }
+
+      @media screen and (max-width: 425px) {
+        font-size: 36px;
+      }
+    }
     p {
       font-family: "Petrona";
       font-style: normal;
       font-weight: 400;
-      font-size: 16px;
+      font-size: 12px;
     }
   }
 

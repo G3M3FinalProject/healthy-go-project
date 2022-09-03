@@ -9,18 +9,15 @@ export const ContainerMenu = styled.div`
   padding: 0.5rem 0rem 0 0;
   margin-left: auto;
   margin-right: auto;
-  width: 90vw;
+  width: 100%;
 
-  border-left: 1px solid;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  border: 1px solid var(--brand-light-green);
+  border-left: 1px solid var(--brand-light-green);
+  border-right: 1px solid var(--brand-light-green);
+  border-bottom: 1px solid var(--brand-light-green);
   border-radius: 0 0 25px 25px;
 `;
 
 export const ContainerDivMenu = styled.div`
-  display: flex;
-
   width: 100%;
   height: 100%;
 
@@ -30,7 +27,11 @@ export const ContainerDivMenu = styled.div`
   ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    align-content: flex-start;
+
+    gap: 3rem;
+
+    padding: 1%;
 
     width: 100%;
 
@@ -54,14 +55,20 @@ export const ContainerDivMenu = styled.div`
 
       width: 17.3rem;
       height: 10rem;
+
       padding: 0.5%;
-      margin-left: auto;
-      margin-right: auto;
 
       border: 1px solid var(--brand-light-green);
       border-radius: 25px;
 
       @media screen and (max-width: 425px) {
+        width: 100%;
+        height: 30%;
+        align-items: center;
+        flex-direction: row;
+      }
+
+      @media screen and (max-width: 765px) {
         width: 100%;
         height: 30%;
         align-items: center;
@@ -109,6 +116,7 @@ export const ContainerDivMenu = styled.div`
         @media screen and (max-width: 425px) {
           width: 30%;
           margin-right: 3%;
+          font-size: 8px;
         }
       }
     }
@@ -146,6 +154,7 @@ export const ContainerP = styled.p`
 
   @media screen and (max-width: 425px) {
     font-size: 10px;
+    display: none;
   }
 `;
 
@@ -159,6 +168,7 @@ export const ContainerPreco = styled.p`
   margin-top: -2rem;
 
   @media screen and (max-width: 425px) {
+    margin-top: 1%;
     font-size: 10px;
   }
 `;
