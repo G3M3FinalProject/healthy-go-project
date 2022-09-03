@@ -12,10 +12,10 @@ import {
   CenteringContainer,
   FormDiv,
   Form,
-  Paragragh,
-  Back,
+  Paragraph,
   EffectDiv,
-} from "./style";
+  Back,
+} from "./styles";
 
 type UserContextType = {
   registerFunction: (data: IRegisterData) => void;
@@ -71,30 +71,30 @@ const UserRegister = () => {
               register={register}
               registerName="name"
             />
-            <Paragragh>{errors.name && errors.name.message}</Paragragh>
+            <Paragraph>{errors.name && errors.name.message}</Paragraph>
             <GlobalInputLg
               type="email"
               label="E-mail *"
               register={register}
               registerName="email"
             />
-            <Paragragh>{errors.email && errors.email.message}</Paragragh>
+            <Paragraph>{errors.email && errors.email.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Senha *"
               register={register}
               registerName="password"
             />
-            <Paragragh>{errors.password && errors.password.message}</Paragragh>
+            <Paragraph>{errors.password && errors.password.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Confirmação de senha *"
               register={register}
               registerName="confirmPassword"
             />
-            <Paragragh>
+            <Paragraph>
               {errors.confirmPassword && errors.confirmPassword.message}
-            </Paragragh>
+            </Paragraph>
             <ButtonLg type="submit">Cadastrar</ButtonLg>
           </Form>
         </FormDiv>
