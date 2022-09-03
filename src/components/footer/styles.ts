@@ -3,8 +3,12 @@ import styled from "styled-components";
 export const Positioning = styled.div`
   width: 100%;
   height: 13rem;
-  bottom: 0;
-  position: fixed;
+  position: sticky;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: flex-start;
 
   @media screen and (max-width: 501px) {
     display: flex;
@@ -14,10 +18,9 @@ export const Positioning = styled.div`
 `;
 
 export const Paragraph = styled.div`
-  padding: 0.5rem 0 0 0;
-
   text-align: center;
 
+  padding: 0.5rem 0 0 0;
   margin: 0 0 1rem 0;
 
   p {
@@ -27,7 +30,7 @@ export const Paragraph = styled.div`
     color: #fff;
   }
 
-  @media screen and (max-width: 501px) {
+  @media screen and (max-width: 720px) {
     p {
       font-size: unset;
     }
@@ -35,7 +38,7 @@ export const Paragraph = styled.div`
 `;
 
 export const Image = styled.img`
-  @media screen and (max-width: 501px) {
+  @media screen and (max-width: 570px) {
     width: 4rem;
   }
 `;
@@ -77,6 +80,12 @@ export const Frame = styled.div`
     width: 28%;
     flex-direction: row;
   }
+
+  @media screen and (max-width: 720px) {
+    p {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const Icons = styled.div`
@@ -93,16 +102,24 @@ export const Icons = styled.div`
       width: 20px;
     }
 
-    gap: 0.9rem;
     position: relative;
+
+    gap: 0.9rem;
     left: 0.6rem;
     bottom: 0.1rem;
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
     align-content: center;
 
     margin: unset;
+  }
+
+  @media screen and (min-width: 502px) and (max-width: 535px) {
+    img {
+      width: 1.5rem;
+    }
   }
 `;
 
@@ -118,7 +135,8 @@ export const Portrait = styled.div`
 export const FooterFlag = styled.img`
   width: 100%;
   height: 13rem;
-  bottom: 0;
-  position: fixed;
+
+  position: absolute;
+
   z-index: -1;
 `;
