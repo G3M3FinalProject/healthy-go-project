@@ -110,7 +110,7 @@ export const Button = styled.button`
     width: 20rem;
   }
 `;
-export const Paragragh = styled.p`
+export const Paragraph = styled.p`
   width: 80%;
   margin-top: -35px;
 `;
