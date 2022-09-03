@@ -58,10 +58,10 @@ export const Container = styled.div`
   }
   .desconto {
     display: flex;
-    padding: 1rem;
-    margin: 5rem 2rem 0 2rem;
-    border-radius: 5px;
     justify-content: center;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 5rem 2rem 0 2rem;
 
     background-color: rgba(36, 133, 64, 0.2);
     color: rgba(36, 133, 64);
@@ -107,11 +107,11 @@ export const Container = styled.div`
 
         .quantidade {
           display: flex;
-          gap: 1.5rem;
+          align-items: center;
           padding: 0 1rem;
           height: 1.8rem;
 
-          align-items: center;
+          gap: 1.5rem;
           background-color: rgba(0, 0, 0, 0.1);
           border-radius: 4px;
 
