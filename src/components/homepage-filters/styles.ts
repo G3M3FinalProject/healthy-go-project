@@ -6,6 +6,10 @@ export const PositioningDiv = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: 1024px) {
+    margin: 8rem 0 1rem 0;
+  }
 `;
 
 export const Container = styled.div`
@@ -32,6 +36,13 @@ export const Container = styled.div`
     &:hover {
       color: white;
       background: var(--button-green);
+    }
+
+    @media screen and (max-width: 425px) {
+      width: 4.5rem;
+      height: 1.5rem;
+      font-size: 10px;
+      font-weight: 600;
     }
   }
 `;
