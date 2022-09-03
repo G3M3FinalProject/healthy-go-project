@@ -91,11 +91,12 @@ const Header = () => {
                     <p>Olá, {user.name}</p>
                     <MdKeyboardArrowDown />
                   </CartBackground>
-                  <CartBackground>
+                  <CartBackground
+                    onClick={() => {
+                      setisOpenCart(true);
+                    }}
+                  >
                     <AiOutlineShoppingCart
-                      onClick={() => {
-                        setisOpenCart(true);
-                      }}
                       style={{ width: "30px", height: "30px" }}
                     />
                   </CartBackground>

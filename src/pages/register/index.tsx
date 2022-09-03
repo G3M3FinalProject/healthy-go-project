@@ -8,9 +8,14 @@ import { GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
-
-import { CenteringContainer, FormDiv, Form, Paragragh, Back } from "./style";
-
+import {
+  CenteringContainer,
+  FormDiv,
+  Form,
+  Paragragh,
+  Back,
+  EffectDiv,
+} from "./style";
 
 type UserContextType = {
   registerFunction: (data: IRegisterData) => void;

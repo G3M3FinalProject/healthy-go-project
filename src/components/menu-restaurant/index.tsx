@@ -51,7 +51,7 @@ export const MenuRestaurant = () => {
         Object.entries(filteredMenu).map(([key, value]) => {
           return (
             !!value.length && (
-              <div key={value}>
+              <ContainerDivMenu key={value}>
                 <h2>{subTitles[key]}</h2>
                 <ul>
                   {value?.map((product) => {

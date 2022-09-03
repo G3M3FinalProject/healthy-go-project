@@ -1,5 +1,5 @@
 const RestrictionFilter = () => {
-  return <div></div>;
+  return <div> </div>;
 };
 
 export default RestrictionFilter;

@@ -69,7 +69,6 @@ const CartProvider = ({ children }: ICartProps) => {
   const addToCart = (product: IProduct) => {
     const isOnCart = cart.some(({ id }) => id == product.id);
     const indexOnSale = cart.findIndex(({ id }) => id == product.id);
-    console.log(amountCart);
 
     if (isOnCart) {
       updateAmountPrice(indexOnSale);
