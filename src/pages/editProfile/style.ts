@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const CenteringContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 
-  width: 100%;
+  width: 50%;
   height: 100%;
 
-  margin: 7rem 0 0 0;
+  margin: 9rem 0 0 7rem;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -115,41 +115,76 @@ export const Paragragh = styled.p`
   margin-top: -35px;
 `;
 
-export const EffectDiv = styled.div`
-  text-align: center;
+export const Back = styled.p`
+  margin-left: 40%;
+  margin-top: 15px;
+`;
 
-  & > p {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    color: black;
-  }
+export const ContainerCenter = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-  & > p::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: black;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-  }
-
-  & > p:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+  @media screen and (max-width: 769px) and (max-width: 920px) {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-right: 20%;
   }
 `;
 
-export const Back = styled.p`
-  font-size: 1.2rem;
+export const CardAdress = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
 
-  text-align: center;
+  @media screen and (max-width: 769px) and (max-width: 920px) {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 20% 0 10% 5%;
+  }
+`;
 
-  margin-top: 15px;
+export const ButtonSave = styled.button`
+  width: 10.125rem;
+  height: fit-content;
+  margin-top: 15rem;
 
-  cursor: pointer;
+  border-radius: 15px;
+
+  font-weight: 700;
+
+  color: white;
+  background-color: var(--button-green);
+
+  padding: 1rem 4.5%;
+
+  @media screen and (max-width: 426px) {
+    width: 10.125rem;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 920px) {
+    width: 10.125rem;
+  }
+`;
+export const Card = styled.div`
+  border-radius: 10px;
+  background-color: rgba(202, 255, 215, 1);
+  width: 18rem;
+  border-left: 5px solid rgba(18, 117, 58, 1);
+  text-align: left;
+  margin-right: 20%;
+`;
+
+export const TitleCard = styled.h4`
+  font-family: "Petrona", serif;
+  margin: 0.75rem 1rem 1rem 0.75rem;
+`;
+
+export const InfoCard = styled.h4`
+  font-family: "Petrona", serif;
+  margin: 0 0 0 0.75rem;
+  font-weight: lighter;
 `;

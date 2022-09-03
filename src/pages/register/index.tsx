@@ -12,10 +12,10 @@ import {
   CenteringContainer,
   FormDiv,
   Form,
-  Paragragh,
+  Paragraph,
   EffectDiv,
   Back,
-} from "./style";
+} from "./styles";
 
 type UserContextType = {
   registerFunction: (data: IRegisterData) => void;
@@ -34,14 +34,6 @@ export interface IFormData {
   confirmPassword: string;
 }
 
-function Submit(data: IRegisterData) {
-  const register = {
-    email: data.email,
-    password: data.password,
-    name: data.name,
-  };
-}
-
 const UserRegister = () => {
   const { registerUser } = useAuthUserContext();
 
@@ -53,6 +45,15 @@ const UserRegister = () => {
     formState: { errors },
   } = useForm<IFormData>({ resolver: yupResolver(registerFormSchema) });
 
+  function Submit(data: IRegisterData) {
+    const register = {
+      email: data.email,
+      password: data.password,
+      name: data.name,
+    };
+    console.log(register);
+    registerUser(register);
+  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -70,30 +71,30 @@ const UserRegister = () => {
               register={register}
               registerName="name"
             />
-            <Paragragh>{errors.name && errors.name.message}</Paragragh>
+            <Paragraph>{errors.name && errors.name.message}</Paragraph>
             <GlobalInputLg
               type="email"
               label="E-mail *"
               register={register}
               registerName="email"
             />
-            <Paragragh>{errors.email && errors.email.message}</Paragragh>
+            <Paragraph>{errors.email && errors.email.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Senha *"
               register={register}
               registerName="password"
             />
-            <Paragragh>{errors.password && errors.password.message}</Paragragh>
+            <Paragraph>{errors.password && errors.password.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Confirmação de senha *"
               register={register}
-              registerName="password"
+              registerName="confirmPassword"
             />
-            <Paragragh>
+            <Paragraph>
               {errors.confirmPassword && errors.confirmPassword.message}
-            </Paragragh>
+            </Paragraph>
             <ButtonLg type="submit">Cadastrar</ButtonLg>
           </Form>
         </FormDiv>
