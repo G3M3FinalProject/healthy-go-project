@@ -1,4 +1,7 @@
 import styled from "styled-components";
+interface IDiscountBarProps {
+  width: number;
+}
 
 export const Modal = styled.div`
   position: fixed;
@@ -69,7 +72,6 @@ export const Container = styled.div`
 
     padding: 0.5rem;
     margin: 1rem;
-    border-bottom: 1px solid black;
 
     h2 {
       font-size: 120%;
@@ -93,6 +95,9 @@ export const Container = styled.div`
         justify-content: space-between;
         align-items: center;
 
+        img {
+          width: 100px;
+        }
         .info {
           p {
             font-size: 13px;
@@ -161,6 +166,10 @@ export const Container = styled.div`
     }
   }
 
+  .divider {
+    height: 2px;
+    background-color: black;
+  }
   @media screen and (max-width: 950px) {
     width: 45%;
   }
@@ -173,5 +182,18 @@ export const Container = styled.div`
   }
   @media screen and (max-width: 320px) {
     width: 100%;
+  }
+`;
+
+export const DiscountBar = styled.div`
+  height: 4px;
+  width: 100%;
+  background-color: var(--brand-green);
+
+  .discount-variable {
+    width: ${({ width }) => `${width}%`};
+    height: 4px;
+
+    background-color: var(--brand-light-green);
   }
 `;

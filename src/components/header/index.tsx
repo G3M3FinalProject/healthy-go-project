@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -10,6 +10,7 @@ import HealthyGo from "../../assets/healthygo.png";
 import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
 import { useAuthUserContext } from "../../contexts/authUserContext";
+import Cart from "../cart";
 import DropDownModal from "../dropdown-header";
 import {
   Container,
@@ -24,41 +25,32 @@ import {
   Paragraph,
   CartBackground,
 } from "./styles";
-
 const Header = () => {
   const { user } = useAuthUserContext();
-
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
-
   const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
+  const [isOpenCart, setisOpenCart] = useState<boolean>(false);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 425);
   };
-
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
-
   const navigate = useNavigate();
-
   const modalRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
     const handler = (event: any) => {
       if (!modalRef.current?.contains(event.target)) {
         setisModalOpen(false);
       }
     };
-
     document.addEventListener("click", handler);
-
     return () => {
       document.removeEventListener("click", handler);
     };
   });
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -72,10 +64,12 @@ const Header = () => {
         <Flag src={flag} alt="flag" />
       </picture>
       <Container>
-        <Brand>
-          <Logo src={LogoImg} alt="Logo" />
-          <BrandName src={HealthyGo} alt="brand name" />
-        </Brand>
+        <Link to={"/home"}>
+          <Brand>
+            <Logo src={LogoImg} alt="Logo" />
+            <BrandName src={HealthyGo} alt="brand name" />
+          </Brand>
+        </Link>
         <Menu>
           <HamburguerMenu
             onClick={() => setisModalOpen(!isModalOpen)}
@@ -86,7 +80,6 @@ const Header = () => {
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />
           </HamburguerMenu>
-
           {(() => {
             if (isDesktop) {
               return user ? (
@@ -98,8 +91,11 @@ const Header = () => {
                     <p>Olá, {user.name}</p>
                     <MdKeyboardArrowDown />
                   </CartBackground>
-
-                  <CartBackground>
+                  <CartBackground
+                    onClick={() => {
+                      setisOpenCart(true);
+                    }}
+                  >
                     <AiOutlineShoppingCart
                       style={{ width: "30px", height: "30px" }}
                     />
@@ -120,12 +116,11 @@ const Header = () => {
               );
             }
           })()}
-
           {isModalOpen && <DropDownModal />}
         </Menu>
+        {isOpenCart && <Cart setisOpenCart={setisOpenCart} />}
       </Container>
     </motion.div>
   );
 };
-
 export default Header;
