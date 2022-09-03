@@ -26,19 +26,19 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
   const [filteredRestaurants, setFilteredRestaurants] = useState<
     IRestaurantInfo[]
   >([]);
-  const [categoriesFiltered, setCategoriesFiltered] = useState<string[]>([]);
 
   useEffect(() => {
-    api
-      .get("/restaurants")
-      .then((response) => {
-        console.log(response);
-        setAllRestaurants(response.data);
-        // Ver isso
-        setFilteredRestaurants(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    if (allRestaurants.length === 0) {
+      api
+        .get("/restaurants")
+        .then((response) => {
+          setAllRestaurants(response.data);
+          console.log(allRestaurants);
+          // setFilteredRestaurants(response.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [allRestaurants]);
 
   return (
     <RestaurantsContext.Provider
