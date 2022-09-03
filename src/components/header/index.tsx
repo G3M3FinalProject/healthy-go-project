@@ -41,7 +41,6 @@ const Header = () => {
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (event: any) => {
       if (!modalRef.current?.contains(event.target)) {
         setisModalOpen(false);

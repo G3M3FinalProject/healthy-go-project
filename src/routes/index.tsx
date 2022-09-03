@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
+import EditProfile from "../pages/editProfile";
+import { CheckOut } from "../components/checkout";
 import { AboutUs } from "../pages/aboutus";
 import Home from "../pages/home";
 import { Login } from "../pages/login";
@@ -13,10 +15,11 @@ const AppRoutes = () => {
       <Route path="/register" element={<UserRegister />} />
       <Route path="/login" element={<Login />} />
       <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/checkout" />
-      <Route path="/profile" />
+      <Route path="/checkout" element={<CheckOut />} />
+      <Route path="/profile" element={<EditProfile />}  />
       <Route path="/restaurants/:id" element={<Restaurants />} />
       <Route path="*" element={<Navigate to="/home" />} />
+
     </Routes>
   );
 };

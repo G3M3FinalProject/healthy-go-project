@@ -6,8 +6,6 @@ export const Container = styled.div`
 
   padding: 0.5rem 0rem 0 0;
   width: 100%;
-
-  z-index: 1;
 `;
 
 export const Brand = styled.div`
@@ -47,7 +45,6 @@ export const Flag = styled.img`
   position: absolute;
   width: 100%;
   height: 25%;
-  top: -1px;
 `;
 
 export const Logo = styled.img`

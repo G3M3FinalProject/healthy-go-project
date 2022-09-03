@@ -9,6 +9,7 @@ import {
   ContainerP,
   ContainerPreco,
   ContainerSection,
+  ContainerDivMenu,
 } from "./styles";
 
 export interface IProduct {
@@ -82,7 +83,7 @@ export const MenuRestaurant = () => {
                     );
                   })}
                 </ul>
-              </div>
+              </ContainerDivMenu>
             )
           );
         })}

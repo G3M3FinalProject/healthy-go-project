@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
+export const ContainerTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 50vw;
+  margin-left: 5%;
+`;
+
 export const ContainerHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 76.81rem;
-  margin-top: 3%;
+  width: 90vw;
+  margin-top: 1%;
   margin-left: auto;
   margin-right: auto;
   border-top: 1px solid;
