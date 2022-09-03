@@ -21,11 +21,14 @@ const Cart = ({ setisOpenCart }) => {
   const hasDiscount = 80 - totalCart >= 0;
   // const modalRef = useRef();
   const modalRef = useRef<HTMLHeadingElement>(null);
-  const value = modalRef?.current;
 
   useEffect(() => {
     function handleOutClick(event) {
       console.log(modalRef);
+      const value = modalRef?.current;
+
+      console.log(event.target);
+
       if (value && !value.contains(event.target)) {
         setisOpenCart(false);
       }
