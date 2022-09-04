@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { toast } from "react-hot-toast";
 
 import { addressApi } from "../services";
 
@@ -38,7 +39,11 @@ export const AddressContextProvider = ({ children }: IAddressContextProps) => {
     addressApi
       .get("/50ad4a90-fd5e-11ec-b463-1717be8c9ff1")
       .then((res: IResAddress) => setAddress(res.data))
-      .catch((err) => console.log(err));
+      .catch(() =>
+        toast.error("Desative o adBlock para obter a localização atual!", {
+          id: "address-error",
+        }),
+      );
   };
   return (
     <AddressContext.Provider value={{ address, getAddress, clearAddress }}>
