@@ -1,40 +1,54 @@
 import {
-  createContext,
+  useState,
+  useEffect,
   ReactNode,
   useContext,
-  useEffect,
-  useState,
+  createContext,
 } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { api } from "../services";
 
 interface IAuthUserProviderData {
-  user: IUser | undefined;
-  loginUser: (user: IUserLogin) => void;
-  registerUser: (user: IUser) => void;
   isLoading: boolean;
+  user: IUser | undefined;
+  getUser: (id: string) => void;
+  registerUser: (user: IUser) => void;
+  loginUser: (user: IUserLogin) => void;
+  editUser: (data: IUser, id: string) => void;
 }
 
 export interface IUserLogin {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 }
 interface IUserResponse {
   data: {
+    user: IUserEdit;
     accessToken: string;
-    user: IUserRes;
   };
 }
 
-export interface IUser extends IUserLogin {
-  type: string;
-  avatar: string;
+interface IUserEdit {
+  id: string;
   name: string;
+  email: string;
+  email2?: string;
+  birthday?: string;
+  cellphone?: string;
 }
 
-interface IUserRes extends IUser {
-  id: string;
+export interface IUser extends IUserLogin {
+  id?: string;
+  name: string;
+  type?: string;
+  avatar?: string;
+  email2?: string;
+  birthday?: string;
+  cellphone?: string;
+}
+interface IUserEditRes {
+  data: IUser;
 }
 
 interface IAuthUserProps {
@@ -54,7 +68,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
-        console.log(res.data.accessToken);
+        localStorage.setItem("@healthyGo-userId", res.data.user.id);
         localStorage.setItem("@healthyGo-token", res.data.accessToken);
 
         api.defaults.headers.common[
@@ -81,14 +95,20 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
 
   const isUserLoggedIn = () => {
     useEffect(() => {
+      const id = localStorage.getItem("@healthyGo-userId");
       const token = localStorage.getItem("@healthyGo-token");
+
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
       if (token)
         api
-          .get("/login")
-          .then()
+          .get(`/users/${id}`)
+          .then((res) => {
+            setUser(res.data);
+          })
           .catch(() => {
             localStorage.clear();
+
             setIsLoading(false);
           })
           .finally(() => {
@@ -98,9 +118,29 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   };
   isUserLoggedIn();
 
+  const editUser = (data: IUser, id: string) => {
+    api
+      .patch(`/users/${id}`, data)
+      .then((res: IUserEditRes) => {
+        setUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getUser = (id: string) => {
+    useEffect(() => {
+      api
+        .get(`/users/${id}`)
+        .then((res: IUserEditRes) => {
+          setUser(res.data);
+        })
+        .catch((err) => console.log(err));
+    }, []);
+  };
+
   return (
     <AuthUserContext.Provider
-      value={{ user, loginUser, registerUser, isLoading }}
+      value={{ user, loginUser, registerUser, isLoading, editUser, getUser }}
     >
       {children}
     </AuthUserContext.Provider>

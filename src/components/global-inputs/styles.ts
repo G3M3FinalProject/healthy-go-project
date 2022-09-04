@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormGroupStyled = styled.div`
+export const InputLg = styled.div`
   position: relative;
 
   width: 100%;
@@ -9,8 +9,6 @@ export const FormGroupStyled = styled.div`
   input {
     width: 100%;
     height: 40px;
-
-    position: absolute;
 
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 
@@ -46,6 +44,18 @@ export const FormGroupStyled = styled.div`
       font-size: 19px;
       left: 0.8rem;
     }
+
+    @media screen and (max-width: 770px) {
+      width: 89%;
+      padding: 0;
+      font-size: 8px;
+    }
+
+    @media screen and (max-width: 420px) {
+      width: 89%;
+      padding: 0;
+      font-size: 8px;
+    }
   }
 
   label {
@@ -68,23 +78,75 @@ export const FormGroupStyled = styled.div`
 
     font-style: normal;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 25px;
+
+    @media screen and (max-width: 770px) {
+      width: 89%;
+      padding: 0;
+      font-size: 8px;
+    }
+
+    @media screen and (max-width: 420px) {
+      width: 89%;
+      padding: 0;
+      font-size: 8px;
+    }
   }
 `;
 
-export const Button = styled.button`
-  width: fit-content;
-  height: fit-content;
+export const ButtonLg = styled.button`
+  width: 100%;
 
+  border: none;
+  outline: none;
+
+  margin: 10px;
+  padding: 14px 24px;
   border-radius: 15px;
 
-  font-weight: 700;
+  background: linear-gradient(to right, #12753a, #8ac926);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
 
-  color: white;
-  background-color: var(--button-green);
+  cursor: pointer;
 
-  padding: 1rem 4.5%;
+  overflow: hidden;
+
+  .ripple {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: white;
+
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple-effect 1s ease 1 forwards;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+
+    pointer-events: none;
+  }
+
+  @keyframes ripple-effect {
+    0% {
+      width: 0px;
+      height: 0px;
+
+      opacity: 0.5;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
+
+      opacity: 0;
+    }
+  }
 `;
 
 export const Search = styled.div`
@@ -113,4 +175,18 @@ export const Search = styled.div`
     font-weight: 500;
     background-color: rgba(228, 249, 234, 1);
   }
+`;
+
+export const ButtonMd = styled.button`
+  width: 80%;
+  height: fit-content;
+
+  border-radius: 15px;
+
+  font-weight: 700;
+
+  color: white;
+  background-color: var(--button-green);
+
+  padding: 1rem 4.5%;
 `;
