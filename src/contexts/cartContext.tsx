@@ -7,6 +7,7 @@ import {
 } from "react";
 
 import { IProduct } from "./restaurantProductsContext";
+import { useRestaurantsContext } from "./restaurantsContext";
 
 const CartContext = createContext<ICartProviderData>({} as ICartProviderData);
 export const useCart = () => useContext(CartContext);
@@ -26,9 +27,19 @@ interface ICartProviderData {
   totalCart: number;
   subTotalCart: number;
   freightCart: number;
+  summaryCart: ISummaryCart[];
+}
+
+interface ISummaryCart {
+  restaurant: string;
+  price: number;
+  amount: number;
+  logo?: string;
 }
 
 const CartProvider = ({ children }: ICartProps) => {
+  const { allRestaurants } = useRestaurantsContext();
+
   const [cart, setCart] = useState<IProduct[]>([]);
   //frete
   const restaurants: string[] = [];
@@ -106,9 +117,6 @@ const CartProvider = ({ children }: ICartProps) => {
 
   const minusOneProduct = (productId: number) => {
     const currentIndex = indexProduct(productId);
-    console.log(currentIndex);
-    console.log(productsCartCopy);
-
     if (productsCartCopy[currentIndex].amount > 1) {
       productsCartCopy[currentIndex].amount--;
       setCart(productsCartCopy);
@@ -118,6 +126,31 @@ const CartProvider = ({ children }: ICartProps) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
   };
+
+  const summaryCart: ISummaryCart[] = [];
+
+  cart.forEach((product) => {
+    const indexSummaryCart = summaryCart.findIndex(
+      ({ restaurant }) => restaurant === product.restaurant,
+    );
+
+    if (indexSummaryCart === -1) {
+      const logo = allRestaurants.find(
+        (restaurant) => restaurant.name === product.restaurant,
+      )?.["logo-image"];
+
+      const summaryRestaurant = {
+        restaurant: product.restaurant,
+        amount: product.amount,
+        price: product.amountPrice,
+        logo: logo,
+      };
+      summaryCart.push(summaryRestaurant);
+    } else {
+      summaryCart[indexSummaryCart].amount += product.amount;
+      summaryCart[indexSummaryCart].price += product.amountPrice;
+    }
+  });
 
   return (
     <CartContext.Provider
@@ -132,6 +165,7 @@ const CartProvider = ({ children }: ICartProps) => {
         totalCart,
         subTotalCart,
         freightCart,
+        summaryCart,
       }}
     >
       {children}
