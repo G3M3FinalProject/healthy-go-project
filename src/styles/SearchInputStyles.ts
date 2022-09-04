@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const SearchInputStyle = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
@@ -31,7 +31,7 @@ export const Container = styled.div`
 
     input {
       width: 100%;
-
+      padding-left: 8px;
       font-size: 15px;
       font-weight: 500;
 
@@ -41,9 +41,13 @@ export const Container = styled.div`
     button {
       background-color: rgba(228, 249, 234, 1);
 
-      img {
-        width: 50%;
-
+      svg {
+        /* width: 28px; */
+        /* font: 20px; */
+        margin-right: 5px;
+        color: var(--placeholder);
+        width: 1.4rem;
+        height: 1.4rem;
         background-color: rgba(228, 249, 234, 1);
       }
     }

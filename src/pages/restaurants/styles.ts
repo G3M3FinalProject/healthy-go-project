@@ -4,7 +4,7 @@ export const ContainerRestaurants = styled.div`
   width: 80vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: auto;
+  margin-top: 100px;
 `;
 
 export const ContainerTop = styled.div`

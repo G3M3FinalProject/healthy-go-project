@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
-import searchIcon from "../../assets/searchIcon.svg";
 import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
-import { Container } from "./styles";
+import { SearchInputStyle } from "../../styles/SearchInputStyles";
 
-const SearchInput = () => {
+export const SearchInputProducts = () => {
   const { restaurantInfo, setFilteredMenu } = useRestaurantProductsContext();
   const [productSearched, setProductSearched] = useState("");
 
@@ -19,7 +19,7 @@ const SearchInput = () => {
     e.preventDefault();
     const menu = restaurantInfo.menu;
 
-    const newMenuArray = Object.entries(menu).map(([key, value]) => {
+    const newMenuArray = Object.entries(menu).map(([, value]) => {
       return value.filter(({ item, category }) => {
         let productIsCategory = false;
         if (category) {
@@ -47,21 +47,19 @@ const SearchInput = () => {
 
     setFilteredMenu(newMenuObj);
   };
-
   return (
-    <Container>
+    <SearchInputStyle>
       <form onSubmit={(e) => getFilteredProduct(e)}>
-        <button type="submit">
-          <img src={searchIcon} />
-        </button>
         <input
           onChange={(event) => setProductSearched(event.target.value)}
           value={productSearched}
           type="text"
-          placeholder="Digitar Pesquisa"
+          placeholder="Pesquisar por..."
         />
+        <button type="submit">
+          <AiOutlineSearch />
+        </button>
       </form>
-    </Container>
+    </SearchInputStyle>
   );
 };
-export default SearchInput;

@@ -6,17 +6,15 @@ export const ContainerFilter = styled.div`
   justify-content: space-between;
 
   width: 10%;
-
   margin-left: 3%;
+`;
 
-  button {
+export const ButtonFilter = styled.button`
+  width: 38px;
+  height: 36px;
+  background: #f7f6f3;
+  img {
     width: 38px;
     height: 36px;
-    background: #f7f6f3;
-
-    img {
-      width: 38px;
-      height: 36px;
-    }
   }
 `;

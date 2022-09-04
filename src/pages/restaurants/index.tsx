@@ -1,6 +1,6 @@
-import { FilteredSearch } from "../../components/filtered-serach";
 import { MenuRestaurant } from "../../components/menu-restaurant";
-import SearchInput from "../../components/search-input";
+import { FilteredSearch } from "../../components/restaurant-item-filters";
+import { SearchInputProducts } from "../../components/search-input-products";
 import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
 import { ContainerHeader, ContainerRestaurants, ContainerTop } from "./styles";
 
@@ -11,7 +11,7 @@ export const Restaurants = () => {
     <ContainerRestaurants>
       <ContainerTop>
         <FilteredSearch />
-        <SearchInput />
+        <SearchInputProducts />
       </ContainerTop>
       <ContainerHeader>
         <div>

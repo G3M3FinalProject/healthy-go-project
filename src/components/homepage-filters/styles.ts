@@ -24,7 +24,7 @@ export const Container = styled.div`
   gap: 0.5rem;
 `;
 
-export const FilterButton = styled.button`
+export const FilterButton = styled.button<IFilterButtonProps>`
   width: 6rem;
   height: 2rem;
 
