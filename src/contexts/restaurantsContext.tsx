@@ -15,6 +15,8 @@ interface IRestaurantsProviderData {
   setFilteredRestaurants: React.Dispatch<
     React.SetStateAction<IRestaurantInfo[]>
   >;
+  setIsFilterActive: React.Dispatch<React.SetStateAction<boolean>>;
+  isFilterActive: boolean;
 }
 
 interface IRestaurantsProps {
@@ -28,6 +30,7 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
   const [filteredRestaurants, setFilteredRestaurants] = useState<
     IRestaurantInfo[]
   >([]);
+  const [isFilterActive, setIsFilterActive] = useState(false);
 
   useEffect(() => {
     if (allRestaurants.length === 0) {
@@ -48,6 +51,8 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
         allRestaurants,
         filteredRestaurants,
         setFilteredRestaurants,
+        isFilterActive,
+        setIsFilterActive,
       }}
     >
       {children}

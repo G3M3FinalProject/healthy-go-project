@@ -7,12 +7,12 @@ import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import { Container } from "./styles";
 
 const Home = () => {
-  const { filteredRestaurants } = useRestaurantsContext();
+  const { filteredRestaurants, isFilterActive } = useRestaurantsContext();
   return (
     <>
       <Container>
         <HomePageFilters />
-        {filteredRestaurants.length === 0 ? (
+        {filteredRestaurants.length === 0 && isFilterActive ? (
           <div>O restaurante pesquisado não foi encontrado.</div>
         ) : (
           <>
