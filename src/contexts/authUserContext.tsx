@@ -47,11 +47,6 @@ export interface IUser extends IUserLogin {
   birthday?: string;
   cellphone?: string;
 }
-
-interface IUserRes extends IUser {
-  id: string;
-}
-
 interface IUserEditRes {
   data: IUser;
 }

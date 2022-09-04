@@ -12,7 +12,9 @@ import { IRestaurantInfo } from "./restaurantProductsContext";
 interface IRestaurantsProviderData {
   allRestaurants: IRestaurantInfo[];
   filteredRestaurants: IRestaurantInfo[];
-  setFilteredRestaurants: (restaurants: IRestaurantInfo[]) => void;
+  setFilteredRestaurants: React.Dispatch<
+    React.SetStateAction<IRestaurantInfo[]>
+  >;
 }
 
 interface IRestaurantsProps {

@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { CheckOut } from "../components/checkout";
 import { AboutUs } from "../pages/aboutus";
+import { CheckOut } from "../pages/checkout";
 import EditProfile from "../pages/editProfile";
 import Home from "../pages/home";
 import { Login } from "../pages/login";

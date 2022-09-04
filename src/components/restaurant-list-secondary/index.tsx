@@ -10,7 +10,7 @@ export const RestaurantListSecondary = () => {
 
   return (
     <SecondaryList>
-      {OtherRestaurantsFiltered.length != 0
+      {OtherRestaurantsFiltered.length != 0 || filteredRestaurants.length > 0
         ? OtherRestaurantsFiltered?.map((restaurant) => {
             return (
               <SecondaryItem key={restaurant.id}>

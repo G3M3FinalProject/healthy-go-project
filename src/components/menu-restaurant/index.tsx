@@ -3,7 +3,10 @@ import { useParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import { useCart } from "../../contexts/cartContext";
-import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
+import {
+  IProduct,
+  useRestaurantProductsContext,
+} from "../../contexts/restaurantProductsContext";
 import {
   ContainerMenu,
   ContainerP,
@@ -11,15 +14,6 @@ import {
   ContainerSection,
   ContainerDivMenu,
 } from "./styles";
-
-export interface IProduct {
-  item: string;
-  price: number;
-  promo: number;
-  photo_url: string;
-  category: string[];
-  description: string;
-}
 
 export const MenuRestaurant = () => {
   const { findRestaurantInfo, filteredMenu } = useRestaurantProductsContext();
@@ -54,7 +48,7 @@ export const MenuRestaurant = () => {
               <ContainerDivMenu key={value}>
                 <h2>{subTitles[key]}</h2>
                 <ul>
-                  {value?.map((product) => {
+                  {value?.map((product: IProduct) => {
                     return (
                       <li
                         key={Math.floor(Date.now() * Math.random()).toString(

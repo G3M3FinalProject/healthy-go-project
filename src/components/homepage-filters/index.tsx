@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useRestaurantsContext } from "../../contexts/restaurantsContext";
-import SearchInput from "../search-input";
+import { SearchInputRestaurants } from "../search-input-home";
 import { PositioningDiv, Container, FilterButton } from "./styles";
 
 type IActualFilters = "vegan" | "vegetarian" | "zero-gluten" | "zero-lactose";
@@ -18,28 +18,19 @@ const HomePageFilters = () => {
       : setActualFilters((old) => [...old, filter]);
   };
 
-  const filterRestaurants = (categoriesToFilter: string) => {
-    const newRestaurants = allRestaurants.filter(({ category }) =>
-      category.includes(categoriesToFilter),
-    );
-    setFilteredRestaurants(newRestaurants);
-  };
-
   useEffect(() => {
     const newRestaurants = allRestaurants.filter(({ category }) =>
-      // o array CATEGORIA [vegan vegetarian] TEM Q TER OS MESMOS Q O ARRAY ALL FILTERS [vegan] ok [vegan lactose vegetarian] no ok
       actualFilters.every((actualFilter) => {
         return category.includes(actualFilter);
       }),
     );
-    console.log(newRestaurants);
     setFilteredRestaurants(newRestaurants);
   }, [actualFilters]);
 
   actualFilters.some((filter) => filter === "vegetarian");
   return (
     <PositioningDiv>
-      <SearchInput />
+      <SearchInputRestaurants />
 
       <Container>
         <FilterButton

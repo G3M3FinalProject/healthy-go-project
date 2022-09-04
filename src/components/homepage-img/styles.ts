@@ -4,10 +4,8 @@ export const Figure = styled.figure`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-
   position: relative;
-
+  justify-content: center;
   height: 100%;
 `;
 

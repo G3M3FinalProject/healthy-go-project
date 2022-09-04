@@ -15,12 +15,8 @@ import {
   Paragragh,
   TitleCard,
   InfoCard,
-} from "../editProfile/style";
-import { CenteringContainer, Form, FormDiv } from "../editProfile/style";
-
-type UserContextType = {
-  registerFunction: (data: IRegisterData) => void;
-};
+} from "./styles";
+import { CenteringContainer, Form, FormDiv } from "./styles";
 
 export interface IFormEditData {
   name: string;
@@ -35,10 +31,6 @@ interface IRegisterData {
   name: string;
   cellphone?: string;
 }
-
-type EditContextType = {
-  registerFunction: (data: IRegisterData) => void;
-};
 
 const EditProfile = () => {
   const { editUser, user, getUser } = useAuthUserContext();
