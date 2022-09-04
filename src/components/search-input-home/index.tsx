@@ -5,7 +5,8 @@ import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import { SearchInputStyle } from "../../styles/SearchInputStyles";
 
 export const SearchInputRestaurants = () => {
-  const { setFilteredRestaurants, allRestaurants } = useRestaurantsContext();
+  const { setFilteredRestaurants, allRestaurants, setIsFilterActive } =
+    useRestaurantsContext();
   const [restaurantSearched, setRestaurantSearched] = useState("");
 
   const removeAccents = (string: string) => {
@@ -17,7 +18,7 @@ export const SearchInputRestaurants = () => {
 
   const getFilteredRestaurant = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setIsFilterActive(true);
     const searchedRestaurants = allRestaurants.filter((restaurant) => {
       return removeAccents(restaurant.name).includes(
         removeAccents(restaurantSearched),

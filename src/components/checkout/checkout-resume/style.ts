@@ -20,7 +20,7 @@ export const ContainerResume = styled.div`
     width: 100%;
   }
 
-  h4 {
+  h3 {
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
@@ -136,4 +136,10 @@ export const DivTT = styled.div`
   text-transform: capitalize;
 
   color: #434242;
+`;
+
+export const SummaryRestaurant = styled.div`
+  img {
+    width: 50px;
+  }
 `;

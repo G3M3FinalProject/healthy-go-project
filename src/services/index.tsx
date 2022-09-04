@@ -7,3 +7,8 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const addressApi = axios.create({
+  baseURL: "https://geolocation-db.com/json",
+  timeout: 10000,
+});

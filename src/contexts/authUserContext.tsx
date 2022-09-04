@@ -16,6 +16,7 @@ interface IAuthUserProviderData {
   registerUser: (user: IUser) => void;
   loginUser: (user: IUserLogin) => void;
   editUser: (data: IUser, id: string) => void;
+  logoutUser: () => void;
 }
 
 export interface IUserLogin {
@@ -138,9 +139,22 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
     }, []);
   };
 
+  const logoutUser = () => {
+    setUser(undefined);
+    localStorage.clear();
+  };
+
   return (
     <AuthUserContext.Provider
-      value={{ user, loginUser, registerUser, isLoading, editUser, getUser }}
+      value={{
+        user,
+        loginUser,
+        registerUser,
+        isLoading,
+        editUser,
+        getUser,
+        logoutUser,
+      }}
     >
       {children}
     </AuthUserContext.Provider>

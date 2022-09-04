@@ -3,7 +3,7 @@ import { BsBoxArrowRight } from "react-icons/bs";
 import { BsFilePersonFill } from "react-icons/bs";
 import { FaRunning, FaPencilAlt } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -11,7 +11,7 @@ import { useAuthUserContext } from "../../contexts/authUserContext";
 import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
-  const { user } = useAuthUserContext();
+  const { user, logoutUser } = useAuthUserContext();
 
   const navigate = useNavigate();
 
@@ -29,15 +29,19 @@ const DropDownModal = () => {
           <>
             <Menu onClick={() => navigate("/profile", { replace: true })}>
               <FaPencilAlt style={{ color: "black" }} />
-              <p>Editar perfil</p>
+              <Link to="/profile">
+                <p>Editar perfil</p>
+              </Link>
             </Menu>
             <Menu onClick={() => navigate("/aboutus", { replace: true })}>
               <BiBookOpen style={{ color: "black" }} />
-              <p>Sobre nós</p>
+              <Link to="/aboutus">
+                <p>Sobre nós</p>
+              </Link>
             </Menu>
             <Menu>
               <FaRunning style={{ color: "black" }} />
-              <p>Sair</p>
+              <button onClick={() => logoutUser()}>Sair</button>
             </Menu>
           </>
         ) : (

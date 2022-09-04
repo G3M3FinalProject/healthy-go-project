@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosClose } from "react-icons/io";
 
@@ -6,10 +6,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 import * as yup from "yup";
 
+import { useAddressContext } from "../../contexts/addressContext";
+import { useModalContext } from "../../contexts/modalContext";
 import { GlobalButtonLg, GlobalInputLg } from "../global-inputs";
 import { Modal, Container, Header, EstadoCidade, BairroNumero } from "./styles";
 
 const AdressModal = () => {
+  const { setIsProfileModalOpen } = useModalContext();
+  const { getAddress, address, clearAddress } = useAddressContext();
+
   const formSchema = yup.object().shape({
     email: yup.string(),
     password: yup.string(),
@@ -22,7 +27,24 @@ const AdressModal = () => {
     resolver: yupResolver(formSchema),
   });
 
-  console.log(errors);
+  const modalRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    function handleOutClick(event) {
+      const value = modalRef?.current;
+
+      if (value && !value.contains(event.target)) {
+        setIsProfileModalOpen(false);
+        clearAddress();
+      }
+    }
+    document.addEventListener("mousedown", handleOutClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutClick);
+    };
+  }, []);
+  // defaultValue={`${address?.postal}-000`}
+  const cep = `${address?.postal}-000`;
 
   return (
     <motion.div
@@ -32,15 +54,23 @@ const AdressModal = () => {
       transition={{ duration: 1 }}
     >
       <Modal>
-        <Container>
+        <Container ref={modalRef}>
           <Header>
             <p>Cadastrar Novo Endereço</p>
-            <div>
+            <button
+              onClick={() => {
+                setIsProfileModalOpen(false);
+                clearAddress();
+              }}
+            >
               <IoIosClose
                 style={{ width: "25px", height: "25px", cursor: "pointer" }}
               />
-            </div>
+            </button>
           </Header>
+          <div>
+            <button onClick={() => getAddress()}>Usar localização atual</button>
+          </div>
           <form>
             <GlobalInputLg
               label="Identificação do Endereço"
@@ -53,6 +83,7 @@ const AdressModal = () => {
               type="text"
               register={register}
               registerName="cep"
+              defaultValue={cep.includes("undefined") ? "" : cep}
             />
             <EstadoCidade>
               <GlobalInputLg
@@ -60,12 +91,14 @@ const AdressModal = () => {
                 type="text"
                 register={register}
                 registerName="estado"
+                defaultValue={address?.state}
               />
               <GlobalInputLg
                 label="Cidade"
                 type="text"
                 register={register}
                 registerName="cidade"
+                defaultValue={address?.city}
               />
             </EstadoCidade>
             <GlobalInputLg
