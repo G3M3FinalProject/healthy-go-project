@@ -12,6 +12,7 @@ import { v4 as uuid } from "uuid";
 import { api } from "../services";
 import { ICompleteAddress } from "./addressContext";
 import { useCart } from "./cartContext";
+import { IProduct } from "./restaurantProductsContext";
 
 interface IAuthUserProviderData {
   isLoading: boolean;
@@ -61,6 +62,7 @@ export interface IUser extends IUserLogin {
   cellphone?: string;
   address?: ICompleteAddress[];
   requests?: IUserRequests[];
+  cart?: IProduct[];
 }
 export interface IUserEditRes {
   data: IUser;
@@ -135,6 +137,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
           .get(`/users/${id}`)
           .then((res) => {
             setUser(res.data);
+            console.log(res.data);
           })
           .catch(() => {
             localStorage.clear();

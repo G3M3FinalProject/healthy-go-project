@@ -8,11 +8,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { useAuthUserContext } from "../../contexts/authUserContext";
+import { useCart } from "../../contexts/cartContext";
+import { IProduct } from "../../contexts/restaurantProductsContext";
 import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
   const { user, logoutUser } = useAuthUserContext();
-
+  const { setCart } = useCart();
   const navigate = useNavigate();
 
   return (
@@ -41,7 +43,14 @@ const DropDownModal = () => {
             </Menu>
             <Menu>
               <FaRunning style={{ color: "black" }} />
-              <button onClick={() => logoutUser()}>Sair</button>
+              <button
+                onClick={() => {
+                  logoutUser();
+                  setCart(user?.cart as IProduct[]);
+                }}
+              >
+                Sair
+              </button>
             </Menu>
           </>
         ) : (
