@@ -5,7 +5,7 @@ import {
   useContext,
   createContext,
 } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { api } from "../services";
 
@@ -17,6 +17,7 @@ interface IAuthUserProviderData {
   loginUser: (user: IUserLogin) => void;
   editUser: (data: IUser, id: string) => void;
   logoutUser: () => void;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
 }
 
 export interface IUserLogin {
@@ -59,10 +60,11 @@ interface IAuthUserProps {
 const AuthUserContext = createContext({} as IAuthUserProviderData);
 
 export const AuthUserProvider = ({ children }: IAuthUserProps) => {
-  const [user, setUser] = useState<IUser>();
+  const [user, setUser] = useState<IUser | undefined>({} as IUser);
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
+  const actualPage = useLocation().pathname;
 
   const loginUser = (data: IUserLogin) => {
     api
@@ -79,9 +81,12 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         setIsLoading(false);
         navigate("/homepage", { replace: true });
       })
-      .catch((err) =>
+      .catch(
+        (err) => {
+          console.log("teste");
+          console.log(err);
+        },
         //Adicionar algum aviso ao usuário informando que a senha dele está incorreta!
-        console.log(err),
       );
   };
 
@@ -89,9 +94,15 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
     api
       .post("/register", data)
       .then(() => {
-        navigate("/login", { replace: true });
+        actualPage === "/login"
+          ? loginUser(user as IUser)
+          : navigate("/login", { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        loginUser(user as IUser);
+        console.log(err);
+        console.log("teste");
+      });
   };
 
   const isUserLoggedIn = () => {
@@ -154,6 +165,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         editUser,
         getUser,
         logoutUser,
+        setUser,
       }}
     >
       {children}
