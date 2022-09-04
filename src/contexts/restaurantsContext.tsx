@@ -38,8 +38,6 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
         .get("/restaurants")
         .then((response) => {
           setAllRestaurants(response.data);
-          console.log(allRestaurants);
-          // setFilteredRestaurants(response.data);
         })
         .catch((err) => console.log(err));
     }

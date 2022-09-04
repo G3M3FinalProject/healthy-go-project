@@ -2,8 +2,10 @@ import { ReactNode } from "react";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
+import { AddressContextProvider } from "./addressContext";
 import { AuthUserProvider } from "./authUserContext";
 import CartProvider from "./cartContext";
+import { ModalProvider } from "./modalContext";
 import { RestaurantProductsProvider } from "./restaurantProductsContext";
 import { RestaurantsProvider } from "./restaurantsContext";
 
@@ -17,7 +19,11 @@ export const Providers = ({ children }: IProvidersProps) => {
       <AuthUserProvider>
         <RestaurantsProvider>
           <RestaurantProductsProvider>
-            <CartProvider>{children}</CartProvider>
+            <CartProvider>
+              <AddressContextProvider>
+                <ModalProvider>{children}</ModalProvider>
+              </AddressContextProvider>
+            </CartProvider>
           </RestaurantProductsProvider>
         </RestaurantsProvider>
       </AuthUserProvider>

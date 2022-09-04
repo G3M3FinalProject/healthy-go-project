@@ -24,7 +24,6 @@ const Cart = ({ setisOpenCart }) => {
 
   useEffect(() => {
     function handleOutClick(event) {
-      console.log(modalRef);
       const value = modalRef?.current;
 
       console.log(event.target);
