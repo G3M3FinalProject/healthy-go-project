@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { FaCompass } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,7 +10,14 @@ import * as yup from "yup";
 import { useAddressContext } from "../../contexts/addressContext";
 import { useModalContext } from "../../contexts/modalContext";
 import { GlobalButtonLg, GlobalInputLg } from "../global-inputs";
-import { Modal, Container, Header, EstadoCidade, BairroNumero } from "./styles";
+import {
+  Modal,
+  Container,
+  Header,
+  LocationDiv,
+  CityState,
+  Neighborhood,
+} from "./styles";
 
 const AdressModal = () => {
   const { setIsProfileModalOpen } = useModalContext();
@@ -68,9 +76,10 @@ const AdressModal = () => {
               />
             </button>
           </Header>
-          <div>
+          <LocationDiv>
+            <FaCompass />
             <button onClick={() => getAddress()}>Usar localização atual</button>
-          </div>
+          </LocationDiv>
           <form>
             <GlobalInputLg
               label="Identificação do Endereço"
@@ -85,7 +94,7 @@ const AdressModal = () => {
               registerName="cep"
               defaultValue={cep.includes("undefined") ? "" : cep}
             />
-            <EstadoCidade>
+            <CityState>
               <GlobalInputLg
                 label="Estado"
                 type="text"
@@ -100,14 +109,14 @@ const AdressModal = () => {
                 registerName="cidade"
                 defaultValue={address?.city}
               />
-            </EstadoCidade>
+            </CityState>
             <GlobalInputLg
               label="Rua/Avenida"
               type="text"
               register={register}
               registerName="rua"
             />
-            <BairroNumero>
+            <Neighborhood>
               <GlobalInputLg
                 label="Bairro"
                 type="text"
@@ -120,7 +129,7 @@ const AdressModal = () => {
                 register={register}
                 registerName="numero"
               />
-            </BairroNumero>
+            </Neighborhood>
             <GlobalInputLg
               label="Complemento"
               type="text"
