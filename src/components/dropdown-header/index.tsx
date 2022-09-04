@@ -27,7 +27,7 @@ const DropDownModal = () => {
         <Arrow />
         {user ? (
           <>
-            <Menu>
+            <Menu onClick={() => navigate("/profile", { replace: true })}>
               <FaPencilAlt style={{ color: "black" }} />
               <Link to="/profile">
                 <p>Editar perfil</p>

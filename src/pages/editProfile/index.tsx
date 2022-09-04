@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
 import AdressModal from "../../components/adress-modal";
-import { GlobalInputLg } from "../../components/global-inputs";
+import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
@@ -103,7 +103,7 @@ const EditProfile = () => {
                   register={register}
                   registerName="email"
                 />
-                <ButtonLg type="submit">Salvar</ButtonLg>
+                <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
               </Form>
             </FormDiv>
           </CenteringContainer>
@@ -115,9 +115,9 @@ const EditProfile = () => {
               <InfoCard>Numero: 260</InfoCard>
               <InfoCard>CEP 89888-000 - Itapema - SC</InfoCard>
             </Card>
-            <ButtonSave onClick={() => setIsProfileModalOpen(true)}>
+            <GlobalButtonLg onClick={() => setIsProfileModalOpen(true)}>
               Adicionar endereço
-            </ButtonSave>
+            </GlobalButtonLg>
             <img src="../../assets/adresspin.png" alt="" />
           </CardAdress>
         </ContainerCenter>
