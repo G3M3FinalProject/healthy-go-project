@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
+import AdressModal from "../../components/adress-modal";
 import { GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
+import { useModalContext } from "../../contexts/modalContext";
 import { editFormSchema } from "../../validations";
 import {
   ButtonSave,
@@ -34,6 +36,8 @@ interface IRegisterData {
 
 const EditProfile = () => {
   const { editUser, user, getUser } = useAuthUserContext();
+  const { setIsProfileModalOpen, isProfileModalOpen } = useModalContext();
+
   const {
     register,
     handleSubmit,
@@ -48,7 +52,7 @@ const EditProfile = () => {
       name: data.name,
       cellphone: data.cellphone,
     };
-    console.log(register);
+
     if (getItem) {
       editUser(register, getItem);
     }
@@ -56,67 +60,70 @@ const EditProfile = () => {
   if (getItem) {
     getUser(getItem);
   }
-  console.log(user);
-  console.log(getItem);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-    >
-      <ContainerCenter>
-        <CenteringContainer>
-          <FormDiv>
-            <p>Editar perfil</p>
-            <Form onSubmit={handleSubmit(Submit)}>
-              <GlobalInputLg
-                type="text"
-                label="Nome *"
-                defaultValue={user?.name}
-                register={register}
-                registerName="name"
-              />
-              <Paragragh>{errors.name && errors.name.message}</Paragragh>
-              <GlobalInputLg
-                type="date"
-                label="Data de nascimento *"
-                defaultValue={user?.birthday}
-                register={register}
-                registerName="birthdate"
-              />
-              <GlobalInputLg
-                type="tel"
-                label="Telefone"
-                defaultValue={user?.cellphone}
-                register={register}
-                registerName="cellphone"
-              />
-              <GlobalInputLg
-                type="email"
-                label="E-mail adicional *"
-                defaultValue={user?.email}
-                register={register}
-                registerName="email"
-              />
-              <ButtonLg type="submit">Salvar</ButtonLg>
-            </Form>
-          </FormDiv>
-        </CenteringContainer>
-        <CardAdress>
-          <h3>Endereços</h3>
-          <Card>
-            <TitleCard>Casa</TitleCard>
-            <InfoCard>Rua Veneza Ferreira</InfoCard>
-            <InfoCard>Numero: 260</InfoCard>
-            <InfoCard>CEP 89888-000 - Itapema - SC</InfoCard>
-          </Card>
-          <ButtonSave>Adicionar endereço</ButtonSave>
-          <img src="../../assets/adresspin.png" alt="" />
-        </CardAdress>
-      </ContainerCenter>
-    </motion.div>
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <ContainerCenter>
+          <CenteringContainer>
+            <FormDiv>
+              <p>Editar perfil</p>
+              <Form onSubmit={handleSubmit(Submit)}>
+                <GlobalInputLg
+                  type="text"
+                  label="Nome *"
+                  defaultValue={user?.name}
+                  register={register}
+                  registerName="name"
+                />
+                <Paragragh>{errors.name && errors.name.message}</Paragragh>
+                <GlobalInputLg
+                  type="date"
+                  label="Data de nascimento *"
+                  defaultValue={user?.birthday}
+                  register={register}
+                  registerName="birthdate"
+                />
+                <GlobalInputLg
+                  type="tel"
+                  label="Telefone"
+                  defaultValue={user?.cellphone}
+                  register={register}
+                  registerName="cellphone"
+                />
+                <GlobalInputLg
+                  type="email"
+                  label="E-mail adicional *"
+                  defaultValue={user?.email}
+                  register={register}
+                  registerName="email"
+                />
+                <ButtonLg type="submit">Salvar</ButtonLg>
+              </Form>
+            </FormDiv>
+          </CenteringContainer>
+          <CardAdress>
+            <h3>Endereços</h3>
+            <Card>
+              <TitleCard>Casa</TitleCard>
+              <InfoCard>Rua Veneza Ferreira</InfoCard>
+              <InfoCard>Numero: 260</InfoCard>
+              <InfoCard>CEP 89888-000 - Itapema - SC</InfoCard>
+            </Card>
+            <ButtonSave onClick={() => setIsProfileModalOpen(true)}>
+              Adicionar endereço
+            </ButtonSave>
+            <img src="../../assets/adresspin.png" alt="" />
+          </CardAdress>
+        </ContainerCenter>
+      </motion.div>
+      {isProfileModalOpen && <AdressModal />}
+    </>
   );
 };
 
