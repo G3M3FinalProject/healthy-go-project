@@ -21,8 +21,6 @@ export function ResumeCheckout() {
   const { summaryCart, subTotalCart, totalCart, freightCart } = useCart();
 
   const [modalResume, setModalResume] = useState(false);
-  //   console.log(modalResume);
-  console.log(summaryCart);
   return (
     <ContainerResume>
       <h3>Resumo</h3>
@@ -55,7 +53,14 @@ export function ResumeCheckout() {
         <p>Total</p>
         <p>R$ {totalCart.toFixed(2)}</p>
       </DivTT>
-      <button onClick={() => setModalResume(true)}>Finalizar Pedido</button>
+
+      <button
+        type="submit"
+        form="payamentForm"
+        onClick={() => setModalResume(true)}
+      >
+        Finalizar Pedido
+      </button>
       {/* <ModalCheckOut
         modalResume={modalResume}
         setModalResume={setModalResume}

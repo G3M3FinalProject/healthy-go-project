@@ -10,7 +10,6 @@ import { IProduct } from "./restaurantProductsContext";
 import { useRestaurantsContext } from "./restaurantsContext";
 
 const CartContext = createContext<ICartProviderData>({} as ICartProviderData);
-export const useCart = () => useContext(CartContext);
 
 interface ICartProps {
   children: ReactNode;
@@ -42,6 +41,7 @@ const CartProvider = ({ children }: ICartProps) => {
 
   const [cart, setCart] = useState<IProduct[]>([]);
   //frete
+
   const restaurants: string[] = [];
   cart.forEach((product) => {
     if (!restaurants.includes(product.restaurant))
@@ -174,3 +174,4 @@ const CartProvider = ({ children }: ICartProps) => {
 };
 
 export default CartProvider;
+export const useCart = () => useContext(CartContext);

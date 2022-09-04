@@ -9,7 +9,8 @@ import flag from "../../assets/flag.png";
 import HealthyGo from "../../assets/healthygo.png";
 import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
-import { useAuthUserContext } from "../../contexts/authUserContext";
+import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
+import { useCart } from "../../contexts/cartContext";
 import Cart from "../cart";
 import DropDownModal from "../dropdown-header";
 import {
@@ -30,6 +31,7 @@ const Header = () => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
   const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
   const [isOpenCart, setisOpenCart] = useState<boolean>(false);
+  const { amountCart } = useCart();
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 425);
@@ -82,7 +84,7 @@ const Header = () => {
           </HamburguerMenu>
           {(() => {
             if (isDesktop) {
-              return user ? (
+              return user && Object.keys(user as IUser).length !== 0 ? (
                 <Paragraph>
                   <CartBackground
                     onClick={() => setisModalOpen(!isModalOpen)}
@@ -96,6 +98,7 @@ const Header = () => {
                       setisOpenCart(true);
                     }}
                   >
+                    {amountCart}
                     <AiOutlineShoppingCart
                       style={{ width: "30px", height: "30px" }}
                     />

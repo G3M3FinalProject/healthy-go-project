@@ -36,7 +36,7 @@ interface IRegisterData {
 
 const EditProfile = () => {
   const { editUser, user, getUser } = useAuthUserContext();
-  const { setIsProfileModalOpen, isProfileModalOpen } = useModalContext();
+  const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
 
   const {
     register,
@@ -109,20 +109,26 @@ const EditProfile = () => {
           </CenteringContainer>
           <CardAdress>
             <h3>Endereços</h3>
-            <Card>
-              <TitleCard>Casa</TitleCard>
-              <InfoCard>Rua Veneza Ferreira</InfoCard>
-              <InfoCard>Numero: 260</InfoCard>
-              <InfoCard>CEP 89888-000 - Itapema - SC</InfoCard>
-            </Card>
-            <GlobalButtonLg onClick={() => setIsProfileModalOpen(true)}>
+            {user?.address?.map((address) => {
+              return (
+                <Card key={address.id}>
+                  <TitleCard>{address.adressIdentification}</TitleCard>
+                  <InfoCard>{address.street}</InfoCard>
+                  <InfoCard>Numero: {address.number}</InfoCard>
+                  <InfoCard>
+                    CEP {address.postal} - {address.city} - {address.state}
+                  </InfoCard>
+                </Card>
+              );
+            })}
+            <GlobalButtonLg onClick={() => setIsAddressModalOpen(true)}>
               Adicionar endereço
             </GlobalButtonLg>
             <img src="../../assets/adresspin.png" alt="" />
           </CardAdress>
         </ContainerCenter>
       </motion.div>
-      {isProfileModalOpen && <AdressModal />}
+      {isAddressModalOpen && <AdressModal />}
     </>
   );
 };

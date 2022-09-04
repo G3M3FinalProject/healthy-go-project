@@ -51,7 +51,6 @@ const UserRegister = () => {
       password: data.password,
       name: data.name,
     };
-    console.log(register);
     registerUser(register);
   }
   return (

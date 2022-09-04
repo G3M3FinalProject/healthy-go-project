@@ -12,6 +12,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   register: UseFormRegister<any>;
   type: string;
   defaultValue?: string;
+  maxLength?: number;
 }
 
 export const GlobalInputLg = ({

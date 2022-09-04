@@ -6,7 +6,7 @@ import { useModalContext } from "../../contexts/modalContext";
 import { ContainerMain, ContainerMidle } from "./styles";
 
 export const CheckOut = () => {
-  const { isProfileModalOpen } = useModalContext();
+  const { isAddressModalOpen } = useModalContext();
   return (
     <>
       <ContainerMain>
@@ -16,7 +16,7 @@ export const CheckOut = () => {
         </ContainerMidle>
         <ResumeCheckout />
       </ContainerMain>
-      {<AdressModal /> && isProfileModalOpen}
+      {isAddressModalOpen && <AdressModal />}
     </>
   );
 };
