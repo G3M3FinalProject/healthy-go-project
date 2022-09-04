@@ -1,46 +1,77 @@
 import { useForm } from "react-hook-form";
 
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { useRequestsUserContext } from "../../../contexts/requestsUserContext";
+import { requestFormSchema } from "../../../validations";
 import { GlobalInputLg } from "../../global-inputs";
 import { DivCredCard, DivDateCard, DivForm } from "./style";
 
+interface IUserPayament {
+  payament: string;
+  cvv: string;
+  validityDate: string;
+  titularName: string;
+  cardNumber: number;
+}
+
 export function FormPgto() {
+  const { postUserRequest } = useRequestsUserContext();
   const {
     register,
+    handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<IUserPayament>({
+    resolver: yupResolver(requestFormSchema),
+  });
 
+  const Submit = (data: IUserPayament) => {
+    const payamentObject = {
+      payament: data.payament,
+    };
+    postUserRequest(payamentObject);
+  };
   console.log(errors);
   return (
     <DivForm>
-      <form>
+      <form id="payamentForm" onSubmit={handleSubmit(Submit)}>
         <h2>Forma de Pagamento</h2>
         <div>
           <label>
+            <input
+              id="credito"
+              {...register("payament")}
+              name="payament"
+              type="radio"
+              value="Cartão de crédito"
+            />
             Cartão de Crédito
-            <input id="credito" name="base" type="radio" value="S" />
           </label>
           <label>
+            <input
+              id="debito"
+              {...register("payament")}
+              name="payament"
+              type="radio"
+              value="Cartão de débito"
+            />
             Cartão de débito
-            <input id="debito" name="base" type="radio" value="S" />
-          </label>
-          <label>
-            Pix
-            <input id="pix" name="base" type="radio" value="S" />
           </label>
         </div>
+
         <DivCredCard>
           <div>
             <GlobalInputLg
-              type="text"
+              type="number"
               label="Número do Cartão"
               register={register}
-              registerName="cartaonumero"
+              registerName="cardNumber"
             />
             <GlobalInputLg
               type="text"
               label="Nome do Títular"
               register={register}
-              registerName="nomeTitular"
+              registerName="titularName"
             />
             <label>
               Parcelamento*
@@ -57,7 +88,7 @@ export function FormPgto() {
               type="text"
               label="Validade"
               register={register}
-              registerName="validade"
+              registerName="validityDate"
             />
             <GlobalInputLg
               type="text"

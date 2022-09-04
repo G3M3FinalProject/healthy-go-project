@@ -7,7 +7,12 @@ import {
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { v4 as uuid } from "uuid";
+
 import { api } from "../services";
+import { ICompleteAddress } from "./addressContext";
+import { useCart } from "./cartContext";
+import { IProduct } from "./restaurantProductsContext";
 
 interface IAuthUserProviderData {
   isLoading: boolean;
@@ -39,6 +44,13 @@ interface IUserEdit {
   birthday?: string;
   cellphone?: string;
 }
+export interface IUserRequests {
+  id: number;
+  status: string;
+  date: string;
+  payament: string;
+  total: number;
+}
 
 export interface IUser extends IUserLogin {
   id?: string;
@@ -48,8 +60,11 @@ export interface IUser extends IUserLogin {
   email2?: string;
   birthday?: string;
   cellphone?: string;
+  address?: ICompleteAddress[];
+  requests?: IUserRequests[];
+  cart?: IProduct[];
 }
-interface IUserEditRes {
+export interface IUserEditRes {
   data: IUser;
 }
 
@@ -60,7 +75,9 @@ interface IAuthUserProps {
 const AuthUserContext = createContext({} as IAuthUserProviderData);
 
 export const AuthUserProvider = ({ children }: IAuthUserProps) => {
-  const [user, setUser] = useState<IUser | undefined>({} as IUser);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const initialUser = JSON.parse(localStorage.getItem("@healthyGo-user")!);
+  const [user, setUser] = useState(initialUser as IUser);
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -71,7 +88,10 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
+        const userLocalStorage = JSON.stringify(res.data.user);
         localStorage.setItem("@healthyGo-userId", res.data.user.id);
+        localStorage.setItem("@healthyGo-user", userLocalStorage);
+
         localStorage.setItem("@healthyGo-token", res.data.accessToken);
 
         api.defaults.headers.common[
@@ -117,6 +137,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
           .get(`/users/${id}`)
           .then((res) => {
             setUser(res.data);
+            console.log(res.data);
           })
           .catch(() => {
             localStorage.clear();
@@ -151,7 +172,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   };
 
   const logoutUser = () => {
-    setUser(undefined);
+    setUser({} as IUser);
     localStorage.clear();
   };
 
