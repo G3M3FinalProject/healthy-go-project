@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { FaCompass } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,7 +14,14 @@ import {
 import { useModalContext } from "../../contexts/modalContext";
 import { registerAdressFormSchema } from "../../validations";
 import { GlobalButtonLg, GlobalInputLg } from "../global-inputs";
-import { Modal, Container, Header, EstadoCidade, BairroNumero } from "./styles";
+import {
+  Modal,
+  Container,
+  Header,
+  StateCity,
+  Neighbourhood,
+  LocationDiv,
+} from "./styles";
 
 const AdressModal = () => {
   const { setIsAddressModalOpen } = useModalContext();
@@ -74,9 +82,10 @@ const AdressModal = () => {
               />
             </button>
           </Header>
-          <div>
+          <LocationDiv>
+            <FaCompass />
             <button onClick={() => getAddress()}>Usar localização atual</button>
-          </div>
+          </LocationDiv>
           <form onSubmit={handleSubmit(onSuccess)}>
             <GlobalInputLg
               label="Identificação do Endereço"
@@ -91,7 +100,7 @@ const AdressModal = () => {
               registerName="postal"
               defaultValue={cep.includes("undefined") ? "" : cep}
             />
-            <EstadoCidade>
+            <StateCity>
               <GlobalInputLg
                 label="Estado"
                 type="text"
@@ -106,14 +115,14 @@ const AdressModal = () => {
                 registerName="city"
                 defaultValue={address?.city}
               />
-            </EstadoCidade>
+            </StateCity>
             <GlobalInputLg
               label="Rua/Avenida"
               type="text"
               register={register}
               registerName="street"
             />
-            <BairroNumero>
+            <Neighbourhood>
               <GlobalInputLg
                 label="Bairro"
                 type="text"
@@ -126,7 +135,7 @@ const AdressModal = () => {
                 register={register}
                 registerName="number"
               />
-            </BairroNumero>
+            </Neighbourhood>
             <GlobalInputLg
               label="Complemento"
               type="text"
