@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const InputLg = styled.div`
+interface IInputLg {
+  error: boolean;
+}
+export const InputLg = styled.div<IInputLg>`
   position: relative;
 
   width: 100%;
@@ -13,7 +16,9 @@ export const InputLg = styled.div`
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 
     border-radius: 10px;
-    border: 1px solid rgba(67, 66, 66, 1);
+    border: 1px solid;
+    border-color: ${({ error }) =>
+      error ? "rgba(255, 0, 0, 1)" : "rgba(67, 66, 66, 1)"};
 
     background-color: #f7f6f3;
     color: black;
@@ -30,13 +35,15 @@ export const InputLg = styled.div`
 
     &:focus {
       background-color: #f7f6f3;
+      border-color: var(--brand-green);
     }
 
     &:focus ~ label {
       top: -0.5rem;
       font-size: 19px;
       left: 0.8rem;
-      color: var(--placeholder);
+      /* color: var(--placeholder); */
+      color: var(--brand-green);
     }
 
     &:not(:placeholder-shown) ~ label {
@@ -91,6 +98,23 @@ export const InputLg = styled.div`
       width: 89%;
       padding: 0;
       font-size: 8px;
+    }
+  }
+  & > div {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 0, 0, 1);
+
+    p {
+      color: rgba(255, 0, 0, 1);
+      font-size: 0.6rem;
+    }
+  }
+  @media (min-width: 768px) {
+    div {
+      p {
+        font-size: 0.8rem;
+      }
     }
   }
 `;
