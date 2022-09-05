@@ -132,10 +132,26 @@ export const ContainerCenter = styled.div`
   }
 `;
 
+export const RightDiv = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+
+  @media screen and (max-width: 769px) and (max-width: 920px) {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 20% 0 10% 5%;
+  }
+`;
+
 export const CardAdress = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow: scroll;
+  height: 500px;
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
     flex-direction: column;
@@ -173,6 +189,7 @@ export const Card = styled.div`
   width: 18rem;
   border-left: 5px solid rgba(18, 117, 58, 1);
   text-align: left;
+  margin-top: 10px;
 `;
 
 export const TitleCard = styled.h4`

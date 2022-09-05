@@ -106,14 +106,14 @@ export const LocationDiv = styled.div`
   margin: 1rem;
   padding: 1rem 0;
   gap: 1rem;
-  
+
   border: 1px solid black;
   border-radius: 10px;
-  
+
   svg {
     color: green;
   }
-  
+
   button {
     background: #f7f6f3;
   }
