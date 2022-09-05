@@ -41,6 +41,7 @@ interface ISummaryCart {
 const CartProvider = ({ children }: ICartProps) => {
   const { allRestaurants } = useRestaurantsContext();
   const { setUser, user } = useAuthUserContext();
+  console.log(user);
   const [cart, setCart] = useState<IProduct[]>(user?.cart as IProduct[]);
   const [subTotalCart, setSubTotalCart] = useState(0);
   const [freightCart, setFreightCart] = useState(0);

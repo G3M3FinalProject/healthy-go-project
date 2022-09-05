@@ -187,6 +187,9 @@ export const Container = styled.div`
       border-radius: 10px;
       width: 65%;
       color: white;
+      &:disabled {
+        background-color: grey;
+      }
     }
   }
 

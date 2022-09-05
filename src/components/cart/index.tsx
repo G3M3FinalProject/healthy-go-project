@@ -145,10 +145,15 @@ const Cart = ({ setisOpenCart }) => {
                 <p>Subtotal</p>
                 <p>{`R$ ${subTotalCart.toFixed(2)}`}</p>
               </div>
+
               <div className="frete">
                 <p>Frete</p>
                 <p>{`R$ ${freightCart.toFixed(2)}`}</p>
               </div>
+            </div>
+            <div className="subtotal">
+              <p>Desconto</p>
+              <p>R$ {hasDiscount ? (subTotalCart + freightCart) * 0.1 : 0}</p>
             </div>
             <div className="finalizar-cart">
               <div className="total">
@@ -156,6 +161,7 @@ const Cart = ({ setisOpenCart }) => {
                 <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
               </div>
               <button
+                disabled={totalCart > 20 ? false : true}
                 onClick={() => {
                   if (totalCart > 0) {
                     navigate("/checkout", { replace: true });
