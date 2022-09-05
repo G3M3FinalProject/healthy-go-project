@@ -29,6 +29,7 @@ export function FormPgto() {
     const payamentObject = {
       payament: data.payament,
     };
+    console.log(payamentObject);
     postUserRequest(payamentObject);
   };
   console.log(errors);
