@@ -1,22 +1,22 @@
 import AdressModal from "../../components/adress-modal";
-import { FormPgto } from "../../components/checkout/checkout-pagamento";
+import CheckoutForm from "../../components/checkout/checkout-form";
 import { ResumeCheckout } from "../../components/checkout/checkout-resume";
-import { Adress } from "../../components/checkout/checkout-selecione-endereco";
+import { ModalCheckOut } from "../../components/modalcheckout";
 import { useModalContext } from "../../contexts/modalContext";
 import { ContainerMain, ContainerMidle } from "./styles";
 
 export const CheckOut = () => {
-  const { isProfileModalOpen } = useModalContext();
+  const { isAddressModalOpen, isSuccessModalOpen } = useModalContext();
   return (
     <>
       <ContainerMain>
         <ContainerMidle>
-          <Adress />
-          <FormPgto />
+          <CheckoutForm />
         </ContainerMidle>
         <ResumeCheckout />
       </ContainerMain>
-      {<AdressModal /> && isProfileModalOpen}
+      {isAddressModalOpen && <AdressModal />}
+      {isSuccessModalOpen && <ModalCheckOut />}
     </>
   );
 };

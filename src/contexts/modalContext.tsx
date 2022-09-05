@@ -1,8 +1,10 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 interface IModalContextProviderData {
-  isProfileModalOpen: boolean;
-  setIsProfileModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isAddressModalOpen: boolean;
+  setIsAddressModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isSuccessModalOpen: boolean;
+  setIsSucessModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface IModalContextProps {
@@ -12,11 +14,17 @@ interface IModalContextProps {
 const ModalContext = createContext({} as IModalContextProviderData);
 
 export const ModalProvider = ({ children }: IModalContextProps) => {
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [isSuccessModalOpen, setIsSucessModalOpen] = useState(false);
 
   return (
     <ModalContext.Provider
-      value={{ isProfileModalOpen, setIsProfileModalOpen }}
+      value={{
+        isAddressModalOpen,
+        setIsAddressModalOpen,
+        isSuccessModalOpen,
+        setIsSucessModalOpen,
+      }}
     >
       {children}
     </ModalContext.Provider>

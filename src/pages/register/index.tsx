@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
-import { GlobalInputLg } from "../../components/global-inputs";
+import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
@@ -51,7 +51,6 @@ const UserRegister = () => {
       password: data.password,
       name: data.name,
     };
-    console.log(register);
     registerUser(register);
   }
   return (
@@ -95,7 +94,7 @@ const UserRegister = () => {
             <Paragraph>
               {errors.confirmPassword && errors.confirmPassword.message}
             </Paragraph>
-            <ButtonLg type="submit">Cadastrar</ButtonLg>
+            <GlobalButtonLg type="submit">Cadastrar</GlobalButtonLg>
           </Form>
         </FormDiv>
       </CenteringContainer>
