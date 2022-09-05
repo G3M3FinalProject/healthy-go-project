@@ -45,12 +45,9 @@ const CartProvider = ({ children }: ICartProps) => {
   const [subTotalCart, setSubTotalCart] = useState(0);
   const [freightCart, setFreightCart] = useState(0);
   const [totalCart, setTotalCart] = useState(0);
-  console.log(cart);
-  console.log(user);
 
   useEffect(() => {
     const cartObject = { cart: cart };
-    console.log(cartObject);
     const userName: IUser = JSON.parse(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       localStorage.getItem("@healthyGo-user")!,

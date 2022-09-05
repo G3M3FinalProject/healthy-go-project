@@ -6,6 +6,7 @@ import { v4 as uuid } from "uuid";
 
 import { api } from "../services";
 import {
+  IUser,
   IUserEditRes,
   IUserRequests,
   useAuthUserContext,
@@ -37,7 +38,6 @@ export const RequestsUserContextProvider = ({
     if (totalCart === 0) {
       return toast.error("Não há nada no carrinho");
     }
-
     const userID = user?.id;
     const unique_id = uuid();
     const date = new Date();
@@ -57,11 +57,16 @@ export const RequestsUserContextProvider = ({
     const reqRequests = {
       requests: allUserRequests,
     };
+    console.log(reqRequests);
+
     api
       .patch(`/users/${userID}`, reqRequests)
       .then((res: IUserEditRes) => {
         setUser(res.data);
         setCart([]);
+        const userString = JSON.stringify(user);
+        localStorage.setItem("@healthyGo-user", userString);
+        console.log(user + "teste");
         navigate("/home", { replace: true });
       })
       .catch((err) => console.log(err));
