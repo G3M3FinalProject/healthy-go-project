@@ -10,7 +10,6 @@ import {
 import {
   ContainerMenu,
   ContainerP,
-  ContainerPreco,
   ContainerSection,
   ContainerDivMenu,
 } from "./styles";
@@ -62,17 +61,19 @@ export const MenuRestaurant = () => {
                             <ContainerP>
                               {categoryFix(product.category)}
                             </ContainerP>
-                            <ContainerPreco>
+                            <p className="preco">
                               {product.price.toLocaleString("pt-br", {
                                 style: "currency",
                                 currency: "BRL",
                               })}
-                            </ContainerPreco>
+                            </p>
                           </ContainerSection>
                         </div>
-                        <button onClick={() => addToCart(product)}>
-                          Adicionar ao carrinho
-                        </button>
+                        <div className="add-carrinho">
+                          <button onClick={() => addToCart(product)}>
+                            adicionar ao carrinho
+                          </button>
+                        </div>
                       </li>
                     );
                   })}
