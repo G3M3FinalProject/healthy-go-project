@@ -22,9 +22,11 @@ export const Providers = ({ children }: IProvidersProps) => {
           <RestaurantProductsProvider>
             <CartProvider>
               <AddressContextProvider>
-                <RequestsUserContextProvider>
-                  <ModalProvider>{children}</ModalProvider>
-                </RequestsUserContextProvider>
+                <ModalProvider>
+                  <RequestsUserContextProvider>
+                    {children}
+                  </RequestsUserContextProvider>
+                </ModalProvider>
               </AddressContextProvider>
             </CartProvider>
           </RestaurantProductsProvider>

@@ -1,10 +1,16 @@
-import locationon from "../../../assets/locationon.svg";
-import {} from "../../../contexts/addressContext";
-import { useAuthUserContext } from "../../../contexts/authUserContext";
-import { useModalContext } from "../../../contexts/modalContext";
+import { UseFormRegister } from "react-hook-form";
+
+import locationIcon from "../../../../assets/locationIcon.svg";
+import { useAuthUserContext } from "../../../../contexts/authUserContext";
+import { useModalContext } from "../../../../contexts/modalContext";
 import { ContainerAdress, DivAdress, DivPicture } from "./style";
 
-export function Adress() {
+interface ISelectAddressForm {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  register: UseFormRegister<any>;
+}
+
+export const SelectAddressForm = ({ register }: ISelectAddressForm) => {
   const { user } = useAuthUserContext();
   const { setIsAddressModalOpen } = useModalContext();
   return (
@@ -16,12 +22,12 @@ export function Adress() {
         </button>
       </div>
       <DivAdress>
-        {user?.address?.map((address) => {
+        {user?.address?.map((address, index) => {
           return (
             <div key={address.id}>
               <h4>{address.adressIdentification}</h4>
               <DivPicture>
-                <img src={locationon} />
+                <img src={locationIcon} />
               </DivPicture>
               <p>
                 <span>{address.street} </span>
@@ -31,10 +37,16 @@ export function Adress() {
                 <span>{address.state} </span>
                 <span>{address.postal} </span>
               </p>
+              <input
+                {...register("address")}
+                type="radio"
+                name="address"
+                value={index}
+              />
             </div>
           );
         })}
       </DivAdress>
     </ContainerAdress>
   );
-}
+};

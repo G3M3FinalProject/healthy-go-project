@@ -3,6 +3,8 @@ import { createContext, ReactNode, useContext, useState } from "react";
 interface IModalContextProviderData {
   isAddressModalOpen: boolean;
   setIsAddressModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isSuccessModalOpen: boolean;
+  setIsSucessModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface IModalContextProps {
@@ -13,10 +15,16 @@ const ModalContext = createContext({} as IModalContextProviderData);
 
 export const ModalProvider = ({ children }: IModalContextProps) => {
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [isSuccessModalOpen, setIsSucessModalOpen] = useState(false);
 
   return (
     <ModalContext.Provider
-      value={{ isAddressModalOpen, setIsAddressModalOpen }}
+      value={{
+        isAddressModalOpen,
+        setIsAddressModalOpen,
+        isSuccessModalOpen,
+        setIsSucessModalOpen,
+      }}
     >
       {children}
     </ModalContext.Provider>

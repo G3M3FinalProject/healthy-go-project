@@ -79,7 +79,7 @@ const CartProvider = ({ children }: ICartProps) => {
       const newTotal = subTotalCart + freightCart;
       setTotalCart(newTotal);
     }
-  }, [cart]);
+  }, [cart, subTotalCart, freightCart]);
 
   //frete
   const amountCart = cart?.reduce((acc, product) => {
@@ -102,7 +102,6 @@ const CartProvider = ({ children }: ICartProps) => {
 
   const addToCart = (product: IProduct) => {
     const isOnCart = cart?.some(({ id }) => id == product.id);
-    const indexOnSale = cart?.findIndex(({ id }) => id == product.id);
 
     if (isOnCart) {
       addOneProduct(product.id);
