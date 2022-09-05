@@ -1,5 +1,7 @@
 import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 
+import { error } from "console";
+
 import locationIcon from "../../../../assets/locationIcon.svg";
 import { useAuthUserContext } from "../../../../contexts/authUserContext";
 import { useModalContext } from "../../../../contexts/modalContext";
@@ -28,14 +30,14 @@ interface ISelectAddressForm {
   }>;
 }
 
-export const SelectAddressForm = ({ register }: ISelectAddressForm) => {
+export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
   const { user } = useAuthUserContext();
   const { setIsAddressModalOpen } = useModalContext();
   return (
     <ContainerAdress>
       <div>
         <h2>Selecione seu endereço</h2>
-        <button onClick={() => setIsAddressModalOpen(true)}>
+        <button type="button" onClick={() => setIsAddressModalOpen(true)}>
           + Adicionar Endereço
         </button>
       </div>
@@ -64,6 +66,12 @@ export const SelectAddressForm = ({ register }: ISelectAddressForm) => {
             </div>
           );
         })}
+        {errors.address?.message && (
+          <p>
+            É necessário adicionar/selecionar um endereço para finalizar o
+            pedido!
+          </p>
+        )}
       </DivAdress>
     </ContainerAdress>
   );

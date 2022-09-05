@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { GoLocation } from "react-icons/go";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
@@ -6,6 +8,7 @@ import { motion } from "framer-motion";
 import AdressModal from "../../components/adress-modal";
 import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
+import Loading from "../../components/loading";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
 import { editFormSchema } from "../../validations";
@@ -18,6 +21,8 @@ import {
   TitleCard,
   InfoCard,
   RightDiv,
+  DivButton,
+  DivAdress,
 } from "./styles";
 import { CenteringContainer, Form, FormDiv } from "./styles";
 
@@ -36,7 +41,7 @@ interface IRegisterData {
 }
 
 const EditProfile = () => {
-  const { editUser, user, getUser } = useAuthUserContext();
+  const { editUser, user, getUser, isLoading } = useAuthUserContext();
   const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
 
   const {
@@ -58,9 +63,12 @@ const EditProfile = () => {
       editUser(register, getItem);
     }
   }
+
   if (getItem) {
     getUser(getItem);
   }
+
+  if (isLoading) return <Loading />;
 
   return (
     <>
@@ -104,12 +112,17 @@ const EditProfile = () => {
                   register={register}
                   registerName="email"
                 />
-                <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
+                <DivButton>
+                  <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
+                </DivButton>
               </Form>
             </FormDiv>
           </CenteringContainer>
           <RightDiv>
-            <h3>Endereços</h3>
+            <DivAdress>
+              <GoLocation /> <h3> Endereços</h3>
+            </DivAdress>
+
             <CardAdress>
               {user?.address?.map((address) => {
                 return (
@@ -127,7 +140,6 @@ const EditProfile = () => {
             <GlobalButtonLg onClick={() => setIsAddressModalOpen(true)}>
               Adicionar endereço
             </GlobalButtonLg>
-            <img src="../../assets/adresspin.png" alt="" />
           </RightDiv>
         </ContainerCenter>
       </motion.div>
