@@ -51,18 +51,6 @@ export const InputLg = styled.div<IInputLg>`
       font-size: 19px;
       left: 0.8rem;
     }
-
-    @media screen and (max-width: 770px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
-    }
-
-    @media screen and (max-width: 420px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
-    }
   }
 
   label {
@@ -87,18 +75,6 @@ export const InputLg = styled.div<IInputLg>`
     font-weight: 300;
     font-size: 20px;
     line-height: 25px;
-
-    @media screen and (max-width: 770px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
-    }
-
-    @media screen and (max-width: 420px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
-    }
   }
   & > div {
     display: flex;

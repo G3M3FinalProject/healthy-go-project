@@ -45,6 +45,10 @@ export const Flag = styled.img`
   position: absolute;
   width: 100%;
   height: 25%;
+
+  @media screen and (min-width: 1669px) {
+    height: 20%;
+  }
 `;
 
 export const Logo = styled.img`
@@ -212,14 +216,18 @@ export const Paragraph = styled.div`
   }
 `;
 
-export const CartBackground = styled.button`
+interface IIsScrolled {
+  scrolling: boolean;
+}
+
+export const CartBackground = styled.button<IIsScrolled>`
   display: flex;
   align-items: center;
 
   position: relative;
 
-  font-family: "Petrona", serif;
   font-size: 16px;
+  font-family: "Petrona", serif;
 
   cursor: pointer;
 
@@ -229,4 +237,8 @@ export const CartBackground = styled.button`
   padding: 0.7rem;
 
   border-radius: 20px;
+
+  position: ${({ scrolling }: IIsScrolled) => scrolling && "fixed"};
+  top: ${({ scrolling }: IIsScrolled) => scrolling && "5px"};
+  right: ${({ scrolling }: IIsScrolled) => scrolling && "5px"};
 `;
