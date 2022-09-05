@@ -12,6 +12,7 @@ import mobileflag from "../../assets/mobileflag.png";
 import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
 import { useCart } from "../../contexts/cartContext";
 import Cart from "../cart";
+import { useScrollPosition } from "../cart-header-hooks";
 import DropDownModal from "../dropdown-header";
 import {
   Container,
@@ -30,18 +31,21 @@ const Header = () => {
   const { user } = useAuthUserContext();
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
   const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
+  const [isMobile, setMobile] = useState(window.innerWidth < 426);
   const [isOpenCart, setisOpenCart] = useState<boolean>(false);
   const { amountCart } = useCart();
+  const navigate = useNavigate();
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const scrollPosition = useScrollPosition();
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 425);
+    setMobile(window.innerWidth < 426);
   };
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
-  const navigate = useNavigate();
-  const modalRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (event: any) => {
@@ -74,6 +78,20 @@ const Header = () => {
           </Brand>
         </Link>
         <Menu>
+          {isMobile && (
+            <CartBackground
+              scrolling={scrollPosition > 0}
+              onClick={() => {
+                setisOpenCart(true);
+              }}
+            >
+              {amountCart}
+              <AiOutlineShoppingCart
+                style={{ width: "30px", height: "30px" }}
+              />
+            </CartBackground>
+          )}
+
           <HamburguerMenu
             onClick={() => setisModalOpen(!isModalOpen)}
             ref={modalRef}
@@ -95,6 +113,7 @@ const Header = () => {
                     <MdKeyboardArrowDown />
                   </CartBackground>
                   <CartBackground
+                    scrolling={scrollPosition > 0}
                     onClick={() => {
                       setisOpenCart(true);
                     }}

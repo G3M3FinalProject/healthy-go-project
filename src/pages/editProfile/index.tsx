@@ -17,6 +17,7 @@ import {
   Paragragh,
   TitleCard,
   InfoCard,
+  RightDiv,
 } from "./styles";
 import { CenteringContainer, Form, FormDiv } from "./styles";
 import Loading from "../../components/loading";
@@ -111,25 +112,27 @@ const EditProfile = () => {
               </Form>
             </FormDiv>
           </CenteringContainer>
-          <CardAdress>
+          <RightDiv>
             <h3>Endereços</h3>
-            {user?.address?.map((address) => {
-              return (
-                <Card key={address.id}>
-                  <TitleCard>{address.adressIdentification}</TitleCard>
-                  <InfoCard>{address.street}</InfoCard>
-                  <InfoCard>Numero: {address.number}</InfoCard>
-                  <InfoCard>
-                    CEP {address.postal} - {address.city} - {address.state}
-                  </InfoCard>
-                </Card>
-              );
-            })}
+            <CardAdress>
+              {user?.address?.map((address) => {
+                return (
+                  <Card key={address.id}>
+                    <TitleCard>{address.adressIdentification}</TitleCard>
+                    <InfoCard>{address.street}</InfoCard>
+                    <InfoCard>Numero: {address.number}</InfoCard>
+                    <InfoCard>
+                      CEP {address.postal} - {address.city} - {address.state}
+                    </InfoCard>
+                  </Card>
+                );
+              })}
+            </CardAdress>
             <GlobalButtonLg onClick={() => setIsAddressModalOpen(true)}>
               Adicionar endereço
             </GlobalButtonLg>
             <img src="../../assets/adresspin.png" alt="" />
-          </CardAdress>
+          </RightDiv>
         </ContainerCenter>
       </motion.div>
       {isAddressModalOpen && <AdressModal />}

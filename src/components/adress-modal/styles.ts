@@ -38,8 +38,10 @@ export const Container = styled.div`
 
   form {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+
+    width: 100%;
   }
 `;
 
@@ -66,7 +68,6 @@ export const Header = styled.div`
     }
   }
 `;
-
 export const StateCity = styled.div`
   display: flex;
 
@@ -101,14 +102,18 @@ export const LocationDiv = styled.div`
   font-weight: 600;
   letter-spacing: 1px;
   font-family: "Petrona", serif;
+
   margin: 1rem;
   padding: 1rem 0;
   gap: 1rem;
+
   border: 1px solid black;
   border-radius: 10px;
+
   svg {
     color: green;
   }
+
   button {
     background: #f7f6f3;
   }

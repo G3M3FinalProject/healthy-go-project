@@ -1,4 +1,4 @@
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 
 import { GlobalInputLg } from "../../../global-inputs";
 import { DivCredCard, DivDateCard, DivForm } from "./style";
@@ -6,8 +6,26 @@ import { DivCredCard, DivDateCard, DivForm } from "./style";
 interface IPayamentFormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
+  errors: FieldErrorsImpl<{
+    payament: string;
+    cvv: string;
+    validityDate: string;
+    titularName: string;
+    cardNumber: number;
+    address: {
+      adressIdentification: string;
+      id: number;
+      city: string;
+      state: string;
+      postal: string;
+      street: string;
+      district: string;
+      number: number;
+      complement: string;
+    };
+  }>;
 }
-export const PayamentForm = ({ register }: IPayamentFormProps) => {
+export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
   return (
     <DivForm>
       <h2>Forma de Pagamento</h2>
@@ -41,12 +59,14 @@ export const PayamentForm = ({ register }: IPayamentFormProps) => {
             label="Número do Cartão"
             register={register}
             registerName="cardNumber"
+            errors={errors.cardNumber?.message}
           />
           <GlobalInputLg
             type="text"
             label="Nome do Títular"
             register={register}
             registerName="titularName"
+            errors={errors.titularName?.message}
           />
           <label>
             Parcelamento*
@@ -64,12 +84,14 @@ export const PayamentForm = ({ register }: IPayamentFormProps) => {
             label="Validade"
             register={register}
             registerName="validityDate"
+            errors={errors.validityDate?.message}
           />
           <GlobalInputLg
             type="text"
             label="CVV"
             register={register}
             registerName="cvv"
+            errors={errors.cvv?.message}
           />
         </DivDateCard>
       </DivCredCard>

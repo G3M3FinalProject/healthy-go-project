@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaCompass } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
@@ -25,12 +25,13 @@ import {
 
 const AdressModal = () => {
   const { setIsAddressModalOpen } = useModalContext();
-  const { getAddress, address, clearAddress, registerNewAdressUser } =
+  const { getAddress, clearAddress, registerNewAdressUser } =
     useAddressContext();
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ICompleteAddress>({
     resolver: yupResolver(registerAdressFormSchema),
@@ -53,13 +54,11 @@ const AdressModal = () => {
     };
   }, []);
   // defaultValue={`${address?.postal}-000`}
-  const cep = `${address?.postal}-000`;
-
   const onSuccess = (data: ICompleteAddress) => {
     console.log(data);
     registerNewAdressUser(data);
   };
-
+  console.log(errors);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -84,7 +83,13 @@ const AdressModal = () => {
           </Header>
           <LocationDiv>
             <FaCompass />
-            <button onClick={() => getAddress()}>Usar localização atual</button>
+            <button
+              onClick={() => {
+                getAddress(setValue);
+              }}
+            >
+              Usar localização atual
+            </button>
           </LocationDiv>
           <form onSubmit={handleSubmit(onSuccess)}>
             <GlobalInputLg
@@ -92,13 +97,14 @@ const AdressModal = () => {
               type="text"
               register={register}
               registerName="adressIdentification"
+              errors={errors?.adressIdentification?.message}
             />
             <GlobalInputLg
               label="CEP"
               type="text"
               register={register}
               registerName="postal"
-              defaultValue={cep.includes("undefined") ? "" : cep}
+              errors={errors?.postal?.message}
             />
             <StateCity>
               <GlobalInputLg
@@ -106,14 +112,14 @@ const AdressModal = () => {
                 type="text"
                 register={register}
                 registerName="state"
-                defaultValue={address?.state}
+                errors={errors?.state?.message}
               />
               <GlobalInputLg
                 label="Cidade"
                 type="text"
                 register={register}
                 registerName="city"
-                defaultValue={address?.city}
+                errors={errors?.city?.message}
               />
             </StateCity>
             <GlobalInputLg
@@ -121,6 +127,7 @@ const AdressModal = () => {
               type="text"
               register={register}
               registerName="street"
+              errors={errors?.street?.message}
             />
             <Neighbourhood>
               <GlobalInputLg
@@ -128,12 +135,14 @@ const AdressModal = () => {
                 type="text"
                 register={register}
                 registerName="district"
+                errors={errors?.district?.message}
               />
               <GlobalInputLg
                 label="Número"
-                type="text"
+                type="number"
                 register={register}
                 registerName="number"
+                errors={errors?.number?.message}
               />
             </Neighbourhood>
             <GlobalInputLg

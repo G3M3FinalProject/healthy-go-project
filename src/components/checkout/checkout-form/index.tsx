@@ -41,8 +41,8 @@ const CheckoutForm = () => {
 
   return (
     <form id="payamentForm" onSubmit={handleSubmit(Submit)}>
-      <SelectAddressForm register={register} />
-      <PayamentForm register={register} />
+      <SelectAddressForm register={register} errors={errors} />
+      <PayamentForm register={register} errors={errors} />
     </form>
   );
 };

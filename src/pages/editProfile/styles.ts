@@ -17,6 +17,7 @@ export const FormDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin: 0 0 0 100px;
 
   height: 100%;
 
@@ -29,6 +30,10 @@ export const FormDiv = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+  }
+
+  @media screen and (max-width: 769px) and (max-width: 920px) {
+    margin: auto;
   }
 `;
 
@@ -132,10 +137,32 @@ export const ContainerCenter = styled.div`
   }
 `;
 
+export const RightDiv = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (max-width: 769px) and (max-width: 920px) {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 10% 0 0% 0%;
+  }
+`;
+
 export const CardAdress = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow: scroll;
+  height: 500px;
+  overflow-x: hidden;
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
     flex-direction: column;
@@ -173,6 +200,7 @@ export const Card = styled.div`
   width: 18rem;
   border-left: 5px solid rgba(18, 117, 58, 1);
   text-align: left;
+  margin-top: 10px;
 `;
 
 export const TitleCard = styled.h4`
