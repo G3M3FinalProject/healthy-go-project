@@ -8,7 +8,7 @@ import { IUserEditRes, useAuthUserContext } from "./authUserContext";
 
 interface IAddressContextProviderData {
   address?: IAddress;
-  getAddress: () => void;
+  getAddress: (setValue: any) => void;
   clearAddress: () => void;
   registerNewAdressUser: (data: ICompleteAddress) => void;
 }
@@ -30,7 +30,7 @@ export interface ICompleteAddress {
 }
 
 interface IResAddress {
-  data?: IAddress;
+  data: IAddress;
 }
 interface IAddress {
   city: string;
@@ -47,10 +47,16 @@ export const AddressContextProvider = ({ children }: IAddressContextProps) => {
   const clearAddress = () => {
     setAddress(undefined);
   };
-  const getAddress = () => {
+  const getAddress = (setValue) => {
     addressApi
       .get("/50ad4a90-fd5e-11ec-b463-1717be8c9ff1")
-      .then((res: IResAddress) => setAddress(res.data))
+      .then((res: IResAddress) => {
+        const postal = `${res.data.postal}-000`;
+
+        setValue("state", res.data.state);
+        setValue("city", res.data.city);
+        setValue("postal", postal);
+      })
       .catch(() =>
         toast.error("Desative o adBlock para obter a localização atual!", {
           id: "address-error",

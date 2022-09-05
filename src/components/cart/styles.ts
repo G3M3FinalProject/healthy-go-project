@@ -35,8 +35,26 @@ export const Container = styled.div`
       border-radius: 5px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: green;
+      background-color: rgba(150, 240, 169, 1);
       border-radius: 10px;
+      height: 15px;
+    }
+    height: 69%;
+    margin-top: 3rem;
+  }
+
+  .carrinho-vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8rem 1rem;
+
+    img {
+      width: 105px;
+    }
+
+    p {
+      margin-top: 1rem;
     }
   }
 
@@ -73,6 +91,10 @@ export const Container = styled.div`
     padding: 0.5rem;
     margin: 1rem;
 
+    .divider {
+      margin-bottom: 38px;
+    }
+
     h2 {
       font-size: 120%;
       margin-bottom: 0.5rem;
@@ -96,7 +118,8 @@ export const Container = styled.div`
         align-items: center;
 
         img {
-          width: 100px;
+          max-width: 100px;
+          max-height: 80px;
         }
         .info {
           p {
@@ -130,8 +153,10 @@ export const Container = styled.div`
   }
 
   .rodape-cart {
-    width: 100%;
-    margin-top: 1rem;
+    position: fixed;
+    top: 80%;
+    width: 26%;
+    background-color: white;
   }
 
   .info-total {
@@ -168,20 +193,26 @@ export const Container = styled.div`
 
   .divider {
     height: 2px;
-    background-color: black;
+    background-color: gray;
   }
   @media screen and (max-width: 950px) {
     width: 45%;
+    .rodape-cart {
+      width: 45%;
+    }
   }
   @media screen and (max-width: 560px) {
     width: 80%;
 
     .rodape-cart {
-      width: 100%;
+      width: 80%;
     }
   }
   @media screen and (max-width: 320px) {
     width: 100%;
+    .rodape-cart {
+      width: 100%;
+    }
   }
 `;
 

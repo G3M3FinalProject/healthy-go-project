@@ -18,10 +18,6 @@ import {
   Back,
 } from "./styles";
 
-type UserContextType = {
-  registerFunction: (data: IRegisterData) => void;
-};
-
 interface IRegisterData {
   email: string;
   password: string;
@@ -73,31 +69,29 @@ const UserRegister = () => {
               label="Nome *"
               register={register}
               registerName="name"
+              errors={errors.name?.message}
             />
-            <Paragraph>{errors.name && errors.name.message}</Paragraph>
             <GlobalInputLg
               type="email"
               label="E-mail *"
               register={register}
               registerName="email"
+              errors={errors.email?.message}
             />
-            <Paragraph>{errors.email && errors.email.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Senha *"
               register={register}
               registerName="password"
+              errors={errors.password?.message}
             />
-            <Paragraph>{errors.password && errors.password.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Confirmação de senha *"
               register={register}
               registerName="confirmPassword"
+              errors={errors.confirmPassword?.message}
             />
-            <Paragraph>
-              {errors.confirmPassword && errors.confirmPassword.message}
-            </Paragraph>
             <GlobalButtonLg type="submit">Cadastrar</GlobalButtonLg>
           </Form>
         </FormDiv>

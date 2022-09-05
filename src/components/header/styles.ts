@@ -234,6 +234,8 @@ export const CartBackground = styled.button<IIsScrolled>`
   color: white;
   background: #54a656;
 
+  color: white;
+
   padding: 0.7rem;
 
   border-radius: 20px;

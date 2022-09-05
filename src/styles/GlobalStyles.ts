@@ -29,6 +29,14 @@ body {
     height: 100vh;
     font-family: 'Petrona', serif;
     background: #f7f6f3;
+    ::-webkit-scrollbar {
+      width: 5px;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(36, 133, 64, 1);
+      border-radius: 10px;
+    }
 }
 
 button {

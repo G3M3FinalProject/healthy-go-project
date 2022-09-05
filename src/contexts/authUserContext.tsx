@@ -7,11 +7,8 @@ import {
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { v4 as uuid } from "uuid";
-
 import { api } from "../services";
 import { ICompleteAddress } from "./addressContext";
-import { useCart } from "./cartContext";
 import { IProduct } from "./restaurantProductsContext";
 
 interface IAuthUserProviderData {

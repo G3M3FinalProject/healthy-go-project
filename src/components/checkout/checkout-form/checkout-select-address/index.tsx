@@ -1,4 +1,4 @@
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 
 import locationIcon from "../../../../assets/locationIcon.svg";
 import { useAuthUserContext } from "../../../../contexts/authUserContext";
@@ -8,6 +8,24 @@ import { ContainerAdress, DivAdress, DivPicture } from "./style";
 interface ISelectAddressForm {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
+  errors: FieldErrorsImpl<{
+    payament: string;
+    cvv: string;
+    validityDate: string;
+    titularName: string;
+    cardNumber: number;
+    address: {
+      adressIdentification: string;
+      id: number;
+      city: string;
+      state: string;
+      postal: string;
+      street: string;
+      district: string;
+      number: number;
+      complement: string;
+    };
+  }>;
 }
 
 export const SelectAddressForm = ({ register }: ISelectAddressForm) => {
