@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { AiOutlineLeft, AiOutlineMinus } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -19,14 +20,12 @@ const Cart = ({ setisOpenCart }) => {
   } = useCart();
   const priceToDiscount = 80 - totalCart;
   const hasDiscount = 80 - totalCart >= 0;
-  // const modalRef = useRef();
   const modalRef = useRef<HTMLHeadingElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleOutClick(event) {
       const value = modalRef?.current;
-
-      console.log(event.target);
 
       if (value && !value.contains(event.target)) {
         setisOpenCart(false);
@@ -74,7 +73,6 @@ const Cart = ({ setisOpenCart }) => {
                   </p>
                 )}
               </div>
-              {console.log(cart)}
               {cart?.map((item, index, arr) => {
                 let restaurantTitle = <></>;
 
@@ -136,7 +134,16 @@ const Cart = ({ setisOpenCart }) => {
                 <p>Total</p>
                 <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
               </div>
-              <button>Finalizar Pedido</button>
+              <button
+                onClick={() => {
+                  if (totalCart > 0) {
+                    navigate("/checkout", { replace: true });
+                    setisOpenCart(false);
+                  }
+                }}
+              >
+                Finalizar Pedido
+              </button>
             </div>
           </div>
         </Container>

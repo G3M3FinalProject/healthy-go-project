@@ -1,6 +1,7 @@
 import { BiBookOpen } from "react-icons/bi";
 import { BsBoxArrowRight } from "react-icons/bs";
 import { BsFilePersonFill } from "react-icons/bs";
+import { BsHandbagFill } from "react-icons/bs";
 import { FaRunning, FaPencilAlt } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
@@ -33,6 +34,12 @@ const DropDownModal = () => {
               <FaPencilAlt style={{ color: "black" }} />
               <Link to="/profile">
                 <p>Editar perfil</p>
+              </Link>
+            </Menu>
+            <Menu>
+              <BsHandbagFill style={{ color: "black" }} />
+              <Link to="/requests">
+                <p>Meus pedidos</p>
               </Link>
             </Menu>
             <Menu onClick={() => navigate("/aboutus", { replace: true })}>

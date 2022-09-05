@@ -36,4 +36,5 @@ export const requestFormSchema = yup.object().shape({
   titularName: yup.string().required("Campo obrigatório"),
   cardNumber: yup.number().required("Campo obrigatório"),
   payament: yup.string().required("Campo obrigatório"),
+  address: yup.string().required("Campo obrigatório"),
 });
