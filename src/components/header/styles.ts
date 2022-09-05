@@ -212,14 +212,18 @@ export const Paragraph = styled.div`
   }
 `;
 
-export const CartBackground = styled.button`
+interface IIsScrolled {
+  scrolling: boolean;
+}
+
+export const CartBackground = styled.button<IIsScrolled>`
   display: flex;
   align-items: center;
 
   position: relative;
 
-  font-family: "Petrona", serif;
   font-size: 16px;
+  font-family: "Petrona", serif;
 
   cursor: pointer;
 
@@ -229,4 +233,8 @@ export const CartBackground = styled.button`
   padding: 0.7rem;
 
   border-radius: 20px;
+
+  position: ${({ scrolling }: IIsScrolled) => scrolling && "fixed"};
+  top: ${({ scrolling }: IIsScrolled) => scrolling && "5"};
+  right: ${({ scrolling }: IIsScrolled) => scrolling && "5"};
 `;
