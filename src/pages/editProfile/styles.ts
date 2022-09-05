@@ -137,12 +137,14 @@ export const RightDiv = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: scroll;
+  overflow-x: hidden;
+  margin: auto;
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    margin: 20% 0 10% 5%;
+    margin: 10% 0 0% 0%;
   }
 `;
 
