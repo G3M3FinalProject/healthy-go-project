@@ -24,7 +24,6 @@ export const Container = styled.div`
 
   width: 28%;
   height: 100%;
-
   background-color: white;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.7);
 

@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { GoLocation } from "react-icons/go";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
@@ -18,8 +20,12 @@ import {
   Paragragh,
   TitleCard,
   InfoCard,
+  RightDiv,
+  DivButton,
+  DivAdress,
 } from "./styles";
 import { CenteringContainer, Form, FormDiv } from "./styles";
+import Loading from "../../components/loading";
 
 export interface IFormEditData {
   name: string;
@@ -38,6 +44,9 @@ interface IRegisterData {
 const EditProfile = () => {
   const { editUser, user, getUser, isLoading } = useAuthUserContext();
   const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
+  const { isLoading } = useAuthUserContext();
+
+  if (isLoading) return <Loading />;
 
   const {
     register,
@@ -107,29 +116,35 @@ const EditProfile = () => {
                   register={register}
                   registerName="email"
                 />
-                <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
+                <DivButton>
+                  <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
+                </DivButton>
               </Form>
             </FormDiv>
           </CenteringContainer>
-          <CardAdress>
-            <h3>Endereços</h3>
-            {user?.address?.map((address) => {
-              return (
-                <Card key={address.id}>
-                  <TitleCard>{address.adressIdentification}</TitleCard>
-                  <InfoCard>{address.street}</InfoCard>
-                  <InfoCard>Numero: {address.number}</InfoCard>
-                  <InfoCard>
-                    CEP {address.postal} - {address.city} - {address.state}
-                  </InfoCard>
-                </Card>
-              );
-            })}
+          <RightDiv>
+            <DivAdress>
+              <GoLocation /> <h3> Endereços</h3>
+            </DivAdress>
+
+            <CardAdress>
+              {user?.address?.map((address) => {
+                return (
+                  <Card key={address.id}>
+                    <TitleCard>{address.adressIdentification}</TitleCard>
+                    <InfoCard>{address.street}</InfoCard>
+                    <InfoCard>Numero: {address.number}</InfoCard>
+                    <InfoCard>
+                      CEP {address.postal} - {address.city} - {address.state}
+                    </InfoCard>
+                  </Card>
+                );
+              })}
+            </CardAdress>
             <GlobalButtonLg onClick={() => setIsAddressModalOpen(true)}>
               Adicionar endereço
             </GlobalButtonLg>
-            <img src="../../assets/adresspin.png" alt="" />
-          </CardAdress>
+          </RightDiv>
         </ContainerCenter>
       </motion.div>
       {isAddressModalOpen && <AdressModal />}

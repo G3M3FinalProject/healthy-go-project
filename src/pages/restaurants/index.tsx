@@ -9,6 +9,9 @@ import { ContainerHeader, ContainerRestaurants, ContainerTop } from "./styles";
 export const Restaurants = () => {
   const { isLoading } = useAuthUserContext();
   const { restaurantInfo } = useRestaurantProductsContext();
+  const { isLoading } = useAuthUserContext();
+
+  if (isLoading) return <Loading />;
 
   if (isLoading) return <Loading />;
 

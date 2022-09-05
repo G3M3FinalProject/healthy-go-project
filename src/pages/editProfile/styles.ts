@@ -4,8 +4,9 @@ export const CenteringContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
+  max-width: 1440px;
   height: 100%;
+  margin: 0 auto;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -17,6 +18,7 @@ export const FormDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin: -135px 0 0 100px;
 
   height: 100%;
 
@@ -29,6 +31,10 @@ export const FormDiv = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+  }
+
+  @media screen and (max-width: 769px) and (max-width: 920px) {
+    margin: auto;
   }
 `;
 
@@ -132,24 +138,43 @@ export const ContainerCenter = styled.div`
   }
 `;
 
-export const CardAdress = styled.div`
+export const RightDiv = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow-x: hidden;
+  margin: auto;
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    margin: 20% 0 10% 5%;
+    margin: 10% 0 0% 0%;
+  }
+`;
+
+export const CardAdress = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  height: 500px;
+  overflow-x: hidden;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: 769px) and (max-width: 920px) {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
 export const ButtonSave = styled.button`
   width: 10.125rem;
   height: fit-content;
-  margin-top: 15rem;
-
+  margin-top: 12rem;
   border-radius: 15px;
 
   font-weight: 700;
@@ -170,9 +195,10 @@ export const ButtonSave = styled.button`
 export const Card = styled.div`
   border-radius: 10px;
   background-color: rgba(202, 255, 215, 1);
-  width: 18rem;
+  min-width: 20rem;
   border-left: 5px solid rgba(18, 117, 58, 1);
   text-align: left;
+  margin-top: 10px;
 `;
 
 export const TitleCard = styled.h4`
@@ -184,4 +210,17 @@ export const InfoCard = styled.h4`
   font-family: "Petrona", serif;
   margin: 0 0 0 0.75rem;
   font-weight: lighter;
+`;
+
+export const DivButton = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: -35px;
+  width: 107%;
+  height: fit-content;
+`;
+
+export const DivAdress = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
