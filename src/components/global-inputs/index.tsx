@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { InputHTMLAttributes } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -12,6 +12,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   register: UseFormRegister<any>;
   type: string;
   defaultValue?: string;
+  maxLength?: number;
 }
 
 export const GlobalInputLg = ({

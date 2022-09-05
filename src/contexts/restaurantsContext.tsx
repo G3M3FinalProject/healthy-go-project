@@ -12,7 +12,11 @@ import { IRestaurantInfo } from "./restaurantProductsContext";
 interface IRestaurantsProviderData {
   allRestaurants: IRestaurantInfo[];
   filteredRestaurants: IRestaurantInfo[];
-  setFilteredRestaurants: (restaurants: IRestaurantInfo[]) => void;
+  setFilteredRestaurants: React.Dispatch<
+    React.SetStateAction<IRestaurantInfo[]>
+  >;
+  setIsFilterActive: React.Dispatch<React.SetStateAction<boolean>>;
+  isFilterActive: boolean;
 }
 
 interface IRestaurantsProps {
@@ -26,19 +30,18 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
   const [filteredRestaurants, setFilteredRestaurants] = useState<
     IRestaurantInfo[]
   >([]);
-  const [categoriesFiltered, setCategoriesFiltered] = useState<string[]>([]);
+  const [isFilterActive, setIsFilterActive] = useState(false);
 
   useEffect(() => {
-    api
-      .get("/restaurants")
-      .then((response) => {
-        console.log(response);
-        setAllRestaurants(response.data);
-        // Ver isso
-        setFilteredRestaurants(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    if (allRestaurants.length === 0) {
+      api
+        .get("/restaurants")
+        .then((response) => {
+          setAllRestaurants(response.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [allRestaurants]);
 
   return (
     <RestaurantsContext.Provider
@@ -46,6 +49,8 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
         allRestaurants,
         filteredRestaurants,
         setFilteredRestaurants,
+        isFilterActive,
+        setIsFilterActive,
       }}
     >
       {children}

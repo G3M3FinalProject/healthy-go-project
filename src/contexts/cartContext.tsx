@@ -6,10 +6,12 @@ import {
   useState,
 } from "react";
 
+import { api } from "../services";
+import { IUser, IUserEditRes, useAuthUserContext } from "./authUserContext";
 import { IProduct } from "./restaurantProductsContext";
+import { useRestaurantsContext } from "./restaurantsContext";
 
 const CartContext = createContext<ICartProviderData>({} as ICartProviderData);
-export const useCart = () => useContext(CartContext);
 
 interface ICartProps {
   children: ReactNode;
@@ -26,36 +28,68 @@ interface ICartProviderData {
   totalCart: number;
   subTotalCart: number;
   freightCart: number;
+  summaryCart: ISummaryCart[];
+}
+
+interface ISummaryCart {
+  restaurant: string;
+  price: number;
+  amount: number;
+  logo?: string;
 }
 
 const CartProvider = ({ children }: ICartProps) => {
-  const [cart, setCart] = useState<IProduct[]>([]);
-  //frete
-  const restaurants: string[] = [];
-  cart.forEach((product) => {
-    if (!restaurants.includes(product.restaurant))
-      restaurants.push(product.restaurant);
-  });
-  const freightCart = restaurants.length * 8;
-  const amountCart = cart.reduce((acc, product) => {
-    return acc + product.amount;
-  }, 0);
-  const productsCartCopy = [...cart];
-
-  const subTotalCart = cart.reduce((acc, product) => {
-    return acc + product.amountPrice;
-  }, 0);
-
-  const totalCart = subTotalCart + freightCart;
-
-  const localCart = localStorage.getItem("cart");
+  const { allRestaurants } = useRestaurantsContext();
+  const { setUser, user } = useAuthUserContext();
+  const [cart, setCart] = useState<IProduct[]>(user?.cart as IProduct[]);
+  const [subTotalCart, setSubTotalCart] = useState(0);
+  const [freightCart, setFreightCart] = useState(0);
+  const [totalCart, setTotalCart] = useState(0);
 
   useEffect(() => {
-    if (localCart) {
-      const local = JSON.parse(localCart);
-      setCart(local);
+    const cartObject = { cart: cart };
+    const userName: IUser = JSON.parse(
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      localStorage.getItem("@healthyGo-user")!,
+    );
+    if (userName) {
+      const userId = userName.id;
+      api
+        .patch(`/users/${userId}`, cartObject)
+        .then((res: IUserEditRes) => {
+          setUser(res.data);
+          const userLocalStorage = JSON.stringify(res.data);
+          localStorage.setItem("@healthyGo-user", userLocalStorage);
+        })
+        .catch((err) => console.log(err));
     }
-  }, []);
+    if (user?.cart) {
+      const restaurants: string[] = [];
+      cart.forEach((product) => {
+        if (!restaurants.includes(product.restaurant))
+          restaurants.push(product.restaurant);
+      });
+      setFreightCart(restaurants.length * 8);
+
+      setSubTotalCart(
+        cart.reduce((acc, product) => {
+          return acc + product.amountPrice;
+        }, 0),
+      );
+      const newTotal = subTotalCart + freightCart;
+      setTotalCart(newTotal);
+    }
+  }, [cart, subTotalCart, freightCart]);
+
+  //frete
+  const amountCart = cart?.reduce((acc, product) => {
+    return acc + product.amount;
+  }, 0);
+
+  let productsCartCopy;
+  if (cart) {
+    productsCartCopy = [...cart];
+  }
 
   const indexProduct = (currentId: number) =>
     cart.findIndex(({ id }) => id === currentId);
@@ -67,22 +101,21 @@ const CartProvider = ({ children }: ICartProps) => {
   };
 
   const addToCart = (product: IProduct) => {
-    const isOnCart = cart.some(({ id }) => id == product.id);
-    const indexOnSale = cart.findIndex(({ id }) => id == product.id);
+    const isOnCart = cart?.some(({ id }) => id == product.id);
 
     if (isOnCart) {
-      updateAmountPrice(indexOnSale);
+      addOneProduct(product.id);
     } else {
       product.amount = 1;
       product.amountPrice = product.price;
       setCart((old) => {
+        if (typeof old === "undefined") return [product];
         const newCart = [...old, product].sort((a, b) =>
           a.restaurant.localeCompare(b.restaurant),
         );
         return newCart;
       });
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const removeFromCart = (currentId: number) => {
@@ -90,7 +123,6 @@ const CartProvider = ({ children }: ICartProps) => {
 
     const newCart = cart.filter((product, index) => index !== currentIndex);
     setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const addOneProduct = (productId: number) => {
@@ -100,15 +132,10 @@ const CartProvider = ({ children }: ICartProps) => {
     setCart(productsCartCopy);
 
     updateAmountPrice(currentIndex);
-
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const minusOneProduct = (productId: number) => {
     const currentIndex = indexProduct(productId);
-    console.log(currentIndex);
-    console.log(productsCartCopy);
-
     if (productsCartCopy[currentIndex].amount > 1) {
       productsCartCopy[currentIndex].amount--;
       setCart(productsCartCopy);
@@ -116,8 +143,36 @@ const CartProvider = ({ children }: ICartProps) => {
     } else if (productsCartCopy[currentIndex].amount === 1) {
       removeFromCart(productId);
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
+
+  const summaryCart: ISummaryCart[] = [];
+  const updateSummaryCart = () => {
+    if (cart) {
+      cart?.forEach((product) => {
+        const indexSummaryCart = summaryCart.findIndex(
+          ({ restaurant }) => restaurant === product.restaurant,
+        );
+
+        if (indexSummaryCart === -1) {
+          const logo = allRestaurants.find(
+            (restaurant) => restaurant.name === product.restaurant,
+          )?.["logo-image"];
+
+          const summaryRestaurant = {
+            restaurant: product.restaurant,
+            amount: product.amount,
+            price: product.amountPrice,
+            logo: logo,
+          };
+          summaryCart.push(summaryRestaurant);
+        } else {
+          summaryCart[indexSummaryCart].amount += product.amount;
+          summaryCart[indexSummaryCart].price += product.amountPrice;
+        }
+      });
+    }
+  };
+  updateSummaryCart();
 
   return (
     <CartContext.Provider
@@ -132,6 +187,7 @@ const CartProvider = ({ children }: ICartProps) => {
         totalCart,
         subTotalCart,
         freightCart,
+        summaryCart,
       }}
     >
       {children}
@@ -140,3 +196,4 @@ const CartProvider = ({ children }: ICartProps) => {
 };
 
 export default CartProvider;
+export const useCart = () => useContext(CartContext);

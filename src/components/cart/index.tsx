@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { AiOutlineLeft, AiOutlineMinus } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -20,15 +21,12 @@ const Cart = ({ setisOpenCart }) => {
   } = useCart();
   const priceToDiscount = 80 - totalCart;
   const hasDiscount = 80 - totalCart >= 0;
-  // const modalRef = useRef();
   const modalRef = useRef<HTMLHeadingElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleOutClick(event) {
-      console.log(modalRef);
       const value = modalRef?.current;
-
-      console.log(event.target);
 
       if (value && !value.contains(event.target)) {
         setisOpenCart(false);
@@ -65,7 +63,7 @@ const Cart = ({ setisOpenCart }) => {
                   <h2>Carrinho vazio</h2>
                   <p>
                     Adicione alguns produtos ao seu carrinho e volte aqui para
-                    finalizar sua compra
+                    finalizar sua compra!
                   </p>
                 </div>
               ) : (
@@ -90,7 +88,6 @@ const Cart = ({ setisOpenCart }) => {
                 ) &&
                 cart?.map((item, index, arr) => {
                   let restaurantTitle = <></>;
-
                   if (
                     index === 0 ||
                     item.restaurant !== arr[index - 1].restaurant
@@ -111,7 +108,9 @@ const Cart = ({ setisOpenCart }) => {
                       {restaurantTitle}
                       <div className="card-item">
                         <div className="item">
-                          <img src={item.photo_url} alt="" />
+                          <figure>
+                            <img src={item.photo_url} alt="" />
+                          </figure>
                           <div className="info">
                             <p>{item.item}</p>
                             <strong>{`${item.price.toFixed(2)}`}</strong>
@@ -153,7 +152,16 @@ const Cart = ({ setisOpenCart }) => {
                 <p>Total</p>
                 <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
               </div>
-              <button>Finalizar Pedido</button>
+              <button
+                onClick={() => {
+                  if (totalCart > 0) {
+                    navigate("/checkout", { replace: true });
+                    setisOpenCart(false);
+                  }
+                }}
+              >
+                Finalizar Pedido
+              </button>
             </div>
           </div>
         </Container>

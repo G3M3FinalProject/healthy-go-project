@@ -35,8 +35,26 @@ export const Container = styled.div`
       border-radius: 5px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: green;
+      background-color: rgba(150, 240, 169, 1);
       border-radius: 10px;
+      height: 15px;
+    }
+    height: 69%;
+    margin-top: 3rem;
+  }
+
+  .carrinho-vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8rem 1rem;
+
+    img {
+      width: 105px;
+    }
+
+    p {
+      margin-top: 1rem;
     }
   }
 
@@ -58,10 +76,10 @@ export const Container = styled.div`
   }
   .desconto {
     display: flex;
-    padding: 1rem;
-    margin: 5rem 2rem 0 2rem;
-    border-radius: 5px;
     justify-content: center;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 5rem 2rem 0 2rem;
 
     background-color: rgba(36, 133, 64, 0.2);
     color: rgba(36, 133, 64);
@@ -72,6 +90,10 @@ export const Container = styled.div`
 
     padding: 0.5rem;
     margin: 1rem;
+
+    .divider {
+      margin-bottom: 38px;
+    }
 
     h2 {
       font-size: 120%;
@@ -96,7 +118,8 @@ export const Container = styled.div`
         align-items: center;
 
         img {
-          width: 100px;
+          max-width: 100px;
+          max-height: 80px;
         }
         .info {
           p {
@@ -107,11 +130,11 @@ export const Container = styled.div`
 
         .quantidade {
           display: flex;
-          gap: 1.5rem;
+          align-items: center;
           padding: 0 1rem;
           height: 1.8rem;
 
-          align-items: center;
+          gap: 1.5rem;
           background-color: rgba(0, 0, 0, 0.1);
           border-radius: 4px;
 
@@ -170,7 +193,7 @@ export const Container = styled.div`
 
   .divider {
     height: 2px;
-    background-color: black;
+    background-color: gray;
   }
   @media screen and (max-width: 950px) {
     width: 45%;

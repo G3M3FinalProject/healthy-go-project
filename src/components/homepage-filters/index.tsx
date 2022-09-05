@@ -1,31 +1,64 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 import { useRestaurantsContext } from "../../contexts/restaurantsContext";
-import { ContainerFilters } from "./styles";
+import { SearchInputRestaurants } from "../search-input-home";
+import { PositioningDiv, Container, FilterButton } from "./styles";
+
+type IActualFilters = "vegan" | "vegetarian" | "zero-gluten" | "zero-lactose";
 
 const HomePageFilters = () => {
   const { setFilteredRestaurants, allRestaurants } = useRestaurantsContext();
+  const [actualFilters, setActualFilters] = useState<IActualFilters[]>([]);
 
-  const filterRestaurants = (categoriesToFilter: string) => {
-    const newRestaurants = allRestaurants.filter(({ category }) =>
-      category.includes(categoriesToFilter),
-    );
-    setFilteredRestaurants(newRestaurants);
+  const toogleFilter = (filter: IActualFilters) => {
+    actualFilters.includes(filter)
+      ? setActualFilters((old) =>
+          old.filter((actualFilter) => actualFilter !== filter),
+        )
+      : setActualFilters((old) => [...old, filter]);
   };
 
+  useEffect(() => {
+    const newRestaurants = allRestaurants.filter(({ category }) =>
+      actualFilters.every((actualFilter) => {
+        return category.includes(actualFilter);
+      }),
+    );
+    setFilteredRestaurants(newRestaurants);
+  }, [actualFilters]);
+
+  actualFilters.some((filter) => filter === "vegetarian");
   return (
-    <ContainerFilters>
-      <button onClick={() => filterRestaurants("vegetarian")}>
-        Vegetariano
-      </button>
-      <button onClick={() => filterRestaurants("vegan")}>Vegano</button>
-      <button onClick={() => filterRestaurants("zero-gluten")}>
-        Zero Glúten
-      </button>
-      <button onClick={() => filterRestaurants("zero-lactose")}>
-        Zero Lactose
-      </button>
-    </ContainerFilters>
+    <PositioningDiv>
+      <SearchInputRestaurants />
+
+      <Container>
+        <FilterButton
+          isActive={actualFilters.some((filter) => filter === "vegetarian")}
+          onClick={() => toogleFilter("vegetarian")}
+        >
+          Vegetariano
+        </FilterButton>
+        <FilterButton
+          isActive={actualFilters.some((filter) => filter === "vegan")}
+          onClick={() => toogleFilter("vegan")}
+        >
+          Vegano
+        </FilterButton>
+        <FilterButton
+          isActive={actualFilters.some((filter) => filter === "zero-gluten")}
+          onClick={() => toogleFilter("zero-gluten")}
+        >
+          Zero Glúten
+        </FilterButton>
+        <FilterButton
+          isActive={actualFilters.some((filter) => filter === "zero-lactose")}
+          onClick={() => toogleFilter("zero-lactose")}
+        >
+          Zero Lactose
+        </FilterButton>
+      </Container>
+    </PositioningDiv>
   );
 };
 

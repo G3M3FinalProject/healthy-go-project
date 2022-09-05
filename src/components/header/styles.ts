@@ -215,10 +215,15 @@ export const Paragraph = styled.div`
 export const CartBackground = styled.button`
   display: flex;
   align-items: center;
+
   position: relative;
+
+  font-family: "Petrona", serif;
+  font-size: 16px;
 
   cursor: pointer;
 
+  color: white;
   background: #54a656;
 
   color: white;

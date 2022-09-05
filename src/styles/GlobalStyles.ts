@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     --brand-green: rgba(36, 133, 64, 1);
     --brand-yellow: rgba(227, 229, 34, 1);
     --brand-light-green: rgba(146, 227, 169, 1);
+    --brand-light-green-2: rgb(228, 249, 234);
     --button-green: rgba(18, 117, 58, 1);
     --brand-yellow: rgba(227, 229, 34, 1);
     --placeholder: rgba(67, 66, 66, 1);
@@ -28,6 +29,14 @@ body {
     height: 100vh;
     font-family: 'Petrona', serif;
     background: #f7f6f3;
+    ::-webkit-scrollbar {
+      width: 5px;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(36, 133, 64, 1);
+      border-radius: 10px;
+    }
 }
 
 button {
@@ -44,6 +53,7 @@ ul {
 }
 a{
     text-decoration: none;
+    color: black;
 }
 `;
 
