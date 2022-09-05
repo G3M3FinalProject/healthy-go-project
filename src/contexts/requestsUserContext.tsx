@@ -1,17 +1,17 @@
 import { createContext, ReactNode, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import React from "react";
+import { toast } from "react-hot-toast";
 
 import { v4 as uuid } from "uuid";
 
 import { api } from "../services";
 import {
-  IUser,
   IUserEditRes,
   IUserRequests,
   useAuthUserContext,
 } from "./authUserContext";
 import { useCart } from "./cartContext";
+import { useModalContext } from "./modalContext";
 
 const RequestsUserContext = createContext(
   {} as IRequestsUserContextProviderData,
@@ -31,13 +31,16 @@ export const RequestsUserContextProvider = ({
   children,
 }: IRequestsUserContextProps) => {
   const { setUser, user } = useAuthUserContext();
+  const { setIsSucessModalOpen, isSuccessModalOpen } = useModalContext();
   const { totalCart, setCart } = useCart();
-  const navigate = useNavigate();
 
   const postUserRequest = (data: IUserRequestPayament) => {
     if (totalCart === 0) {
-      return toast.error("Não há nada no carrinho");
+      return toast.error(
+        "Você precisa adicionar produtos ao carrinho para realizar a compra!",
+      );
     }
+    console.log(isSuccessModalOpen);
     const userID = user?.id;
     const unique_id = uuid();
     const date = new Date();
@@ -57,7 +60,6 @@ export const RequestsUserContextProvider = ({
     const reqRequests = {
       requests: allUserRequests,
     };
-    console.log(reqRequests);
 
     api
       .patch(`/users/${userID}`, reqRequests)
@@ -66,8 +68,7 @@ export const RequestsUserContextProvider = ({
         setCart([]);
         const userString = JSON.stringify(user);
         localStorage.setItem("@healthyGo-user", userString);
-        console.log(user + "teste");
-        navigate("/home", { replace: true });
+        setIsSucessModalOpen(true);
       })
       .catch((err) => console.log(err));
   };
