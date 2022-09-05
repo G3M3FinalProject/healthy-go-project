@@ -50,6 +50,7 @@ export const Login = () => {
               label="E-mail"
               register={register}
               registerName="email"
+              errors={errors.email?.message}
             />
             <ShowPassword>
               <GlobalInputPassword
@@ -57,6 +58,7 @@ export const Login = () => {
                 label="Password"
                 register={register}
                 registerName="password"
+                errors={errors.password?.message}
               />
               <button
                 type="button"

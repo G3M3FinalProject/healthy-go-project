@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { InputHTMLAttributes } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineWarning } from "react-icons/ai";
 
 import { InputLg, ButtonLg, ButtonMd, Search } from "./styles";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -21,9 +22,10 @@ export const GlobalInputLg = ({
   register,
   type,
   defaultValue,
+  errors,
 }: InputProps) => {
   return (
-    <InputLg>
+    <InputLg error={errors}>
       <input
         type={type}
         {...register(registerName)}
@@ -31,6 +33,11 @@ export const GlobalInputLg = ({
         defaultValue={defaultValue}
       />
       <label>{label}</label>
+      {!!errors && (
+        <div>
+          <AiOutlineWarning /> <p>{errors}</p>
+        </div>
+      )}
     </InputLg>
   );
 };
