@@ -66,8 +66,6 @@ export const Person = styled.img`
 export const HeartFloat = styled.img`
   position: relative;
 
-  z-index: 1;
-
   animation: fadeInFromTop 0.5s linear forwards, floating ease 3s infinite;
 `;
 

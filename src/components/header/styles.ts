@@ -225,7 +225,7 @@ export const CartBackground = styled.button<IIsScrolled>`
   align-items: center;
 
   position: relative;
-
+  z-index: 1;
   font-size: 16px;
   font-family: "Petrona", serif;
 
