@@ -4,13 +4,12 @@ import { HomePageImage } from "../../components/homepage-img";
 import Loading from "../../components/loading";
 import { RestaurantListPrimary } from "../../components/restaurant-list-primary";
 import { RestaurantListSecondary } from "../../components/restaurant-list-secondary";
-import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import { Container } from "./styles";
 
 const Home = () => {
   const { filteredRestaurants, isFilterActive } = useRestaurantsContext();
-  const { isLoading } = useAuthUserContext();
+  const { isLoading } = useRestaurantsContext();
 
   if (isLoading) return <Loading />;
 

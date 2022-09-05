@@ -11,7 +11,7 @@ import { SelectAddressForm } from "./checkout-select-address";
 
 interface IUserPayament {
   payament: string;
-  cvv: string;
+  cvv: number | string;
   validityDate: string;
   titularName: string;
   cardNumber: number;

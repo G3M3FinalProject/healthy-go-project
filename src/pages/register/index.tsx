@@ -32,9 +32,7 @@ export interface IFormData {
 }
 
 const UserRegister = () => {
-  const { registerUser, isLoading } = useAuthUserContext();
-
-  if (isLoading) return <Loading />;
+  const { registerUser } = useAuthUserContext();
 
   const navigate = useNavigate();
 

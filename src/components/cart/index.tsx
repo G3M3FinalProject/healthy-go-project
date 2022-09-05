@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { AiOutlineLeft, AiOutlineMinus } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -96,9 +96,12 @@ const Cart = ({ setisOpenCart }) => {
                       <>
                         {index === 0 ? <></> : <div className="divider"></div>}
                         <h2>{item.restaurant}</h2>
-                        <button className="retornar">
+                        <Link
+                          to={`/restaurants/${item?.restaurantID}`}
+                          className="retornar"
+                        >
                           Retornar para a Loja
-                        </button>
+                        </Link>
                       </>
                     );
                   }

@@ -12,7 +12,6 @@ import { ICompleteAddress } from "./addressContext";
 import { IProduct } from "./restaurantProductsContext";
 
 interface IAuthUserProviderData {
-  isLoading: boolean;
   user: IUser | undefined;
   getUser: (id: string) => void;
   registerUser: (user: IUser) => void;
@@ -75,7 +74,6 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const initialUser = JSON.parse(localStorage.getItem("@healthyGo-user")!);
   const [user, setUser] = useState(initialUser as IUser);
-  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
   const actualPage = useLocation().pathname;
@@ -95,7 +93,6 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
           "Authorization"
         ] = `Bearer ${res.data.accessToken}`;
 
-        setIsLoading(false);
         navigate("/homepage", { replace: true });
       })
       .catch(
@@ -137,10 +134,9 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
             console.log(res.data);
           })
           .catch(() => {
-            localStorage.clear();
+            // localStorage.clear();
           });
       }
-      setIsLoading(false);
     }, []);
   };
   isUserLoggedIn();
@@ -176,7 +172,6 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         user,
         loginUser,
         registerUser,
-        isLoading,
         editUser,
         getUser,
         logoutUser,
