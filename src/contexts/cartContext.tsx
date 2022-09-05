@@ -70,15 +70,14 @@ const CartProvider = ({ children }: ICartProps) => {
           restaurants.push(product.restaurant);
       });
       setFreightCart(restaurants.length * 8);
-      console.log(cart);
 
       setSubTotalCart(
         cart.reduce((acc, product) => {
           return acc + product.amountPrice;
         }, 0),
       );
-
-      setTotalCart(subTotalCart + freightCart);
+      const newTotal = subTotalCart + freightCart;
+      setTotalCart(newTotal);
     }
   }, [cart]);
 
