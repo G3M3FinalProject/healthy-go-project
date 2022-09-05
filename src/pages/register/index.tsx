@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
 import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
+import { ButtonLg } from "../../components/global-inputs/styles";
+import Loading from "../../components/loading";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
 import {
@@ -30,7 +32,9 @@ export interface IFormData {
 }
 
 const UserRegister = () => {
-  const { registerUser } = useAuthUserContext();
+  const { registerUser, isLoading } = useAuthUserContext();
+
+  if (isLoading) return <Loading />;
 
   const navigate = useNavigate();
 

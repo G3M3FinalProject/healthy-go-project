@@ -20,6 +20,7 @@ import {
   RightDiv,
 } from "./styles";
 import { CenteringContainer, Form, FormDiv } from "./styles";
+import Loading from "../../components/loading";
 
 export interface IFormEditData {
   name: string;
@@ -38,6 +39,9 @@ interface IRegisterData {
 const EditProfile = () => {
   const { editUser, user, getUser } = useAuthUserContext();
   const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
+  const { isLoading } = useAuthUserContext();
+
+  if (isLoading) return <Loading />;
 
   const {
     register,
