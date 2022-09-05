@@ -7,6 +7,7 @@ import {
   IProduct,
   useRestaurantProductsContext,
 } from "../../contexts/restaurantProductsContext";
+import Loading from "../loading";
 import {
   ContainerMenu,
   ContainerP,
@@ -38,13 +39,16 @@ export const MenuRestaurant = () => {
     });
   };
 
+  if (!filteredMenu) return <Loading />;
+  const unique_id2 = uuid();
+
   return (
     <ContainerMenu>
       {!!filteredMenu &&
         Object.entries(filteredMenu).map(([key, value]) => {
           return (
             !!value.length && (
-              <ContainerDivMenu key={value}>
+              <ContainerDivMenu key={JSON.stringify(value)}>
                 <h2>{subTitles[key]}</h2>
                 <ul>
                   {value?.map((product: IProduct) => {

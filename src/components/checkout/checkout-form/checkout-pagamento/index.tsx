@@ -26,6 +26,7 @@ interface IPayamentFormProps {
   }>;
 }
 export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
+  console.log(errors);
   return (
     <DivForm>
       <h2>Forma de Pagamento</h2>
@@ -50,6 +51,7 @@ export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
           />
           Cartão de débito
         </label>
+        {errors?.payament?.message && <p>{errors.payament.message}</p>}
       </div>
 
       <DivCredCard>
@@ -87,7 +89,7 @@ export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
             errors={errors.validityDate?.message}
           />
           <GlobalInputLg
-            type="text"
+            type="number"
             label="CVV"
             register={register}
             registerName="cvv"

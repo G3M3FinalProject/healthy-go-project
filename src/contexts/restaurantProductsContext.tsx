@@ -30,6 +30,7 @@ export interface IProduct {
   id: number;
   amount: number;
   amountPrice: number;
+  restaurantID: number;
 }
 
 export interface IMenu {
