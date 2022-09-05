@@ -45,6 +45,10 @@ export const Flag = styled.img`
   position: absolute;
   width: 100%;
   height: 25%;
+
+  @media screen and (min-width: 1669px) {
+    height: 20%;
+  }
 `;
 
 export const Logo = styled.img`
