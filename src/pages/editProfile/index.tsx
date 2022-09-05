@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 
 import AdressModal from "../../components/adress-modal";
 import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
-import { ButtonLg } from "../../components/global-inputs/styles";
 import Loading from "../../components/loading";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
@@ -41,7 +40,7 @@ interface IRegisterData {
 }
 
 const EditProfile = () => {
-  const { editUser, user, getUser, isLoading } = useAuthUserContext();
+  const { editUser, user, getUser } = useAuthUserContext();
   const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
 
   const {
@@ -67,8 +66,6 @@ const EditProfile = () => {
   if (getItem) {
     getUser(getItem);
   }
-
-  if (isLoading) return <Loading />;
 
   return (
     <>
