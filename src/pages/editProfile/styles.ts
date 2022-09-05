@@ -5,10 +5,7 @@ export const CenteringContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: 50%;
   height: 100%;
-
-  margin: 9rem 0 0 7rem;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -122,22 +119,23 @@ export const Back = styled.p`
 
 export const ContainerCenter = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  margin: 7rem 0 0 0;
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
+    align-content: center;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
-    margin-right: 20%;
   }
 `;
 
 export const CardAdress = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
-  margin-top: 20%;
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
     flex-direction: column;
@@ -175,7 +173,6 @@ export const Card = styled.div`
   width: 18rem;
   border-left: 5px solid rgba(18, 117, 58, 1);
   text-align: left;
-  margin-right: 20%;
 `;
 
 export const TitleCard = styled.h4`

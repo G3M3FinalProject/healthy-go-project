@@ -7,32 +7,33 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 import * as yup from "yup";
 
-import { useAddressContext } from "../../contexts/addressContext";
+import {
+  ICompleteAddress,
+  useAddressContext,
+} from "../../contexts/addressContext";
 import { useModalContext } from "../../contexts/modalContext";
+import { registerAdressFormSchema } from "../../validations";
 import { GlobalButtonLg, GlobalInputLg } from "../global-inputs";
 import {
   Modal,
   Container,
   Header,
+  StateCity,
+  Neighbourhood,
   LocationDiv,
-  CityState,
-  Neighborhood,
 } from "./styles";
 
 const AdressModal = () => {
-  const { setIsProfileModalOpen } = useModalContext();
-  const { getAddress, address, clearAddress } = useAddressContext();
+  const { setIsAddressModalOpen } = useModalContext();
+  const { getAddress, address, clearAddress, registerNewAdressUser } =
+    useAddressContext();
 
-  const formSchema = yup.object().shape({
-    email: yup.string(),
-    password: yup.string(),
-  });
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<any>({
-    resolver: yupResolver(formSchema),
+  } = useForm<ICompleteAddress>({
+    resolver: yupResolver(registerAdressFormSchema),
   });
 
   const modalRef = useRef<HTMLHeadingElement>(null);
@@ -41,7 +42,7 @@ const AdressModal = () => {
       const value = modalRef?.current;
 
       if (value && !value.contains(event.target)) {
-        setIsProfileModalOpen(false);
+        setIsAddressModalOpen(false);
         clearAddress();
       }
     }
@@ -53,6 +54,11 @@ const AdressModal = () => {
   }, []);
   // defaultValue={`${address?.postal}-000`}
   const cep = `${address?.postal}-000`;
+
+  const onSuccess = (data: ICompleteAddress) => {
+    console.log(data);
+    registerNewAdressUser(data);
+  };
 
   return (
     <motion.div
@@ -67,7 +73,7 @@ const AdressModal = () => {
             <p>Cadastrar Novo Endereço</p>
             <button
               onClick={() => {
-                setIsProfileModalOpen(false);
+                setIsAddressModalOpen(false);
                 clearAddress();
               }}
             >
@@ -80,61 +86,61 @@ const AdressModal = () => {
             <FaCompass />
             <button onClick={() => getAddress()}>Usar localização atual</button>
           </LocationDiv>
-          <form>
+          <form onSubmit={handleSubmit(onSuccess)}>
             <GlobalInputLg
               label="Identificação do Endereço"
               type="text"
               register={register}
-              registerName="endereço"
+              registerName="adressIdentification"
             />
             <GlobalInputLg
               label="CEP"
               type="text"
               register={register}
-              registerName="cep"
+              registerName="postal"
               defaultValue={cep.includes("undefined") ? "" : cep}
             />
-            <CityState>
+            <StateCity>
               <GlobalInputLg
                 label="Estado"
                 type="text"
                 register={register}
-                registerName="estado"
+                registerName="state"
                 defaultValue={address?.state}
               />
               <GlobalInputLg
                 label="Cidade"
                 type="text"
                 register={register}
-                registerName="cidade"
+                registerName="city"
                 defaultValue={address?.city}
               />
-            </CityState>
+            </StateCity>
             <GlobalInputLg
               label="Rua/Avenida"
               type="text"
               register={register}
-              registerName="rua"
+              registerName="street"
             />
-            <Neighborhood>
+            <Neighbourhood>
               <GlobalInputLg
                 label="Bairro"
                 type="text"
                 register={register}
-                registerName="bairro"
+                registerName="district"
               />
               <GlobalInputLg
                 label="Número"
                 type="text"
                 register={register}
-                registerName="numero"
+                registerName="number"
               />
-            </Neighborhood>
+            </Neighbourhood>
             <GlobalInputLg
               label="Complemento"
               type="text"
               register={register}
-              registerName="complemento"
+              registerName="complement"
             />
             <GlobalButtonLg type="submit">Cadastrar</GlobalButtonLg>
           </form>

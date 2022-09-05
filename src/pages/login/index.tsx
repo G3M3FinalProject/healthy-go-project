@@ -33,8 +33,6 @@ export const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  console.log(errors);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}

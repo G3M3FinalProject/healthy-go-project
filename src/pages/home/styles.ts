@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 80px;
+  margin: 7rem auto;
 
   & > figure {
     display: none;

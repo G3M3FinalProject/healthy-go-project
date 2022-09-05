@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
 import AdressModal from "../../components/adress-modal";
-import { GlobalInputLg } from "../../components/global-inputs";
+import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
 import { ButtonLg } from "../../components/global-inputs/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
@@ -36,7 +36,7 @@ interface IRegisterData {
 
 const EditProfile = () => {
   const { editUser, user, getUser } = useAuthUserContext();
-  const { setIsProfileModalOpen, isProfileModalOpen } = useModalContext();
+  const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
 
   const {
     register,
@@ -103,26 +103,32 @@ const EditProfile = () => {
                   register={register}
                   registerName="email"
                 />
-                <ButtonLg type="submit">Salvar</ButtonLg>
+                <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
               </Form>
             </FormDiv>
           </CenteringContainer>
           <CardAdress>
             <h3>Endereços</h3>
-            <Card>
-              <TitleCard>Casa</TitleCard>
-              <InfoCard>Rua Veneza Ferreira</InfoCard>
-              <InfoCard>Numero: 260</InfoCard>
-              <InfoCard>CEP 89888-000 - Itapema - SC</InfoCard>
-            </Card>
-            <ButtonSave onClick={() => setIsProfileModalOpen(true)}>
+            {user?.address?.map((address) => {
+              return (
+                <Card key={address.id}>
+                  <TitleCard>{address.adressIdentification}</TitleCard>
+                  <InfoCard>{address.street}</InfoCard>
+                  <InfoCard>Numero: {address.number}</InfoCard>
+                  <InfoCard>
+                    CEP {address.postal} - {address.city} - {address.state}
+                  </InfoCard>
+                </Card>
+              );
+            })}
+            <GlobalButtonLg onClick={() => setIsAddressModalOpen(true)}>
               Adicionar endereço
-            </ButtonSave>
+            </GlobalButtonLg>
             <img src="../../assets/adresspin.png" alt="" />
           </CardAdress>
         </ContainerCenter>
       </motion.div>
-      {isProfileModalOpen && <AdressModal />}
+      {isAddressModalOpen && <AdressModal />}
     </>
   );
 };

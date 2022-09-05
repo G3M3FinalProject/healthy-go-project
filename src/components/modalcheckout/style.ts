@@ -1,21 +1,16 @@
 import styled from "styled-components";
 
 export const ContainerEnd = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  width: 100vw;
-  height: 140vh;
-
-  position: absolute;
-  background: #212529 rgba(0, 0, 0, 1.45);
-  box-shadow: 0px 3.20867px 32.0867px -8.02168px rgba(0, 0, 0, 0.25);
-  border-radius: 3.20867px;
-
-  margin-left: -57%;
-  margin-top: -16%;
+  background-color: #0505057a;
+  z-index: 1;
 
   div {
     display: flex;

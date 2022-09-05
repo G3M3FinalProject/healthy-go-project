@@ -68,8 +68,7 @@ export const Header = styled.div`
     }
   }
 `;
-
-export const CityState = styled.div`
+export const StateCity = styled.div`
   display: flex;
 
   width: 100%;
@@ -81,7 +80,7 @@ export const CityState = styled.div`
   }
 `;
 
-export const Neighborhood = styled.div`
+export const Neighbourhood = styled.div`
   display: flex;
 
   width: 100%;
@@ -97,10 +96,8 @@ export const LocationDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 50%;
   height: 1rem;
-
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -109,14 +106,14 @@ export const LocationDiv = styled.div`
   margin: 1rem;
   padding: 1rem 0;
   gap: 1rem;
-
+  
   border: 1px solid black;
   border-radius: 10px;
-
+  
   svg {
     color: green;
   }
-
+  
   button {
     background: #f7f6f3;
   }

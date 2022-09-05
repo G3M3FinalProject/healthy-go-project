@@ -18,3 +18,23 @@ export const editFormSchema = yup.object().shape({
   birthdate: yup.string().required("Data de nascimento é um campo necessário"),
   email: yup.string().required("E-mail é um campo necessário"),
 });
+
+export const registerAdressFormSchema = yup.object().shape({
+  adressIdentification: yup.string().required("Campo obrigatório"),
+  city: yup.string().required("Campo obrigatório"),
+  state: yup.string().required("Campo obrigatório"),
+  postal: yup.string().required("Campo obrigatório"),
+  street: yup.string().required("Campo obrigatório"),
+  district: yup.string().required("Campo obrigatório"),
+  number: yup.number().required("Campo obrigatório"),
+  complement: yup.string(),
+});
+
+export const requestFormSchema = yup.object().shape({
+  cvv: yup.number().required("Campo obrigatório"),
+  validityDate: yup.string().required("Campo obrigatório"),
+  titularName: yup.string().required("Campo obrigatório"),
+  cardNumber: yup.number().required("Campo obrigatório"),
+  payament: yup.string().required("Campo obrigatório"),
+  address: yup.string().required("Campo obrigatório"),
+});
