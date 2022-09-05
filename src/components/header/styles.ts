@@ -235,6 +235,6 @@ export const CartBackground = styled.button<IIsScrolled>`
   border-radius: 20px;
 
   position: ${({ scrolling }: IIsScrolled) => scrolling && "fixed"};
-  top: ${({ scrolling }: IIsScrolled) => scrolling && "5"};
-  right: ${({ scrolling }: IIsScrolled) => scrolling && "5"};
+  top: ${({ scrolling }: IIsScrolled) => scrolling && "5px"};
+  right: ${({ scrolling }: IIsScrolled) => scrolling && "5px"};
 `;
