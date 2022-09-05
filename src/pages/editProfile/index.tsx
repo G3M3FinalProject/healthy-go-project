@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { GoLocation } from "react-icons/go";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
@@ -18,6 +20,8 @@ import {
   TitleCard,
   InfoCard,
   RightDiv,
+  DivButton,
+  DivAdress,
 } from "./styles";
 import { CenteringContainer, Form, FormDiv } from "./styles";
 import Loading from "../../components/loading";
@@ -108,12 +112,17 @@ const EditProfile = () => {
                   register={register}
                   registerName="email"
                 />
-                <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
+                <DivButton>
+                  <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
+                </DivButton>
               </Form>
             </FormDiv>
           </CenteringContainer>
           <RightDiv>
-            <h3>Endereços</h3>
+            <DivAdress>
+              <GoLocation /> <h3> Endereços</h3>
+            </DivAdress>
+
             <CardAdress>
               {user?.address?.map((address) => {
                 return (
@@ -131,7 +140,6 @@ const EditProfile = () => {
             <GlobalButtonLg onClick={() => setIsAddressModalOpen(true)}>
               Adicionar endereço
             </GlobalButtonLg>
-            <img src="../../assets/adresspin.png" alt="" />
           </RightDiv>
         </ContainerCenter>
       </motion.div>
