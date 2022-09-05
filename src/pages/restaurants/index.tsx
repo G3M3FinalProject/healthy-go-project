@@ -1,11 +1,16 @@
+import Loading from "../../components/loading";
 import { MenuRestaurant } from "../../components/menu-restaurant";
 import { FilteredSearch } from "../../components/restaurant-item-filters";
 import { SearchInputProducts } from "../../components/search-input-products";
+import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
 import { ContainerHeader, ContainerRestaurants, ContainerTop } from "./styles";
 
 export const Restaurants = () => {
+  const { isLoading } = useAuthUserContext();
   const { restaurantInfo } = useRestaurantProductsContext();
+
+  if (isLoading) return <Loading />;
 
   return (
     <ContainerRestaurants>

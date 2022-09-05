@@ -13,11 +13,12 @@ import {
   GlobalInputPassword,
 } from "../../components/global-inputs";
 import { GoogleAuthLogin } from "../../components/google-auth-login";
+import Loading from "../../components/loading";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import { CenteringContainer, FormDiv, Form, Img, ShowPassword } from "./styles";
 
 export const Login = () => {
-  const { loginUser } = useAuthUserContext();
+  const { loginUser, isLoading } = useAuthUserContext();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -32,6 +33,8 @@ export const Login = () => {
   } = useForm<IUserLogin>({
     resolver: yupResolver(formSchema),
   });
+
+  if (isLoading) return <Loading />;
 
   return (
     <motion.div

@@ -5,6 +5,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  height: 40rem;
+
   span {
     display: inline-block;
     background-color: var(--button-green);

@@ -10,6 +10,7 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     flex-direction: column;
   }
+
   @media (min-width: 1024px) {
     display: grid;
     grid-template-areas: "filters figureMain" "mainList figureMain" "secList secList";
@@ -26,6 +27,7 @@ export const Container = styled.div`
       }
     }
   }
+
   @media (min-width: 1440px) {
     max-width: 1440px;
 
