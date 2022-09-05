@@ -132,7 +132,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-      if (token)
+      if (token) {
         api
           .get(`/users/${id}`)
           .then((res) => {
@@ -141,12 +141,9 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
           })
           .catch(() => {
             localStorage.clear();
-
-            setIsLoading(false);
-          })
-          .finally(() => {
-            setIsLoading(false);
           });
+      }
+      setIsLoading(false);
     }, []);
   };
   isUserLoggedIn();
