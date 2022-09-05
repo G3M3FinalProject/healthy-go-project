@@ -152,6 +152,8 @@ export const ContainerP = styled.p`
   font-weight: 600;
   font-size: 10px;
 
+  margin-bottom: 1%;
+
   @media screen and (max-width: 425px) {
     font-size: 10px;
     display: none;
@@ -164,8 +166,7 @@ export const ContainerPreco = styled.p`
   font-weight: 600;
   font-size: 14px;
 
-  margin-left: 6.5rem;
-  margin-top: -2rem;
+  margin-top: 2rem;
 
   @media screen and (max-width: 425px) {
     margin-top: 1%;

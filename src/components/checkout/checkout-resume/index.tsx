@@ -22,6 +22,7 @@ export function ResumeCheckout() {
 
   const [modalResume, setModalResume] = useState(false);
   //   console.log(modalResume);
+
   console.log(summaryCart);
   return (
     <ContainerResume>
