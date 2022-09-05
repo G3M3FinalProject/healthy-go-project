@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { AiOutlineLeft, AiOutlineMinus } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
 
 import { motion } from "framer-motion";
 
+import carrinhoVazio from "../../assets/carrinhoVazio.png";
 import { useCart } from "../../contexts/cartContext";
 import { Container, DiscountBar, Modal } from "./styles";
 
@@ -58,67 +59,82 @@ const Cart = ({ setisOpenCart }) => {
           </div>
           <div className="container-itens">
             <>
-              <div className="desconto">
-                {hasDiscount ? (
-                  <div>
-                    <p>
-                      Gaste mais R$ {priceToDiscount.toFixed(2)} e ganhe
-                      <strong> 10% de desconto</strong>
-                    </p>
-                    <DiscountBar width={100 - (priceToDiscount / 80) * 100}>
-                      <div className="discount-variable"></div>
-                    </DiscountBar>
-                  </div>
-                ) : (
+              {totalCart === 0 ? (
+                <div className="carrinho-vazio">
+                  <img src={carrinhoVazio} alt="carrinho vazio" />
+                  <h2>Carrinho vazio</h2>
                   <p>
-                    Parabéns! Você ganhou <strong>10% de desconto</strong>
+                    Adicione alguns produtos ao seu carrinho e volte aqui para
+                    finalizar sua compra
                   </p>
-                )}
-              </div>
-              {console.log(cart)}
-              {cart?.map((item, index, arr) => {
-                let restaurantTitle = <></>;
+                </div>
+              ) : (
+                (
+                  <div className="desconto">
+                    {hasDiscount ? (
+                      <div>
+                        <p>
+                          Gaste mais R$ {priceToDiscount.toFixed(2)} e ganhe
+                          <strong> 10% de desconto</strong>
+                        </p>
+                        <DiscountBar width={100 - (priceToDiscount / 80) * 100}>
+                          <div className="discount-variable"></div>
+                        </DiscountBar>
+                      </div>
+                    ) : (
+                      <p>
+                        Parabéns! Você ganhou <strong>10% de desconto</strong>
+                      </p>
+                    )}
+                  </div>
+                ) &&
+                cart?.map((item, index, arr) => {
+                  let restaurantTitle = <></>;
 
-                if (
-                  index === 0 ||
-                  item.restaurant !== arr[index - 1].restaurant
-                ) {
-                  restaurantTitle = (
-                    <>
-                      {index === 0 ? <></> : <div className="divider"></div>}
-                      <h2>{item.restaurant}</h2>
-                      <button className="retornar">Retornar para a Loja</button>
-                    </>
-                  );
-                }
-                return (
-                  <div key={item.id} className="cart-restaurantes">
-                    {restaurantTitle}
-                    <div className="card-item">
-                      <div className="item">
-                        <img src={item.photo_url} alt="" />
-                        <div className="info">
-                          <p>{item.item}</p>
-                          <strong>{`${item.price.toFixed(2)}`}</strong>
-                        </div>
-                        <div className="quantidade">
-                          <button onClick={() => minusOneProduct(item.id)}>
-                            {item.amount === 1 ? (
-                              <FaTrashAlt />
-                            ) : (
-                              <AiOutlineMinus />
-                            )}
-                          </button>
-                          <p>{item.amount}</p>
-                          <button onClick={() => addOneProduct(item.id)}>
-                            <MdAdd />
-                          </button>
+                  if (
+                    index === 0 ||
+                    item.restaurant !== arr[index - 1].restaurant
+                  ) {
+                    restaurantTitle = (
+                      <>
+                        {index === 0 ? <></> : <div className="divider"></div>}
+                        <h2>{item.restaurant}</h2>
+                        <button className="retornar">
+                          Retornar para a Loja
+                        </button>
+                      </>
+                    );
+                  }
+
+                  return (
+                    <div key={item.id} className="cart-restaurantes">
+                      {restaurantTitle}
+                      <div className="card-item">
+                        <div className="item">
+                          <img src={item.photo_url} alt="" />
+                          <div className="info">
+                            <p>{item.item}</p>
+                            <strong>{`${item.price.toFixed(2)}`}</strong>
+                          </div>
+                          <div className="quantidade">
+                            <button onClick={() => minusOneProduct(item.id)}>
+                              {item.amount === 1 ? (
+                                <FaTrashAlt />
+                              ) : (
+                                <AiOutlineMinus />
+                              )}
+                            </button>
+                            <p>{item.amount}</p>
+                            <button onClick={() => addOneProduct(item.id)}>
+                              <MdAdd />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })
+              )}
             </>
           </div>
           <div className="rodape-cart">
