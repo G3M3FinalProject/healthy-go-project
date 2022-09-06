@@ -1,9 +1,12 @@
 import { useState } from "react";
 
-import Bebida from "../../assets/Bebida.png";
-import Comida from "../../assets/Comida.png";
-import ComidaeBebida from "../../assets/ComidaeBebida.png";
+import allDishes from "../../assets/allDishes.png";
+import allDishesHover from "../../assets/allDishesHover.png";
+import desserts from "../../assets/desserts.png";
+import dessertsHover from "../../assets/dessertsHover.png";
+import drinks from "../../assets/drinks.png";
 import drinksHover from "../../assets/drinksHover.png";
+import food from "../../assets/food.png";
 import foodHover from "../../assets/foodHover.png";
 import {
   IMenu,
@@ -11,17 +14,15 @@ import {
 } from "../../contexts/restaurantProductsContext";
 import { ButtonFilter, ContainerFilter } from "./style";
 
-type ICategories = "drinks" | "food" | "deserts";
+type ICategories = "drinks" | "food" | "deserts" | "all";
 
 export const FilteredSearch = () => {
-  const { setFilteredMenu, restaurantInfo, filteredMenu } =
-    useRestaurantProductsContext();
+  const { setFilteredMenu, restaurantInfo } = useRestaurantProductsContext();
 
-  const [actualFilter, setActualFilter] = useState("");
-
+  const [actualFilter, setActualFilter] = useState("all");
   const filterByCategory = (category: ICategories) => {
-    actualFilter === category
-      ? (setFilteredMenu(restaurantInfo.menu), setActualFilter(""))
+    actualFilter === category || category === "all"
+      ? (setFilteredMenu(restaurantInfo.menu), setActualFilter("all"))
       : (setFilteredMenu(() => {
           const newMenu: IMenu = {
             drinks: [],
@@ -33,38 +34,40 @@ export const FilteredSearch = () => {
         }),
         setActualFilter(category));
   };
-  //! Ver se vai ser essa foto mesmo pra sobremesa.
 
   return (
     <ContainerFilter>
-      <ButtonFilter
-        isActive={!!filteredMenu.food}
-        onClick={() => filterByCategory("food")}
-      >
+      <ButtonFilter onClick={() => filterByCategory("food")}>
         {actualFilter.includes("food") ? (
           <img src={foodHover} />
         ) : (
-          <img src={Comida} />
+          <img src={food} />
         )}
       </ButtonFilter>
-      <ButtonFilter
-        isActive={!!filteredMenu.drinks}
-        onClick={() => filterByCategory("drinks")}
-      >
+      <ButtonFilter onClick={() => filterByCategory("drinks")}>
         {actualFilter.includes("drinks") ? (
           <img src={drinksHover} />
         ) : (
-          <img src={Bebida} />
+          <img src={drinks} />
         )}
       </ButtonFilter>
-      <ButtonFilter
-        isActive={!!filteredMenu.deserts}
-        onClick={() => filterByCategory("deserts")}
-      >
-        {filteredMenu.deserts ? (
-          <img src={ComidaeBebida} />
+      <ButtonFilter onClick={() => filterByCategory("deserts")}>
+        {actualFilter.includes("deserts") ? (
+          <img src={dessertsHover} />
         ) : (
-          <img src={ComidaeBebida} />
+          <img src={desserts} className="deserts" />
+        )}
+      </ButtonFilter>
+
+      <ButtonFilter
+        onClick={() => {
+          filterByCategory("all");
+        }}
+      >
+        {actualFilter.includes("all") ? (
+          <img src={allDishesHover} />
+        ) : (
+          <img src={allDishes} />
         )}
       </ButtonFilter>
     </ContainerFilter>

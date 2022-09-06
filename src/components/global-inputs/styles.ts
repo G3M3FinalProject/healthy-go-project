@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const InputLg = styled.div`
+interface IInputLg {
+  error: boolean;
+}
+
+export const InputLg = styled.div<IInputLg>`
   position: relative;
 
   width: 100%;
@@ -13,7 +17,9 @@ export const InputLg = styled.div`
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 
     border-radius: 10px;
-    border: 1px solid rgba(67, 66, 66, 1);
+    border: 1px solid;
+    border-color: ${({ error }) =>
+      error ? "rgba(255, 0, 0, 1)" : "rgba(67, 66, 66, 1)"};
 
     background-color: #f7f6f3;
     color: black;
@@ -30,31 +36,21 @@ export const InputLg = styled.div`
 
     &:focus {
       background-color: #f7f6f3;
+      border-color: #248b24;
+      box-shadow: 1px 1px 0px 0px #248b24;
     }
 
     &:focus ~ label {
       top: -0.5rem;
       font-size: 19px;
       left: 0.8rem;
-      color: var(--placeholder);
+      color: #248b24;
     }
 
     &:not(:placeholder-shown) ~ label {
       top: -0.65rem;
       font-size: 19px;
       left: 0.8rem;
-    }
-
-    @media screen and (max-width: 770px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
-    }
-
-    @media screen and (max-width: 420px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
     }
   }
 
@@ -71,26 +67,33 @@ export const InputLg = styled.div`
     background-color: #f7f6f3;
 
     pointer-events: none;
+    color: ${({ error }) =>
+      error ? "rgba(255, 0, 0, 1)" : "var(--placeholder)"};
 
     transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
-
-    z-index: 1;
 
     font-style: normal;
     font-weight: 300;
     font-size: 20px;
     line-height: 25px;
-
-    @media screen and (max-width: 770px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
+  }
+  & > div {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 0, 0, 1);
+    padding-left: 0.4rem;
+    padding-top: 0.1rem;
+    p {
+      color: rgba(255, 0, 0, 1);
+      font-size: 0.6rem;
+      padding-left: 0.2rem;
     }
-
-    @media screen and (max-width: 420px) {
-      width: 89%;
-      padding: 0;
-      font-size: 8px;
+  }
+  @media (min-width: 768px) {
+    div {
+      p {
+        font-size: 0.8rem;
+      }
     }
   }
 `;

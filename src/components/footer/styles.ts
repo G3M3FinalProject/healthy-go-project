@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const Positioning = styled.div`
   width: 100%;
   height: 13rem;
-  position: sticky;
+
+  position: relative;
+  bottom: -6rem;
 
   display: flex;
   align-items: center;

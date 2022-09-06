@@ -31,7 +31,7 @@ export const ContainerDivMenu = styled.div`
 
     gap: 3rem;
 
-    padding: 1%;
+    gap: 2rem;
 
     width: 100%;
 

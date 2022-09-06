@@ -4,8 +4,10 @@ export const Figure = styled.figure`
   display: flex;
   align-items: center;
   flex-direction: column;
-  position: relative;
   justify-content: center;
+
+  position: relative;
+
   height: 100%;
 `;
 
@@ -64,15 +66,33 @@ export const Person = styled.img`
 export const HeartFloat = styled.img`
   position: relative;
 
-  z-index: 1;
-
   animation: fadeInFromTop 0.5s linear forwards, floating ease 3s infinite;
 `;
 
 export const ReviewFloat = styled.img`
   position: relative;
 
-  z-index: 1;
-
   animation: fadeInFromTop 0.5s linear forwards, floating ease 3s infinite;
+`;
+
+export const RestaurantDivs = styled.div`
+  display: flex;
+  height: 28%;
+
+  position: absolute;
+
+  gap: 1rem;
+  bottom: 150px;
+
+  img {
+    width: 170px;
+    height: 170px;
+
+    animation: fadeInFromTop 0.5s linear forwards, floating ease 3s infinite;
+  }
+
+  .lower {
+    align-self: flex-end;
+    animation-delay: 1.3s;
+  }
 `;

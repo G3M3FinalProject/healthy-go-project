@@ -7,10 +7,10 @@ import {
   IProduct,
   useRestaurantProductsContext,
 } from "../../contexts/restaurantProductsContext";
+import Loading from "../loading";
 import {
   ContainerMenu,
   ContainerP,
-  ContainerPreco,
   ContainerSection,
   ContainerDivMenu,
 } from "./styles";
@@ -39,13 +39,16 @@ export const MenuRestaurant = () => {
     });
   };
 
+  if (!filteredMenu) return <Loading />;
+  const unique_id2 = uuid();
+
   return (
     <ContainerMenu>
       {!!filteredMenu &&
         Object.entries(filteredMenu).map(([key, value]) => {
           return (
             !!value.length && (
-              <ContainerDivMenu key={value}>
+              <ContainerDivMenu key={JSON.stringify(value)}>
                 <h2>{subTitles[key]}</h2>
                 <ul>
                   {value?.map((product: IProduct) => {
@@ -62,17 +65,19 @@ export const MenuRestaurant = () => {
                             <ContainerP>
                               {categoryFix(product.category)}
                             </ContainerP>
-                            <ContainerPreco>
+                            <p className="preco">
                               {product.price.toLocaleString("pt-br", {
                                 style: "currency",
                                 currency: "BRL",
                               })}
-                            </ContainerPreco>
+                            </p>
                           </ContainerSection>
                         </div>
-                        <button onClick={() => addToCart(product)}>
-                          Adicionar ao carrinho
-                        </button>
+                        <div className="add-carrinho">
+                          <button onClick={() => addToCart(product)}>
+                            adicionar ao carrinho
+                          </button>
+                        </div>
                       </li>
                     );
                   })}

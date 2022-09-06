@@ -6,6 +6,7 @@ import { AddressContextProvider } from "./addressContext";
 import { AuthUserProvider } from "./authUserContext";
 import CartProvider from "./cartContext";
 import { ModalProvider } from "./modalContext";
+import { RequestsUserContextProvider } from "./requestsUserContext";
 import { RestaurantProductsProvider } from "./restaurantProductsContext";
 import { RestaurantsProvider } from "./restaurantsContext";
 
@@ -21,7 +22,11 @@ export const Providers = ({ children }: IProvidersProps) => {
           <RestaurantProductsProvider>
             <CartProvider>
               <AddressContextProvider>
-                <ModalProvider>{children}</ModalProvider>
+                <ModalProvider>
+                  <RequestsUserContextProvider>
+                    {children}
+                  </RequestsUserContextProvider>
+                </ModalProvider>
               </AddressContextProvider>
             </CartProvider>
           </RestaurantProductsProvider>

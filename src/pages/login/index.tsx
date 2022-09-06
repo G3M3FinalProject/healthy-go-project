@@ -33,8 +33,6 @@ export const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  console.log(errors);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -52,6 +50,7 @@ export const Login = () => {
               label="E-mail"
               register={register}
               registerName="email"
+              errors={errors.email?.message}
             />
             <ShowPassword>
               <GlobalInputPassword
@@ -59,6 +58,7 @@ export const Login = () => {
                 label="Password"
                 register={register}
                 registerName="password"
+                errors={errors.password?.message}
               />
               <button
                 type="button"

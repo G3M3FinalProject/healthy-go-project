@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const ContainerMain = styled.main`
+  max-width: 1366px;
   display: flex;
   gap: 1rem;
-  width: 80vw;
+  width: 100vw;
 
   margin-top: 6%;
   margin-left: auto;
