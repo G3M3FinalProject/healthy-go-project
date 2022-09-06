@@ -217,6 +217,38 @@ export const Container = styled.div`
       width: 100%;
     }
   }
+  .ripple {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: white;
+
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple-effect 1s ease 1 forwards;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+
+    pointer-events: none;
+  }
+
+  @keyframes ripple-effect {
+    0% {
+      width: 0px;
+      height: 0px;
+
+      opacity: 0.5;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
+
+      opacity: 0;
+    }
+  }
 `;
 
 export const DiscountBar = styled.div`

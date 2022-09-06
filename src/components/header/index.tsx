@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
@@ -27,6 +27,7 @@ import {
   Paragraph,
   CartBackground,
 } from "./styles";
+
 const Header = () => {
   const { user } = useAuthUserContext();
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiOutlineLeft, AiOutlineMinus } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
@@ -10,7 +10,15 @@ import carrinhoVazio from "../../assets/carrinhoVazio.png";
 import { useCart } from "../../contexts/cartContext";
 import { Container, DiscountBar, Modal } from "./styles";
 
-const Cart = ({ setisOpenCart }) => {
+interface ICartRipple {
+  isOpenCart?: any;
+  setisOpenCart?: any;
+  onClick?: any;
+}
+
+const Cart = ({ setisOpenCart, onClick }: ICartRipple) => {
+  const [isRipple, setIsRipple] = useState(false);
+  const [coords, setCoords] = useState({ x: -1, y: -1 });
   const {
     cart,
     freightCart,
@@ -23,6 +31,20 @@ const Cart = ({ setisOpenCart }) => {
   const hasDiscount = 80 - totalCart >= 0;
   const modalRef = useRef<HTMLHeadingElement>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (coords.x !== -1 && coords.y !== -1) {
+      setIsRipple(true);
+
+      setTimeout(() => setIsRipple(false), 1000);
+    } else {
+      setIsRipple(false);
+    }
+  }, [coords]);
+
+  useEffect(() => {
+    if (!isRipple) setCoords({ x: -1, y: -1 });
+  }, [isRipple]);
 
   useEffect(() => {
     function handleOutClick(event) {
@@ -38,6 +60,20 @@ const Cart = ({ setisOpenCart }) => {
       document.removeEventListener("mousedown", handleOutClick);
     };
   }, []);
+
+  const handleClick = (e) => {
+    // if (totalCart > 0) {
+    //   navigate("/checkout", { replace: true });
+    //   setisOpenCart(false);
+    // }
+
+    setCoords({
+      x: e.pageX - e.target.offsetLeft,
+      y: e.pageY - e.target.offsetTop,
+    });
+
+    onClick && onClick(e);
+  };
 
   const itemsCart = cart?.map((item, index, arr) => {
     let restaurantTitle = <></>;
@@ -155,14 +191,20 @@ const Cart = ({ setisOpenCart }) => {
               </div>
               <button
                 disabled={totalCart > 20 ? false : true}
-                onClick={() => {
-                  if (totalCart > 0) {
-                    navigate("/checkout", { replace: true });
-                    setisOpenCart(false);
-                  }
-                }}
+                onClick={handleClick}
               >
-                Finalizar Pedido
+                {isRipple ? (
+                  <span
+                    className="ripple"
+                    style={{
+                      left: coords.x + "px",
+                      top: coords.y + "px",
+                    }}
+                  />
+                ) : (
+                  ""
+                )}
+                <span className="content">Finalizar Pedido</span>
               </button>
             </div>
           </div>
