@@ -14,7 +14,6 @@ import {
 } from "../../components/global-inputs";
 import { GoogleAuthLogin } from "../../components/google-auth-login";
 import Loading from "../../components/loading";
-import Loading from "../../components/loading";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
 import { CenteringContainer, FormDiv, Form, Img, ShowPassword } from "./styles";
 
@@ -22,7 +21,6 @@ export const Login = () => {
   const { loginUser, isLoading } = useAuthUserContext();
 
   const [showPassword, setShowPassword] = useState(false);
-  const { isLoading } = useAuthUserContext();
 
   if (isLoading) return <Loading />;
 
