@@ -24,7 +24,7 @@ export const Menu = styled.div`
   padding: 0 10% 0 0;
   margin: 0;
 
-  gap: 3rem;
+  gap: 2rem;
 
   color: white;
 `;
@@ -74,12 +74,8 @@ export const BrandName = styled.img`
     display: none;
   }
 
-  @media screen and (max-width: 426px) {
-    min-width: 40%;
-  }
-
   @media screen and (max-width: 625px) {
-    width: 7rem;
+    width: 5rem;
     max-width: unset;
   }
 `;
