@@ -36,14 +36,15 @@ export const InputLg = styled.div<IInputLg>`
 
     &:focus {
       background-color: #f7f6f3;
-      border-color: var(--brand-green);
+      border-color: #248b24;
+      box-shadow: 1px 1px 0px 0px #248b24;
     }
 
     &:focus ~ label {
       top: -0.5rem;
       font-size: 19px;
       left: 0.8rem;
-      color: var(--brand-green);
+      color: #248b24;
     }
 
     &:not(:placeholder-shown) ~ label {
@@ -80,10 +81,12 @@ export const InputLg = styled.div<IInputLg>`
     display: flex;
     align-items: center;
     color: rgba(255, 0, 0, 1);
-
+    padding-left: 0.4rem;
+    padding-top: 0.1rem;
     p {
       color: rgba(255, 0, 0, 1);
       font-size: 0.6rem;
+      padding-left: 0.2rem;
     }
   }
   @media (min-width: 768px) {

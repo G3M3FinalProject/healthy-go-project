@@ -51,11 +51,11 @@ export const AddressContextProvider = ({ children }: IAddressContextProps) => {
     addressApi
       .get("/50ad4a90-fd5e-11ec-b463-1717be8c9ff1")
       .then((res: IResAddress) => {
-        const postal = `${res.data.postal}-000`;
+        const postalRes = `${res.data.postal}-000`;
 
         setValue("state", res.data.state);
         setValue("city", res.data.city);
-        setValue("postal", postal);
+        setValue("postal", postalRes);
       })
       .catch(() =>
         toast.error("Desative o adBlock para obter a localização atual!", {

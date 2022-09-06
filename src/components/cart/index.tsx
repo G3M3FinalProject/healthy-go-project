@@ -39,6 +39,46 @@ const Cart = ({ setisOpenCart }) => {
     };
   }, []);
 
+  const itemsCart = cart?.map((item, index, arr) => {
+    let restaurantTitle = <></>;
+    if (index === 0 || item.restaurant !== arr[index - 1].restaurant) {
+      restaurantTitle = (
+        <>
+          {index === 0 ? <></> : <div className="divider"></div>}
+          <h2>{item.restaurant}</h2>
+          <Link to={`/restaurants/${item?.restaurantID}`} className="retornar">
+            Retornar para a Loja
+          </Link>
+        </>
+      );
+    }
+    return (
+      <div key={item.id} className="cart-restaurantes">
+        {restaurantTitle}
+        <div className="card-item">
+          <div className="item">
+            <figure>
+              <img src={item.photo_url} alt="" />
+            </figure>
+            <div className="info">
+              <p>{item.item}</p>
+              <strong>{`${item.price.toFixed(2)}`}</strong>
+            </div>
+            <div className="quantidade">
+              <button onClick={() => minusOneProduct(item.id)}>
+                {item.amount === 1 ? <FaTrashAlt /> : <AiOutlineMinus />}
+              </button>
+              <p>{item.amount}</p>
+              <button onClick={() => addOneProduct(item.id)}>
+                <MdAdd />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -56,98 +96,56 @@ const Cart = ({ setisOpenCart }) => {
             <h3>Carrinho</h3>
           </div>
           <div className="container-itens">
-            <>
-              {totalCart === 0 ? (
-                <div className="carrinho-vazio">
-                  <img src={carrinhoVazio} alt="carrinho vazio" />
-                  <h2>Carrinho vazio</h2>
-                  <p>
-                    Adicione alguns produtos ao seu carrinho e volte aqui para
-                    finalizar sua compra!
-                  </p>
-                </div>
-              ) : (
-                (
-                  <div className="desconto">
-                    {hasDiscount ? (
-                      <div>
-                        <p>
-                          Gaste mais R$ {priceToDiscount.toFixed(2)} e ganhe
-                          <strong> 10% de desconto</strong>
-                        </p>
-                        <DiscountBar width={100 - (priceToDiscount / 80) * 100}>
-                          <div className="discount-variable"></div>
-                        </DiscountBar>
-                      </div>
-                    ) : (
-                      <p>
-                        Parabéns! Você ganhou <strong>10% de desconto</strong>
-                      </p>
-                    )}
+            {totalCart === 0 ? (
+              <div className="carrinho-vazio">
+                <img src={carrinhoVazio} alt="carrinho vazio" />
+                <h2>Carrinho vazio</h2>
+                <p>
+                  Adicione alguns produtos ao seu carrinho e volte aqui para
+                  finalizar sua compra!
+                </p>
+              </div>
+            ) : (
+              <div className="desconto">
+                {hasDiscount ? (
+                  <div>
+                    <p>
+                      Gaste mais R$ {priceToDiscount.toFixed(2)} e ganhe
+                      <strong> 10% de desconto</strong>
+                    </p>
+                    <DiscountBar width={100 - (priceToDiscount / 80) * 100}>
+                      <div className="discount-variable"></div>
+                    </DiscountBar>
                   </div>
-                ) &&
-                cart?.map((item, index, arr) => {
-                  let restaurantTitle = <></>;
-                  if (
-                    index === 0 ||
-                    item.restaurant !== arr[index - 1].restaurant
-                  ) {
-                    restaurantTitle = (
-                      <>
-                        {index === 0 ? <></> : <div className="divider"></div>}
-                        <h2>{item.restaurant}</h2>
-                        <Link
-                          to={`/restaurants/${item?.restaurantID}`}
-                          className="retornar"
-                        >
-                          Retornar para a Loja
-                        </Link>
-                      </>
-                    );
-                  }
-
-                  return (
-                    <div key={item.id} className="cart-restaurantes">
-                      {restaurantTitle}
-                      <div className="card-item">
-                        <div className="item">
-                          <figure>
-                            <img src={item.photo_url} alt="" />
-                          </figure>
-                          <div className="info">
-                            <p>{item.item}</p>
-                            <strong>{`${item.price.toFixed(2)}`}</strong>
-                          </div>
-                          <div className="quantidade">
-                            <button onClick={() => minusOneProduct(item.id)}>
-                              {item.amount === 1 ? (
-                                <FaTrashAlt />
-                              ) : (
-                                <AiOutlineMinus />
-                              )}
-                            </button>
-                            <p>{item.amount}</p>
-                            <button onClick={() => addOneProduct(item.id)}>
-                              <MdAdd />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-            </>
+                ) : (
+                  <p>
+                    Parabéns! Você ganhou <strong>10% de desconto</strong>
+                  </p>
+                )}
+              </div>
+            )}
+            {totalCart != 0 && itemsCart}
           </div>
+
           <div className="rodape-cart">
             <div className="info-total">
               <div className="subtotal">
                 <p>Subtotal</p>
                 <p>{`R$ ${subTotalCart.toFixed(2)}`}</p>
               </div>
+
               <div className="frete">
                 <p>Frete</p>
                 <p>{`R$ ${freightCart.toFixed(2)}`}</p>
+              </div>
+              <div className="frete">
+                <p>Desconto</p>
+                <p>
+                  R${" "}
+                  {!hasDiscount
+                    ? ((subTotalCart + freightCart) * 0.1).toFixed(2)
+                    : 0}
+                </p>
               </div>
             </div>
             <div className="finalizar-cart">
@@ -156,6 +154,7 @@ const Cart = ({ setisOpenCart }) => {
                 <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
               </div>
               <button
+                disabled={totalCart > 20 ? false : true}
                 onClick={() => {
                   if (totalCart > 0) {
                     navigate("/checkout", { replace: true });

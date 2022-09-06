@@ -4,7 +4,6 @@ import { Control, Controller, UseFormRegister } from "react-hook-form";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineWarning } from "react-icons/ai";
 import InputMask from "react-input-mask";
-import maskChar from "react-input-mask";
 
 import { InputLg, ButtonLg, ButtonMd, Search } from "./styles";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
