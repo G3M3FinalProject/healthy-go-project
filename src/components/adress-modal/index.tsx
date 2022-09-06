@@ -57,6 +57,7 @@ const AdressModal = () => {
   const onSuccess = (data: ICompleteAddress) => {
     console.log(data);
     registerNewAdressUser(data);
+    setIsAddressModalOpen(false);
   };
   console.log(errors);
 

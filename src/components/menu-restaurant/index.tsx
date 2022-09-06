@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { v4 as uuid } from "uuid";
 
@@ -19,7 +19,7 @@ export const MenuRestaurant = () => {
   const { findRestaurantInfo, filteredMenu } = useRestaurantProductsContext();
   const { id } = useParams();
   const { addToCart } = useCart();
-
+  const navigate = useNavigate();
   findRestaurantInfo(id);
 
   const subTitles = {
@@ -40,7 +40,6 @@ export const MenuRestaurant = () => {
   };
 
   if (!filteredMenu) return <Loading />;
-  const unique_id2 = uuid();
 
   return (
     <ContainerMenu>

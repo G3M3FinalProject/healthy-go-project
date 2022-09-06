@@ -154,6 +154,7 @@ const Cart = ({ setisOpenCart }) => {
                 <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
               </div>
               <button
+                type="button"
                 disabled={totalCart > 20 ? false : true}
                 onClick={() => {
                   if (totalCart > 0) {
