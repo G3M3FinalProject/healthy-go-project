@@ -1,11 +1,16 @@
 import { useForm } from "react-hook-form";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { GoLocation } from "react-icons/go";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
 import AdressModal from "../../components/adress-modal";
-import { GlobalInputLg } from "../../components/global-inputs";
-import { ButtonLg } from "../../components/global-inputs/styles";
+import {
+  GlobalButtonLg,
+  GlobalInputLg,
+  GlobalInputMask,
+} from "../../components/global-inputs";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
 import { editFormSchema } from "../../validations";
@@ -17,6 +22,9 @@ import {
   Paragragh,
   TitleCard,
   InfoCard,
+  RightDiv,
+  DivButton,
+  DivAdress,
 } from "./styles";
 import { CenteringContainer, Form, FormDiv } from "./styles";
 
@@ -36,11 +44,12 @@ interface IRegisterData {
 
 const EditProfile = () => {
   const { editUser, user, getUser } = useAuthUserContext();
-  const { setIsProfileModalOpen, isProfileModalOpen } = useModalContext();
+  const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IFormEditData>({ resolver: yupResolver(editFormSchema) });
 
@@ -57,6 +66,7 @@ const EditProfile = () => {
       editUser(register, getItem);
     }
   }
+
   if (getItem) {
     getUser(getItem);
   }
@@ -89,13 +99,14 @@ const EditProfile = () => {
                   register={register}
                   registerName="birthdate"
                 />
-                <GlobalInputLg
-                  type="tel"
+                <GlobalInputMask
                   label="Telefone"
-                  defaultValue={user?.cellphone}
-                  register={register}
                   registerName="cellphone"
+                  control={control}
+                  defaultValue={user?.cellphone}
+                  mask="(99) 99999-9999"
                 />
+
                 <GlobalInputLg
                   type="email"
                   label="E-mail adicional *"
@@ -103,26 +114,38 @@ const EditProfile = () => {
                   register={register}
                   registerName="email"
                 />
-                <ButtonLg type="submit">Salvar</ButtonLg>
+                <DivButton>
+                  <GlobalButtonLg type="submit">Salvar</GlobalButtonLg>
+                </DivButton>
               </Form>
             </FormDiv>
           </CenteringContainer>
-          <CardAdress>
-            <h3>Endereços</h3>
-            <Card>
-              <TitleCard>Casa</TitleCard>
-              <InfoCard>Rua Veneza Ferreira</InfoCard>
-              <InfoCard>Numero: 260</InfoCard>
-              <InfoCard>CEP 89888-000 - Itapema - SC</InfoCard>
-            </Card>
-            <ButtonSave onClick={() => setIsProfileModalOpen(true)}>
+          <RightDiv>
+            <DivAdress>
+              <GoLocation /> <h3> Endereços</h3>
+            </DivAdress>
+
+            <CardAdress>
+              {user?.address?.map((address) => {
+                return (
+                  <Card key={address.id}>
+                    <TitleCard>{address.adressIdentification}</TitleCard>
+                    <InfoCard>{address.street}</InfoCard>
+                    <InfoCard>Numero: {address.number}</InfoCard>
+                    <InfoCard>
+                      CEP {address.postal} - {address.city} - {address.state}
+                    </InfoCard>
+                  </Card>
+                );
+              })}
+            </CardAdress>
+            <GlobalButtonLg onClick={() => setIsAddressModalOpen(true)}>
               Adicionar endereço
-            </ButtonSave>
-            <img src="../../assets/adresspin.png" alt="" />
-          </CardAdress>
+            </GlobalButtonLg>
+          </RightDiv>
         </ContainerCenter>
       </motion.div>
-      {isProfileModalOpen && <AdressModal />}
+      {isAddressModalOpen && <AdressModal />}
     </>
   );
 };

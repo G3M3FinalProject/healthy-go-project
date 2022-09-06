@@ -21,121 +21,114 @@ import {
 
 const Footer = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-    >
-      <Positioning>
-        <div>
-          <Paragraph>
-            <p>Site desenvolvido por: </p>
-          </Paragraph>
-          <FramePosition>
-            <Frame>
-              <Portrait>
-                <Image src={DevQ} alt="Developer Queren" />
-              </Portrait>
-              <p>Queren Hope</p>
-              <Icons>
-                <a
-                  target="_blank"
-                  href="https://github.com/QuerenHope"
-                  rel="noreferrer"
-                >
-                  <img src={GitHub} alt="GitHub Icon" />
-                </a>
+    <Positioning>
+      <div>
+        <Paragraph>
+          <p>Site desenvolvido por: </p>
+        </Paragraph>
+        <FramePosition>
+          <Frame>
+            <Portrait>
+              <Image src={DevQ} alt="Developer Queren" />
+            </Portrait>
+            <p>Queren Hope</p>
+            <Icons>
+              <a
+                target="_blank"
+                href="https://github.com/QuerenHope"
+                rel="noreferrer"
+              >
+                <img src={GitHub} alt="GitHub Icon" />
+              </a>
+              <img src={Linkedin} alt="Linkedin Icon" />
+            </Icons>
+          </Frame>
+          <Frame>
+            <Portrait>
+              <Image src={DevA} alt="Developer Amanda" />
+            </Portrait>
+            <p>Amanda Rodrigues</p>
+            <Icons>
+              <a
+                target="_blank"
+                href="https://github.com/ahmandi"
+                rel="noreferrer"
+              >
+                <img src={GitHub} alt="GitHub Icon" />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/arsamanda/"
+                rel="noreferrer"
+              >
                 <img src={Linkedin} alt="Linkedin Icon" />
-              </Icons>
-            </Frame>
-            <Frame>
-              <Portrait>
-                <Image src={DevA} alt="Developer Amanda" />
-              </Portrait>
-              <p>Amanda Rodrigues</p>
-              <Icons>
-                <a
-                  target="_blank"
-                  href="https://github.com/ahmandi"
-                  rel="noreferrer"
-                >
-                  <img src={GitHub} alt="GitHub Icon" />
-                </a>
-                <a
-                  target="_blank"
-                  href="https://www.linkedin.com/in/arsamanda/"
-                  rel="noreferrer"
-                >
-                  <img src={Linkedin} alt="Linkedin Icon" />
-                </a>
-              </Icons>
-            </Frame>
-            <Frame>
-              <Portrait>
-                <Image src={DevC} alt="Developer Carol" />
-              </Portrait>
-              <p>Carol Pezzin</p>
-              <Icons>
-                <a
-                  target="_blank"
-                  href="https://github.com/CarolPezzin"
-                  rel="noreferrer"
-                >
-                  <img src={GitHub} alt="GitHub Icon" />
-                </a>
+              </a>
+            </Icons>
+          </Frame>
+          <Frame>
+            <Portrait>
+              <Image src={DevC} alt="Developer Carol" />
+            </Portrait>
+            <p>Carol Pezzin</p>
+            <Icons>
+              <a
+                target="_blank"
+                href="https://github.com/CarolPezzin"
+                rel="noreferrer"
+              >
+                <img src={GitHub} alt="GitHub Icon" />
+              </a>
+              <img src={Linkedin} alt="Linkedin Icon" />
+            </Icons>
+          </Frame>
+          <Frame>
+            <Portrait>
+              <Image src={DevG} alt="Developer Guilherme" />
+            </Portrait>
+            <p>Guilherme Wursto</p>
+            <Icons>
+              <a
+                target="_blank"
+                href="https://github.com/guiwustro"
+                rel="noreferrer"
+              >
+                <img src={GitHub} alt="GitHub Icon" />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/guilhermewustro/"
+                rel="noreferrer"
+              >
                 <img src={Linkedin} alt="Linkedin Icon" />
-              </Icons>
-            </Frame>
-            <Frame>
-              <Portrait>
-                <Image src={DevG} alt="Developer Guilherme" />
-              </Portrait>
-              <p>Guilherme Wursto</p>
-              <Icons>
-                <a
-                  target="_blank"
-                  href="https://github.com/guiwustro"
-                  rel="noreferrer"
-                >
-                  <img src={GitHub} alt="GitHub Icon" />
-                </a>
-                <a
-                  target="_blank"
-                  href="https://www.linkedin.com/in/guilhermewustro/"
-                  rel="noreferrer"
-                >
-                  <img src={Linkedin} alt="Linkedin Icon" />
-                </a>
-              </Icons>
-            </Frame>
-            <Frame>
-              <Portrait>
-                <Image src={DevE} alt="Developer Eugenio" />
-              </Portrait>
-              <p>Eugenio Bravin</p>
-              <Icons>
-                <a
-                  target="_blank"
-                  href="https://github.com/Bravineugenio"
-                  rel="noreferrer"
-                >
-                  <img src={GitHub} alt="GitHub Icon" />
-                </a>
-                <a
-                  target="_blank"
-                  href="https://www.linkedin.com/in/eugeniobravin/"
-                  rel="noreferrer"
-                >
-                  <img src={Linkedin} alt="Linkedin Icon" />
-                </a>
-              </Icons>
-            </Frame>
-          </FramePosition>
-        </div>
-        <FooterFlag src={footer} alt="Devs picture" />
-      </Positioning>
-    </motion.div>
+              </a>
+            </Icons>
+          </Frame>
+          <Frame>
+            <Portrait>
+              <Image src={DevE} alt="Developer Eugenio" />
+            </Portrait>
+            <p>Eugenio Bravin</p>
+            <Icons>
+              <a
+                target="_blank"
+                href="https://github.com/Bravineugenio"
+                rel="noreferrer"
+              >
+                <img src={GitHub} alt="GitHub Icon" />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/eugeniobravin/"
+                rel="noreferrer"
+              >
+                <img src={Linkedin} alt="Linkedin Icon" />
+              </a>
+            </Icons>
+          </Frame>
+        </FramePosition>
+      </div>
+      <FooterFlag src={footer} alt="Devs picture" />
+    </Positioning>
   );
 };
 

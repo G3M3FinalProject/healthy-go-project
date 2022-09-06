@@ -4,22 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
-import { GlobalInputLg } from "../../components/global-inputs";
-import { ButtonLg } from "../../components/global-inputs/styles";
+import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
-import {
-  CenteringContainer,
-  FormDiv,
-  Form,
-  Paragraph,
-  EffectDiv,
-  Back,
-} from "./styles";
-
-type UserContextType = {
-  registerFunction: (data: IRegisterData) => void;
-};
+import { CenteringContainer, FormDiv, Form, EffectDiv, Back } from "./styles";
 
 interface IRegisterData {
   email: string;
@@ -51,9 +39,9 @@ const UserRegister = () => {
       password: data.password,
       name: data.name,
     };
-    console.log(register);
     registerUser(register);
   }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -70,32 +58,30 @@ const UserRegister = () => {
               label="Nome *"
               register={register}
               registerName="name"
+              errors={errors.name?.message}
             />
-            <Paragraph>{errors.name && errors.name.message}</Paragraph>
             <GlobalInputLg
               type="email"
               label="E-mail *"
               register={register}
               registerName="email"
+              errors={errors.email?.message}
             />
-            <Paragraph>{errors.email && errors.email.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Senha *"
               register={register}
               registerName="password"
+              errors={errors.password?.message}
             />
-            <Paragraph>{errors.password && errors.password.message}</Paragraph>
             <GlobalInputLg
               type="password"
               label="Confirmação de senha *"
               register={register}
               registerName="confirmPassword"
+              errors={errors.confirmPassword?.message}
             />
-            <Paragraph>
-              {errors.confirmPassword && errors.confirmPassword.message}
-            </Paragraph>
-            <ButtonLg type="submit">Cadastrar</ButtonLg>
+            <GlobalButtonLg type="submit">Cadastrar</GlobalButtonLg>
           </Form>
         </FormDiv>
       </CenteringContainer>

@@ -17,6 +17,7 @@ interface IRestaurantsProviderData {
   >;
   setIsFilterActive: React.Dispatch<React.SetStateAction<boolean>>;
   isFilterActive: boolean;
+  isLoading: boolean;
 }
 
 interface IRestaurantsProps {
@@ -26,6 +27,8 @@ interface IRestaurantsProps {
 const RestaurantsContext = createContext({} as IRestaurantsProviderData);
 
 export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [allRestaurants, setAllRestaurants] = useState<IRestaurantInfo[]>([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState<
     IRestaurantInfo[]
@@ -38,6 +41,7 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
         .get("/restaurants")
         .then((response) => {
           setAllRestaurants(response.data);
+          setIsLoading(false);
         })
         .catch((err) => console.log(err));
     }
@@ -51,6 +55,7 @@ export const RestaurantsProvider = ({ children }: IRestaurantsProps) => {
         setFilteredRestaurants,
         isFilterActive,
         setIsFilterActive,
+        isLoading,
       }}
     >
       {children}

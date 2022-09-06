@@ -11,7 +11,7 @@ interface IUserInfoGmail {
 }
 
 export const GoogleAuthLogin = () => {
-  const { loginUser, registerUser } = useAuthUserContext();
+  const { loginUser, registerUser, setUser } = useAuthUserContext();
 
   const responseGmail = (userInfo: IUserInfoGmail) => {
     // Verificar Registro ... => Está registrado?
@@ -22,6 +22,7 @@ export const GoogleAuthLogin = () => {
       name: userInfo.name,
       type: "",
     };
+    setUser(userInfo);
     registerUser(userInfoFixed);
     loginUser(userInfoFixed);
   };

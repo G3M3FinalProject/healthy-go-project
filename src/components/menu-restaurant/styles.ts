@@ -3,63 +3,82 @@ import styled from "styled-components";
 export const ContainerMenu = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 5rem;
-
-  padding: 0.5rem 0rem 0 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-
-  border-left: 1px solid var(--brand-light-green);
-  border-right: 1px solid var(--brand-light-green);
-  border-bottom: 1px solid var(--brand-light-green);
-  border-radius: 0 0 25px 25px;
 `;
 
 export const ContainerDivMenu = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-
+  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid var(--brand-light-green);
+  border-radius: 15px;
+  border-top: none;
+  padding: 1%;
+
+  h2 {
+    font-size: 35px;
+  }
 
   ul {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    justify-content: flex-start;
 
-    gap: 3rem;
+    gap: 2rem;
 
-    padding: 1%;
+    margin-top: 1.5rem;
 
     width: 100%;
-
-    h2 {
-      width: 100%;
-      margin-top: 2%;
-      margin-left: 2rem;
-      font-family: "Petrona";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 32px;
-      line-height: 36px;
-      text-transform: capitalize;
-      color: #000000;
-    }
+    height: 100%;
 
     li {
       display: flex;
       flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      align-content: center;
       gap: 3%;
 
-      width: 17.3rem;
-      height: 10rem;
+      width: 23rem;
+      height: 14rem;
 
       padding: 0.5%;
 
-      border: 1px solid var(--brand-light-green);
       border-radius: 25px;
+      box-shadow: 1px 1px var(--brand-light-green);
+
+      .add-carrinho {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          align-content: center;
+          width: 80%;
+          color: white;
+          height: 2rem;
+        }
+      }
+      @media screen and (max-width: 1491px) {
+        width: 21rem;
+      }
+      @media screen and (max-width: 1417px) {
+        width: 21rem;
+      }
+      @media screen and (max-width: 1180px) {
+        width: 23rem;
+      }
+      @media screen and (max-width: 1369px) {
+        width: 20rem;
+      }
 
       @media screen and (max-width: 425px) {
         width: 100%;
@@ -87,8 +106,9 @@ export const ContainerDivMenu = styled.div`
         }
 
         img {
-          width: 6rem;
-          height: 7rem;
+          object-fit: cover;
+          width: 8rem;
+          height: 8rem;
           padding: 1%;
           border-radius: 25px;
 
@@ -96,22 +116,23 @@ export const ContainerDivMenu = styled.div`
             width: 40%;
             height: 50%;
           }
+          @media screen and (max-width: 1369px) {
+            width: 7rem;
+          }
         }
       }
       button {
-        width: 65.12%;
-        height: 1.25rem;
+        width: 50px;
+        height: 3.25rem;
         padding: 1%;
-        margin-left: auto;
-        margin-right: auto;
-        background: #12753a;
-        border-radius: 16px;
-        font-family: "Petrona";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        text-align: center;
-        color: #ffffff;
+        margin-right: 20px;
+
+        background: rgba(36, 133, 64, 5);
+        border-radius: 15px;
+
+        img {
+          width: 30px;
+        }
 
         @media screen and (max-width: 425px) {
           width: 30%;
@@ -133,24 +154,29 @@ export const ContainerSection = styled.section`
   height: 3rem;
 
   margin-top: 3%;
+  gap: 10px;
 
   h4 {
     margin-left: 0%;
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 20px;
     @media screen and (max-width: 425px) {
       font-size: 14px;
     }
+  }
+  .preco {
+    font-size: 18px;
+    font-weight: 900;
   }
 `;
 
 export const ContainerP = styled.p`
   font-family: "Petrona";
   font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
+  font-weight: 400;
+  font-size: 16px;
 
   margin-bottom: 1%;
 

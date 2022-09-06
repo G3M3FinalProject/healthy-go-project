@@ -5,18 +5,20 @@ import {
   useContext,
   createContext,
 } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { api } from "../services";
+import { ICompleteAddress } from "./addressContext";
+import { IProduct } from "./restaurantProductsContext";
 
 interface IAuthUserProviderData {
-  isLoading: boolean;
   user: IUser | undefined;
   getUser: (id: string) => void;
   registerUser: (user: IUser) => void;
   loginUser: (user: IUserLogin) => void;
   editUser: (data: IUser, id: string) => void;
   logoutUser: () => void;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
 }
 
 export interface IUserLogin {
@@ -38,6 +40,13 @@ interface IUserEdit {
   birthday?: string;
   cellphone?: string;
 }
+export interface IUserRequests {
+  id: number;
+  status: string;
+  date: string;
+  payament: string;
+  total: number;
+}
 
 export interface IUser extends IUserLogin {
   id?: string;
@@ -47,8 +56,11 @@ export interface IUser extends IUserLogin {
   email2?: string;
   birthday?: string;
   cellphone?: string;
+  address?: ICompleteAddress[];
+  requests?: IUserRequests[];
+  cart?: IProduct[];
 }
-interface IUserEditRes {
+export interface IUserEditRes {
   data: IUser;
 }
 
@@ -59,29 +71,36 @@ interface IAuthUserProps {
 const AuthUserContext = createContext({} as IAuthUserProviderData);
 
 export const AuthUserProvider = ({ children }: IAuthUserProps) => {
-  const [user, setUser] = useState<IUser>();
-  const [isLoading, setIsLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const initialUser = JSON.parse(localStorage.getItem("@healthyGo-user")!);
+  const [user, setUser] = useState(initialUser as IUser);
 
   const navigate = useNavigate();
+  const actualPage = useLocation().pathname;
 
   const loginUser = (data: IUserLogin) => {
     api
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
+        const userLocalStorage = JSON.stringify(res.data.user);
         localStorage.setItem("@healthyGo-userId", res.data.user.id);
+        localStorage.setItem("@healthyGo-user", userLocalStorage);
+
         localStorage.setItem("@healthyGo-token", res.data.accessToken);
 
         api.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${res.data.accessToken}`;
 
-        setIsLoading(false);
         navigate("/homepage", { replace: true });
       })
-      .catch((err) =>
+      .catch(
+        (err) => {
+          console.log("teste");
+          console.log(err);
+        },
         //Adicionar algum aviso ao usuário informando que a senha dele está incorreta!
-        console.log(err),
       );
   };
 
@@ -89,9 +108,15 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
     api
       .post("/register", data)
       .then(() => {
-        navigate("/login", { replace: true });
+        actualPage === "/login"
+          ? loginUser(user as IUser)
+          : navigate("/login", { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        loginUser(user as IUser);
+        console.log(err);
+        console.log("teste");
+      });
   };
 
   const isUserLoggedIn = () => {
@@ -101,20 +126,18 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-      if (token)
+      if (token) {
         api
           .get(`/users/${id}`)
           .then((res) => {
             setUser(res.data);
+            console.log(res.data);
           })
           .catch(() => {
             localStorage.clear();
-
-            setIsLoading(false);
-          })
-          .finally(() => {
-            setIsLoading(false);
+            setUser({} as IUser);
           });
+      }
     }, []);
   };
   isUserLoggedIn();
@@ -140,7 +163,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   };
 
   const logoutUser = () => {
-    setUser(undefined);
+    setUser({} as IUser);
     localStorage.clear();
   };
 
@@ -150,10 +173,10 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         user,
         loginUser,
         registerUser,
-        isLoading,
         editUser,
         getUser,
         logoutUser,
+        setUser,
       }}
     >
       {children}

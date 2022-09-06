@@ -1,10 +1,5 @@
-import { useState } from "react";
-
-import { v4 as uuid } from "uuid";
-
 import transation from "../../../assets/transation.png";
 import { useCart } from "../../../contexts/cartContext";
-import { ModalCheckOut } from "../../modalcheckout";
 import {
   ContainerResume,
   DivImgCheck,
@@ -19,11 +14,6 @@ export interface ICheckOut {
 
 export function ResumeCheckout() {
   const { summaryCart, subTotalCart, totalCart, freightCart } = useCart();
-
-  const [modalResume, setModalResume] = useState(false);
-  //   console.log(modalResume);
-
-  console.log(summaryCart);
   return (
     <ContainerResume>
       <h3>Resumo</h3>
@@ -56,11 +46,10 @@ export function ResumeCheckout() {
         <p>Total</p>
         <p>R$ {totalCart.toFixed(2)}</p>
       </DivTT>
-      <button onClick={() => setModalResume(true)}>Finalizar Pedido</button>
-      {/* <ModalCheckOut
-        modalResume={modalResume}
-        setModalResume={setModalResume}
-      /> */}
+
+      <button type="submit" form="payamentForm">
+        Finalizar Pedido
+      </button>
     </ContainerResume>
   );
 }

@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { AiOutlineLeft, AiOutlineMinus } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
+import carrinhoVazio from "../../assets/carrinhoVazio.png";
 import { useCart } from "../../contexts/cartContext";
 import { Container, DiscountBar, Modal } from "./styles";
 
@@ -19,14 +21,12 @@ const Cart = ({ setisOpenCart }) => {
   } = useCart();
   const priceToDiscount = 80 - totalCart;
   const hasDiscount = 80 - totalCart >= 0;
-  // const modalRef = useRef();
   const modalRef = useRef<HTMLHeadingElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleOutClick(event) {
       const value = modalRef?.current;
-
-      console.log(event.target);
 
       if (value && !value.contains(event.target)) {
         setisOpenCart(false);
@@ -38,6 +38,46 @@ const Cart = ({ setisOpenCart }) => {
       document.removeEventListener("mousedown", handleOutClick);
     };
   }, []);
+
+  const itemsCart = cart?.map((item, index, arr) => {
+    let restaurantTitle = <></>;
+    if (index === 0 || item.restaurant !== arr[index - 1].restaurant) {
+      restaurantTitle = (
+        <>
+          {index === 0 ? <></> : <div className="divider"></div>}
+          <h2>{item.restaurant}</h2>
+          <Link to={`/restaurants/${item?.restaurantID}`} className="retornar">
+            Retornar para a Loja
+          </Link>
+        </>
+      );
+    }
+    return (
+      <div key={item.id} className="cart-restaurantes">
+        {restaurantTitle}
+        <div className="card-item">
+          <div className="item">
+            <figure>
+              <img src={item.photo_url} alt="" />
+            </figure>
+            <div className="info">
+              <p>{item.item}</p>
+              <strong>{`${item.price.toFixed(2)}`}</strong>
+            </div>
+            <div className="quantidade">
+              <button onClick={() => minusOneProduct(item.id)}>
+                {item.amount === 1 ? <FaTrashAlt /> : <AiOutlineMinus />}
+              </button>
+              <p>{item.amount}</p>
+              <button onClick={() => addOneProduct(item.id)}>
+                <MdAdd />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  });
 
   return (
     <motion.div
@@ -56,7 +96,16 @@ const Cart = ({ setisOpenCart }) => {
             <h3>Carrinho</h3>
           </div>
           <div className="container-itens">
-            <>
+            {totalCart === 0 ? (
+              <div className="carrinho-vazio">
+                <img src={carrinhoVazio} alt="carrinho vazio" />
+                <h2>Carrinho vazio</h2>
+                <p>
+                  Adicione alguns produtos ao seu carrinho e volte aqui para
+                  finalizar sua compra!
+                </p>
+              </div>
+            ) : (
               <div className="desconto">
                 {hasDiscount ? (
                   <div>
@@ -74,61 +123,29 @@ const Cart = ({ setisOpenCart }) => {
                   </p>
                 )}
               </div>
-              {console.log(cart)}
-              {cart?.map((item, index, arr) => {
-                let restaurantTitle = <></>;
-
-                if (
-                  index === 0 ||
-                  item.restaurant !== arr[index - 1].restaurant
-                ) {
-                  restaurantTitle = (
-                    <>
-                      {index === 0 ? <></> : <div className="divider"></div>}
-                      <h2>{item.restaurant}</h2>
-                      <button className="retornar">Retornar para a Loja</button>
-                    </>
-                  );
-                }
-                return (
-                  <div key={item.id} className="cart-restaurantes">
-                    {restaurantTitle}
-                    <div className="card-item">
-                      <div className="item">
-                        <img src={item.photo_url} alt="" />
-                        <div className="info">
-                          <p>{item.item}</p>
-                          <strong>{`${item.price.toFixed(2)}`}</strong>
-                        </div>
-                        <div className="quantidade">
-                          <button onClick={() => minusOneProduct(item.id)}>
-                            {item.amount === 1 ? (
-                              <FaTrashAlt />
-                            ) : (
-                              <AiOutlineMinus />
-                            )}
-                          </button>
-                          <p>{item.amount}</p>
-                          <button onClick={() => addOneProduct(item.id)}>
-                            <MdAdd />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </>
+            )}
+            {totalCart != 0 && itemsCart}
           </div>
+
           <div className="rodape-cart">
             <div className="info-total">
               <div className="subtotal">
                 <p>Subtotal</p>
                 <p>{`R$ ${subTotalCart.toFixed(2)}`}</p>
               </div>
+
               <div className="frete">
                 <p>Frete</p>
                 <p>{`R$ ${freightCart.toFixed(2)}`}</p>
+              </div>
+              <div className="frete">
+                <p>Desconto</p>
+                <p>
+                  R${" "}
+                  {!hasDiscount
+                    ? ((subTotalCart + freightCart) * 0.1).toFixed(2)
+                    : 0}
+                </p>
               </div>
             </div>
             <div className="finalizar-cart">
@@ -136,7 +153,18 @@ const Cart = ({ setisOpenCart }) => {
                 <p>Total</p>
                 <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
               </div>
-              <button>Finalizar Pedido</button>
+              <button
+                type="button"
+                disabled={totalCart > 20 ? false : true}
+                onClick={() => {
+                  if (totalCart > 0) {
+                    navigate("/checkout", { replace: true });
+                    setisOpenCart(false);
+                  }
+                }}
+              >
+                Finalizar Pedido
+              </button>
             </div>
           </div>
         </Container>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { v4 as uuid } from "uuid";
 
@@ -7,10 +7,10 @@ import {
   IProduct,
   useRestaurantProductsContext,
 } from "../../contexts/restaurantProductsContext";
+import Loading from "../loading";
 import {
   ContainerMenu,
   ContainerP,
-  ContainerPreco,
   ContainerSection,
   ContainerDivMenu,
 } from "./styles";
@@ -19,7 +19,7 @@ export const MenuRestaurant = () => {
   const { findRestaurantInfo, filteredMenu } = useRestaurantProductsContext();
   const { id } = useParams();
   const { addToCart } = useCart();
-
+  const navigate = useNavigate();
   findRestaurantInfo(id);
 
   const subTitles = {
@@ -39,13 +39,15 @@ export const MenuRestaurant = () => {
     });
   };
 
+  if (!filteredMenu) return <Loading />;
+
   return (
     <ContainerMenu>
       {!!filteredMenu &&
         Object.entries(filteredMenu).map(([key, value]) => {
           return (
             !!value.length && (
-              <ContainerDivMenu key={value}>
+              <ContainerDivMenu key={JSON.stringify(value)}>
                 <h2>{subTitles[key]}</h2>
                 <ul>
                   {value?.map((product: IProduct) => {
@@ -62,17 +64,19 @@ export const MenuRestaurant = () => {
                             <ContainerP>
                               {categoryFix(product.category)}
                             </ContainerP>
-                            <ContainerPreco>
+                            <p className="preco">
                               {product.price.toLocaleString("pt-br", {
                                 style: "currency",
                                 currency: "BRL",
                               })}
-                            </ContainerPreco>
+                            </p>
                           </ContainerSection>
                         </div>
-                        <button onClick={() => addToCart(product)}>
-                          Adicionar ao carrinho
-                        </button>
+                        <div className="add-carrinho">
+                          <button onClick={() => addToCart(product)}>
+                            adicionar ao carrinho
+                          </button>
+                        </div>
                       </li>
                     );
                   })}
