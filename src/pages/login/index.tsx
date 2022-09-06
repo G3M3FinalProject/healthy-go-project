@@ -15,13 +15,15 @@ import {
 import { GoogleAuthLogin } from "../../components/google-auth-login";
 import Loading from "../../components/loading";
 import { IUserLogin, useAuthUserContext } from "../../contexts/authUserContext";
+import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import { CenteringContainer, FormDiv, Form, Img, ShowPassword } from "./styles";
 
 export const Login = () => {
-  const { loginUser, isLoading } = useAuthUserContext();
+  const { loginUser } = useAuthUserContext();
+  const { isLoading } = useRestaurantsContext();
 
   const [showPassword, setShowPassword] = useState(false);
-  
+
   if (isLoading) return <Loading />;
 
   const formSchema = yup.object().shape({

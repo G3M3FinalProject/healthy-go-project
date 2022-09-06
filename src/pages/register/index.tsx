@@ -9,6 +9,7 @@ import Loading from "../../components/loading";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
 import { CenteringContainer, FormDiv, Form, EffectDiv, Back } from "./styles";
+import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 
 interface IRegisterData {
   email: string;
@@ -24,8 +25,9 @@ export interface IFormData {
 }
 
 const UserRegister = () => {
-  const { registerUser, isLoading } = useAuthUserContext();
-  
+  const { registerUser } = useAuthUserContext();
+  const { isLoading } = useRestaurantsContext();
+
   if (isLoading) return <Loading />;
 
   const navigate = useNavigate();

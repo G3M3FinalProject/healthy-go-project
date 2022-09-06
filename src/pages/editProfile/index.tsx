@@ -10,6 +10,7 @@ import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
 import Loading from "../../components/loading";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
+import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import { editFormSchema } from "../../validations";
 import {
   ButtonSave,
@@ -40,9 +41,10 @@ interface IRegisterData {
 }
 
 const EditProfile = () => {
-  const { editUser, user, getUser, isLoading } = useAuthUserContext();
+  const { editUser, user, getUser } = useAuthUserContext();
   const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
-  
+  const { isLoading } = useRestaurantsContext();
+
   if (isLoading) return <Loading />;
 
   const {

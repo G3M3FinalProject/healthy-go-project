@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import WomanEating from "../../assets/womanaboutus.png";
+import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import { Container, Paragraph } from "./styles";
 
 export const AboutUs = () => {
   const [isMobile, setMobile] = useState(window.innerWidth < 426);
+  const { isLoading } = useRestaurantsContext();
 
   const updateMedia = () => {
     setMobile(window.innerWidth < 426);
