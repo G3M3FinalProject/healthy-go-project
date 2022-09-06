@@ -178,13 +178,16 @@ export const ContainerP = styled.p`
   font-weight: 400;
   font-size: 16px;
 
+
   margin-bottom: 1%;
+
 
   @media screen and (max-width: 425px) {
     font-size: 10px;
     display: none;
   }
 `;
+
 
 export const ContainerPreco = styled.p`
   font-family: "Petrona";
@@ -199,3 +202,4 @@ export const ContainerPreco = styled.p`
     font-size: 10px;
   }
 `;
+

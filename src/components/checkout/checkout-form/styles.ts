@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const Divform = styled.form`
@@ -8,3 +9,4 @@ export const Divform = styled.form`
 
   width: 100%;
 `;
+

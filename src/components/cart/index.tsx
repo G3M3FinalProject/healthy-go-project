@@ -8,9 +8,18 @@ import { motion } from "framer-motion";
 
 import carrinhoVazio from "../../assets/carrinhoVazio.png";
 import { useCart } from "../../contexts/cartContext";
+import { GlobalButtonLg } from "../global-inputs";
 import { Container, DiscountBar, Modal } from "./styles";
 
-const Cart = ({ setisOpenCart }) => {
+interface ICartRipple {
+  isOpenCart?: any;
+  setisOpenCart?: any;
+  onClick?: any;
+}
+
+const Cart = ({ setisOpenCart, onClick }: ICartRipple) => {
+  const [isRipple, setIsRipple] = useState(false);
+  const [coords, setCoords] = useState({ x: -1, y: -1 });
   const {
     cart,
     freightCart,
@@ -23,6 +32,22 @@ const Cart = ({ setisOpenCart }) => {
   const hasDiscount = 80 - totalCart >= 0;
   const modalRef = useRef<HTMLHeadingElement>(null);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (coords.x !== -1 && coords.y !== -1) {
+      setIsRipple(true);
+
+      setTimeout(() => setIsRipple(false), 1000);
+    } else {
+      setIsRipple(false);
+    }
+  }, [coords]);
+
+  useEffect(() => {
+    if (!isRipple) setCoords({ x: -1, y: -1 });
+  }, [isRipple]);
+
 
   useEffect(() => {
     function handleOutClick(event) {
@@ -38,6 +63,23 @@ const Cart = ({ setisOpenCart }) => {
       document.removeEventListener("mousedown", handleOutClick);
     };
   }, []);
+
+
+  const handleClick = (e) => {
+    setCoords({
+      x: e.pageX - e.target.offsetLeft,
+      y: e.pageY - e.target.offsetTop,
+    });
+
+    onClick && onClick(e);
+
+    setTimeout(() => {
+      if (totalCart > 0) {
+        navigate("/checkout", { replace: true });
+        setisOpenCart(false);
+      }
+    }, 300);
+  };
 
   const itemsCart = cart?.map((item, index, arr) => {
     let restaurantTitle = <></>;
@@ -127,44 +169,49 @@ const Cart = ({ setisOpenCart }) => {
             {totalCart != 0 && itemsCart}
           </div>
 
-          <div className="rodape-cart">
+
+          <div>
+
             <div className="info-total">
               <div className="subtotal">
                 <p>Subtotal</p>
                 <p>{`R$ ${subTotalCart.toFixed(2)}`}</p>
               </div>
 
-              <div className="frete">
+
+              <div className="descontoTotal">
+
                 <p>Frete</p>
                 <p>{`R$ ${freightCart.toFixed(2)}`}</p>
               </div>
               <div className="frete">
-                <p>Desconto</p>
-                <p>
-                  R${" "}
-                  {!hasDiscount
-                    ? ((subTotalCart + freightCart) * 0.1).toFixed(2)
-                    : 0}
-                </p>
+
+                <div className="descontoTotal">
+                  <p>Desconto</p>
+                  <p>
+                    R${" "}
+                    {!hasDiscount
+                      ? ((subTotalCart + freightCart) * 0.1).toFixed(2)
+                      : 0}
+                  </p>
+                </div>
+                <div className="descontoTotal">
+                  <p className="total">Total</p>
+                  <strong className="soma">{`R$ ${totalCart.toFixed(
+                    2,
+                  )}`}</strong>
+                </div>
               </div>
             </div>
             <div className="finalizar-cart">
-              <div className="total">
-                <p>Total</p>
-                <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
-              </div>
-              <button
+              <GlobalButtonLg
                 type="button"
                 disabled={totalCart > 20 ? false : true}
-                onClick={() => {
-                  if (totalCart > 0) {
-                    navigate("/checkout", { replace: true });
-                    setisOpenCart(false);
-                  }
-                }}
+                onClick={handleClick}
               >
                 Finalizar Pedido
-              </button>
+              </GlobalButtonLg>
+
             </div>
           </div>
         </Container>

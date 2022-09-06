@@ -91,6 +91,7 @@ export const DivAdress = styled.div`
           font-size: 16px;
         }
       }
+
     }
   }
 `;
@@ -98,6 +99,7 @@ export const DivAdress = styled.div`
 export const DivPicture = styled.div`
   display: flex;
   align-items: center;
+
   justify-content: flex-start;
 
   width: 1rem;
@@ -111,6 +113,7 @@ export const DivPicture = styled.div`
     font-size: 22px;
     color: #434242;
 
+
     @media screen and (max-width: 770px) {
       font-size: 16px;
     }
@@ -118,11 +121,13 @@ export const DivPicture = styled.div`
     @media screen and (max-width: 425px) {
       font-size: 16px;
     }
+
   }
 
   img {
     width: 2rem;
     height: 2rem;
     margin: 0%;
+
   }
 `;

@@ -43,9 +43,11 @@ export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
         {user?.address?.map((address, index) => {
           return (
             <div key={address.id}>
+
               <DivPicture>
                 <img src={locationIcon} />
                 <h4>{address.adressIdentification}</h4>
+
               </DivPicture>
               <p>
                 <span>{address.street} </span>
