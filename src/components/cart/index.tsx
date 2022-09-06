@@ -54,7 +54,7 @@ const Cart = ({ setisOpenCart }) => {
     if (index === 0 || item.restaurant !== arr[index - 1].restaurant) {
       restaurantTitle = (
         <>
-          {index === 0 ? <></> : <div className="divider"></div>}
+          {!index && <div className="divider"></div>}
           <h2>{item.restaurant}</h2>
           <Link to={`/restaurants/${item?.restaurantID}`} className="retornar">
             Retornar para a Loja

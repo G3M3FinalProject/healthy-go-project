@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { v4 as uuid } from "uuid";
 
@@ -16,11 +16,8 @@ import {
 } from "./styles";
 
 export const MenuRestaurant = () => {
-  const { findRestaurantInfo, filteredMenu } = useRestaurantProductsContext();
-  const { id } = useParams();
+  const { filteredMenu } = useRestaurantProductsContext();
   const { addToCart } = useCart();
-  const navigate = useNavigate();
-  findRestaurantInfo(id);
 
   const subTitles = {
     food: "Pratos",

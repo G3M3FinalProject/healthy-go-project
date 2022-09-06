@@ -8,6 +8,7 @@ import Home from "../pages/home";
 import { Login } from "../pages/login";
 import UserRegister from "../pages/register";
 import { Restaurants } from "../pages/restaurants";
+import { Teste } from "../pages/restaurants/teste";
 import { UserRequests } from "../pages/userRequests";
 
 const AppRoutes = () => {
@@ -19,7 +20,10 @@ const AppRoutes = () => {
       <Route path="/register" element={<UserRegister />} />
       <Route path="/login" element={<Login />} />
       <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/restaurants/:id" element={<Restaurants />} />
+      <Route path="/restaurants" element={<Restaurants />}>
+        <Route path=":id" element={<Teste />} />
+      </Route>
+
       {user && Object.keys(user as IUser).length !== 0 && (
         <>
           <Route path="/checkout" element={<CheckOut />} />

@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 
 import { api } from "../services";
 
@@ -12,7 +13,6 @@ interface IRestaurantProductsProviderData {
   restaurantInfo: IRestaurantInfo;
   filteredMenu: IMenu;
   setFilteredMenu: React.Dispatch<React.SetStateAction<IMenu>>;
-  findRestaurantInfo: (id: string | undefined) => void;
 }
 
 interface IRestaurantProductsProps {
@@ -61,9 +61,12 @@ export const RestaurantProductsProvider = ({
     {} as IRestaurantInfo,
   );
   const [filteredMenu, setFilteredMenu] = useState<IMenu>({} as IMenu);
+  const { id } = useParams();
 
-  const findRestaurantInfo = (id: string | undefined) => {
-    useEffect(() => {
+  console.log("hello", id);
+
+  useEffect(() => {
+    if (id) {
       api
         .get(`/restaurants/${id}`)
         .then((response) => {
@@ -71,15 +74,14 @@ export const RestaurantProductsProvider = ({
           setFilteredMenu(response.data.menu);
         })
         .catch((err) => console.log(err));
-    }, []);
-  };
+    }
+  }, [id]);
 
   return (
     <RestaurantProductsContext.Provider
       value={{
         restaurantInfo,
         filteredMenu,
-        findRestaurantInfo,
         setFilteredMenu,
       }}
     >
