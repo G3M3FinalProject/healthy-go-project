@@ -65,6 +65,7 @@ const CartProvider = ({ children }: ICartProps) => {
     }
     if (user?.cart) {
       const restaurants: string[] = [];
+
       cart.forEach((product) => {
         if (!restaurants.includes(product.restaurant))
           restaurants.push(product.restaurant);
@@ -79,12 +80,6 @@ const CartProvider = ({ children }: ICartProps) => {
       const newTotal = subTotalCart + freightCart;
       setTotalCart(newTotal > 80 ? newTotal * 0.9 : newTotal);
     }
-
-    return () => {
-      setFreightCart(0);
-      setSubTotalCart(0);
-      setTotalCart(0);
-    };
   }, [cart, subTotalCart, freightCart]);
 
   //frete
