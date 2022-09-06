@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 
 import AdressModal from "../../components/adress-modal";
 import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
-import Loading from "../../components/loading";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
 import { editFormSchema } from "../../validations";

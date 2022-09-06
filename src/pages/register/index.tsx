@@ -7,14 +7,7 @@ import { motion } from "framer-motion";
 import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { registerFormSchema } from "../../validations";
-import {
-  CenteringContainer,
-  FormDiv,
-  Form,
-  Paragraph,
-  EffectDiv,
-  Back,
-} from "./styles";
+import { CenteringContainer, FormDiv, Form, EffectDiv, Back } from "./styles";
 
 interface IRegisterData {
   email: string;
