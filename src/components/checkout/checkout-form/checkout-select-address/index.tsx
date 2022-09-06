@@ -3,7 +3,14 @@ import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 import locationIcon from "../../../../assets/locationIcon.svg";
 import { useAuthUserContext } from "../../../../contexts/authUserContext";
 import { useModalContext } from "../../../../contexts/modalContext";
-import { ContainerAdress, DivAdress, DivPicture } from "./style";
+import {
+  ContainerAdress,
+  DivAdress,
+  DivPicture,
+  SelectAddressInput,
+  OverflowContainer,
+  AdressSelector,
+} from "./style";
 
 interface ISelectAddressForm {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,44 +40,45 @@ export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
   const { setIsAddressModalOpen } = useModalContext();
   return (
     <ContainerAdress>
-      <div>
+      <SelectAddressInput>
         <h2>Selecione seu endereço</h2>
         <button type="button" onClick={() => setIsAddressModalOpen(true)}>
           + Adicionar Endereço
         </button>
-      </div>
-      <DivAdress>
+      </SelectAddressInput>
+      <OverflowContainer>
         {user?.address?.map((address, index) => {
           return (
-            <div key={address.id}>
+            <DivAdress key={address.id}>
               <DivPicture>
                 <img src={locationIcon} />
                 <h4>{address.adressIdentification}</h4>
               </DivPicture>
-              <p>
-                <span>{address.street} </span>
-                <span>{address.number} </span>
-                <span>{address.district} </span>
-                <span>{address.city} </span>
-                <span>{address.state} </span>
-                <span>{address.postal} </span>
-              </p>
-              <input
-                {...register("address")}
-                type="radio"
-                name="address"
-                value={index}
-              />
-            </div>
+              <AdressSelector>
+                <p>
+                  <span>{address.street} </span>
+                  <span>{address.number} </span>
+                  <span>{address.district} </span>
+                  <span>{address.city} </span>
+                  <span>{address.state} </span>
+                  <span>{address.postal} </span>
+                </p>
+                <input
+                  {...register("address")}
+                  type="radio"
+                  name="address"
+                  value={index}
+                />
+              </AdressSelector>
+            </DivAdress>
           );
         })}
-        {errors.address?.message && (
-          <p>
-            É necessário adicionar/selecionar um endereço para finalizar o
-            pedido!
-          </p>
-        )}
-      </DivAdress>
+      </OverflowContainer>
+      {errors.address?.message && (
+        <p>
+          É necessário adicionar/selecionar um endereço para finalizar o pedido!
+        </p>
+      )}
     </ContainerAdress>
   );
 };
