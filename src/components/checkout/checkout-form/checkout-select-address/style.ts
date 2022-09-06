@@ -94,11 +94,6 @@ export const DivPicture = styled.div`
 
   width: 10rem;
 
-  img {
-    width: 30px;
-    height: 30px;
-  }
-
   h4 {
     font-family: "Petrona";
     font-style: normal;
@@ -112,12 +107,6 @@ export const DivPicture = styled.div`
 
     @media screen and (max-width: 425px) {
       font-size: 16px;
-    }
-  }
-
-  @media screen and (max-width: 425px) {
-    img {
-      display: none;
     }
   }
 `;
