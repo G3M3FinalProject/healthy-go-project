@@ -14,7 +14,8 @@ export const DivForm = styled.div`
   border-radius: 10px;
 
   @media screen and (max-width: 426px) {
-    height: 30rem;
+    height: 34rem;
+    align-items: center;
   }
 
   h2 {
@@ -27,10 +28,6 @@ export const DivForm = styled.div`
     @media screen and (max-width: 770px) {
       font-size: 20px;
     }
-
-    @media screen and (max-width: 425px) {
-      font-size: 16px;
-    }
   }
 `;
 
@@ -41,16 +38,17 @@ export const SelectPayment = styled.div`
 
   margin-top: 0.3rem;
 
+  @media screen and (max-width: 425px) {
+    flex-direction: column-reverse;
+    font-size: 16px;
+  }
+
   label {
     font-family: "Petrona";
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
     color: #434242;
-
-    @media screen and (max-width: 425px) {
-      font-size: 16px;
-    }
 
     input {
       color: #434242;
