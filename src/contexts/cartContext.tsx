@@ -78,7 +78,7 @@ const CartProvider = ({ children }: ICartProps) => {
         }, 0),
       );
       const newTotal = subTotalCart + freightCart;
-      setTotalCart(newTotal);
+      setTotalCart(newTotal > 80 ? newTotal * 0.9 : newTotal);
     }
   }, [cart, subTotalCart, freightCart]);
 

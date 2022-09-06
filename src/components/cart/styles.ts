@@ -189,6 +189,7 @@ export const Container = styled.div`
       color: white;
       &:disabled {
         background-color: grey;
+        cursor: not-allowed;
       }
     }
   }
