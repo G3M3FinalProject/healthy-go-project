@@ -66,6 +66,8 @@ export const InputLg = styled.div<IInputLg>`
     background-color: #f7f6f3;
 
     pointer-events: none;
+    color: ${({ error }) =>
+      error ? "rgba(255, 0, 0, 1)" : "var(--placeholder)"};
 
     transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 

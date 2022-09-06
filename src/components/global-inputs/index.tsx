@@ -1,19 +1,31 @@
 import { useEffect, useState } from "react";
 import { InputHTMLAttributes } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { Control, Controller, UseFormRegister } from "react-hook-form";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineWarning } from "react-icons/ai";
+import InputMask from "react-input-mask";
+import maskChar from "react-input-mask";
 
 import { InputLg, ButtonLg, ButtonMd, Search } from "./styles";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errors?: string;
   registerName: string;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   type: string;
   defaultValue?: string;
   maxLength?: number;
+}
+
+interface IInputMask {
+  label: string;
+  registerName: string;
+  control: Control<any>;
+  mask: string | (string | RegExp)[];
+  errors?: string;
+  defaultValue?: string;
 }
 
 export const GlobalInputLg = ({
@@ -43,14 +55,15 @@ export const GlobalInputLg = ({
 };
 
 export const GlobalInputPassword = ({
-  type,
   label,
-  register,
   registerName,
+  register,
+  type,
   defaultValue,
+  errors,
 }: InputProps) => {
   return (
-    <InputLg>
+    <InputLg error={errors}>
       <input
         type={type}
         {...register(registerName)}
@@ -58,6 +71,48 @@ export const GlobalInputPassword = ({
         defaultValue={defaultValue}
       />
       <label>{label}</label>
+      {!!errors && (
+        <div>
+          <AiOutlineWarning /> <p>{errors}</p>
+        </div>
+      )}
+    </InputLg>
+  );
+};
+
+export const GlobalInputMask = ({
+  label,
+  registerName,
+  control,
+  mask,
+  errors,
+  defaultValue,
+}: IInputMask) => {
+  return (
+    <InputLg error={errors}>
+      <Controller
+        control={control}
+        name={registerName}
+        render={({ field: { ref, onChange } }) => (
+          <InputMask
+            mask={mask}
+            inputRef={ref}
+            onChange={onChange}
+            defaultValue={defaultValue}
+            placeholder=" "
+            alwaysShowMask={false}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore:next-line
+            maskChar={null}
+          />
+        )}
+      />
+      <label>{label}</label>
+      {!!errors && (
+        <div>
+          <AiOutlineWarning /> <p>{errors}</p>
+        </div>
+      )}
     </InputLg>
   );
 };
