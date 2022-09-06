@@ -161,6 +161,9 @@ export const CardAdress = styled.div`
   height: 500px;
   overflow-x: hidden;
   margin-bottom: 10px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
     flex-direction: column;
