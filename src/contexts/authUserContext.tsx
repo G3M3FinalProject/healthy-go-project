@@ -134,7 +134,8 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
             console.log(res.data);
           })
           .catch(() => {
-            // localStorage.clear();
+            localStorage.clear();
+            setUser({} as IUser);
           });
       }
     }, []);
