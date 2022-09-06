@@ -23,9 +23,12 @@ export const ModalCheckOut = () => {
     }
     document.addEventListener("mousedown", handleOutClick);
 
-    navigate("/home", { replace: true });
     return () => {
       document.removeEventListener("mousedown", handleOutClick);
+
+      setTimeout(() => {
+        navigate("/home", { replace: true });
+      }, 7000);
     };
   }, []);
 
