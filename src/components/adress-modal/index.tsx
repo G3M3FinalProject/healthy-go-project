@@ -59,6 +59,7 @@ const AdressModal = () => {
     registerNewAdressUser(data);
   };
   console.log(errors);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -106,6 +107,7 @@ const AdressModal = () => {
               registerName="postal"
               errors={errors?.postal?.message}
             />
+
             <StateCity>
               <GlobalInputLg
                 label="Estado"
