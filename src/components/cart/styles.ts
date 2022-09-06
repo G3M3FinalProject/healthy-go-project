@@ -192,6 +192,8 @@ export const Container = styled.div`
     display: flex;
     margin: 1rem;
     justify-content: space-between;
+
+
   }
 
   .divider {

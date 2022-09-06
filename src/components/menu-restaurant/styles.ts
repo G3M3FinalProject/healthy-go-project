@@ -178,8 +178,28 @@ export const ContainerP = styled.p`
   font-weight: 400;
   font-size: 16px;
 
+
+  margin-bottom: 1%;
+
+
   @media screen and (max-width: 425px) {
     font-size: 10px;
     display: none;
   }
 `;
+
+
+export const ContainerPreco = styled.p`
+  font-family: "Petrona";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+
+  margin-top: 2rem;
+
+  @media screen and (max-width: 425px) {
+    margin-top: 1%;
+    font-size: 10px;
+  }
+`;
+

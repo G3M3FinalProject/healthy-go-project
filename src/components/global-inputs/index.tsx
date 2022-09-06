@@ -26,8 +26,10 @@ interface IInputMask {
   mask: string | (string | RegExp)[];
   errors?: string;
   defaultValue?: string;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   form?: any;
+
 }
 
 export const GlobalInputLg = ({

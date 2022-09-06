@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const DivForm = styled.div`
   width: 100%;
-  height: 22.192rem;
+
+  height: 26.192rem;
+
+
   padding: 1rem;
 
   border: 1px solid #434242;
@@ -16,48 +19,46 @@ export const DivForm = styled.div`
     height: 102%;
   }
 
-  form {
+  h2 {
+    font-family: "Petrona";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    color: #282626;
+
+    @media screen and (max-width: 770px) {
+      font-size: 20px;
+    }
+
+    @media screen and (max-width: 425px) {
+      font-size: 16px;
+    }
+  }
+
+  div {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
+    align-items: center;
 
-    padding: 1rem;
+    margin-top: 0.3rem;
 
-    h2 {
+    label {
       font-family: "Petrona";
       font-style: normal;
       font-weight: 500;
-      font-size: 24px;
-      color: #282626;
+      font-size: 22px;
+      color: #434242;
 
-      @media screen and (max-width: 770px) {
-        font-size: 20px;
-      }
 
       @media screen and (max-width: 425px) {
         font-size: 16px;
       }
-    }
-    div {
-      display: flex;
-      align-items: center;
-      gap: 3%;
 
-      label {
-        font-family: "Petrona";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
+
+      input {
         color: #434242;
+        margin-right: 0.3rem;
 
-        @media screen and (max-width: 425px) {
-          font-size: 16px;
-        }
-
-        input {
-          color: #434242;
-          margin-left: 0.5rem;
-        }
       }
     }
   }
@@ -65,17 +66,17 @@ export const DivForm = styled.div`
 
 export const DivCredCard = styled.div`
   display: flex;
-  gap: 2rem;
+
 
   width: 100%;
+`;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+export const DivPayment = styled.div`
+  display: flex;
+  flex-direction: column;
 
-    width: 100%;
-  }
+  width: 40%;
+
 
   label {
     font-family: "Petrona";
@@ -88,8 +89,6 @@ export const DivCredCard = styled.div`
       width: 100%;
       height: 2rem;
 
-      left: 1rem;
-      top: 0.4rem;
 
       filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 
@@ -101,35 +100,16 @@ export const DivCredCard = styled.div`
 
       padding: 0.7rem 0 0 0.813rem;
 
-      font-size: 12px;
 
-      outline: none;
+      font-size: 14px;
 
-      &::placeholder {
-        color: var(--placeholder);
-      }
-
-      &:focus {
-        background-color: #f7f6f3;
-      }
-
-      &:focus ~ label {
-        top: -0.5rem;
-        font-size: 19px;
-        left: 0.8rem;
-        color: var(--placeholder);
-      }
-
-      &:not(:placeholder-shown) ~ label {
-        top: -0.65rem;
-        font-size: 19px;
-        left: 0.8rem;
-      }
 
       @media screen and (max-width: 770px) {
         width: 89%;
         padding: 0;
-        font-size: 8px;
+
+        font-size: 14px;
+
       }
 
       @media screen and (max-width: 425px) {
@@ -143,14 +123,14 @@ export const DivCredCard = styled.div`
 
 export const DivDateCard = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
 
-  width: 1rem;
+  flex-direction: column;
+  width: 50%;
 
   input {
     align-self: start;
-    width: 40%;
+    width: 30%;
+
     margin-left: 0.5rem;
   }
 `;
