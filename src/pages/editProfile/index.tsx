@@ -51,7 +51,7 @@ const EditProfile = () => {
     formState: { errors },
   } = useForm<IFormEditData>({ resolver: yupResolver(editFormSchema) });
 
-  const getItem = localStorage.getItem("@healthyGo-userid");
+  const getItem = localStorage.getItem("@healthyGo-userId");
   function Submit(data: IRegisterData) {
     const register = {
       email: data.email,
@@ -59,7 +59,7 @@ const EditProfile = () => {
       name: data.name,
       cellphone: data.cellphone,
     };
-
+    console.log(getItem);
     if (getItem) {
       editUser(register, getItem);
     }
@@ -68,7 +68,7 @@ const EditProfile = () => {
   if (getItem) {
     getUser(getItem);
   }
-
+  console.log(errors);
   return (
     <>
       <motion.div
