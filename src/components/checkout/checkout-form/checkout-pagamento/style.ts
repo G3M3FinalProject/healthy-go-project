@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
 export const DivForm = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 
+  width: 100%;
   height: 26.192rem;
 
+  gap: 0.7rem;
   padding: 1rem;
 
   border: 1px solid #434242;
   border-radius: 10px;
 
-  @media screen and (max-width: 770px) {
-    height: 102%;
-  }
-
-  @media screen and (max-width: 425px) {
-    height: 102%;
+  @media screen and (max-width: 426px) {
+    height: 34rem;
+    align-items: center;
   }
 
   h2 {
@@ -28,34 +28,31 @@ export const DivForm = styled.div`
     @media screen and (max-width: 770px) {
       font-size: 20px;
     }
+  }
+`;
 
-    @media screen and (max-width: 425px) {
-      font-size: 16px;
-    }
+export const SelectPayment = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  margin-top: 0.3rem;
+
+  @media screen and (max-width: 425px) {
+    flex-direction: column-reverse;
+    font-size: 16px;
   }
 
-  div {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+  label {
+    font-family: "Petrona";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    color: #434242;
 
-    margin-top: 0.3rem;
-
-    label {
-      font-family: "Petrona";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 22px;
+    input {
       color: #434242;
-
-      @media screen and (max-width: 425px) {
-        font-size: 16px;
-      }
-
-      input {
-        color: #434242;
-        margin-right: 0.3rem;
-      }
+      margin-right: 0.3rem;
     }
   }
 `;
@@ -64,13 +61,23 @@ export const DivCredCard = styled.div`
   display: flex;
 
   width: 100%;
+
+  gap: 1rem;
+
+  @media screen and (max-width: 426px) {
+    flex-direction: column;
+  }
 `;
 
 export const DivPayment = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 40%;
+  width: 48%;
+
+  @media screen and (max-width: 426px) {
+    width: 100%;
+  }
 
   label {
     font-family: "Petrona";
@@ -105,7 +112,6 @@ export const DivPayment = styled.div`
       @media screen and (max-width: 425px) {
         width: 89%;
         padding: 0;
-        font-size: 8px;
       }
     }
   }
@@ -113,14 +119,15 @@ export const DivPayment = styled.div`
 
 export const DivDateCard = styled.div`
   display: flex;
-
   flex-direction: column;
-  width: 50%;
+
+  width: 48%;
+
+  @media screen and (max-width: 426px) {
+    width: 100%;
+  }
 
   input {
-    align-self: start;
-    width: 30%;
-
-    margin-left: 0.5rem;
+    width: 7.5rem;
   }
 `;
