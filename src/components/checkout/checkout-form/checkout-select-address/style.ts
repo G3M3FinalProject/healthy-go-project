@@ -128,6 +128,14 @@ export const AdressSelector = styled.div`
 
   width: 100%;
 
+  p {
+    max-width: 40rem;
+  }
+
+  input {
+    margin: 0 2rem;
+  }
+
   span {
     font-family: "Petrona";
     font-style: normal;
@@ -143,10 +151,17 @@ export const AdressSelector = styled.div`
     @media screen and (max-width: 425px) {
       font-size: 16px;
     }
+
+    @media screen and (max-width: 1023px) {
+      p {
+        width: 100%;
+      }
+    }
   }
 
   @media screen and (min-width: 1023px) {
     flex-direction: row;
+    justify-content: space-between;
 
     gap: 1em;
   }
