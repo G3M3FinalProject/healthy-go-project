@@ -25,6 +25,8 @@ export interface IFormData {
 
 const UserRegister = () => {
   const { registerUser, isLoading } = useAuthUserContext();
+  
+  if (isLoading) return <Loading />;
 
   const navigate = useNavigate();
 
@@ -42,8 +44,6 @@ const UserRegister = () => {
     };
     registerUser(register);
   }
-
-  if (isLoading) return <Loading />;
 
   return (
     <motion.div

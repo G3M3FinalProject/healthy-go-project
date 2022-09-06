@@ -21,7 +21,7 @@ export const Login = () => {
   const { loginUser, isLoading } = useAuthUserContext();
 
   const [showPassword, setShowPassword] = useState(false);
-
+  
   if (isLoading) return <Loading />;
 
   const formSchema = yup.object().shape({
@@ -35,8 +35,6 @@ export const Login = () => {
   } = useForm<IUserLogin>({
     resolver: yupResolver(formSchema),
   });
-
-  if (isLoading) return <Loading />;
 
   return (
     <motion.div

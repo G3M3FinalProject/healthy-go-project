@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface IInputLg {
   error: boolean;
 }
+
 export const InputLg = styled.div<IInputLg>`
   position: relative;
 
@@ -42,7 +43,6 @@ export const InputLg = styled.div<IInputLg>`
       top: -0.5rem;
       font-size: 19px;
       left: 0.8rem;
-      /* color: var(--placeholder); */
       color: var(--brand-green);
     }
 
@@ -68,8 +68,6 @@ export const InputLg = styled.div<IInputLg>`
     pointer-events: none;
 
     transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
-
-    z-index: 1;
 
     font-style: normal;
     font-weight: 300;
