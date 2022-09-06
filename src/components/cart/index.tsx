@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 import carrinhoVazio from "../../assets/carrinhoVazio.png";
 import { useCart } from "../../contexts/cartContext";
+import { GlobalButtonLg } from "../global-inputs";
 import { Container, DiscountBar, Modal } from "./styles";
 
 interface ICartRipple {
@@ -62,17 +63,19 @@ const Cart = ({ setisOpenCart, onClick }: ICartRipple) => {
   }, []);
 
   const handleClick = (e) => {
-    // if (totalCart > 0) {
-    //   navigate("/checkout", { replace: true });
-    //   setisOpenCart(false);
-    // }
-
     setCoords({
       x: e.pageX - e.target.offsetLeft,
       y: e.pageY - e.target.offsetTop,
     });
 
     onClick && onClick(e);
+
+    setTimeout(() => {
+      if (totalCart > 0) {
+        navigate("/checkout", { replace: true });
+        setisOpenCart(false);
+      }
+    }, 300);
   };
 
   const itemsCart = cart?.map((item, index, arr) => {
@@ -163,50 +166,43 @@ const Cart = ({ setisOpenCart, onClick }: ICartRipple) => {
             {totalCart != 0 && itemsCart}
           </div>
 
-          <div className="rodape-cart">
+          <div>
             <div className="info-total">
               <div className="subtotal">
                 <p>Subtotal</p>
                 <p>{`R$ ${subTotalCart.toFixed(2)}`}</p>
               </div>
 
-              <div className="frete">
+              <div className="descontoTotal">
                 <p>Frete</p>
                 <p>{`R$ ${freightCart.toFixed(2)}`}</p>
               </div>
               <div className="frete">
-                <p>Desconto</p>
-                <p>
-                  R${" "}
-                  {!hasDiscount
-                    ? ((subTotalCart + freightCart) * 0.1).toFixed(2)
-                    : 0}
-                </p>
+                <div className="descontoTotal">
+                  <p>Desconto</p>
+                  <p>
+                    R${" "}
+                    {!hasDiscount
+                      ? ((subTotalCart + freightCart) * 0.1).toFixed(2)
+                      : 0}
+                  </p>
+                </div>
+                <div className="descontoTotal">
+                  <p className="total">Total</p>
+                  <strong className="soma">{`R$ ${totalCart.toFixed(
+                    2,
+                  )}`}</strong>
+                </div>
               </div>
             </div>
             <div className="finalizar-cart">
-              <div className="total">
-                <p>Total</p>
-                <strong className="soma">{`R$ ${totalCart.toFixed(2)}`}</strong>
-              </div>
-              <button
+              <GlobalButtonLg
                 type="button"
                 disabled={totalCart > 20 ? false : true}
                 onClick={handleClick}
               >
-                {isRipple ? (
-                  <span
-                    className="ripple"
-                    style={{
-                      left: coords.x + "px",
-                      top: coords.y + "px",
-                    }}
-                  />
-                ) : (
-                  ""
-                )}
-                <span className="content">Finalizar Pedido</span>
-              </button>
+                Finalizar Pedido
+              </GlobalButtonLg>
             </div>
           </div>
         </Container>

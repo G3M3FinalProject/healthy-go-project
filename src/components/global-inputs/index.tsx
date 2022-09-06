@@ -26,6 +26,8 @@ interface IInputMask {
   mask: string | (string | RegExp)[];
   errors?: string;
   defaultValue?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  form?: any;
 }
 
 export const GlobalInputLg = ({
@@ -122,6 +124,8 @@ interface IPropsButton {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClick?: any;
   type?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  disabled?: any;
 }
 
 export const GlobalButtonLg = ({ children, onClick }: IPropsButton) => {

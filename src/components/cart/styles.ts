@@ -164,13 +164,27 @@ export const Container = styled.div`
     gap: 0.5rem;
     margin: 0 1rem;
 
+    border-top: 1px solid black;
+
     .subtotal {
       display: flex;
       justify-content: space-between;
+      margin-top: 0.3rem;
     }
     .frete {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
+      gap: 1rem;
+    }
+    .descontoTotal {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .total {
+      font-weight: 600;
+      font-size: 1.2rem;
     }
   }
 
@@ -178,20 +192,6 @@ export const Container = styled.div`
     display: flex;
     margin: 1rem;
     justify-content: space-between;
-
-    .total {
-      gap: 1rem;
-    }
-    button {
-      background-color: rgba(18, 117, 58, 1);
-      border-radius: 10px;
-      width: 65%;
-      color: white;
-      &:disabled {
-        background-color: grey;
-        cursor: not-allowed;
-      }
-    }
   }
 
   .divider {
@@ -215,38 +215,6 @@ export const Container = styled.div`
     width: 100%;
     .rodape-cart {
       width: 100%;
-    }
-  }
-  .ripple {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    background-color: white;
-
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: ripple-effect 1s ease 1 forwards;
-  }
-
-  .content {
-    position: relative;
-    z-index: 2;
-
-    pointer-events: none;
-  }
-
-  @keyframes ripple-effect {
-    0% {
-      width: 0px;
-      height: 0px;
-
-      opacity: 0.5;
-    }
-    100% {
-      width: 500px;
-      height: 500px;
-
-      opacity: 0;
     }
   }
 `;
