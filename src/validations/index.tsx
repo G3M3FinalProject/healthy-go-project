@@ -42,5 +42,6 @@ export const requestFormSchema = yup.object().shape({
     .typeError("Campo obrigatório")
     .required("Campo obrigatório"),
   payament: yup.mixed().required("Campo obrigatório"),
+  cpf: yup.mixed().required("Campo obrigatório"),
   address: yup.mixed().required("Campo obrigatório"),
 });

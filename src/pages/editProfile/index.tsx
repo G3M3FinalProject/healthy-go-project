@@ -6,7 +6,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 
 import AdressModal from "../../components/adress-modal";
-import { GlobalButtonLg, GlobalInputLg } from "../../components/global-inputs";
+import {
+  GlobalButtonLg,
+  GlobalInputLg,
+  GlobalInputMask,
+} from "../../components/global-inputs";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
 import { editFormSchema } from "../../validations";
@@ -45,6 +49,7 @@ const EditProfile = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IFormEditData>({ resolver: yupResolver(editFormSchema) });
 
@@ -94,13 +99,14 @@ const EditProfile = () => {
                   register={register}
                   registerName="birthdate"
                 />
-                <GlobalInputLg
-                  type="tel"
+                <GlobalInputMask
                   label="Telefone"
-                  defaultValue={user?.cellphone}
-                  register={register}
                   registerName="cellphone"
+                  control={control}
+                  defaultValue={user?.cellphone}
+                  mask="(99) 99999-9999"
                 />
+
                 <GlobalInputLg
                   type="email"
                   label="E-mail adicional *"
