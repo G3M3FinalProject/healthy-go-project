@@ -5,7 +5,7 @@ export const ContainerMain = styled.main`
   gap: 1rem;
   width: 80vw;
 
-  margin-top: 6%;
+  margin-top: 7rem;
   margin-left: auto;
   margin-right: auto;
 

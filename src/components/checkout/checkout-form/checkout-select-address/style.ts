@@ -7,109 +7,46 @@ export const ContainerAdress = styled.div`
   justify-content: space-between;
 
   width: 100%;
-  height: 9.316rem;
 
-  padding: 1rem;
+  padding: 0.5rem;
 
   border: 1px solid #434242;
   border-radius: 10px;
-
-  div {
-    display: flex;
-    justify-content: space-between;
-    width: 96%;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    h2 {
-      font-family: "Petrona";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 24px;
-      color: #434242;
-
-      @media screen and (max-width: 770px) {
-        font-size: 16px;
-      }
-
-      @media screen and (max-width: 425px) {
-        font-size: 16px;
-      }
-    }
-
-    button {
-      font-family: "Petrona";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 27px;
-
-      cursor: pointer;
-
-      background-color: transparent;
-
-      color: #12753a;
-    }
-  }
 `;
 
-export const DivAdress = styled.div`
+export const OverflowContainer = styled.div`
   display: flex;
   flex-direction: column;
 
   width: 100%;
+  height: 15rem;
 
-  border-radius: 10px;
-  border: 1px solid #c2c2c2;
+  gap: 0.5rem;
 
-  div {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-
-    width: 100%;
-
-    padding: 1%;
-
-    p {
-      width: 200%;
-
-      span {
-        font-family: "Petrona";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 22px;
-        line-height: 25px;
-        color: #6e6e6e;
-
-        @media screen and (max-width: 770px) {
-          font-size: 16px;
-        }
-
-        @media screen and (max-width: 425px) {
-          font-size: 16px;
-        }
-      }
-    }
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: green;
+    border-radius: 10px;
+    height: 15px;
   }
 `;
 
-export const DivPicture = styled.div`
+export const SelectAddressInput = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
 
-  justify-content: flex-start;
+  width: 100%;
 
-  width: 1rem;
-
-  h4 {
-    margin: 0%;
-
+  h2 {
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 24px;
     color: #434242;
 
     @media screen and (max-width: 770px) {
@@ -121,9 +58,96 @@ export const DivPicture = styled.div`
     }
   }
 
+  button {
+    font-family: "Petrona";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+
+    cursor: pointer;
+
+    background-color: transparent;
+
+    color: #12753a;
+  }
+`;
+
+export const DivAdress = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 0.5rem;
+
+  border-radius: 10px;
+  border: 1px solid #c2c2c2;
+`;
+
+export const DivPicture = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 10rem;
+
   img {
-    width: 2rem;
-    height: 2rem;
-    margin: 0%;
+    width: 30px;
+    height: 30px;
+  }
+
+  h4 {
+    font-family: "Petrona";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #434242;
+
+    @media screen and (max-width: 770px) {
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 425px) {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    img {
+      display: none;
+    }
+  }
+`;
+
+export const AdressSelector = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  span {
+    font-family: "Petrona";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: #6e6e6e;
+
+    @media screen and (max-width: 770px) {
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 425px) {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (min-width: 1023px) {
+    flex-direction: row;
+
+    gap: 1em;
   }
 `;
