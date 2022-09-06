@@ -21,6 +21,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 interface IInputMask {
   label: string;
   registerName: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   mask: string | (string | RegExp)[];
   errors?: string;

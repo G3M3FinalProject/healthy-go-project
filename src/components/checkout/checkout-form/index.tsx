@@ -1,13 +1,10 @@
-import React from "react";
-import { Controller, useForm } from "react-hook-form";
-import InputMask from "react-input-mask";
+import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { ICompleteAddress } from "../../../contexts/addressContext";
 import { useRequestsUserContext } from "../../../contexts/requestsUserContext";
 import { requestFormSchema } from "../../../validations";
-import { GlobalInputMask } from "../../global-inputs";
 import { PayamentForm } from "./checkout-pagamento";
 import { SelectAddressForm } from "./checkout-select-address";
 
