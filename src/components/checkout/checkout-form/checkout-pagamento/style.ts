@@ -128,6 +128,6 @@ export const DivDateCard = styled.div`
   }
 
   input {
-    width: 50%;
+    width: 7.5rem;
   }
 `;
