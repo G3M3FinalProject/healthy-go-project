@@ -25,7 +25,6 @@ const Cart = ({ setisOpenCart }) => {
   const modalRef = useRef<HTMLHeadingElement>(null);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     function handleOutClick(event) {
       const value = modalRef?.current;
@@ -40,7 +39,6 @@ const Cart = ({ setisOpenCart }) => {
       document.removeEventListener("mousedown", handleOutClick);
     };
   }, []);
-
 
   const handleClick = () => {
     setTimeout(() => {
@@ -139,23 +137,18 @@ const Cart = ({ setisOpenCart }) => {
             {totalCart != 0 && itemsCart}
           </div>
 
-
           <div>
-
             <div className="info-total">
               <div className="subtotal">
                 <p>Subtotal</p>
                 <p>{`R$ ${subTotalCart.toFixed(2)}`}</p>
               </div>
 
-
               <div className="descontoTotal">
-
                 <p>Frete</p>
                 <p>{`R$ ${freightCart.toFixed(2)}`}</p>
               </div>
               <div className="frete">
-
                 <div className="descontoTotal">
                   <p>Desconto</p>
                   <p>
@@ -181,7 +174,6 @@ const Cart = ({ setisOpenCart }) => {
               >
                 Finalizar Pedido
               </GlobalButtonLg>
-
             </div>
           </div>
         </Container>

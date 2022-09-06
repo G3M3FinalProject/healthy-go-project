@@ -5,7 +5,6 @@ export const DivForm = styled.div`
 
   height: 26.192rem;
 
-
   padding: 1rem;
 
   border: 1px solid #434242;
@@ -49,16 +48,13 @@ export const DivForm = styled.div`
       font-size: 22px;
       color: #434242;
 
-
       @media screen and (max-width: 425px) {
         font-size: 16px;
       }
 
-
       input {
         color: #434242;
         margin-right: 0.3rem;
-
       }
     }
   }
@@ -66,7 +62,6 @@ export const DivForm = styled.div`
 
 export const DivCredCard = styled.div`
   display: flex;
-
 
   width: 100%;
 `;
@@ -76,7 +71,6 @@ export const DivPayment = styled.div`
   flex-direction: column;
 
   width: 40%;
-
 
   label {
     font-family: "Petrona";
@@ -89,7 +83,6 @@ export const DivPayment = styled.div`
       width: 100%;
       height: 2rem;
 
-
       filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 
       border-radius: 10px;
@@ -100,16 +93,13 @@ export const DivPayment = styled.div`
 
       padding: 0.7rem 0 0 0.813rem;
 
-
       font-size: 14px;
-
 
       @media screen and (max-width: 770px) {
         width: 89%;
         padding: 0;
 
         font-size: 14px;
-
       }
 
       @media screen and (max-width: 425px) {

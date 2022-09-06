@@ -1,9 +1,7 @@
 import { Control, FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 
 import { GlobalInputLg, GlobalInputMask } from "../../../global-inputs";
-
 import { DivCredCard, DivDateCard, DivForm, DivPayment } from "./style";
-
 
 interface IPayamentFormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -64,9 +62,7 @@ export const PayamentForm = ({
       </div>
 
       <DivCredCard>
-
         <DivPayment>
-
           <GlobalInputMask
             label="Número do Cartão"
             registerName="cardNumber"
@@ -97,7 +93,6 @@ export const PayamentForm = ({
               <option value="4 sem juros">4 x Sem Juros</option>
             </select>
           </label>
-
         </DivPayment>
 
         <DivDateCard>
