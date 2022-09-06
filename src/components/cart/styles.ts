@@ -164,13 +164,27 @@ export const Container = styled.div`
     gap: 0.5rem;
     margin: 0 1rem;
 
+    border-top: 1px solid black;
+
     .subtotal {
       display: flex;
       justify-content: space-between;
+      margin-top: 0.3rem;
     }
     .frete {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
+      gap: 1rem;
+    }
+    .descontoTotal {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .total {
+      font-weight: 600;
+      font-size: 1.2rem;
     }
   }
 
@@ -178,20 +192,6 @@ export const Container = styled.div`
     display: flex;
     margin: 1rem;
     justify-content: space-between;
-
-    .total {
-      gap: 1rem;
-    }
-    button {
-      background-color: rgba(18, 117, 58, 1);
-      border-radius: 10px;
-      width: 65%;
-      color: white;
-      &:disabled {
-        background-color: grey;
-        cursor: not-allowed;
-      }
-    }
   }
 
   .divider {
