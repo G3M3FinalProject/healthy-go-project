@@ -5,10 +5,7 @@ import { useRestaurantProductsContext } from "../../contexts/restaurantProductsC
 import { ContainerHeader, ContainerRestaurants, ContainerTop } from "./styles";
 
 export const Restaurants = () => {
-  const { isLoading } = useAuthUserContext();
   const { restaurantInfo } = useRestaurantProductsContext();
-
-  if (isLoading) return <Loading />;
 
   return (
     <ContainerRestaurants>

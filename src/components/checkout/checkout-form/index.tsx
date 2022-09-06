@@ -1,11 +1,13 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import InputMask from "react-input-mask";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { ICompleteAddress } from "../../../contexts/addressContext";
 import { useRequestsUserContext } from "../../../contexts/requestsUserContext";
 import { requestFormSchema } from "../../../validations";
+import { GlobalInputMask } from "../../global-inputs";
 import { PayamentForm } from "./checkout-pagamento";
 import { SelectAddressForm } from "./checkout-select-address";
 
@@ -24,6 +26,7 @@ const CheckoutForm = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IUserPayament>({
     resolver: yupResolver(requestFormSchema),
@@ -42,7 +45,7 @@ const CheckoutForm = () => {
   return (
     <form id="payamentForm" onSubmit={handleSubmit(Submit)}>
       <SelectAddressForm register={register} errors={errors} />
-      <PayamentForm register={register} errors={errors} />
+      <PayamentForm register={register} errors={errors} control={control} />
     </form>
   );
 };

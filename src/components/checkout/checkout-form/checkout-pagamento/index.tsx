@@ -1,6 +1,6 @@
-import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
+import { Control, FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 
-import { GlobalInputLg } from "../../../global-inputs";
+import { GlobalInputLg, GlobalInputMask } from "../../../global-inputs";
 import { DivCredCard, DivDateCard, DivForm } from "./style";
 
 interface IPayamentFormProps {
@@ -12,6 +12,7 @@ interface IPayamentFormProps {
     validityDate: string;
     titularName: string;
     cardNumber: number;
+    cpf: string;
     address: {
       adressIdentification: string;
       id: number;
@@ -24,9 +25,15 @@ interface IPayamentFormProps {
       complement: string;
     };
   }>;
+  control: Control<any>;
 }
-export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
+export const PayamentForm = ({
+  register,
+  errors,
+  control,
+}: IPayamentFormProps) => {
   console.log(errors);
+
   return (
     <DivForm>
       <h2>Forma de Pagamento</h2>
@@ -56,11 +63,11 @@ export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
 
       <DivCredCard>
         <div>
-          <GlobalInputLg
-            type="number"
+          <GlobalInputMask
             label="Número do Cartão"
-            register={register}
             registerName="cardNumber"
+            control={control}
+            mask="9999 9999 9999 9999"
             errors={errors.cardNumber?.message}
           />
           <GlobalInputLg
@@ -69,6 +76,13 @@ export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
             register={register}
             registerName="titularName"
             errors={errors.titularName?.message}
+          />
+          <GlobalInputMask
+            label="CPF"
+            registerName="cpf"
+            control={control}
+            mask="999.999.999-99"
+            errors={errors.cardNumber?.message}
           />
           <label>
             Parcelamento*
@@ -81,18 +95,18 @@ export const PayamentForm = ({ register, errors }: IPayamentFormProps) => {
           </label>
         </div>
         <DivDateCard>
-          <GlobalInputLg
-            type="text"
+          <GlobalInputMask
             label="Validade"
-            register={register}
             registerName="validityDate"
+            control={control}
+            mask="99/99"
             errors={errors.validityDate?.message}
           />
-          <GlobalInputLg
-            type="number"
+          <GlobalInputMask
             label="CVV"
-            register={register}
             registerName="cvv"
+            control={control}
+            mask="9999"
             errors={errors.cvv?.message}
           />
         </DivDateCard>

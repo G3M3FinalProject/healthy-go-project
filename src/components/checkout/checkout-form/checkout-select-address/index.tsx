@@ -1,7 +1,5 @@
 import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 
-import { error } from "console";
-
 import locationIcon from "../../../../assets/locationIcon.svg";
 import { useAuthUserContext } from "../../../../contexts/authUserContext";
 import { useModalContext } from "../../../../contexts/modalContext";
