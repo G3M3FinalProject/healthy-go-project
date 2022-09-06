@@ -31,10 +31,16 @@ export const registerAdressFormSchema = yup.object().shape({
 });
 
 export const requestFormSchema = yup.object().shape({
-  cvv: yup.number().required("Campo obrigatório"),
+  cvv: yup
+    .number()
+    .typeError("Campo obrigatório")
+    .required("Campo obrigatório"),
   validityDate: yup.string().required("Campo obrigatório"),
   titularName: yup.string().required("Campo obrigatório"),
-  cardNumber: yup.number().required("Campo obrigatório"),
-  payament: yup.string().required("Campo obrigatório"),
-  address: yup.number().required("Campo obrigatório"),
+  cardNumber: yup
+    .number()
+    .typeError("Campo obrigatório")
+    .required("Campo obrigatório"),
+  payament: yup.mixed().required("Campo obrigatório"),
+  address: yup.mixed().required("Campo obrigatório"),
 });

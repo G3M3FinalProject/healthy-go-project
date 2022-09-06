@@ -3,13 +3,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import WomanEating from "../../assets/womanaboutus.png";
-import Loading from "../../components/loading";
-import { useAuthUserContext } from "../../contexts/authUserContext";
 import { Container, Paragraph } from "./styles";
 
 export const AboutUs = () => {
   const [isMobile, setMobile] = useState(window.innerWidth < 426);
-  const { isLoading } = useAuthUserContext();
 
   const updateMedia = () => {
     setMobile(window.innerWidth < 426);
@@ -19,8 +16,6 @@ export const AboutUs = () => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
-
-  if (isLoading) return <Loading />;
 
   return (
     <motion.div
