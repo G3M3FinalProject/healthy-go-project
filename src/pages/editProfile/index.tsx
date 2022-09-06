@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { AiFillPlusCircle } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -15,7 +14,6 @@ import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
 import { editFormSchema } from "../../validations";
 import {
-  ButtonSave,
   Card,
   CardAdress,
   ContainerCenter,
