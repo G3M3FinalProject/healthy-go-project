@@ -49,7 +49,7 @@ export const FramePosition = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
 
   @media screen and (max-width: 501px) {
     flex-wrap: wrap;

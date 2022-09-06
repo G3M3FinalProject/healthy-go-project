@@ -11,15 +11,7 @@ import { useCart } from "../../contexts/cartContext";
 import { GlobalButtonLg } from "../global-inputs";
 import { Container, DiscountBar, Modal } from "./styles";
 
-interface ICartRipple {
-  isOpenCart?: any;
-  setisOpenCart?: any;
-  onClick?: any;
-}
-
-const Cart = ({ setisOpenCart, onClick }: ICartRipple) => {
-  const [isRipple, setIsRipple] = useState(false);
-  const [coords, setCoords] = useState({ x: -1, y: -1 });
+const Cart = ({ setisOpenCart }) => {
   const {
     cart,
     freightCart,
@@ -32,21 +24,6 @@ const Cart = ({ setisOpenCart, onClick }: ICartRipple) => {
   const hasDiscount = 80 - totalCart >= 0;
   const modalRef = useRef<HTMLHeadingElement>(null);
   const navigate = useNavigate();
-
-
-  useEffect(() => {
-    if (coords.x !== -1 && coords.y !== -1) {
-      setIsRipple(true);
-
-      setTimeout(() => setIsRipple(false), 1000);
-    } else {
-      setIsRipple(false);
-    }
-  }, [coords]);
-
-  useEffect(() => {
-    if (!isRipple) setCoords({ x: -1, y: -1 });
-  }, [isRipple]);
 
 
   useEffect(() => {
@@ -65,14 +42,7 @@ const Cart = ({ setisOpenCart, onClick }: ICartRipple) => {
   }, []);
 
 
-  const handleClick = (e) => {
-    setCoords({
-      x: e.pageX - e.target.offsetLeft,
-      y: e.pageY - e.target.offsetTop,
-    });
-
-    onClick && onClick(e);
-
+  const handleClick = () => {
     setTimeout(() => {
       if (totalCart > 0) {
         navigate("/checkout", { replace: true });
