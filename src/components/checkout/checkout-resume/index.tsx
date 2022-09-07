@@ -1,5 +1,6 @@
 import transation from "../../../assets/transation.png";
 import { useCart } from "../../../contexts/cartContext";
+import { GlobalButtonLg } from "../../global-inputs";
 import {
   ContainerResume,
   DivImgCheck,
@@ -47,9 +48,9 @@ export function ResumeCheckout() {
         <p>R$ {totalCart.toFixed(2)}</p>
       </DivTT>
 
-      <button type="submit" form="payamentForm">
+      <GlobalButtonLg type="submit" form="payamentForm">
         Finalizar Pedido
-      </button>
+      </GlobalButtonLg>
     </ContainerResume>
   );
 }

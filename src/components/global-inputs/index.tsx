@@ -127,6 +127,8 @@ interface IPropsButton {
   type?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   disabled?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  form?: any;
 }
 
 export const GlobalButtonLg = ({ children, onClick }: IPropsButton) => {
