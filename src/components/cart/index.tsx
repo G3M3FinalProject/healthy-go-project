@@ -7,19 +7,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import carrinhoVazio from "../../assets/carrinhoVazio.png";
+import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useCart } from "../../contexts/cartContext";
 import { GlobalButtonLg } from "../global-inputs";
 import { Container, DiscountBar, Modal } from "./styles";
 
 const Cart = ({ setisOpenCart }) => {
   const {
-    cart,
     freightCart,
     addOneProduct,
     minusOneProduct,
     totalCart,
     subTotalCart,
   } = useCart();
+  const { cart } = useAuthUserContext();
   const priceToDiscount = 80 - totalCart;
   const hasDiscount = 80 - totalCart >= 0;
   const modalRef = useRef<HTMLHeadingElement>(null);
@@ -54,7 +55,7 @@ const Cart = ({ setisOpenCart }) => {
     if (index === 0 || item.restaurant !== arr[index - 1].restaurant) {
       restaurantTitle = (
         <>
-          {index === 0 ? <></> : <div className="divider"></div>}
+          {index === 0 && <div className="divider"></div>}
           <h2>{item.restaurant}</h2>
           <Link to={`/restaurants/${item?.restaurantID}`} className="retornar">
             Retornar para a Loja

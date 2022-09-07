@@ -51,6 +51,11 @@ export const AddressContextProvider = ({ children }: IAddressContextProps) => {
     addressApi
       .get("/50ad4a90-fd5e-11ec-b463-1717be8c9ff1")
       .then((res: IResAddress) => {
+        if (res.data.state === null) {
+          return toast.error(
+            "Não foi possível resgatar as informações da sua localização atual.",
+          );
+        }
         const postalRes = `${res.data.postal}-000`;
 
         setValue("state", res.data.state);

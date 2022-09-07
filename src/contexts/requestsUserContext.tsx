@@ -30,9 +30,9 @@ interface IRequestsUserContextProviderData {
 export const RequestsUserContextProvider = ({
   children,
 }: IRequestsUserContextProps) => {
-  const { setUser, user } = useAuthUserContext();
+  const { setUser, user, setCart } = useAuthUserContext();
   const { setIsSucessModalOpen, isSuccessModalOpen } = useModalContext();
-  const { totalCart, setCart } = useCart();
+  const { totalCart } = useCart();
 
   const postUserRequest = (data: IUserRequestPayament) => {
     if (totalCart === 0) {

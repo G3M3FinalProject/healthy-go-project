@@ -233,10 +233,27 @@ export const CartBackground = styled.button<IIsScrolled>`
   color: white;
 
   padding: 0.7rem;
+  /* padding: 1rem; */
 
   border-radius: 20px;
 
   position: ${({ scrolling }: IIsScrolled) => scrolling && "fixed"};
   top: ${({ scrolling }: IIsScrolled) => scrolling && "5px"};
   right: ${({ scrolling }: IIsScrolled) => scrolling && "5px"};
+
+  span {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 5px;
+    right: 3px;
+    background-color: #54a656;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
 `;
