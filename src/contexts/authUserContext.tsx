@@ -5,8 +5,8 @@ import {
   useContext,
   createContext,
 } from "react";
+import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import { api } from "../services";
 import { ICompleteAddress } from "./addressContext";
@@ -33,15 +33,6 @@ interface IUserResponse {
     user: IUser;
     accessToken: string;
   };
-}
-
-interface IUserEdit {
-  id: string;
-  name: string;
-  email: string;
-  email2?: string;
-  birthday?: string;
-  cellphone?: string;
 }
 
 export interface IUserRequests {
@@ -105,12 +96,11 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
 
         navigate("/homepage", { replace: true });
       })
-      .catch(
-        (err) => {
-          toast.error("A senha inserida é inválida.");
-        },
-        //Adicionar algum aviso ao usuário informando que a senha dele está incorreta!
-      );
+      .catch((err) => {
+        toast.error("A senha ou e-mail inserido é inválido.", {
+          id: "error-login",
+        });
+      });
   };
 
   const registerUser = (data: IUser) => {
