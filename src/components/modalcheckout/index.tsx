@@ -27,6 +27,7 @@ export const ModalCheckOut = () => {
       document.removeEventListener("mousedown", handleOutClick);
 
       setTimeout(() => {
+        setIsSucessModalOpen(false);
         navigate("/home", { replace: true });
       }, 7000);
     };

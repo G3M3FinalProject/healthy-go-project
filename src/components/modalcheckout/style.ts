@@ -76,16 +76,6 @@ export const Modal = styled.div`
     animation: checkmark 400ms calc(300ms + 1000ms + 300ms) forwards;
   }
 
-  @keyframes squish {
-    100% {
-      left: -25%;
-      right: -25%;
-      top: 45%;
-      bottom: 45%;
-      border-radius: 0.25em;
-    }
-  }
-
   @keyframes circle {
     0% {
       width: 0;
