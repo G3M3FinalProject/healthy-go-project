@@ -15,7 +15,7 @@ import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
   const { user, logoutUser } = useAuthUserContext();
-  const { setCart } = useCart();
+  const { setCart } = useAuthUserContext();
   const navigate = useNavigate();
 
   return (
@@ -53,7 +53,7 @@ const DropDownModal = () => {
               <button
                 onClick={() => {
                   logoutUser();
-                  setCart(user?.cart as IProduct[]);
+                  setCart([]);
                 }}
               >
                 Sair

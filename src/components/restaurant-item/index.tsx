@@ -23,7 +23,7 @@ export const RestaurantItem = ({ restaurant }: IRestaurantItemProps) => {
       const categoryThreated = category
         .split("-")
         .map((e) => {
-          return e === "vegatarian"
+          return e === "vegetarian"
             ? "Vegetariano"
             : e.charAt(0).toUpperCase() + e.slice(1);
         })

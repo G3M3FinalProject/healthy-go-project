@@ -1,7 +1,4 @@
 import styled from "styled-components";
-interface IDiscountBarProps {
-  width: number;
-}
 
 export const Modal = styled.div`
   position: fixed;

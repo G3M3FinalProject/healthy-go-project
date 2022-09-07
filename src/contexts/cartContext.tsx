@@ -18,13 +18,11 @@ interface ICartProps {
 }
 
 interface ICartProviderData {
-  cart: IProduct[];
   addToCart: (product: IProduct) => void;
   removeFromCart: (productId: number) => void;
-  setCart: React.Dispatch<React.SetStateAction<IProduct[]>>;
   addOneProduct: (productId: number) => void;
   minusOneProduct: (productId: number) => void;
-  amountCart: number;
+  amountCart?: number;
   totalCart: number;
   subTotalCart: number;
   freightCart: number;
@@ -40,8 +38,8 @@ interface ISummaryCart {
 
 const CartProvider = ({ children }: ICartProps) => {
   const { allRestaurants } = useRestaurantsContext();
-  const { setUser, user } = useAuthUserContext();
-  const [cart, setCart] = useState<IProduct[]>(user?.cart as IProduct[]);
+  const { setUser, cart, setCart } = useAuthUserContext();
+  // const [cart, setCart] = useState<IProduct[]>(user?.cart as IProduct[]);
   const [subTotalCart, setSubTotalCart] = useState(0);
   const [freightCart, setFreightCart] = useState(0);
   const [totalCart, setTotalCart] = useState(0);
@@ -52,7 +50,7 @@ const CartProvider = ({ children }: ICartProps) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       localStorage.getItem("@healthyGo-user")!,
     );
-    if (userName) {
+    if (userName && cart) {
       const userId = userName.id;
       api
         .patch(`/users/${userId}`, cartObject)
@@ -63,10 +61,11 @@ const CartProvider = ({ children }: ICartProps) => {
         })
         .catch((err) => console.log(err));
     }
-    if (user?.cart) {
+
+    if (cart) {
       const restaurants: string[] = [];
 
-      cart.forEach((product) => {
+      cart?.forEach((product) => {
         if (!restaurants.includes(product.restaurant))
           restaurants.push(product.restaurant);
       });
@@ -83,6 +82,7 @@ const CartProvider = ({ children }: ICartProps) => {
   }, [cart, subTotalCart, freightCart]);
 
   //frete
+
   const amountCart = cart?.reduce((acc, product) => {
     return acc + product.amount;
   }, 0);
@@ -92,8 +92,12 @@ const CartProvider = ({ children }: ICartProps) => {
     productsCartCopy = [...cart];
   }
 
-  const indexProduct = (currentId: number) =>
-    cart.findIndex(({ id }) => id === currentId);
+  const indexProduct = (currentId: number) => {
+    if (cart) {
+      return cart?.findIndex(({ id }) => id === currentId);
+    }
+    return 0;
+  };
 
   const updateAmountPrice = (currentId: number) => {
     productsCartCopy[currentId].amountPrice =
@@ -121,14 +125,14 @@ const CartProvider = ({ children }: ICartProps) => {
 
   const removeFromCart = (currentId: number) => {
     const currentIndex = indexProduct(currentId);
-
-    const newCart = cart.filter((product, index) => index !== currentIndex);
-    setCart(newCart);
+    if (cart) {
+      const newCart = cart?.filter((product, index) => index !== currentIndex);
+      setCart(newCart);
+    }
   };
 
   const addOneProduct = (productId: number) => {
     const currentIndex = indexProduct(productId);
-
     productsCartCopy[currentIndex].amount++;
     setCart(productsCartCopy);
 
@@ -180,8 +184,6 @@ const CartProvider = ({ children }: ICartProps) => {
       value={{
         addToCart,
         removeFromCart,
-        cart,
-        setCart,
         minusOneProduct,
         addOneProduct,
         amountCart,

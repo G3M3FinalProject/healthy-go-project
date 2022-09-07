@@ -7,7 +7,6 @@ import { AuthUserProvider } from "./authUserContext";
 import CartProvider from "./cartContext";
 import { ModalProvider } from "./modalContext";
 import { RequestsUserContextProvider } from "./requestsUserContext";
-import { RestaurantProductsProvider } from "./restaurantProductsContext";
 import { RestaurantsProvider } from "./restaurantsContext";
 
 interface IProvidersProps {
@@ -19,17 +18,15 @@ export const Providers = ({ children }: IProvidersProps) => {
     <GoogleOAuthProvider clientId="361752817190-eq61arub3dm8p01c2jk7roqelfdk4hf7.apps.googleusercontent.com">
       <AuthUserProvider>
         <RestaurantsProvider>
-          <RestaurantProductsProvider>
-            <CartProvider>
-              <AddressContextProvider>
-                <ModalProvider>
-                  <RequestsUserContextProvider>
-                    {children}
-                  </RequestsUserContextProvider>
-                </ModalProvider>
-              </AddressContextProvider>
-            </CartProvider>
-          </RestaurantProductsProvider>
+          <CartProvider>
+            <AddressContextProvider>
+              <ModalProvider>
+                <RequestsUserContextProvider>
+                  {children}
+                </RequestsUserContextProvider>
+              </ModalProvider>
+            </AddressContextProvider>
+          </CartProvider>
         </RestaurantsProvider>
       </AuthUserProvider>
     </GoogleOAuthProvider>

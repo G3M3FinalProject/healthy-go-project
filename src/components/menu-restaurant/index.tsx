@@ -1,7 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import { v4 as uuid } from "uuid";
 
+import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
 import { useCart } from "../../contexts/cartContext";
 import {
   IProduct,
@@ -16,11 +17,9 @@ import {
 } from "./styles";
 
 export const MenuRestaurant = () => {
-  const { findRestaurantInfo, filteredMenu } = useRestaurantProductsContext();
-  const { id } = useParams();
+  const { filteredMenu } = useRestaurantProductsContext();
+  const { user } = useAuthUserContext();
   const { addToCart } = useCart();
-  const navigate = useNavigate();
-  findRestaurantInfo(id);
 
   const subTitles = {
     food: "Pratos",
@@ -73,8 +72,26 @@ export const MenuRestaurant = () => {
                           </ContainerSection>
                         </div>
                         <div className="add-carrinho">
-                          <button onClick={() => addToCart(product)}>
-                            adicionar ao carrinho
+                          <button
+                            onClick={() => {
+                              if (
+                                user &&
+                                Object.keys(user as IUser).length !== 0
+                              ) {
+                                addToCart(product);
+                              } else {
+                                toast.error(
+                                  "Você precisa estar logado para adicionar produtos ao carrinho!",
+                                  {
+                                    duration: 3000,
+                                    id: "error-add-cart",
+                                    position: "top-center",
+                                  },
+                                );
+                              }
+                            }}
+                          >
+                            Adicionar ao carrinho
                           </button>
                         </div>
                       </li>

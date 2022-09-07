@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { FaCompass } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
-import * as yup from "yup";
 
 import {
   ICompleteAddress,
@@ -53,13 +52,11 @@ const AdressModal = () => {
       document.removeEventListener("mousedown", handleOutClick);
     };
   }, []);
-  // defaultValue={`${address?.postal}-000`}
   const onSuccess = (data: ICompleteAddress) => {
     console.log(data);
     registerNewAdressUser(data);
     setIsAddressModalOpen(false);
   };
-  console.log(errors);
 
   return (
     <motion.div

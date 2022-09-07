@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
+import { RestaurantInfo } from "../components/restaurant-info";
 import { IUser, useAuthUserContext } from "../contexts/authUserContext";
 import { AboutUs } from "../pages/aboutus";
 import { CheckOut } from "../pages/checkout";
@@ -19,7 +20,9 @@ const AppRoutes = () => {
       <Route path="/register" element={<UserRegister />} />
       <Route path="/login" element={<Login />} />
       <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/restaurants/:id" element={<Restaurants />} />
+      <Route path="/restaurants" element={<Restaurants />}>
+        <Route path=":id" element={<RestaurantInfo />} />
+      </Route>
       {user && Object.keys(user as IUser).length !== 0 && (
         <>
           <Route path="/checkout" element={<CheckOut />} />

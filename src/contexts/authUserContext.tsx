@@ -5,6 +5,7 @@ import {
   useContext,
   createContext,
 } from "react";
+import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { api } from "../services";
@@ -19,6 +20,8 @@ interface IAuthUserProviderData {
   editUser: (data: IUser, id: string) => void;
   logoutUser: () => void;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  cart: IProduct[] | undefined;
+  setCart: React.Dispatch<React.SetStateAction<IProduct[] | undefined>>;
 }
 
 export interface IUserLogin {
@@ -27,19 +30,11 @@ export interface IUserLogin {
 }
 interface IUserResponse {
   data: {
-    user: IUserEdit;
+    user: IUser;
     accessToken: string;
   };
 }
 
-interface IUserEdit {
-  id: string;
-  name: string;
-  email: string;
-  email2?: string;
-  birthday?: string;
-  cellphone?: string;
-}
 export interface IUserRequests {
   id: number;
   status: string;
@@ -58,7 +53,7 @@ export interface IUser extends IUserLogin {
   cellphone?: string;
   address?: ICompleteAddress[];
   requests?: IUserRequests[];
-  cart?: IProduct[];
+  cart?: IProduct[] | undefined;
 }
 export interface IUserEditRes {
   data: IUser;
@@ -72,8 +67,9 @@ const AuthUserContext = createContext({} as IAuthUserProviderData);
 
 export const AuthUserProvider = ({ children }: IAuthUserProps) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const initialUser = JSON.parse(localStorage.getItem("@healthyGo-user")!);
-  const [user, setUser] = useState(initialUser as IUser);
+  // const initialUser = JSON.parse(localStorage.getItem("@healthyGo-user")!);
+  const [user, setUser] = useState({} as IUser);
+  const [cart, setCart] = useState<IProduct[] | undefined>(undefined);
 
   const navigate = useNavigate();
   const actualPage = useLocation().pathname;
@@ -83,8 +79,13 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/login", data)
       .then((res: IUserResponse) => {
         setUser(res.data.user);
+        if (res.data.user.cart) {
+          setCart(res.data.user.cart);
+        }
         const userLocalStorage = JSON.stringify(res.data.user);
-        localStorage.setItem("@healthyGo-userId", res.data.user.id);
+        if (res.data.user.id) {
+          localStorage.setItem("@healthyGo-userId", res.data.user.id);
+        }
         localStorage.setItem("@healthyGo-user", userLocalStorage);
 
         localStorage.setItem("@healthyGo-token", res.data.accessToken);
@@ -95,13 +96,11 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
 
         navigate("/homepage", { replace: true });
       })
-      .catch(
-        (err) => {
-          console.log("teste");
-          console.log(err);
-        },
-        //Adicionar algum aviso ao usuário informando que a senha dele está incorreta!
-      );
+      .catch((err) => {
+        toast.error("A senha ou e-mail inserido é inválido.", {
+          id: "error-login",
+        });
+      });
   };
 
   const registerUser = (data: IUser) => {
@@ -109,38 +108,33 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .post("/register", data)
       .then(() => {
         actualPage === "/login"
-          ? loginUser(user as IUser)
+          ? loginUser(user)
           : navigate("/login", { replace: true });
       })
-      .catch((err) => {
-        loginUser(user as IUser);
-        console.log(err);
-        console.log("teste");
+      .catch(() => {
+        loginUser(user);
       });
   };
 
-  const isUserLoggedIn = () => {
-    useEffect(() => {
-      const id = localStorage.getItem("@healthyGo-userId");
-      const token = localStorage.getItem("@healthyGo-token");
+  useEffect(() => {
+    const id = localStorage.getItem("@healthyGo-userId");
+    const token = localStorage.getItem("@healthyGo-token");
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-      if (token) {
-        api
-          .get(`/users/${id}`)
-          .then((res) => {
-            setUser(res.data);
-            console.log(res.data);
-          })
-          .catch(() => {
-            localStorage.clear();
-            setUser({} as IUser);
-          });
-      }
-    }, []);
-  };
-  isUserLoggedIn();
+    if (token) {
+      api
+        .get(`/users/${id}`)
+        .then((res) => {
+          setUser(res.data);
+          setCart(res.data.cart);
+        })
+        .catch(() => {
+          localStorage.clear();
+          setUser({} as IUser);
+          setCart([] as IProduct[]);
+        });
+    }
+  }, []);
 
   const editUser = (data: IUser, id: string) => {
     api
@@ -157,6 +151,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         .get(`/users/${id}`)
         .then((res: IUserEditRes) => {
           setUser(res.data);
+          if (res.data.cart) setCart(res.data.cart);
         })
         .catch((err) => console.log(err));
     }, []);
@@ -164,6 +159,8 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
 
   const logoutUser = () => {
     setUser({} as IUser);
+    setCart([] as IProduct[]);
+
     localStorage.clear();
   };
 
@@ -177,6 +174,8 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         getUser,
         logoutUser,
         setUser,
+        setCart,
+        cart,
       }}
     >
       {children}
