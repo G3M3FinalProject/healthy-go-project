@@ -53,7 +53,7 @@ export const AddressContextProvider = ({ children }: IAddressContextProps) => {
       .then((res: IResAddress) => {
         if (res.data.state === null) {
           return toast.error(
-            "Não foi possível resgatar as informações da sua localização atual.",
+            "Não foi possível resgatar as informações da sua localização atual! ",
           );
         }
         const postalRes = `${res.data.postal}-000`;
