@@ -24,6 +24,7 @@ export const OverflowContainer = styled.div`
   gap: 0.5rem;
 
   overflow-y: auto;
+
   &::-webkit-scrollbar {
     width: 5px;
     border-radius: 5px;

@@ -38,6 +38,7 @@ interface ISelectAddressForm {
 export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
   const { user } = useAuthUserContext();
   const { setIsAddressModalOpen } = useModalContext();
+
   return (
     <ContainerAdress>
       <SelectAddressInput>
