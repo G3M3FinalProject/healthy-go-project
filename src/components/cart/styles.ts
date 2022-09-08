@@ -277,16 +277,21 @@ export const Container = styled.div`
     }
   }
 `;
+interface IDiscountBarProps {
+  width: number;
+}
 
-export const DiscountBar = styled.div`
+export const DiscountBar = styled.div<IDiscountBarProps>`
   height: 4px;
   width: 100%;
-  background-color: var(--brand-green);
+  background-color: rgba(var(--brand-green));
 
   .discount-variable {
+    margin-top: 10px;
+
     width: ${({ width }) => `${width}%`};
     height: 4px;
 
-    background-color: var(--brand-light-green);
+    background-color: rgba(var(--brand-light-green));
   }
 `;

@@ -5,6 +5,8 @@ interface IModalContextProviderData {
   setIsAddressModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isSuccessModalOpen: boolean;
   setIsSucessModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalMenuOpen: boolean;
+  setisModalMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface IModalContextProps {
@@ -16,6 +18,7 @@ const ModalContext = createContext({} as IModalContextProviderData);
 export const ModalProvider = ({ children }: IModalContextProps) => {
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSucessModalOpen] = useState(false);
+  const [isModalMenuOpen, setisModalMenuOpen] = useState<boolean>(false);
 
   return (
     <ModalContext.Provider
@@ -24,6 +27,8 @@ export const ModalProvider = ({ children }: IModalContextProps) => {
         setIsAddressModalOpen,
         isSuccessModalOpen,
         setIsSucessModalOpen,
+        isModalMenuOpen,
+        setisModalMenuOpen,
       }}
     >
       {children}
