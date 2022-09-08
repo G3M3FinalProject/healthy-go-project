@@ -37,21 +37,30 @@ export const FilteredSearch = () => {
 
   return (
     <ContainerFilter>
-      <ButtonFilter onClick={() => filterByCategory("food")}>
+      <ButtonFilter
+        data-hover="Pratos"
+        onClick={() => filterByCategory("food")}
+      >
         {actualFilter.includes("food") ? (
           <img src={foodHover} />
         ) : (
           <img src={food} />
         )}
       </ButtonFilter>
-      <ButtonFilter onClick={() => filterByCategory("drinks")}>
+      <ButtonFilter
+        data-hover="Bebidas"
+        onClick={() => filterByCategory("drinks")}
+      >
         {actualFilter.includes("drinks") ? (
           <img src={drinksHover} />
         ) : (
           <img src={drinks} />
         )}
       </ButtonFilter>
-      <ButtonFilter onClick={() => filterByCategory("deserts")}>
+      <ButtonFilter
+        data-hover="Sobremesas"
+        onClick={() => filterByCategory("deserts")}
+      >
         {actualFilter.includes("deserts") ? (
           <img src={dessertsHover} />
         ) : (
@@ -60,6 +69,7 @@ export const FilteredSearch = () => {
       </ButtonFilter>
 
       <ButtonFilter
+        data-hover="Todos"
         onClick={() => {
           filterByCategory("all");
         }}
