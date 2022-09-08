@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   span {
     display: inline-block;
-    background-color: var(--button-green);
+    background-color: rgba(var(--button-green), 1);
     width: 0px;
     height: 0px;
     border-radius: 50%;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   }
 
   span:nth-child(2) {
-    background-color: var(--brand-light-green);
+    background-color: rgba(var(--brand-light-green), 1);
     animation-delay: 0.2s;
   }
 

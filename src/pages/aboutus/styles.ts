@@ -40,9 +40,10 @@ export const Container = styled.div`
   }
 
   & > p {
+    position: absolute;
     bottom: -20rem;
     left: 1rem;
-    position: absolute;
+
     font-weight: 600;
   }
 `;
@@ -61,11 +62,11 @@ export const Paragraph = styled.div`
   padding: 0 0 0 1rem;
   gap: 3em;
 
-  color: rgba(18, 117, 58, 1);
+  color: ${(props) => props.theme.colors.lightGreen};
 
   h1 {
     align-self: center;
-    color: black;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   p {

@@ -31,6 +31,7 @@ export const FormDiv = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
@@ -65,13 +66,13 @@ export const Input = styled.input`
   width: 32.125rem;
   height: 2.5rem;
 
-  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(4px 4px 4px rgba(var(--text-black), 0.25));
 
   border-radius: 10px;
-  border: 1px solid rgba(67, 66, 66, 1);
+  border: 1px solid rgba(var(--placeholder), 1);
 
-  background-color: #f7f6f3;
-  color: black;
+  background-color: rgba(var(--light-background-color), 1);
+  color: rgba(var(--text-black), 1);
 
   padding: 0.7rem 0.813rem;
 
@@ -80,7 +81,7 @@ export const Input = styled.input`
   outline: none;
 
   &::placeholder {
-    color: var(--placeholder);
+    color: rgba(var(--placeholder), 1);
   }
 
   @media screen and (max-width: 426px) {
@@ -101,7 +102,7 @@ export const Button = styled.button`
   font-weight: 700;
 
   color: white;
-  background-color: var(--button-green);
+  background-color: rgba(var(--button-green), 1);
 
   padding: 1rem 4.5%;
 
@@ -157,18 +158,23 @@ export const CardAdress = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
   overflow: scroll;
-  height: 500px;
   overflow-x: hidden;
+
+  height: 500px;
+
   margin-bottom: 10px;
+
   ::-webkit-scrollbar {
     display: none;
   }
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
+    align-content: center;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
   }
@@ -177,15 +183,16 @@ export const CardAdress = styled.div`
 export const ButtonSave = styled.button`
   width: 10.125rem;
   height: fit-content;
+
   margin-top: 12rem;
+  padding: 1rem 4.5%;
+
   border-radius: 15px;
 
   font-weight: 700;
 
   color: white;
-  background-color: var(--button-green);
-
-  padding: 1rem 4.5%;
+  background-color: rgba(var(--button-green), 1);
 
   @media screen and (max-width: 426px) {
     width: 10.125rem;
@@ -195,12 +202,17 @@ export const ButtonSave = styled.button`
     width: 10.125rem;
   }
 `;
+
 export const Card = styled.div`
   border-radius: 10px;
+  border-left: 5px solid rgba(var(--button-green), 1);
+
   background-color: rgba(202, 255, 215, 1);
-  min-width: 20rem;
-  border-left: 5px solid rgba(18, 117, 58, 1);
+
   text-align: left;
+
+  min-width: 20rem;
+
   margin-top: 10px;
 `;
 
@@ -210,15 +222,18 @@ export const TitleCard = styled.h4`
 `;
 
 export const InfoCard = styled.h4`
-  font-family: "Petrona", serif;
-  margin: 0 0 0 0.75rem;
   font-weight: lighter;
+  font-family: "Petrona", serif;
+
+  margin: 0 0 0 0.75rem;
 `;
 
 export const DivButton = styled.div`
   display: flex;
   justify-content: center;
+
   margin-top: -35px;
+
   width: 107%;
   height: fit-content;
 `;
@@ -226,4 +241,6 @@ export const DivButton = styled.div`
 export const DivAdress = styled.div`
   display: flex;
   flex-direction: row;
+
+  color: ${(props) => props.theme.colors.contrastTextBlack};
 `;

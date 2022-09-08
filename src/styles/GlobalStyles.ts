@@ -1,41 +1,55 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
-:root {
-    --brand-green: rgba(36, 133, 64, 1);
-    --brand-yellow: rgba(227, 229, 34, 1);
-    --brand-light-green: rgba(146, 227, 169, 1);
-    --brand-light-green-2: rgb(228, 249, 234);
-    --button-green: rgba(18, 117, 58, 1);
-    --brand-yellow: rgba(227, 229, 34, 1);
-    --placeholder: rgba(67, 66, 66, 1);
+const GlobalStyle = createGlobalStyle`  
 
-    --text-black: rgba(0,0,0,1);
-    --background-color:  #f7f6f3;
+:root {
+    --brand-green: 36, 133, 64;
+    --brand-yellow: 227, 229, 34;
+    --brand-light-green: 146, 227, 169;
+    --brand-light-green-2: 228, 249, 234;
+    --button-green: 18, 117, 58;
+    --brand-yellow: 227, 229, 34;
+    --placeholder: 67, 66, 66;
+    --light-border: 194, 194, 194;
+
+    --cart-background: 84, 166, 86;
+    --cart-white-background: 255, 255, 255;
+
+    --white: white;
+    --gray: 128,128,128;
+    --text-black: 0,0,0;
+    --warning-error: 255, 0, 0, 1;
+    --background-white: 255, 255, 255;
+    --light-background-color: 247, 246, 243;
 }
 
 * { 
     margin:0;
-    padding: 0;
     outline:0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
     -webkit-font-smoothing: antialiased;
+
     overflow-y: auto;
     overflow-x: hidden;
+
     width: 100vw;
     height: 100vh;
+
     font-family: 'Petrona', serif;
-    background: #f7f6f3;
+
+    background: ${(props) => props.theme.colors.body};
+
     ::-webkit-scrollbar {
       width: 5px;
       border-radius: 5px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: rgba(36, 133, 64, 1);
-      border-radius: 10px;
+        border-radius: 10px;
+      background-color: #54a656;
     }
 }
 
@@ -51,9 +65,10 @@ input {
 ul {
     list-style: none;
 }
-a{
+
+a {
     text-decoration: none;
-    color: black;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 }
 `;
 

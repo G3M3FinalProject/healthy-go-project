@@ -22,10 +22,12 @@ export const ContainerMain = styled.main`
 
 export const ContainerMidle = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+
   gap: 1rem;
-  flex-direction: column;
+
   width: 100%;
 
   @media screen and (max-width: 425px) {

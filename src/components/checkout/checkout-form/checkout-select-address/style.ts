@@ -10,8 +10,8 @@ export const ContainerAdress = styled.div`
 
   padding: 0.5rem;
 
-  border: 1px solid #434242;
   border-radius: 10px;
+  border: 1px solid ${(props) => props.theme.colors.lightBorder};
 `;
 
 export const OverflowContainer = styled.div`
@@ -24,15 +24,6 @@ export const OverflowContainer = styled.div`
   gap: 0.5rem;
 
   overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 5px;
-    border-radius: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: green;
-    border-radius: 10px;
-    height: 15px;
-  }
 `;
 
 export const SelectAddressInput = styled.div`
@@ -47,7 +38,7 @@ export const SelectAddressInput = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    color: #434242;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;
@@ -61,15 +52,15 @@ export const SelectAddressInput = styled.div`
   button {
     font-family: "Petrona";
     font-style: normal;
+    line-height: 27px;
     font-weight: 700;
     font-size: 16px;
-    line-height: 27px;
 
     cursor: pointer;
 
     background-color: transparent;
 
-    color: #12753a;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 `;
 
@@ -83,7 +74,7 @@ export const DivAdress = styled.div`
   padding: 0.5rem;
 
   border-radius: 10px;
-  border: 1px solid #c2c2c2;
+  border: 1px solid ${(props) => props.theme.colors.lightBorder};
 `;
 
 export const DivPicture = styled.div`
@@ -92,19 +83,16 @@ export const DivPicture = styled.div`
   flex-direction: column;
   justify-content: flex-start;
 
-  width: 10rem;
+  color: ${(props) => props.theme.colors.contrastTextBlack};
 
-  img {
-    width: 30px;
-    height: 30px;
-  }
+  width: 10rem;
 
   h4 {
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
-    color: #434242;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;
@@ -131,10 +119,10 @@ export const AdressSelector = styled.div`
   span {
     font-family: "Petrona";
     font-style: normal;
+    line-height: 20px;
     font-weight: 500;
     font-size: 20px;
-    line-height: 20px;
-    color: #6e6e6e;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;

@@ -14,43 +14,42 @@ export const InputLg = styled.div<IInputLg>`
     width: 100%;
     height: 40px;
 
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(4px 4px 4px rgba(var(--text-black), 0.25));
 
-    border-radius: 10px;
+    outline: none;
     border: 1px solid;
+    border-radius: 10px;
     border-color: ${({ error }) =>
-      error ? "rgba(255, 0, 0, 1)" : "rgba(67, 66, 66, 1)"};
+      error ? "rgba(255, 0, 0, 1)" : "rgba(var(--placeholder), 1)"};
 
-    background-color: #f7f6f3;
-    color: black;
+    color: rgba(var(--text-black), 1);
+    background-color: rgba(var(--light-background-color), 1);
 
     padding: 0.7rem 0 0 0.813rem;
 
     font-size: 17px;
 
-    outline: none;
-
     &::placeholder {
-      color: var(--placeholder);
+      color: rgba(var(--placeholder), 1);
     }
 
     &:focus {
-      background-color: #f7f6f3;
-      border-color: #248b24;
-      box-shadow: 1px 1px 0px 0px #248b24;
+      border-color: rgba(var(--brand-green), 1);
+      box-shadow: 1px 1px 0px 0px rgba(var(--brand-green), 1);
+      background-color: rgba(var(--light-background-color), 1);
     }
 
     &:focus ~ label {
       top: -0.5rem;
       font-size: 19px;
       left: 0.8rem;
-      color: #248b24;
+      color: rgba(var(--brand-green), 1);
     }
 
     &:not(:placeholder-shown) ~ label {
+      left: 0.8rem;
       top: -0.65rem;
       font-size: 19px;
-      left: 0.8rem;
     }
   }
 
@@ -63,32 +62,37 @@ export const InputLg = styled.div<IInputLg>`
 
     padding: 0 0.5em;
 
-    color: var(--placeholder);
-    background-color: #f7f6f3;
+    color: rgba(var(--placeholder), 1);
+    background-color: rgba(var(--light-background-color), 1);
 
     pointer-events: none;
     color: ${({ error }) =>
-      error ? "rgba(255, 0, 0, 1)" : "var(--placeholder)"};
+      error ? "rgba(255, 0, 0, 1)" : "rgba(var(--placeholder), 1)"};
 
     transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 
-    font-style: normal;
-    font-weight: 300;
     font-size: 20px;
+    font-weight: 300;
     line-height: 25px;
+    font-style: normal;
   }
+
   & > div {
     display: flex;
     align-items: center;
-    color: rgba(255, 0, 0, 1);
+
+    color: rgba(var(--warning-error), 1);
+
     padding-left: 0.4rem;
     padding-top: 0.1rem;
+
     p {
-      color: rgba(255, 0, 0, 1);
+      color: rgba(var(--warning-error), 1);
       font-size: 0.6rem;
       padding-left: 0.2rem;
     }
   }
+
   @media (min-width: 768px) {
     div {
       p {
@@ -108,7 +112,11 @@ export const ButtonLg = styled.button`
   padding: 14px 24px;
   border-radius: 15px;
 
-  background: linear-gradient(to right, #12753a, #8ac926);
+  background: linear-gradient(
+    to right,
+    rgba(var(--button-green), 1),
+    RGB(110, 173, 0)
+  );
   color: #fff;
   font-size: 18px;
   font-weight: 500;
@@ -122,7 +130,7 @@ export const ButtonLg = styled.button`
     width: 20px;
     height: 20px;
     position: absolute;
-    background-color: white;
+    background-color: rgba(var(--white), 1);
 
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -154,29 +162,28 @@ export const ButtonLg = styled.button`
 
 export const Search = styled.div`
   display: flex;
-  justify-content: start;
   align-items: center;
+  justify-content: start;
 
   width: 28.438rem;
   height: 3.375rem;
 
   gap: 1rem;
-
-  border-radius: 25px;
-  border: none;
-
-  background-color: rgba(228, 249, 234, 1);
-
-  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-
-  color: rgba(110, 110, 110, 1);
-
   padding: 0.7rem 2rem;
+
+  border: none;
+  border-radius: 25px;
+
+  background-color: rgba(var(--brand-light-green-2), 1);
+
+  filter: drop-shadow(4px 4px 4px rgba(var(--text-black), 0.25));
+
+  color: var(--gray);
 
   input {
     font-size: 15px;
     font-weight: 500;
-    background-color: rgba(228, 249, 234, 1);
+    background-color: rgba(var(--brand-light-green-2), 1);
   }
 `;
 
@@ -188,8 +195,8 @@ export const ButtonMd = styled.button`
 
   font-weight: 700;
 
-  color: white;
-  background-color: var(--button-green);
+  color: var(--white);
+  background-color: rgba(var(--button-green), 1);
 
   padding: 1rem 4.5%;
 `;

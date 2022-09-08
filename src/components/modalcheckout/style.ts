@@ -12,7 +12,7 @@ export const ContainerEnd = styled.div`
   align-items: center;
   justify-content: center;
 
-  background-color: #0505057a;
+  background-color: rgba(var(--text-black), 0.32);
 
   z-index: 1;
 `;
@@ -26,7 +26,7 @@ export const Modal = styled.div`
   padding: 1.5rem;
   gap: 1rem;
 
-  background: #ffffff;
+  background: rgba(var(--light-background-color), 1);
   border-radius: 10px;
 
   span {
@@ -42,7 +42,7 @@ export const Modal = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    color: #434242;
+    color: rgba(var(--placeholder), 1);
   }
 
   p {
@@ -53,6 +53,7 @@ export const Modal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 0.25em;
     border: 4px solid #71dfbe;
 

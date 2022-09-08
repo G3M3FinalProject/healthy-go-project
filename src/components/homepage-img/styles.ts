@@ -16,9 +16,10 @@ export const FloatContainer = styled.div`
   flex-direction: row-reverse;
 
   position: absolute;
+
+  top: 7rem;
   gap: 10rem;
   right: 10rem;
-  top: 7rem;
 
   @media screen and (min-width: 1024px) and (max-width: 1089px) {
     right: 6rem;

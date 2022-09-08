@@ -81,7 +81,7 @@ const AdressModal = () => {
             </button>
           </Header>
           <LocationDiv>
-            <FaCompass />
+            <FaCompass style={{ color: "green" }} />
             <button
               onClick={() => {
                 getAddress(setValue);

@@ -5,6 +5,7 @@ export const Positioning = styled.div`
   height: 13rem;
 
   position: relative;
+
   bottom: -6rem;
 
   display: flex;
@@ -14,8 +15,8 @@ export const Positioning = styled.div`
 
   @media screen and (max-width: 501px) {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
   }
 `;
 
@@ -29,7 +30,7 @@ export const Paragraph = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
-    color: #fff;
+    color: ${(props) => props.theme.colors.contrastTextWhite};
   }
 
   @media screen and (max-width: 720px) {
@@ -49,6 +50,7 @@ export const FramePosition = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
   gap: 1rem;
 
   @media screen and (max-width: 501px) {
@@ -67,8 +69,10 @@ export const Frame = styled.div`
 
   p {
     font-weight: 600;
-    color: #fff;
     font-size: 18px;
+
+    color: ${(props) => props.theme.colors.contrastTextWhite};
+
     margin: 0.6rem 0 0 0;
   }
 
@@ -110,10 +114,10 @@ export const Icons = styled.div`
     left: 0.6rem;
     bottom: 0.1rem;
 
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
     align-content: center;
+    flex-direction: column;
+    justify-content: center;
 
     margin: unset;
   }
@@ -129,8 +133,8 @@ export const Portrait = styled.div`
   height: 5rem;
 
   @media screen and (max-width: 501px) {
-    height: fit-content;
     width: fit-content;
+    height: fit-content;
   }
 `;
 

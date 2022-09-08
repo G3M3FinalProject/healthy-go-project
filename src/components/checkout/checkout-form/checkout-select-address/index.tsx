@@ -1,4 +1,5 @@
 import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
+import { GoLocation } from "react-icons/go";
 
 import locationIcon from "../../../../assets/locationIcon.svg";
 import { useAuthUserContext } from "../../../../contexts/authUserContext";
@@ -51,7 +52,7 @@ export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
           return (
             <DivAdress key={address.id}>
               <DivPicture>
-                <img src={locationIcon} />
+                <GoLocation />
                 <h4>{address.adressIdentification}</h4>
               </DivPicture>
               <AdressSelector>

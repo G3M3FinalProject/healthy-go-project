@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 export const Modal = styled.div`
-  position: fixed;
   display: flex;
-  flex-direction: column;
   align-items: flex-end;
+  flex-direction: column;
 
   width: 100%;
   height: 100%;
+
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 1;
 
-  background-color: rgba(0, 0, 0, 0.32);
+  background-color: rgba(var(--text-black), 0.32);
 `;
 
 export const Container = styled.div`
@@ -21,28 +22,21 @@ export const Container = styled.div`
 
   width: 28%;
   height: 100%;
-  background-color: white;
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.7);
+
+  background-color: rgba(var(--light-background-color), 1);
+  box-shadow: 0 0 0.5em rgba(var(--text-black), 0.7);
 
   .container-itens {
     overflow-y: auto;
-    ::-webkit-scrollbar {
-      width: 5px;
-      border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: rgba(150, 240, 169, 1);
-      border-radius: 10px;
-      height: 15px;
-    }
     height: 69%;
     margin-top: 3rem;
   }
 
   .carrinho-vazio {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+
     margin: 8rem 1rem;
 
     img {
@@ -56,20 +50,23 @@ export const Container = styled.div`
 
   .header-cart {
     position: fixed;
-    width: 100%;
     display: flex;
-    padding: 1rem;
-    gap: 1rem;
     align-items: center;
 
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.7);
-    background-color: white;
+    width: 100%;
+
+    padding: 1rem;
+    gap: 1rem;
+
+    background-color: rgba(var(--light-background-color), 1);
+    box-shadow: 0 0 1em 0 rgba(var(--text-black), 0.7);
 
     .back-cart svg {
-      color: green;
+      color: rgba(var(--brand-green), 1);
       font-size: 20px;
     }
   }
+
   .desconto {
     display: flex;
     justify-content: center;
@@ -77,15 +74,16 @@ export const Container = styled.div`
     border-radius: 5px;
     margin: 5rem 2rem 0 2rem;
 
-    background-color: rgba(36, 133, 64, 0.2);
-    color: rgba(36, 133, 64);
+    background-color: rgba(var(--brand-green), 0.2);
+    color: rgba(var(--brand-green), 1);
   }
+
   .cart-restaurantes {
     display: flex;
     flex-direction: column;
 
-    padding: 0.5rem;
     margin: 1rem;
+    padding: 0.5rem;
 
     .divider {
       margin-bottom: 38px;
@@ -100,18 +98,21 @@ export const Container = styled.div`
       width: 8rem;
       margin-bottom: 2rem;
     }
+
     .retornar:hover {
-      color: rgba(36, 133, 64);
+      color: rgba(var(--brand-green), 1);
     }
+
     .card-item {
       display: flex;
       margin-bottom: 1rem;
       .item {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+
         width: 100%;
         gap: 1rem;
-        justify-content: space-between;
-        align-items: center;
 
         img {
           max-width: 100px;
@@ -131,16 +132,16 @@ export const Container = styled.div`
           height: 1.8rem;
 
           gap: 1.5rem;
-          background-color: rgba(0, 0, 0, 0.1);
+          background-color: rgba(var(--text-black), 0.1);
           border-radius: 4px;
 
           button {
-            background-color: rgba(0, 0, 0, 0.01);
+            background-color: transparent;
           }
 
           svg {
             margin: 0;
-            color: rgba(36, 133, 64);
+            color: rgba(var(--brand-green), 1);
             font-size: 12px;
           }
         }
@@ -152,7 +153,7 @@ export const Container = styled.div`
     position: fixed;
     top: 80%;
     width: 26%;
-    background-color: white;
+    background-color: rgba(var(--light-background-color), 1);
   }
 
   .info-total {
@@ -161,24 +162,27 @@ export const Container = styled.div`
     gap: 0.5rem;
     margin: 0 1rem;
 
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(var(--text-black), 1);
 
     .subtotal {
       display: flex;
       justify-content: space-between;
       margin-top: 0.3rem;
     }
+
     .frete {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 1rem;
     }
+
     .descontoTotal {
       display: flex;
       width: 100%;
       justify-content: space-between;
     }
+
     .total {
       font-weight: 600;
       font-size: 1.2rem;
@@ -193,14 +197,16 @@ export const Container = styled.div`
 
   .divider {
     height: 2px;
-    background-color: gray;
+    background-color: rgba(var(--gray), 1);
   }
+
   @media screen and (max-width: 950px) {
     width: 45%;
     .rodape-cart {
       width: 45%;
     }
   }
+
   @media screen and (max-width: 560px) {
     width: 80%;
 
@@ -219,12 +225,12 @@ export const Container = styled.div`
 export const DiscountBar = styled.div`
   height: 4px;
   width: 100%;
-  background-color: var(--brand-green);
+  background-color: rgba(var(--brand-green), 1);
 
   .discount-variable {
     width: ${({ width }) => `${width}%`};
     height: 4px;
 
-    background-color: var(--brand-light-green);
+    background-color: rgba(var(--brand-light-green), 1);
   }
 `;

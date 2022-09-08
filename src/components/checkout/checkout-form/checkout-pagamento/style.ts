@@ -10,7 +10,7 @@ export const DivForm = styled.div`
   gap: 0.7rem;
   padding: 1rem;
 
-  border: 1px solid #434242;
+  border: 1px solid ${(props) => props.theme.colors.lightBorder};
   border-radius: 10px;
 
   @media screen and (max-width: 426px) {
@@ -23,7 +23,7 @@ export const DivForm = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 26px;
-    color: #282626;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 20px;
@@ -33,8 +33,9 @@ export const DivForm = styled.div`
 
 export const SelectPayment = styled.div`
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+
+  gap: 0.5rem;
 
   margin-top: 0.3rem;
 
@@ -48,10 +49,12 @@ export const SelectPayment = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
-    color: #434242;
+
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     input {
-      color: #434242;
+      color: rgba(var(--placeholder), 1);
+
       margin-right: 0.3rem;
     }
   }
@@ -84,19 +87,22 @@ export const DivPayment = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
-    color: #434242;
+
+    span {
+      color: ${(props) => props.theme.colors.contrastTextBlack};
+    }
 
     select {
       width: 100%;
       height: 2rem;
 
-      filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+      filter: drop-shadow(4px 4px 4px rgba(var(--text-black), 0.26));
 
       border-radius: 10px;
-      border: 1px solid rgba(67, 66, 66, 1);
+      border: 1px solid rgba(var(--placeholder), 1);
 
-      background-color: #f7f6f3;
-      color: black;
+      background-color: rgba(var(--light-background-color), 1);
+      color: var(--text-black);
 
       padding: 0.7rem 0 0 0.813rem;
 

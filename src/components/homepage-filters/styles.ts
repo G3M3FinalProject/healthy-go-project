@@ -6,9 +6,10 @@ interface IFilterButtonProps {
 
 export const PositioningDiv = styled.div`
   display: flex;
-  justify-content: center;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
   gap: 1rem;
 
   @media screen and (max-width: 1023px) {
@@ -33,15 +34,20 @@ export const FilterButton = styled.button<IFilterButtonProps>`
   font-size: 15px;
   font-weight: 500;
   font-family: "Petrona", serif;
+
   background: ${({ isActive }) =>
-    isActive ? "var(--button-green)" : "var(--brand-light-green-2)"};
-  color: ${({ isActive }) => (isActive ? "white" : "black")};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    isActive
+      ? "rgba(var(--brand-light-green), 1)"
+      : "rgba(var(--brand-light-green-2), 1)"};
+  color: ${({ isActive }) =>
+    isActive ? "rgba(var(--white), 1)" : "rgba(var(--text-black), 1)"};
+
+  box-shadow: 0px 4px 4px rgba(var(--text-black), 0.15);
   transition: all 250ms;
 
   &:hover {
-    color: white;
-    background: var(--button-green);
+    color: ${(props) => props.theme.colors.primary};
+    background: rgba(var(--brand-light-green), 1);
   }
 
   @media screen and (max-width: 425px) {

@@ -1,23 +1,28 @@
 import styled from "styled-components";
 
 export const MainList = styled.ul`
-  margin: 0 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+
   gap: 18px;
+  margin: 0 20px;
   margin-bottom: 18px;
+
   @media (min-width: 768px) {
-    flex-direction: row;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
   }
+
   @media (min-width: 1024px) {
-    flex-direction: column;
     flex-wrap: nowrap;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+
     grid-area: mainList;
+
     padding-left: 20px;
   }
 `;

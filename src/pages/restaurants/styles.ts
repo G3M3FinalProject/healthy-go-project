@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const ContainerRestaurants = styled.div`
   width: 80vw;
+  margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
 `;
 
 export const ContainerTop = styled.div`
@@ -23,6 +23,7 @@ export const ContainerTop = styled.div`
     width: 100%;
     margin-right: 3%;
     font-size: 8px;
+
     img {
       display: none;
     }
@@ -45,7 +46,7 @@ export const ContainerHeader = styled.header`
   border-right: 1px solid;
   border-radius: 16px 16px 0 0;
 
-  border-color: var(--brand-light-green);
+  border-color: rgba(var(--brand-light-green), 1);
 
   div {
     margin-left: 1%;

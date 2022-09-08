@@ -2,25 +2,23 @@ import styled from "styled-components";
 
 export const SearchInputStyle = styled.div`
   display: flex;
-  justify-content: start;
   align-items: center;
+  justify-content: start;
   justify-content: space-between;
 
   width: 71.438%;
   height: 2.375rem;
 
   gap: 1rem;
-
-  border-radius: 25px;
-  border: none;
-
-  background-color: rgba(228, 249, 234, 1);
-
-  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-
-  color: rgba(110, 110, 110, 1);
-
   padding: 0.7rem 0.7rem;
+
+  border: none;
+  border-radius: 25px;
+
+  color: rgba(var(--placeholder), 1);
+  background-color: rgba(var(--brand-light-green-2), 1);
+
+  filter: drop-shadow(4px 4px 4px rgba(var(--text-black), 0.25));
 
   form {
     display: flex;
@@ -35,20 +33,18 @@ export const SearchInputStyle = styled.div`
       font-size: 15px;
       font-weight: 500;
 
-      background-color: rgba(228, 249, 234, 1);
+      background-color: rgba(var(--brand-light-green-2), 1);
     }
 
     button {
-      background-color: rgba(228, 249, 234, 1);
+      background-color: rgba(var(--brand-light-green-2), 1);
 
       svg {
-        /* width: 28px; */
-        /* font: 20px; */
         margin-right: 5px;
-        color: var(--placeholder);
+        color: rgba(var(--placeholder), 1);
         width: 1.4rem;
         height: 1.4rem;
-        background-color: rgba(228, 249, 234, 1);
+        background-color: rgba(var(--brand-light-green-2), 1);
       }
     }
   }

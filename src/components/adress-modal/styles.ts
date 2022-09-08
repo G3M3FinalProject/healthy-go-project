@@ -14,7 +14,7 @@ export const Modal = styled.div`
 
   z-index: 9999;
 
-  background-color: rgba(0, 0, 0, 0.32);
+  background-color: rgba(var(--text-black), 0.32);
 `;
 
 export const Container = styled.div`
@@ -22,13 +22,13 @@ export const Container = styled.div`
   height: fit-content;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
 
   padding: 1rem 2rem;
 
-  background-color: #f7f6f3;
+  background-color: rgba(var(--light-background-color), 1);
 
   border-radius: 10px;
 
@@ -96,25 +96,31 @@ export const LocationDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 50%;
   height: 1rem;
+
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1px;
   font-family: "Petrona", serif;
 
+  gap: 1rem;
   margin: 1rem;
   padding: 1rem 0;
-  gap: 1rem;
 
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.theme.colors.secondary};
   border-radius: 10px;
 
   svg {
-    color: green;
+    color: ${(props) => props.theme.colors.lightGreen};
   }
 
   button {
-    background: #f7f6f3;
+    background: transparent;
+  }
+
+  &:hover {
+    background: ${(props) => props.theme.colors.lightGreen};
   }
 `;

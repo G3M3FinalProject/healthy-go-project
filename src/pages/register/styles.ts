@@ -17,8 +17,8 @@ export const CenteringContainer = styled.div`
 
 export const FormDiv = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: space-evenly;
 
   height: 100%;
@@ -32,13 +32,14 @@ export const FormDiv = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 `;
 
 export const Form = styled.form`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 
   width: 140%;
   height: 100%;
@@ -58,61 +59,10 @@ export const Form = styled.form`
   }
 `;
 
-export const Input = styled.input`
-  width: 32.125rem;
-  height: 2.5rem;
-
-  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-
-  border-radius: 10px;
-  border: 1px solid rgba(67, 66, 66, 1);
-
-  background-color: #f7f6f3;
-  color: black;
-
-  padding: 0.7rem 0.813rem;
-
-  font-size: 17px;
-
-  outline: none;
-
-  &::placeholder {
-    color: var(--placeholder);
-  }
-
-  @media screen and (max-width: 426px) {
-    width: 19rem;
-  }
-
-  @media screen and (min-width: 769px) and (max-width: 920px) {
-    width: 20rem;
-  }
-`;
-
-export const Button = styled.button`
-  width: 26.125rem;
-  height: fit-content;
-
-  border-radius: 15px;
-
-  font-weight: 700;
-
-  color: white;
-  background-color: var(--button-green);
-
-  padding: 1rem 4.5%;
-
-  @media screen and (max-width: 426px) {
-    width: 19rem;
-  }
-
-  @media screen and (min-width: 769px) and (max-width: 920px) {
-    width: 20rem;
-  }
-`;
 export const Paragraph = styled.p`
   width: 80%;
   margin-top: -35px;
+  color: ${(props) => props.theme.colors.lightGreen};
 `;
 
 export const EffectDiv = styled.div`
@@ -122,18 +72,22 @@ export const EffectDiv = styled.div`
     cursor: pointer;
     display: inline-block;
     position: relative;
-    color: black;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   & > p::after {
     content: "";
     position: absolute;
+
     width: 100%;
-    transform: scaleX(0);
     height: 2px;
-    bottom: 0;
+
     left: 0;
-    background-color: black;
+    bottom: 0;
+
+    background-color: ${(props) => props.theme.colors.contrastTextBlack};
+
+    transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }

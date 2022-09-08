@@ -9,7 +9,7 @@ export const ContainerResume = styled.div`
 
   padding: 1rem;
 
-  border: 1px solid #434242;
+  border: 1px solid ${(props) => props.theme.colors.lightBorder};
   border-radius: 10px;
 
   @media screen and (max-width: 770px) {
@@ -25,7 +25,7 @@ export const ContainerResume = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    color: #434242;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;
@@ -44,14 +44,14 @@ export const ContainerResume = styled.div`
     padding: 1%;
 
     border-radius: 10px;
-    border: 1px solid #c2c2c2;
+    border: 1px solid ${(props) => props.theme.colors.lightBorder};
 
     p {
       font-family: "Petrona";
       font-style: normal;
       font-weight: 700;
       font-size: 22px;
-      color: #434242;
+      color: ${(props) => props.theme.colors.contrastTextBlack};
 
       @media screen and (max-width: 770px) {
         font-size: 16px;
@@ -69,14 +69,14 @@ export const ContainerResume = styled.div`
     justify-content: space-between;
 
     p {
+      text-transform: capitalize;
       font-family: "Petrona";
       font-style: normal;
+      line-height: 20px;
       font-weight: 700;
       font-size: 18px;
-      line-height: 20px;
-      text-transform: capitalize;
 
-      color: #6e6e6e;
+      color: ${(props) => props.theme.colors.contrastTextBlack};
 
       @media screen and (max-width: 770px) {
         font-size: 16px;
@@ -89,30 +89,11 @@ export const ContainerResume = styled.div`
   }
 
   button {
-    width: 100%;
-    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    padding: 1%;
-    margin-bottom: 0%;
-
-    background: #12753a;
-    border-radius: 6px;
-
-    font-family: "Petrona";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    color: #ffffff;
-
-    cursor: pointer;
-
-    @media screen and (max-width: 770px) {
-      font-size: 16px;
-    }
-
-    @media screen and (max-width: 425px) {
-      font-size: 16px;
-    }
+    align-self: center;
   }
 `;
 
@@ -128,17 +109,19 @@ export const DivImgCheck = styled.span`
 `;
 
 export const DivTT = styled.div`
+  text-transform: capitalize;
   font-family: "Petrona";
   font-style: normal;
+  line-height: 23px;
   font-weight: 700;
   font-size: 20px;
-  line-height: 23px;
-  text-transform: capitalize;
 
-  color: #434242;
+  color: ${(props) => props.theme.colors.contrastTextBlack};
 `;
 
 export const SummaryRestaurant = styled.div`
+  color: ${(props) => props.theme.colors.contrastTextBlack};
+
   img {
     width: 50px;
   }

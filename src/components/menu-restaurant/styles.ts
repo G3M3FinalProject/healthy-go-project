@@ -9,18 +9,22 @@ export const ContainerDivMenu = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
   width: 100%;
   height: 100%;
+
+  padding: 1%;
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid var(--brand-light-green);
+
+  border: 1px solid ${(props) => props.theme.colors.lightBorder};
   border-radius: 15px;
   border-top: none;
-  padding: 1%;
 
   h2 {
     font-size: 35px;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   ul {
@@ -38,19 +42,19 @@ export const ContainerDivMenu = styled.div`
 
     li {
       display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
       align-items: center;
       align-content: center;
-      gap: 3%;
+      flex-direction: column;
+      justify-content: space-evenly;
 
       width: 23rem;
       height: 14rem;
 
+      gap: 3%;
       padding: 0.5%;
 
       border-radius: 25px;
-      box-shadow: 1px 1px var(--brand-light-green);
+      box-shadow: 1px 1px ${(props) => props.theme.colors.lightGreen};
 
       .add-carrinho {
         display: flex;
@@ -60,11 +64,13 @@ export const ContainerDivMenu = styled.div`
         button {
           display: flex;
           align-items: center;
-          justify-content: center;
           align-content: center;
+          justify-content: center;
+
           width: 80%;
-          color: white;
           height: 2rem;
+
+          color: ${(props) => props.theme.colors.primary};
         }
       }
       @media screen and (max-width: 1491px) {
@@ -121,14 +127,18 @@ export const ContainerDivMenu = styled.div`
           }
         }
       }
+
       button {
         width: 50px;
         height: 3.25rem;
+
         padding: 1%;
         margin-right: 20px;
 
-        background: rgba(36, 133, 64, 5);
         border-radius: 15px;
+
+        color: var(--white);
+        background: rgba(var(--brand-green), 1);
 
         img {
           width: 30px;
@@ -136,8 +146,8 @@ export const ContainerDivMenu = styled.div`
 
         @media screen and (max-width: 425px) {
           width: 30%;
-          margin-right: 3%;
           font-size: 8px;
+          margin-right: 3%;
         }
       }
     }
@@ -153,15 +163,19 @@ export const ContainerSection = styled.section`
   width: 57%;
   height: 3rem;
 
-  margin-top: 3%;
   gap: 10px;
+  margin-top: 3%;
 
   h4 {
-    margin-left: 0%;
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
+
+    margin-left: 0%;
+
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+
     @media screen and (max-width: 425px) {
       font-size: 14px;
     }
@@ -169,6 +183,8 @@ export const ContainerSection = styled.section`
   .preco {
     font-size: 18px;
     font-weight: 900;
+
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 `;
 
@@ -179,6 +195,8 @@ export const ContainerP = styled.p`
   font-size: 16px;
 
   margin-bottom: 1%;
+
+  color: ${(props) => props.theme.colors.contrastTextBlack};
 
   @media screen and (max-width: 425px) {
     font-size: 10px;
@@ -191,6 +209,8 @@ export const ContainerPreco = styled.p`
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
+
+  color: ${(props) => props.theme.colors.contrastTextBlack};
 
   margin-top: 2rem;
 

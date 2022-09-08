@@ -91,7 +91,7 @@ export const PayamentForm = ({
             errors={errors.cardNumber?.message}
           />
           <label>
-            Parcelamento*
+            <span>Parcelamento*</span>
             <select name="select">
               <option value="A vista">À vista - Até 10% de Desconto</option>
               <option value="2 sem juros">2 x Sem Juros</option>

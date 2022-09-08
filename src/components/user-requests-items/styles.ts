@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
 
   width: 100%;
   height: 100%;
@@ -27,13 +27,13 @@ export const OrderContainer = styled.div`
 
   height: 5rem;
 
-  padding: 1rem;
   gap: 3rem;
+  padding: 1rem;
 
   border-radius: 15px;
 
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: rgba(var(--light-background-color), 1);
+  box-shadow: 0px 4px 4px rgba(var(--text-black), 0.25);
 
   div {
     display: flex;
@@ -43,8 +43,8 @@ export const OrderContainer = styled.div`
 
   @media screen and (max-width: 600px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 0rem;
 
@@ -77,7 +77,7 @@ export const OrderInfo = styled.div`
   }
 
   p {
-    color: rgba(110, 110, 110, 1);
+    color: rgba(var(--gray), 1);
   }
 
   @media screen and (max-width: 600px) {

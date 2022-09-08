@@ -4,15 +4,16 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
-  padding: 0.5rem 0rem 0 0;
   width: 100%;
+
+  padding: 0.5rem 0rem 0 0;
 `;
 
 export const Brand = styled.div`
   display: flex;
   align-items: center;
 
-  color: white;
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 export const Menu = styled.div`
@@ -26,14 +27,16 @@ export const Menu = styled.div`
 
   gap: 2rem;
 
-  color: white;
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 export const Source = styled.source`
-  z-index: -1;
-  position: absolute;
   width: 100%;
   height: 20%;
+
+  z-index: -1;
+
+  position: absolute;
 
   @media screen and (max-width: 425px) {
     height: 5%;
@@ -41,10 +44,12 @@ export const Source = styled.source`
 `;
 
 export const Flag = styled.img`
-  z-index: -1;
-  position: absolute;
   width: 100%;
   height: 25%;
+
+  position: absolute;
+
+  z-index: -1;
 
   @media screen and (min-width: 1669px) {
     height: 20%;
@@ -92,8 +97,8 @@ export const HamburguerMenu = styled.div<IIsOpen>`
   width: 35px;
   height: 30px;
 
-  padding: 0;
   margin: 0;
+  padding: 0;
 
   cursor: pointer;
 
@@ -104,7 +109,7 @@ export const HamburguerMenu = styled.div<IIsOpen>`
   .line-3 {
     width: 100%;
     height: 4px;
-    background: #fff;
+    background: ${(props) => props.theme.colors.primary};
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.5s ease-in-out;
@@ -132,7 +137,7 @@ export const HamburguerMenu = styled.div<IIsOpen>`
 export const HamburguerLine = styled.div`
   width: 100%;
   height: 4px;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
   transition: all 0.5s ease-in-out;
@@ -145,7 +150,7 @@ export const HamburguerLine = styled.div`
 export const BtnBurguer = styled.div`
   width: 50px;
   height: 6px;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   border-radius: 5px;
 
   @media screen and (min-width: 426px) {
@@ -165,50 +170,35 @@ export const Paragraph = styled.div`
 
   gap: 1rem;
 
-  & > p {
+  p {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    color: white;
+    color: ${(props) => props.theme.colors.primary};
   }
 
-  & > p::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-  }
-
-  & > p:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-
-  & > p {
+  p {
     text-align: center;
     padding: 0 1rem;
   }
 
   @media screen and (max-width: 500px) {
-    padding-top: 1rem;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
     flex-direction: row;
     justify-content: flex-end;
+
+    padding-top: 1rem;
+
     gap: 1rem;
   }
 
   @media screen and (min-width: 501px) and (max-width: 624px) {
-    padding-top: 1rem;
-    flex-direction: column;
-    gap: 1rem;
     align-items: flex-end;
+    flex-direction: column;
+
+    gap: 1rem;
+    padding-top: 1rem;
   }
 `;
 
@@ -221,19 +211,18 @@ export const CartBackground = styled.button<IIsScrolled>`
   align-items: center;
 
   position: relative;
+
   z-index: 1;
+
   font-size: 16px;
   font-family: "Petrona", serif;
 
   cursor: pointer;
 
-  color: white;
-  background: #54a656;
-
-  color: white;
+  color: ${(props) => props.theme.colors.primary};
+  background: ${(props) => props.theme.colors.cartBackground};
 
   padding: 0.7rem;
-  /* padding: 1rem; */
 
   border-radius: 20px;
 
@@ -243,17 +232,22 @@ export const CartBackground = styled.button<IIsScrolled>`
 
   span {
     position: absolute;
+
     width: 24px;
     height: 24px;
+
     font-weight: bold;
     text-align: center;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     top: 5px;
     right: 3px;
-    background-color: #54a656;
+    background-color: ${(props) => props.theme.colors.cartBackground};
+
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid ${(props) => props.theme.colors.lightBorder};
   }
 `;

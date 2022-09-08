@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
 export const SecondaryList = styled.ul`
-  margin: 0 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding-bottom: 18px;
+  flex-direction: column;
+
   gap: 18px;
+  margin: 0 20px;
+  padding-bottom: 18px;
 
   @media (min-width: 768px) {
-    flex-direction: row;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
   }
   @media (min-width: 1024px) {
-    /* flex-direction: ; */
     grid-area: secList;
-    justify-content: space-between;
     padding-left: 20px;
+    justify-content: space-between;
   }
 `;
 
