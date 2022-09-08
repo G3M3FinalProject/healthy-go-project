@@ -14,7 +14,6 @@ export const SecondaryList = styled.ul`
     justify-content: space-between;
   }
   @media (min-width: 1024px) {
-    /* flex-direction: ; */
     grid-area: secList;
     justify-content: space-between;
     padding-left: 20px;

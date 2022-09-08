@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 import { api } from "../services";
@@ -71,7 +72,11 @@ export const RestaurantProductsProvider = ({
           setRestaurantInfo(response.data);
           setFilteredMenu(response.data.menu);
         })
-        .catch((err) => console.log(err));
+        .catch(() =>
+          toast.error(
+            "Não foi possível acessar esse restaurante no nosso banco de dados.",
+          ),
+        );
     }
   }, [id]);
 
