@@ -62,3 +62,11 @@ Além de consumirmos a API Geolocation/DB e uma API com os dados dos restaurante
 - [x] Página com os pedidos do usuário;
 - [x] Responsivo para telas entre 320px e 4k;
 - [x] Dark-Mode;
+
+### Membros
+
+- <a href="https://github.com/ahmandi">Amanda Rodrigues (Scrum-Master) </a>;
+- <a href="https://github.com/CarolPezzin">Carol Pezzin(Quality Assurance);<a>
+- <a href="https://github.com/Bravineugenio">Eugenio Bravin(Product-Owner);<a>
+- <a href="https://github.com/guiwustro">Guilherme Wustro(Tech-Leader);<a>
+- <a href="https://github.com/QuerenHope">Queren Hope (Quality Assurance)<a>

@@ -83,7 +83,7 @@ const Footer = () => {
             <Portrait>
               <Image src={DevG} alt="Developer Guilherme" />
             </Portrait>
-            <p>Guilherme Wursto</p>
+            <p>Guilherme Wustro</p>
             <Icons>
               <a
                 target="_blank"
