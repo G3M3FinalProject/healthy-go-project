@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiHide, BiShow } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
@@ -18,6 +19,7 @@ import { CenteringContainer, FormDiv, Form, Img, ShowPassword } from "./styles";
 
 export const Login = () => {
   const { loginUser } = useAuthUserContext();
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -69,7 +71,10 @@ export const Login = () => {
               </button>
             </ShowPassword>
             <GlobalButtonLg type="submit">Acessar Conta</GlobalButtonLg>
-            <p>Não tem conta cadastro? Faça aqui!</p>
+            <p onClick={() => navigate("/register", { replace: true })}>
+              Não tem conta cadastro? Faça aqui!
+            </p>
+
             <p>Ou entre com:</p>
             <GoogleAuthLogin />
           </Form>

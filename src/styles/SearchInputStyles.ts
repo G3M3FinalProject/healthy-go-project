@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const SearchInputStyle = styled.div`
+interface ISearchProps {
+  isMenuOpen?: boolean;
+}
+
+export const SearchInputStyle = styled.div<ISearchProps>`
   display: flex;
   justify-content: start;
   align-items: center;
@@ -10,9 +14,7 @@ export const SearchInputStyle = styled.div`
   height: 2.375rem;
 
   gap: 1rem;
-
-  z-index: -1;
-
+  z-index: ${({ isModalMenuOpen }) => (isModalMenuOpen ? -1 : 0)};
   border-radius: 25px;
   border: none;
 

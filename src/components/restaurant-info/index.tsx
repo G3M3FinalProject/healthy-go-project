@@ -5,7 +5,6 @@ import { Container, ContainerHeader } from "./styles";
 
 export const RestaurantInfo = () => {
   const { restaurantInfo } = useRestaurantProductsContext();
-
   if (Object.keys(restaurantInfo).length === 0) return <Loading />;
 
   return (

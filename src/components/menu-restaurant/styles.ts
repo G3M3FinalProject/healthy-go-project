@@ -43,7 +43,7 @@ export const ContainerDivMenu = styled.div`
 export const ContainerProduct = styled.li`
   display: grid;
   grid-template-areas: "img title title" "img types types" "img price btn";
-  border-right: 1px solid rgba(var(--brand-light-green), 1);
+  border: 1px solid rgba(var(--brand-light-green), 1);
   border-bottom: 1px solid rgba(var(--brand-light-green), 1);
   border-radius: 10px;
   height: 140px;
@@ -94,6 +94,8 @@ export const ContainerProduct = styled.li`
     }
   }
   @media screen and (min-width: 420px) {
+    padding: 5px;
+
     img {
       width: 80px;
       height: 80px;
@@ -113,9 +115,12 @@ export const ContainerCategory = styled.p`
     margin-left: 5px;
     padding: 5px;
     border-radius: 10px;
-    font-size: 13px;
+    font-size: 12px;
     text-align: center;
     align-self: center;
   }
   margin-bottom: 1%;
+  @media screen and (min-width: 370px) {
+    font-size: 13px;
+  }
 `;

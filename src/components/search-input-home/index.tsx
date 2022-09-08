@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
+import { useModalContext } from "../../contexts/modalContext";
 import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import { SearchInputStyle } from "../../styles/SearchInputStyles";
 
@@ -8,6 +9,7 @@ export const SearchInputRestaurants = () => {
   const { setFilteredRestaurants, allRestaurants, setIsFilterActive } =
     useRestaurantsContext();
   const [restaurantSearched, setRestaurantSearched] = useState("");
+  const { isModalMenuOpen } = useModalContext();
 
   const removeAccents = (string: string) => {
     return string
@@ -31,7 +33,7 @@ export const SearchInputRestaurants = () => {
   };
 
   return (
-    <SearchInputStyle>
+    <SearchInputStyle isModalMenuOpen={isModalMenuOpen}>
       <form onSubmit={(e) => getFilteredRestaurant(e)}>
         <input
           onChange={(event) => setRestaurantSearched(event.target.value)}

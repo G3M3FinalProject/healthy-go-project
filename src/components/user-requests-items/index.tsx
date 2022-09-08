@@ -13,7 +13,7 @@ const UserRequestsItems = () => {
               <div>
                 <OrderInfo>
                   <h4>Nº DO PEDIDO</h4>
-                  <p className="short">{request.id}</p>
+                  <p className="short">{request.id.slice(4)}</p>
                 </OrderInfo>
                 <OrderInfo>
                   <h4>STATUS</h4>
@@ -33,7 +33,7 @@ const UserRequestsItems = () => {
               <div className="totalGrid">
                 <OrderInfo className="totalFlex">
                   <h4>TOTAL</h4>
-                  <p>{request.total}</p>
+                  <p>R$ {request.total}</p>
                 </OrderInfo>
               </div>
             </OrderContainer>

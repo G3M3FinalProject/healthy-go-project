@@ -5,7 +5,7 @@ export const registerFormSchema = yup.object().shape({
   email: yup
     .string()
     .required("E-mail é um campo necessário")
-    .email("Precisa ser uum e-mail válido"),
+    .email("Precisa ser um e-mail válido"),
   password: yup.string().required("Senha é um campo necessário"),
   confirmPassword: yup
     .string()

@@ -12,6 +12,7 @@ import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
 import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
 import { useCart } from "../../contexts/cartContext";
+import { useModalContext } from "../../contexts/modalContext";
 import { useAppThemeContext } from "../../contexts/themeProvider";
 import Cart from "../cart";
 import { useScrollPosition } from "../cart-header-hooks";
@@ -32,7 +33,7 @@ import {
 
 const Header = () => {
   const { user } = useAuthUserContext();
-  const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+  const { setisModalMenuOpen, isModalMenuOpen } = useModalContext();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
   const [isMobile, setMobile] = useState(window.innerWidth < 426);
   const [isOpenCart, setisOpenCart] = useState<boolean>(false);
@@ -55,7 +56,7 @@ const Header = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handler = (event: any) => {
       if (!modalRef.current?.contains(event.target)) {
-        setisModalOpen(false);
+        setisModalMenuOpen(false);
       }
     };
     document.addEventListener("click", handler);
@@ -108,9 +109,9 @@ const Header = () => {
           )}
 
           <HamburguerMenu
-            onClick={() => setisModalOpen(!isModalOpen)}
+            onClick={() => setisModalMenuOpen(!isModalMenuOpen)}
             ref={modalRef}
-            open={isModalOpen}
+            open={isModalMenuOpen}
           >
             <HamburguerLine className="line-1" />
             <HamburguerLine className="line-2" />
@@ -121,7 +122,7 @@ const Header = () => {
               return user && Object.keys(user as IUser).length !== 0 ? (
                 <Paragraph>
                   <CartBackground
-                    onClick={() => setisModalOpen(!isModalOpen)}
+                    onClick={() => setisModalMenuOpen(!isModalMenuOpen)}
                     ref={modalRef}
                   >
                     <p>Olá, {user.name}</p>
@@ -154,7 +155,7 @@ const Header = () => {
               );
             }
           })()}
-          {isModalOpen && <DropDownModal />}
+          {isModalMenuOpen && <DropDownModal />}
         </Menu>
         {isOpenCart && <Cart setisOpenCart={setisOpenCart} />}
       </Container>

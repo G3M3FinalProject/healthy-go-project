@@ -37,7 +37,7 @@ interface IUserResponse {
 }
 
 export interface IUserRequests {
-  id: number;
+  id: string;
   status: string;
   date: string;
   payament: string;
