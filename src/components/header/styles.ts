@@ -45,6 +45,8 @@ export const Flag = styled.img`
   position: absolute;
   width: 100%;
   height: 25%;
+  margin-top: -1px;
+  margin-right: -4px;
 
   @media screen and (min-width: 1669px) {
     height: 20%;
