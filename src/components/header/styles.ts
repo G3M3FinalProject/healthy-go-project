@@ -228,7 +228,7 @@ export const CartBackground = styled.button<IIsScrolled>`
   cursor: pointer;
 
   color: white;
-  background: #54a656;
+  background: ${(props) => props.theme.colors.cartBackground};
 
   color: white;
 

@@ -8,6 +8,8 @@ export const Figure = styled.figure`
 
   position: relative;
 
+  z-index: -1;
+
   height: 100%;
 `;
 

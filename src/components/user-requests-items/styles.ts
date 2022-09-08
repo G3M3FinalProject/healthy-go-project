@@ -11,6 +11,10 @@ export const Container = styled.div`
 
   gap: 4rem;
   margin: 7rem 0 0 0;
+
+  h2 {
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+  }
 `;
 
 export const Wrapper = styled.div`

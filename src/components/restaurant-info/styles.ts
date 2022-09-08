@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 16px;
   padding-bottom: 10px;
-  border: 1px solid var(--brand-light-green);
+  border: 1px solid rgba(var(--brand-light-green), 1);
 `;
 export const ContainerHeader = styled.header`
   display: flex;
@@ -27,6 +27,8 @@ export const ContainerHeader = styled.header`
       font-weight: 500;
       font-size: 48px;
 
+      color: ${(props) => props.theme.colors.contrastTextBlack};
+
       @media screen and (max-width: 770px) {
         font-size: 36px;
       }
@@ -40,6 +42,7 @@ export const ContainerHeader = styled.header`
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
+      color: ${(props) => props.theme.colors.contrastTextBlack};
     }
   }
 

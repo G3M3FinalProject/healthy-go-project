@@ -6,6 +6,16 @@ export const ContainerFilter = styled.div`
   justify-content: space-between;
 
   margin-left: 3%;
+
+  button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 `;
 
 export const ButtonFilter = styled.button`

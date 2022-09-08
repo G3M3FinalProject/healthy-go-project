@@ -53,7 +53,7 @@ export const PayamentForm = ({
             type="radio"
             value="Cartão de crédito"
           />
-          Cartão de Crédito
+          <span>Cartão de Crédito</span>
         </label>
         <label>
           <input
@@ -63,7 +63,7 @@ export const PayamentForm = ({
             type="radio"
             value="Cartão de débito"
           />
-          Cartão de débito
+          <span>Cartão de débito</span>
         </label>
         {errors?.payament?.message && (
           <ErrorMessage>
@@ -97,7 +97,7 @@ export const PayamentForm = ({
             errors={errors.cardNumber?.message}
           />
           <label>
-            Parcelamento*
+            <span>Parcelamento*</span>
             <select name="select">
               <option value="A vista">À vista - Até 10% de Desconto</option>
               <option value="2 sem juros">2 x Sem Juros</option>
