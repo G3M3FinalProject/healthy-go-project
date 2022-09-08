@@ -1,6 +1,8 @@
 import { Control, FieldErrorsImpl, UseFormRegister } from "react-hook-form";
+import { AiOutlineWarning } from "react-icons/ai";
 
 import { GlobalInputLg, GlobalInputMask } from "../../../global-inputs";
+import { ErrorMessage } from "../checkout-select-address/style";
 import {
   DivCredCard,
   DivDateCard,
@@ -39,7 +41,6 @@ export const PayamentForm = ({
   control,
 }: IPayamentFormProps) => {
   console.log(errors);
-
   return (
     <DivForm>
       <h2>Forma de Pagamento</h2>
@@ -64,7 +65,12 @@ export const PayamentForm = ({
           />
           Cartão de débito
         </label>
-        {errors?.payament?.message && <p>{errors.payament.message}</p>}
+        {errors?.payament?.message && (
+          <ErrorMessage>
+            <AiOutlineWarning />
+            <p>{errors.payament.message}</p>
+          </ErrorMessage>
+        )}
       </SelectPayment>
 
       <DivCredCard>

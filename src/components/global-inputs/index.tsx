@@ -131,7 +131,12 @@ interface IPropsButton {
   form?: any;
 }
 
-export const GlobalButtonLg = ({ children, onClick }: IPropsButton) => {
+export const GlobalButtonLg = ({
+  children,
+  onClick,
+  type,
+  form,
+}: IPropsButton) => {
   const [isRipple, setIsRipple] = useState(false);
   const [coords, setCoords] = useState({ x: -1, y: -1 });
 
@@ -159,7 +164,7 @@ export const GlobalButtonLg = ({ children, onClick }: IPropsButton) => {
   };
 
   return (
-    <ButtonLg onClick={handleClick}>
+    <ButtonLg onClick={handleClick} type={type} form={form}>
       {isRipple ? (
         <span
           className="ripple"
