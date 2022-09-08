@@ -10,7 +10,7 @@ export const DivForm = styled.div`
   gap: 0.7rem;
   padding: 1rem;
 
-  border: 1px solid #434242;
+  border: 1px solid #c2c2c2;
   border-radius: 10px;
 
   @media screen and (max-width: 426px) {
@@ -23,7 +23,8 @@ export const DivForm = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 26px;
-    color: #282626;
+    text-align: center;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 20px;
@@ -53,6 +54,10 @@ export const SelectPayment = styled.div`
     input {
       color: #434242;
       margin-right: 0.3rem;
+    }
+
+    span {
+      color: ${(props) => props.theme.colors.contrastTextBlack};
     }
   }
 `;
@@ -113,6 +118,10 @@ export const DivPayment = styled.div`
         width: 89%;
         padding: 0;
       }
+    }
+
+    span {
+      color: ${(props) => props.theme.colors.contrastTextBlack};
     }
   }
 `;

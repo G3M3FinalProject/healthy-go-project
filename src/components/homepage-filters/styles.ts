@@ -43,7 +43,7 @@ export const FilterButton = styled.button<IFilterButtonProps>`
 
   &:hover {
     color: white;
-    background: ${(props) => props.theme.color.brandGreen};
+    background: ${(props) => props.theme.colors.buttonGreen};
   }
 
   @media screen and (max-width: 425px) {

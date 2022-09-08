@@ -26,11 +26,12 @@ export const FormDiv = styled.div`
 
   text-align: center;
 
-  > p {
+  p {
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   @media screen and (max-width: 769px) and (max-width: 920px) {
@@ -47,6 +48,10 @@ export const Form = styled.form`
   height: 100%;
 
   gap: 1rem;
+
+  p {
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+  }
 
   p:nth-child(4) {
     cursor: pointer;
@@ -226,4 +231,13 @@ export const DivButton = styled.div`
 export const DivAdress = styled.div`
   display: flex;
   flex-direction: row;
+
+  h3 {
+    margin-left: 5px;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+  }
+
+  svg {
+    color: ${(props) => props.theme.colors.LocationGreen};
+  }
 `;

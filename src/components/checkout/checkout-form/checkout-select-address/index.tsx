@@ -52,9 +52,7 @@ export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
           return (
             <DivAdress key={address.id}>
               <DivPicture>
-                <GoLocation
-                  style={{ color: "green", width: "20px", height: "20px" }}
-                />
+                <GoLocation style={{ width: "20px", height: "20px" }} />
                 <h4>{address.adressIdentification}</h4>
               </DivPicture>
               <AdressSelector>

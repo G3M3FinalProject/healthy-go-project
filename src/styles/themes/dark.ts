@@ -14,6 +14,7 @@ export const DarkTheme = {
     red: "#ff0000",
 
     brandGreen: "#43ff64d9",
+    LocationGreen: "#43ff64d9",
     buttonGreen: "#12753a",
     lightGreen: "#e4f9ea",
     lighterGreen: "#e4f9ea33",
