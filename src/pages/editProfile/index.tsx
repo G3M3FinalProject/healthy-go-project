@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { BsFillTrashFill } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -41,7 +42,7 @@ interface IRegisterData {
 }
 
 const EditProfile = () => {
-  const { editUser, user, getUser } = useAuthUserContext();
+  const { editUser, user, getUser, removeAddress } = useAuthUserContext();
   const { setIsAddressModalOpen, isAddressModalOpen } = useModalContext();
 
   const {
@@ -59,7 +60,7 @@ const EditProfile = () => {
       name: data.name,
       cellphone: data.cellphone,
     };
-    console.log(getItem);
+
     if (getItem) {
       editUser(register, getItem);
     }
@@ -68,7 +69,7 @@ const EditProfile = () => {
   if (getItem) {
     getUser(getItem);
   }
-  console.log(errors);
+
   return (
     <>
       <motion.div
@@ -133,6 +134,9 @@ const EditProfile = () => {
                     <InfoCard>
                       CEP {address.postal} - {address.city} - {address.state}
                     </InfoCard>
+                    <button onClick={() => removeAddress(address, address.id)}>
+                      <BsFillTrashFill width={"20px"} fill={"green"} />
+                    </button>
                   </Card>
                 );
               })}

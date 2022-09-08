@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -31,13 +30,10 @@ const CheckoutForm = () => {
     resolver: yupResolver(requestFormSchema),
   });
 
-  console.log(errors);
-
   const Submit = (data: IUserPayament) => {
     const payamentObject = {
       payament: data.payament,
     };
-    console.log(payamentObject);
     postUserRequest(payamentObject);
   };
 

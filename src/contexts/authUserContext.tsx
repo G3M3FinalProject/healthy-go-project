@@ -22,6 +22,7 @@ interface IAuthUserProviderData {
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   cart: IProduct[] | undefined;
   setCart: React.Dispatch<React.SetStateAction<IProduct[] | undefined>>;
+  removeAddress: (data: ICompleteAddress, id: string) => void;
 }
 
 export interface IUserLogin {
@@ -97,7 +98,6 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         navigate("/homepage", { replace: true });
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.data === "Cannot find user")
           toast.error("A senha ou e-mail inserido é inválido.", {
             id: "error-login",
@@ -144,7 +144,11 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
       .then((res: IUserEditRes) => {
         setUser(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch(() =>
+        toast.error(
+          "Não foi possível fazer essa alteração no nosso banco de dados, tente novamente mais tarde.",
+        ),
+      );
   };
 
   const getUser = (id: string) => {
@@ -166,6 +170,24 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
     localStorage.clear();
   };
 
+  const removeAddress = (data: ICompleteAddress, id: string) => {
+    let newUser;
+    if (user.address) {
+      const newUserAddress = user.address.filter((address) => address.id != id);
+      newUser = { ...user, address: newUserAddress };
+    }
+    api
+      .patch(`/users/${user.id}`, newUser)
+      .then((res: IUserEditRes) => {
+        setUser(res.data);
+      })
+      .catch(() =>
+        toast.error(
+          "Não foi possível fazer essa alteração no nosso banco de dados, tente novamente mais tarde.",
+        ),
+      );
+  };
+
   return (
     <AuthUserContext.Provider
       value={{
@@ -178,6 +200,7 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         setUser,
         setCart,
         cart,
+        removeAddress,
       }}
     >
       {children}

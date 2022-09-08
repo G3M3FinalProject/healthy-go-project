@@ -33,6 +33,7 @@ interface IPayamentFormProps {
       complement: string;
     };
   }>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
 }
 export const PayamentForm = ({
@@ -40,7 +41,6 @@ export const PayamentForm = ({
   errors,
   control,
 }: IPayamentFormProps) => {
-  console.log(errors);
   return (
     <DivForm>
       <h2>Forma de Pagamento</h2>

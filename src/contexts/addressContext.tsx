@@ -8,6 +8,7 @@ import { IUserEditRes, useAuthUserContext } from "./authUserContext";
 
 interface IAddressContextProviderData {
   address?: IAddress;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getAddress: (setValue: any) => void;
   clearAddress: () => void;
   registerNewAdressUser: (data: ICompleteAddress) => void;
@@ -19,7 +20,7 @@ interface IAddressContextProps {
 
 export interface ICompleteAddress {
   adressIdentification: string;
-  id: number;
+  id: string;
   city: string;
   state: string;
   postal: string;
@@ -47,7 +48,8 @@ export const AddressContextProvider = ({ children }: IAddressContextProps) => {
   const clearAddress = () => {
     setAddress(undefined);
   };
-  const getAddress = (setValue) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getAddress = (setValue: any) => {
     addressApi
       .get("/50ad4a90-fd5e-11ec-b463-1717be8c9ff1")
       .then((res: IResAddress) => {
@@ -85,7 +87,14 @@ export const AddressContextProvider = ({ children }: IAddressContextProps) => {
       .then((res: IUserEditRes) => {
         setUser(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch(() =>
+        toast.error(
+          "Não foi possível adicionar o endereço, nosso banco de dados está com problemas.",
+          {
+            id: "address-error-2",
+          },
+        ),
+      );
   };
 
   return (

@@ -31,7 +31,7 @@ export const RequestsUserContextProvider = ({
   children,
 }: IRequestsUserContextProps) => {
   const { setUser, user, setCart } = useAuthUserContext();
-  const { setIsSucessModalOpen, isSuccessModalOpen } = useModalContext();
+  const { setIsSucessModalOpen } = useModalContext();
   const { totalCart } = useCart();
 
   const postUserRequest = (data: IUserRequestPayament) => {
@@ -40,7 +40,7 @@ export const RequestsUserContextProvider = ({
         "Você precisa adicionar produtos ao carrinho para realizar a compra!",
       );
     }
-    console.log(isSuccessModalOpen);
+
     const userID = user?.id;
     const unique_id = uuid();
     const date = new Date();
