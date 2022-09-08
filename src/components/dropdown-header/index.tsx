@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import { useAuthUserContext } from "../../contexts/authUserContext";
+import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
 import Theme from "../theme-switch";
 import { Container, Menu, Arrow } from "./styles";
 
@@ -16,7 +16,6 @@ const DropDownModal = () => {
   const { user, logoutUser } = useAuthUserContext();
   const { setCart } = useAuthUserContext();
   const navigate = useNavigate();
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -27,7 +26,7 @@ const DropDownModal = () => {
     >
       <Container>
         <Arrow />
-        {user ? (
+        {user && Object.keys(user as IUser).length !== 0 ? (
           <>
             <Menu onClick={() => navigate("/profile", { replace: true })}>
               <FaPencilAlt />

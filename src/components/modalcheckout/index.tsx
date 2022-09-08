@@ -26,11 +26,10 @@ export const ModalCheckOut = () => {
     return () => {
       document.removeEventListener("mousedown", handleOutClick);
 
-      // Diminui o tempo até a animação voltar a funcionaar!
       setTimeout(() => {
         setIsSucessModalOpen(false);
         navigate("/home", { replace: true });
-      }, 3000);
+      }, 7000);
     };
   }, []);
 

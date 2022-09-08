@@ -117,6 +117,7 @@ const Header = () => {
             <HamburguerLine className="line-2" />
             <HamburguerLine className="line-3" />
           </HamburguerMenu>
+
           {(() => {
             if (isDesktop) {
               return user && Object.keys(user as IUser).length !== 0 ? (
