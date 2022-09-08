@@ -89,30 +89,14 @@ export const ContainerResume = styled.div`
   }
 
   button {
-    width: 100%;
-    height: 2rem;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
 
-    padding: 1%;
-    margin-bottom: 0%;
-
-    background: #12753a;
-    border-radius: 6px;
-
-    font-family: "Petrona";
-    font-style: normal;
-    font-weight: 700;
     font-size: 20px;
-    color: #ffffff;
-
-    cursor: pointer;
-
-    @media screen and (max-width: 770px) {
-      font-size: 16px;
-    }
-
-    @media screen and (max-width: 425px) {
-      font-size: 16px;
-    }
+    font-weight: 600;
+    font-family: "Petrona";
   }
 `;
 

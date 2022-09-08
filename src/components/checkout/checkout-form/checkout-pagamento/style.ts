@@ -73,7 +73,7 @@ export const DivPayment = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 48%;
+  width: 180%;
 
   @media screen and (max-width: 426px) {
     width: 100%;

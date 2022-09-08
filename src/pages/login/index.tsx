@@ -22,8 +22,8 @@ export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const formSchema = yup.object().shape({
-    email: yup.string(),
-    password: yup.string(),
+    email: yup.string().required("Campo obrigatório"),
+    password: yup.string().required("Campo obrigatório"),
   });
   const {
     register,
