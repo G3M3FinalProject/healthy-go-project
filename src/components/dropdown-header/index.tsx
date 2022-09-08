@@ -4,7 +4,7 @@ import { BsFilePersonFill } from "react-icons/bs";
 import { BsHandbagFill } from "react-icons/bs";
 import { FaRunning, FaPencilAlt } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
