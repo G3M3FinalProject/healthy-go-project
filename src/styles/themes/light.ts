@@ -16,6 +16,7 @@ export const LightTheme = {
     brandGreen: "#43ff64d9",
     LocationGreen: "#1D3D2A",
     buttonGreen: "#12753a",
+    textGreen: "#12753a",
     lightGreen: "#e4f9ea",
     lighterGreen: "#e4f9ea33",
     lightGreenTransparent: "#24854033",

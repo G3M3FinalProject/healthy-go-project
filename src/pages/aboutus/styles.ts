@@ -44,6 +44,7 @@ export const Container = styled.div`
     left: 1rem;
     position: absolute;
     font-weight: 600;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 `;
 
@@ -61,11 +62,11 @@ export const Paragraph = styled.div`
   padding: 0 0 0 1rem;
   gap: 3em;
 
-  color: rgba(18, 117, 58, 1);
+  color: ${(props) => props.theme.colors.contrastTextBlack};
 
   h1 {
     align-self: center;
-    color: black;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   p {
