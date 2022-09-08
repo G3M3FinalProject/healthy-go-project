@@ -7,7 +7,9 @@ export const Container = styled.div`
   right: 0.3rem;
   top: 8.7rem;
 
-  background: #fafafa;
+  z-index: 1;
+
+  background: ${(props) => props.theme.colors.cartLightBackground};
 
   border-radius: 9px;
   padding: 1rem;
@@ -62,54 +64,23 @@ export const Menu = styled.div`
   align-items: center;
 
   padding: 0.6rem 0 0 0;
-  a {
-    p {
-      margin: 0 0.4rem;
 
-      font-weight: 500;
-    }
-
-    & > p {
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-      color: black;
-    }
-
-    & > p::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: black;
-      transform-origin: bottom right;
-      transition: transform 0.25s ease-out;
-    }
-
-    & > p:hover::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-  }
-  button {
-    margin: 0 0.4rem;
-    background: transparent;
-    font-size: 18px;
-    font-family: "Petrona", serif;
-    font-weight: 500;
+  svg {
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
-  & > button {
-    cursor: pointer;
+  p {
     display: inline-block;
     position: relative;
-    color: black;
+
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+
+    margin: 0 0.4rem;
+    font-weight: 500;
+    cursor: pointer;
   }
 
-  & > button::after {
+  p::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -117,19 +88,19 @@ export const Menu = styled.div`
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: black;
+    background-color: ${(props) => props.theme.colors.contrastTextBlack};
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
 
-  & > button:hover::after {
+  p:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
 `;
 
 export const Arrow = styled.div`
-  border: solid #fafafa;
+  border: solid ${(props) => props.theme.colors.cartLightBackground};
   position: absolute;
   top: -4px;
   right: 54px;

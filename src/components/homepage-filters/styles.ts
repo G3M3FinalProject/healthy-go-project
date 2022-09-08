@@ -34,14 +34,16 @@ export const FilterButton = styled.button<IFilterButtonProps>`
   font-weight: 500;
   font-family: "Petrona", serif;
   background: ${({ isActive }) =>
-    isActive ? "var(--button-green)" : "var(--brand-light-green-2)"};
+    isActive
+      ? "rgba(var(--button-green), 1)"
+      : "rgba(var(--brand-light-green-2), 1)"};
   color: ${({ isActive }) => (isActive ? "white" : "black")};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   transition: all 250ms;
 
   &:hover {
     color: white;
-    background: var(--button-green);
+    background: ${(props) => props.theme.color.brandGreen};
   }
 
   @media screen and (max-width: 425px) {

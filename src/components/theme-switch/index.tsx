@@ -4,16 +4,20 @@ import { useAppThemeContext } from "../../contexts/themeProvider";
 import { Container } from "./styles";
 
 const Theme = () => {
-  const { toggleTheme } = useAppThemeContext();
+  const { toggleTheme, themeName } = useAppThemeContext();
   return (
     <>
-      <BsFillMoonFill style={{ color: "black" }} />
-      <Container onClick={toggleTheme}>Go Dark</Container>
-      {/* <span>
-        {" "}
-        Go light
-        <BsFillSunFill />
-      </span> */}
+      {themeName === "light" ? (
+        <>
+          <BsFillMoonFill style={{ color: "black" }} />
+          <Container onClick={toggleTheme}>Go Dark</Container>
+        </>
+      ) : (
+        <>
+          <BsFillSunFill />
+          <Container onClick={toggleTheme}>Go light</Container>
+        </>
+      )}
     </>
   );
 };
