@@ -14,8 +14,7 @@ export const SearchInputStyle = styled.div<ISearchProps>`
   height: 2.375rem;
 
   gap: 1rem;
-
-  z-index: ${({ isModalMenuOpen }) => (isModalMenuOpen ? -1 : 1)};
+  z-index: ${({ isModalMenuOpen }) => (isModalMenuOpen ? -1 : 0)};
   border-radius: 25px;
   border: none;
 
