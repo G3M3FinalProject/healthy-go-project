@@ -4,7 +4,7 @@ export const ContainerMenu = styled.div`
   padding-left: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 55px;
   width: 98%;
 `;
 
