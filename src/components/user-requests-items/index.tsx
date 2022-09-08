@@ -3,7 +3,6 @@ import { Container, Wrapper, OrderContainer, OrderInfo } from "./styles";
 
 const UserRequestsItems = () => {
   const { user } = useAuthUserContext();
-  console.log(user);
   return (
     <Container>
       <h2>Meus pedidos</h2>

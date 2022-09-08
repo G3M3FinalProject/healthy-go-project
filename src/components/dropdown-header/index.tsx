@@ -9,8 +9,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { useAuthUserContext } from "../../contexts/authUserContext";
-import { useCart } from "../../contexts/cartContext";
-import { IProduct } from "../../contexts/restaurantProductsContext";
 import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
