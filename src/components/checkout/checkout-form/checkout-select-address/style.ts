@@ -156,3 +156,17 @@ export const AdressSelector = styled.div`
     gap: 1em;
   }
 `;
+
+export const ErrorMessage = styled.div`
+  display: flex;
+  align-items: center;
+  svg {
+    justify-self: flex-end;
+  }
+  color: rgba(255, 0, 0, 1);
+  p {
+    padding-left: 0.2rem;
+    font-size: 0.8rem;
+  }
+  text-align: center;
+`;

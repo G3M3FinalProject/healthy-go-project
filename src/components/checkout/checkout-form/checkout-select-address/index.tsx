@@ -1,4 +1,5 @@
 import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
+import { AiOutlineWarning } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 
 import { useAuthUserContext } from "../../../../contexts/authUserContext";
@@ -10,6 +11,7 @@ import {
   SelectAddressInput,
   OverflowContainer,
   AdressSelector,
+  ErrorMessage,
 } from "./style";
 
 interface ISelectAddressForm {
@@ -78,9 +80,13 @@ export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
         })}
       </OverflowContainer>
       {errors.address?.message && (
-        <p>
-          É necessário adicionar/selecionar um endereço para finalizar o pedido!
-        </p>
+        <ErrorMessage>
+          <AiOutlineWarning />
+          <p>
+            É necessário adicionar/selecionar um endereço para finalizar o
+            pedido!
+          </p>
+        </ErrorMessage>
       )}
     </ContainerAdress>
   );
