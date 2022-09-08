@@ -22,7 +22,7 @@ export const GoogleAuthLogin = () => {
       name: userInfo.name,
       type: "",
     };
-    setUser(userInfo);
+    setUser(userInfoFixed);
     registerUser(userInfoFixed);
     loginUser(userInfoFixed);
   };

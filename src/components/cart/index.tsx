@@ -55,7 +55,7 @@ const Cart = ({ setisOpenCart }) => {
     if (index === 0 || item.restaurant !== arr[index - 1].restaurant) {
       restaurantTitle = (
         <>
-          {index === 0 && <div className="divider"></div>}
+          {index !== 0 && <div className="divider"></div>}
           <h2>{item.restaurant}</h2>
           <Link to={`/restaurants/${item?.restaurantID}`} className="retornar">
             Retornar para a Loja
@@ -73,7 +73,7 @@ const Cart = ({ setisOpenCart }) => {
             </figure>
             <div className="info">
               <p>{item.item}</p>
-              <strong>{`${item.price.toFixed(2)}`}</strong>
+              <strong>R$ {`${item.price.toFixed(2)}`}</strong>
             </div>
             <div className="quantidade">
               <button onClick={() => minusOneProduct(item.id)}>

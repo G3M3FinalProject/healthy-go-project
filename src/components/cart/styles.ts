@@ -18,8 +18,8 @@ export const Modal = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
-  width: 28%;
   height: 100%;
   background-color: white;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.7);
@@ -35,7 +35,7 @@ export const Container = styled.div`
       border-radius: 10px;
       height: 15px;
     }
-    height: 69%;
+    height: 81%;
     margin-top: 3rem;
   }
 
@@ -44,13 +44,14 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 8rem 1rem;
-
     img {
+      margin-bottom: 0.5rem;
       width: 105px;
     }
 
     p {
       margin-top: 1rem;
+      text-align: center;
     }
   }
 
@@ -75,7 +76,7 @@ export const Container = styled.div`
     justify-content: center;
     padding: 1rem;
     border-radius: 5px;
-    margin: 5rem 2rem 0 2rem;
+    margin: 2rem 1rem 1rem 1rem;
 
     background-color: rgba(36, 133, 64, 0.2);
     color: rgba(36, 133, 64);
@@ -88,16 +89,18 @@ export const Container = styled.div`
     margin: 1rem;
 
     .divider {
-      margin-bottom: 38px;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: 120%;
+      font-size: 26px;
       margin-bottom: 0.5rem;
     }
 
     .retornar {
-      width: 8rem;
+      color: #434242;
+      font-weight: 600;
+      font-size: 20px;
       margin-bottom: 2rem;
     }
     .retornar:hover {
@@ -114,12 +117,17 @@ export const Container = styled.div`
         align-items: center;
 
         img {
-          max-width: 100px;
-          max-height: 80px;
+          width: 70px;
+          height: 70px;
+          object-fit: cover;
         }
         .info {
+          width: 130px;
+
           p {
-            font-size: 13px;
+            font-size: 0.9rem;
+            color: #434242;
+            font-weight: 600;
             margin-bottom: 0.2rem;
           }
         }
@@ -127,7 +135,7 @@ export const Container = styled.div`
         .quantidade {
           display: flex;
           align-items: center;
-          padding: 0 1rem;
+          padding: 0.4rem;
           height: 1.8rem;
 
           gap: 1.5rem;
@@ -138,10 +146,14 @@ export const Container = styled.div`
             background-color: rgba(0, 0, 0, 0.01);
           }
 
+          p {
+            color: #434242;
+            font-weight: 600;
+          }
           svg {
             margin: 0;
             color: rgba(36, 133, 64);
-            font-size: 12px;
+            font-size: 14px;
           }
         }
       }
@@ -159,9 +171,10 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin: 0 1rem;
-
-    border-top: 1px solid black;
+    /* margin: 0.5rem 1rem; */
+    margin: 0rem 1.5rem 0rem 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 2px solid #434242;
 
     .subtotal {
       display: flex;
@@ -199,25 +212,68 @@ export const Container = styled.div`
 
   .divider {
     height: 2px;
-    background-color: gray;
+    background-color: #434242;
   }
-  @media screen and (max-width: 950px) {
-    width: 45%;
-    .rodape-cart {
-      width: 45%;
-    }
-  }
-  @media screen and (max-width: 560px) {
-    width: 80%;
 
-    .rodape-cart {
-      width: 80%;
-    }
-  }
-  @media screen and (max-width: 320px) {
+  .rodape-cart {
     width: 100%;
-    .rodape-cart {
-      width: 100%;
+  }
+
+  @media screen and (min-width: 425px) {
+    width: 350px;
+  }
+
+  @media (min-width: 768px) {
+    width: 430px;
+
+    .cart-restaurantes {
+      .card-item {
+        display: flex;
+        margin-bottom: 1rem;
+        .item {
+          display: flex;
+          width: 100%;
+          gap: 1rem;
+          justify-content: space-between;
+          align-items: center;
+
+          .info {
+            width: 180px;
+
+            p {
+              font-size: 1rem;
+              color: #434242;
+              font-weight: 600;
+              margin-bottom: 0.2rem;
+            }
+          }
+
+          .quantidade {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            height: 1.8rem;
+
+            gap: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+
+            button {
+              background-color: rgba(0, 0, 0, 0.01);
+            }
+
+            p {
+              color: #434242;
+              font-weight: 600;
+            }
+            svg {
+              margin: 0;
+              color: rgba(36, 133, 64);
+              font-size: 14px;
+            }
+          }
+        }
+      }
     }
   }
 `;
