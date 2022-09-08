@@ -161,6 +161,7 @@ export const RightDiv = styled.div`
 export const CardAdress = styled.div`
   display: flex;
   align-items: center;
+
   flex-direction: column;
   overflow: scroll;
   height: 500px;
@@ -203,10 +204,21 @@ export const ButtonSave = styled.button`
 export const Card = styled.div`
   border-radius: 10px;
   background-color: rgba(202, 255, 215, 1);
-  min-width: 20rem;
+  width: 20rem;
   border-left: 5px solid rgba(18, 117, 58, 1);
   text-align: left;
   margin-top: 10px;
+  position: relative;
+  padding: 10px;
+  button {
+    position: absolute;
+    top: 20px;
+    background-color: rgba(202, 255, 215, 1);
+
+    right: 10px;
+    svg {
+    }
+  }
 `;
 
 export const TitleCard = styled.h4`

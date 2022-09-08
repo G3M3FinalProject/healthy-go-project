@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 import DevA from "../../assets/devs/amandarodrigues.png";
 import DevC from "../../assets/devs/carolpezzin.png";
 import DevE from "../../assets/devs/eugeniobravin.png";

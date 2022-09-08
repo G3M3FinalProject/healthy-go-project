@@ -1,5 +1,4 @@
 import { AiFillStar } from "react-icons/ai";
-import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 import { v4 as uuid } from "uuid";
@@ -51,9 +50,7 @@ export const RestaurantItem = ({ restaurant }: IRestaurantItemProps) => {
         <figure>
           <img src={restaurant["logo-image"]} alt={restaurant.name} />
         </figure>
-        <IconItem>
-          <AiOutlineHeart />
-        </IconItem>
+        <IconItem></IconItem>
       </Link>
     </Container>
   );
