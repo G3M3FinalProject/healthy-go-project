@@ -5,7 +5,6 @@ export const ContainerFilter = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  width: 10%;
   margin-left: 3%;
 `;
 

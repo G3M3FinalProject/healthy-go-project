@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`  
-
+const GlobalStyle = createGlobalStyle`
 :root {
     --brand-green: 36, 133, 64;
     --brand-yellow: 227, 229, 34;
@@ -11,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     --brand-yellow: 227, 229, 34;
     --placeholder: 67, 66, 66;
     --light-border: 194, 194, 194;
+    --gray-100: #EDEDED;
 
     --cart-background: 84, 166, 86;
     --cart-white-background: 255, 255, 255;

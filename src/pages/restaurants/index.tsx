@@ -10,8 +10,8 @@ export const Restaurants = () => {
     <RestaurantProductsProvider>
       <ContainerRestaurants>
         <ContainerTop>
-          <FilteredSearch />
           <SearchInputProducts />
+          <FilteredSearch />
         </ContainerTop>
         <Outlet />
       </ContainerRestaurants>

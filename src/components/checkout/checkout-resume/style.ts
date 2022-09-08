@@ -90,10 +90,13 @@ export const ContainerResume = styled.div`
 
   button {
     display: flex;
+    align-self: center;
     align-items: center;
     justify-content: center;
 
-    align-self: center;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Petrona";
   }
 `;
 

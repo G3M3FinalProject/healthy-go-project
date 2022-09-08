@@ -24,6 +24,16 @@ export const OverflowContainer = styled.div`
   gap: 0.5rem;
 
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: green;
+    border-radius: 10px;
+    height: 15px;
+  }
 `;
 
 export const SelectAddressInput = styled.div`
@@ -102,12 +112,6 @@ export const DivPicture = styled.div`
       font-size: 16px;
     }
   }
-
-  @media screen and (max-width: 425px) {
-    img {
-      display: none;
-    }
-  }
 `;
 
 export const AdressSelector = styled.div`
@@ -115,6 +119,14 @@ export const AdressSelector = styled.div`
   flex-direction: column;
 
   width: 100%;
+
+  p {
+    max-width: 40rem;
+  }
+
+  input {
+    margin: 0 2rem;
+  }
 
   span {
     font-family: "Petrona";
@@ -131,10 +143,17 @@ export const AdressSelector = styled.div`
     @media screen and (max-width: 425px) {
       font-size: 16px;
     }
+
+    @media screen and (max-width: 1023px) {
+      p {
+        width: 100%;
+      }
+    }
   }
 
   @media screen and (min-width: 1023px) {
     flex-direction: row;
+    justify-content: space-between;
 
     gap: 1em;
   }

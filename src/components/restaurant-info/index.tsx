@@ -1,12 +1,15 @@
 import { useRestaurantProductsContext } from "../../contexts/restaurantProductsContext";
-import { ContainerHeader } from "../../pages/restaurants/styles";
+import Loading from "../loading";
 import { MenuRestaurant } from "../menu-restaurant";
+import { Container, ContainerHeader } from "./styles";
 
 export const RestaurantInfo = () => {
   const { restaurantInfo } = useRestaurantProductsContext();
 
+  if (Object.keys(restaurantInfo).length === 0) return <Loading />;
+
   return (
-    <>
+    <Container>
       <ContainerHeader>
         <div>
           <h3>{restaurantInfo.name}</h3>
@@ -17,6 +20,6 @@ export const RestaurantInfo = () => {
         </figure>
       </ContainerHeader>
       {!!restaurantInfo && <MenuRestaurant />}
-    </>
+    </Container>
   );
 };

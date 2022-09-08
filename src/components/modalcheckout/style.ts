@@ -62,7 +62,7 @@ export const Modal = styled.div`
 
     background-color: white;
 
-    animation: circle 200ms calc(500ms + 1000ms) forwards
+    animation: circle 200ms squish calc(500ms + 1000ms) forwards
       cubic-bezier(0.26, 0.6, 0.46, 1.7);
   }
 

@@ -97,9 +97,11 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
         navigate("/homepage", { replace: true });
       })
       .catch((err) => {
-        toast.error("A senha ou e-mail inserido é inválido.", {
-          id: "error-login",
-        });
+        console.log(err);
+        if (err.response.data === "Cannot find user")
+          toast.error("A senha ou e-mail inserido é inválido.", {
+            id: "error-login",
+          });
       });
   };
 

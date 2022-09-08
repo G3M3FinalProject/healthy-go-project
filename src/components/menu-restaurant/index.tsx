@@ -11,8 +11,8 @@ import {
 import Loading from "../loading";
 import {
   ContainerMenu,
-  ContainerP,
-  ContainerSection,
+  ContainerCategory,
+  ContainerProduct,
   ContainerDivMenu,
 } from "./styles";
 
@@ -30,10 +30,14 @@ export const MenuRestaurant = () => {
   const categoryFix = (categories: string[]) => {
     return categories?.map((category) => {
       const unique_id = uuid();
-      const categoryThreated = category
+      let categoryThreated = category
         .split("-")
         .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
         .join(" ");
+      if (categoryThreated === "Vegan") categoryThreated = "Vegano";
+      else if (categoryThreated === "Vegetarian")
+        categoryThreated = "Vegetariano";
+
       return <span key={unique_id}>{categoryThreated}</span>;
     });
   };
@@ -51,50 +55,44 @@ export const MenuRestaurant = () => {
                 <ul>
                   {value?.map((product: IProduct) => {
                     return (
-                      <li
+                      <ContainerProduct
                         key={Math.floor(Date.now() * Math.random()).toString(
                           36,
                         )}
                       >
-                        <div>
-                          <img src={product.photo_url} />
-                          <ContainerSection>
-                            <h4>{product.item}</h4>
-                            <ContainerP>
-                              {categoryFix(product.category)}
-                            </ContainerP>
-                            <p className="preco">
-                              {product.price.toLocaleString("pt-br", {
-                                style: "currency",
-                                currency: "BRL",
-                              })}
-                            </p>
-                          </ContainerSection>
-                        </div>
-                        <div className="add-carrinho">
-                          <button
-                            onClick={() => {
-                              if (
-                                user &&
-                                Object.keys(user as IUser).length !== 0
-                              ) {
-                                addToCart(product);
-                              } else {
-                                toast.error(
-                                  "Você precisa estar logado para adicionar produtos ao carrinho!",
-                                  {
-                                    duration: 3000,
-                                    id: "error-add-cart",
-                                    position: "top-center",
-                                  },
-                                );
-                              }
-                            }}
-                          >
-                            Adicionar ao carrinho
-                          </button>
-                        </div>
-                      </li>
+                        <img src={product.photo_url} />
+                        <h4>{product.item}</h4>
+                        <ContainerCategory>
+                          {categoryFix(product.category)}
+                        </ContainerCategory>
+                        <p className="preco">
+                          {product.price.toLocaleString("pt-br", {
+                            style: "currency",
+                            currency: "BRL",
+                          })}
+                        </p>
+                        <button
+                          onClick={() => {
+                            if (
+                              user &&
+                              Object.keys(user as IUser).length !== 0
+                            ) {
+                              addToCart(product);
+                            } else {
+                              toast.error(
+                                "Você precisa estar logado para adicionar produtos ao carrinho!",
+                                {
+                                  duration: 3000,
+                                  id: "error-add-cart",
+                                  position: "top-center",
+                                },
+                              );
+                            }
+                          }}
+                        >
+                          Adicionar ao carrinho
+                        </button>
+                      </ContainerProduct>
                     );
                   })}
                 </ul>

@@ -19,8 +19,8 @@ export const Modal = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
-  width: 28%;
   height: 100%;
 
   background-color: rgba(var(--light-background-color), 1);
@@ -28,6 +28,15 @@ export const Container = styled.div`
 
   .container-itens {
     overflow-y: auto;
+    ::-webkit-scrollbar {
+      width: 5px;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(150, 240, 169, 1);
+      border-radius: 10px;
+      height: 15px;
+    }
     height: 69%;
     margin-top: 3rem;
   }
@@ -38,13 +47,14 @@ export const Container = styled.div`
     flex-direction: column;
 
     margin: 8rem 1rem;
-
     img {
+      margin-bottom: 0.5rem;
       width: 105px;
     }
 
     p {
       margin-top: 1rem;
+      text-align: center;
     }
   }
 
@@ -72,7 +82,7 @@ export const Container = styled.div`
     justify-content: center;
     padding: 1rem;
     border-radius: 5px;
-    margin: 5rem 2rem 0 2rem;
+    margin: 2rem 1rem 1rem 1rem;
 
     background-color: rgba(var(--brand-green), 0.2);
     color: rgba(var(--brand-green), 1);
@@ -86,16 +96,18 @@ export const Container = styled.div`
     padding: 0.5rem;
 
     .divider {
-      margin-bottom: 38px;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: 120%;
+      font-size: 26px;
       margin-bottom: 0.5rem;
     }
 
     .retornar {
-      width: 8rem;
+      color: #434242;
+      font-weight: 600;
+      font-size: 20px;
       margin-bottom: 2rem;
     }
 
@@ -115,12 +127,17 @@ export const Container = styled.div`
         gap: 1rem;
 
         img {
-          max-width: 100px;
-          max-height: 80px;
+          width: 70px;
+          height: 70px;
+          object-fit: cover;
         }
         .info {
+          width: 130px;
+
           p {
-            font-size: 13px;
+            font-size: 0.9rem;
+            color: #434242;
+            font-weight: 600;
             margin-bottom: 0.2rem;
           }
         }
@@ -128,7 +145,7 @@ export const Container = styled.div`
         .quantidade {
           display: flex;
           align-items: center;
-          padding: 0 1rem;
+          padding: 0.4rem;
           height: 1.8rem;
 
           gap: 1.5rem;
@@ -139,10 +156,14 @@ export const Container = styled.div`
             background-color: transparent;
           }
 
+          p {
+            color: #434242;
+            font-weight: 600;
+          }
           svg {
             margin: 0;
             color: rgba(var(--brand-green), 1);
-            font-size: 12px;
+            font-size: 14px;
           }
         }
       }
@@ -160,9 +181,10 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin: 0 1rem;
-
-    border-top: 1px solid rgba(var(--text-black), 1);
+    /* margin: 0.5rem 1rem; */
+    margin: 0rem 1.5rem 0rem 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 2px solid rgba(var(--text-black), 1);
 
     .subtotal {
       display: flex;
@@ -193,6 +215,12 @@ export const Container = styled.div`
     display: flex;
     margin: 1rem;
     justify-content: space-between;
+
+    button {
+      font-size: 20px;
+      font-weight: 600;
+      font-family: "Petrona";
+    }
   }
 
   .divider {
@@ -200,24 +228,65 @@ export const Container = styled.div`
     background-color: rgba(var(--gray), 1);
   }
 
-  @media screen and (max-width: 950px) {
-    width: 45%;
-    .rodape-cart {
-      width: 45%;
-    }
-  }
-
-  @media screen and (max-width: 560px) {
-    width: 80%;
-
-    .rodape-cart {
-      width: 80%;
-    }
-  }
-  @media screen and (max-width: 320px) {
+  .rodape-cart {
     width: 100%;
-    .rodape-cart {
-      width: 100%;
+  }
+
+  @media screen and (min-width: 425px) {
+    width: 350px;
+  }
+
+  @media (min-width: 768px) {
+    width: 430px;
+
+    .cart-restaurantes {
+      .card-item {
+        display: flex;
+        margin-bottom: 1rem;
+        .item {
+          display: flex;
+          width: 100%;
+          gap: 1rem;
+          justify-content: space-between;
+          align-items: center;
+
+          .info {
+            width: 180px;
+
+            p {
+              font-size: 1rem;
+              color: #434242;
+              font-weight: 600;
+              margin-bottom: 0.2rem;
+            }
+          }
+
+          .quantidade {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            height: 1.8rem;
+
+            gap: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+
+            button {
+              background-color: rgba(0, 0, 0, 0.01);
+            }
+
+            p {
+              color: #434242;
+              font-weight: 600;
+            }
+            svg {
+              margin: 0;
+              color: rgba(36, 133, 64);
+              font-size: 14px;
+            }
+          }
+        }
+      }
     }
   }
 `;

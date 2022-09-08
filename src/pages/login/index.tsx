@@ -25,8 +25,8 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const formSchema = yup.object().shape({
-    email: yup.string(),
-    password: yup.string(),
+    email: yup.string().required("Campo obrigatório"),
+    password: yup.string().required("Campo obrigatório"),
   });
   const {
     register,

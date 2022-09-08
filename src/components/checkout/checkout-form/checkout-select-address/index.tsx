@@ -1,7 +1,6 @@
 import { FieldErrorsImpl, UseFormRegister } from "react-hook-form";
 import { GoLocation } from "react-icons/go";
 
-import locationIcon from "../../../../assets/locationIcon.svg";
 import { useAuthUserContext } from "../../../../contexts/authUserContext";
 import { useModalContext } from "../../../../contexts/modalContext";
 import {
@@ -39,6 +38,7 @@ interface ISelectAddressForm {
 export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
   const { user } = useAuthUserContext();
   const { setIsAddressModalOpen } = useModalContext();
+
   return (
     <ContainerAdress>
       <SelectAddressInput>
@@ -52,7 +52,9 @@ export const SelectAddressForm = ({ register, errors }: ISelectAddressForm) => {
           return (
             <DivAdress key={address.id}>
               <DivPicture>
-                <GoLocation />
+                <GoLocation
+                  style={{ color: "green", width: "20px", height: "20px" }}
+                />
                 <h4>{address.adressIdentification}</h4>
               </DivPicture>
               <AdressSelector>

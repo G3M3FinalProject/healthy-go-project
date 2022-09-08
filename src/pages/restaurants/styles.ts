@@ -1,87 +1,29 @@
 import styled from "styled-components";
 
 export const ContainerRestaurants = styled.div`
-  width: 80vw;
-  margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 100px 20px 0 20px;
+
+  @media screen and (min-width: 768px) {
+    margin: 100px 40px 0 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    margin: 100px auto 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const ContainerTop = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-
-  width: 40vw;
-
-  @media screen and (max-width: 770px) {
-    width: 100%;
-    margin-right: 3%;
-    font-size: 8px;
-  }
-  @media screen and (max-width: 425px) {
-    width: 100%;
-    margin-right: 3%;
-    font-size: 8px;
-
-    img {
-      display: none;
-    }
-  }
-`;
-
-export const ContainerHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+  gap: 10px;
+  margin-bottom: 10px;
   width: 100%;
-
-  margin-top: 1%;
-  margin-left: auto;
-  margin-right: auto;
-
-  border-top: 1px solid;
-  border-left: 1px solid;
-  border-right: 1px solid;
-  border-radius: 16px 16px 0 0;
-
-  border-color: rgba(var(--brand-light-green), 1);
-
-  div {
-    margin-left: 1%;
-    margin-left: 2rem;
-
-    h3 {
-      font-family: "Courgette";
-      font-weight: 400;
-      font-size: 48px;
-
-      @media screen and (max-width: 770px) {
-        font-size: 36px;
-      }
-
-      @media screen and (max-width: 425px) {
-        font-size: 36px;
-      }
-    }
-    p {
-      font-family: "Petrona";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-    }
-  }
-
-  figure {
-    width: 9rem;
-    height: 7.79rem;
-    border-radius: 0 16px 0 0;
-
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 0 16px 0 0;
-    }
+  @media screen and (min-width: 425px) {
+    flex-direction: row-reverse;
   }
 `;

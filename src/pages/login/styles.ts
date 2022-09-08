@@ -45,7 +45,9 @@ export const FormDiv = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Form = styled.form.attrs({
+  id: "formLogin",
+})`
   display: flex;
   flex-direction: column;
   align-items: center;

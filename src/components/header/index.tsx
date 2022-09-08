@@ -121,7 +121,7 @@ const Header = () => {
                       setisOpenCart(true);
                     }}
                   >
-                    <span>{amountCart}</span>
+                    {!!amountCart && <span>{amountCart}</span>}
                     <AiOutlineShoppingCart
                       style={{ width: "30px", height: "30px" }}
                     />
