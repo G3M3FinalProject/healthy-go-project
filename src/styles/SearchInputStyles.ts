@@ -11,6 +11,8 @@ export const SearchInputStyle = styled.div`
 
   gap: 1rem;
 
+  z-index: -1;
+
   border-radius: 25px;
   border: none;
 

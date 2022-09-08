@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { useAuthUserContext } from "../../contexts/authUserContext";
+import Theme from "../theme-switch";
 import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
@@ -29,47 +30,44 @@ const DropDownModal = () => {
         {user ? (
           <>
             <Menu onClick={() => navigate("/profile", { replace: true })}>
-              <FaPencilAlt style={{ color: "black" }} />
-              <Link to="/profile">
-                <p>Editar perfil</p>
-              </Link>
+              <FaPencilAlt />
+              <p>Editar perfil</p>
             </Menu>
             <Menu>
-              <BsHandbagFill style={{ color: "black" }} />
-              <Link to="/requests">
-                <p>Meus pedidos</p>
-              </Link>
+              <Theme />
+            </Menu>
+            <Menu onClick={() => navigate("/requests", { replace: true })}>
+              <BsHandbagFill />
+              <p>Meus pedidos</p>
             </Menu>
             <Menu onClick={() => navigate("/aboutus", { replace: true })}>
-              <BiBookOpen style={{ color: "black" }} />
-              <Link to="/aboutus">
-                <p>Sobre nós</p>
-              </Link>
+              <BiBookOpen />
+              <p>Sobre nós</p>
             </Menu>
             <Menu>
-              <FaRunning style={{ color: "black" }} />
-              <button
+              <FaRunning />
+              <p
                 onClick={() => {
                   logoutUser();
                   setCart([]);
                 }}
               >
                 Sair
-              </button>
+              </p>
             </Menu>
           </>
         ) : (
           <>
             <Menu>
-              <BsBoxArrowRight style={{ color: "black" }} />
+              <BsBoxArrowRight />
               <p onClick={() => navigate("/login", { replace: true })}>Login</p>
             </Menu>
             <Menu onClick={() => navigate("/register", { replace: true })}>
-              <BsFilePersonFill style={{ color: "black" }} />
+              <BsFilePersonFill />
               <p>Cadastro</p>
             </Menu>
             <Menu onClick={() => navigate("/aboutus", { replace: true })}>
-              <HiUserGroup style={{ color: "black" }} />
+              <HiUserGroup />
               <p>Sobre nós</p>
             </Menu>
           </>

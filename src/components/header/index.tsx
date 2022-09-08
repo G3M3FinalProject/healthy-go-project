@@ -5,12 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
+import darkflag from "../../assets/darkflag.png";
 import flag from "../../assets/flag.png";
 import HealthyGo from "../../assets/healthygo.png";
 import LogoImg from "../../assets/logo.png";
 import mobileflag from "../../assets/mobileflag.png";
 import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
 import { useCart } from "../../contexts/cartContext";
+import { useAppThemeContext } from "../../contexts/themeProvider";
 import Cart from "../cart";
 import { useScrollPosition } from "../cart-header-hooks";
 import DropDownModal from "../dropdown-header";
@@ -35,6 +37,7 @@ const Header = () => {
   const [isMobile, setMobile] = useState(window.innerWidth < 426);
   const [isOpenCart, setisOpenCart] = useState<boolean>(false);
   const { amountCart } = useCart();
+  const { themeName } = useAppThemeContext();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const scrollPosition = useScrollPosition();
@@ -68,11 +71,20 @@ const Header = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <picture>
-        <Source media="(max-width: 425px)" srcSet={mobileflag} />
-        <Source media="(min-width: 426px)" srcSet={flag} />
-        <Flag src={flag} alt="flag" />
-      </picture>
+      {themeName === "light" ? (
+        <picture>
+          <Source media="(max-width: 425px)" srcSet={mobileflag} />
+          <Source media="(min-width: 426px)" srcSet={flag} />
+          <Flag src={flag} alt="flag" />
+        </picture>
+      ) : (
+        <picture>
+          <Source media="(max-width: 425px)" srcSet={mobileflag} />
+          <Source media="(min-width: 426px)" srcSet={darkflag} />
+          <Flag src={darkflag} alt="flag" />
+        </picture>
+      )}
+
       <Container>
         <Link to={"/home"}>
           <Brand>

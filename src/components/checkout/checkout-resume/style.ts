@@ -9,7 +9,7 @@ export const ContainerResume = styled.div`
 
   padding: 1rem;
 
-  border: 1px solid #434242;
+  border: 1px solid #c2c2c2;
   border-radius: 10px;
 
   @media screen and (max-width: 770px) {
@@ -25,7 +25,9 @@ export const ContainerResume = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    color: #434242;
+    text-align: center;
+
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;
@@ -34,6 +36,10 @@ export const ContainerResume = styled.div`
     @media screen and (max-width: 425px) {
       font-size: 16px;
     }
+  }
+
+  h4 {
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   div {
@@ -51,7 +57,7 @@ export const ContainerResume = styled.div`
       font-style: normal;
       font-weight: 700;
       font-size: 22px;
-      color: #434242;
+      color: ${(props) => props.theme.colors.contrastTextBlack};
 
       @media screen and (max-width: 770px) {
         font-size: 16px;
@@ -76,7 +82,7 @@ export const ContainerResume = styled.div`
       line-height: 20px;
       text-transform: capitalize;
 
-      color: #6e6e6e;
+      color: ${(props) => props.theme.colors.contrastTextBlack};
 
       @media screen and (max-width: 770px) {
         font-size: 16px;
@@ -119,7 +125,7 @@ export const DivTT = styled.div`
   line-height: 23px;
   text-transform: capitalize;
 
-  color: #434242;
+  color: ${(props) => props.theme.colors.contrastTextBlack};
 `;
 
 export const SummaryRestaurant = styled.div`

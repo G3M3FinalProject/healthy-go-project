@@ -34,17 +34,22 @@ export const ContainerDivMenu = styled.div`
       grid-template-columns: repeat(4, 1fr);
     }
   }
+
+  h2 {
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+  }
 `;
 
 export const ContainerProduct = styled.li`
   display: grid;
   grid-template-areas: "img title title" "img types types" "img price btn";
-  border-right: 1px solid var(--brand-light-green);
-  border-bottom: 1px solid var(--brand-light-green);
+  border-right: 1px solid rgba(var(--brand-light-green), 1);
+  border-bottom: 1px solid rgba(var(--brand-light-green), 1);
   border-radius: 10px;
   height: 140px;
   width: 100%;
   align-items: center;
+
   h4 {
     grid-area: title;
     margin-left: 0%;
@@ -52,12 +57,14 @@ export const ContainerProduct = styled.li`
     font-style: normal;
     font-weight: 700;
     font-size: 1rem;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
   .preco {
     grid-area: price;
     font-size: 18px;
     font-weight: 900;
     width: 90px;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
   img {
     grid-area: img;
@@ -71,7 +78,7 @@ export const ContainerProduct = styled.li`
   button {
     grid-area: btn;
     align-self: center;
-    background-color: var(--button-green);
+    background-color: rgba(var(--button-green), 1);
     border-radius: 20px;
     font-size: 0.8rem;
     padding: 0.4rem;
@@ -82,7 +89,7 @@ export const ContainerProduct = styled.li`
     font-family: Petrona;
     margin-right: 0.3rem;
     &:hover {
-      background-color: var(--brand-light-green-2);
+      background-color: rgba(var(--brand-light-green-2), 1);
       color: var(--text-black);
     }
   }

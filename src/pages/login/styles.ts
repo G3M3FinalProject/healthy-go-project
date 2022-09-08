@@ -32,11 +32,12 @@ export const FormDiv = styled.div`
 
   text-align: center;
 
-  > p {
+  p {
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   @media screen and (max-width: 768px) {
@@ -56,14 +57,14 @@ export const Form = styled.form.attrs({
 
   gap: 1rem;
 
-  & > p {
+  p:nth-child(4) {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    color: black;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
-  & > p::after {
+  p:nth-child(4)::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -71,12 +72,12 @@ export const Form = styled.form.attrs({
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: black;
+    background-color: ${(props) => props.theme.colors.contrastTextBlack};
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
 
-  & > p:hover::after {
+  p:nth-child(4):hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
@@ -91,59 +92,7 @@ export const Form = styled.form.attrs({
     font-weight: 700;
     font-size: 20px;
     line-height: 36px;
-  }
-`;
-
-export const Input = styled.input`
-  width: 26.125rem;
-  height: 2.5rem;
-
-  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-
-  border-radius: 10px;
-  border: 1px solid rgba(67, 66, 66, 1);
-
-  background-color: #f7f6f3;
-  color: black;
-
-  padding: 0.7rem 0.813rem;
-
-  font-size: 17px;
-
-  outline: none;
-
-  &::placeholder {
-    color: var(--placeholder);
-  }
-
-  @media screen and (max-width: 426px) {
-    width: 19rem;
-  }
-
-  @media screen and (min-width: 769px) and (max-width: 920px) {
-    width: 20rem;
-  }
-`;
-
-export const Button = styled.button`
-  width: 26.125rem;
-  height: fit-content;
-
-  border-radius: 15px;
-
-  font-weight: 700;
-
-  color: white;
-  background-color: var(--button-green);
-
-  padding: 1rem 4.5%;
-
-  @media screen and (max-width: 426px) {
-    width: 19rem;
-  }
-
-  @media screen and (min-width: 769px) and (max-width: 920px) {
-    width: 20rem;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 `;
 

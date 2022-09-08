@@ -10,7 +10,7 @@ export const ContainerAdress = styled.div`
 
   padding: 0.5rem;
 
-  border: 1px solid #434242;
+  border: 1px solid #c2c2c2;
   border-radius: 10px;
 `;
 
@@ -48,7 +48,7 @@ export const SelectAddressInput = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    color: #434242;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;
@@ -70,7 +70,7 @@ export const SelectAddressInput = styled.div`
 
     background-color: transparent;
 
-    color: #12753a;
+    color: ${(props) => props.theme.colors.LocationGreen};
   }
 `;
 
@@ -95,12 +95,16 @@ export const DivPicture = styled.div`
 
   width: 10rem;
 
+  svg {
+    color: ${(props) => props.theme.colors.LocationGreen};
+  }
+
   h4 {
     font-family: "Petrona";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
-    color: #434242;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;
@@ -132,7 +136,7 @@ export const AdressSelector = styled.div`
     font-weight: 500;
     font-size: 20px;
     line-height: 20px;
-    color: #6e6e6e;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
 
     @media screen and (max-width: 770px) {
       font-size: 16px;
