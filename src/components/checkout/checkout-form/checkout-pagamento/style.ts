@@ -40,7 +40,7 @@ export const SelectPayment = styled.div`
   margin-top: 0.3rem;
 
   @media screen and (max-width: 425px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     font-size: 16px;
   }
 
@@ -48,7 +48,7 @@ export const SelectPayment = styled.div`
     font-family: "Petrona";
     font-style: normal;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 18px;
     color: #434242;
 
     input {
@@ -89,7 +89,6 @@ export const DivPayment = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
-    color: #434242;
 
     select {
       width: 100%;
