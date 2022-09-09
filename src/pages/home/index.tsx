@@ -10,7 +10,6 @@ import { Container } from "./styles";
 const Home = () => {
   const { filteredRestaurants, isFilterActive } = useRestaurantsContext();
   const { isLoading } = useRestaurantsContext();
-
   if (isLoading) return <Loading />;
 
   return (
