@@ -213,7 +213,7 @@ export const Paragraph = styled.div`
 `;
 
 interface IIsScrolled {
-  scrolling: boolean;
+  scrolling?: boolean;
 }
 
 export const CartBackground = styled.button<IIsScrolled>`
@@ -223,7 +223,7 @@ export const CartBackground = styled.button<IIsScrolled>`
   position: relative;
   z-index: 1;
   font-size: 16px;
-  font-family: "Petrona", serif;
+  font-family: "Petrona", sans-serif;
 
   cursor: pointer;
 
@@ -233,7 +233,6 @@ export const CartBackground = styled.button<IIsScrolled>`
   color: white;
 
   padding: 0.7rem;
-  /* padding: 1rem; */
 
   border-radius: 20px;
 

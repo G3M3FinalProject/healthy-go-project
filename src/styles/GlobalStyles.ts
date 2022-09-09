@@ -39,7 +39,9 @@ body {
     width: 100vw;
     height: 100vh;
 
-    font-family: 'Petrona', serif;
+    font-family: 'Petrona', sans-serif;
+
+    transition: all 0.25s linear;
 
     background: ${(props) => props.theme.colors.body};
 

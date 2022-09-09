@@ -4,27 +4,26 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
 } from "react";
 
 import { ThemeProvider } from "styled-components";
 
-import { LightTheme, DarkTheme } from "../styles/themes";
+import useLocalState from "../components/utils";
+import { darkTheme } from "../styles/themes/dark";
+import { lightTheme } from "../styles/themes/light";
 
 interface IThemeContextData {
-  themeName: "light" | "dark";
   toggleTheme: () => void;
+  themeName: "light" | "dark";
 }
-
 interface IThemeChildren {
   children: ReactNode;
 }
 
 const ThemeContext = createContext({} as IThemeContextData);
-export const useAppThemeContext = () => useContext(ThemeContext);
 
 export const AppThemeProvider = ({ children }: IThemeChildren) => {
-  const [themeName, setThemeName] = useState<"light" | "dark">("light");
+  const [themeName, setThemeName] = useLocalState("theme", "light");
 
   const toggleTheme = useCallback(() => {
     setThemeName((oldThemeName) =>
@@ -33,9 +32,9 @@ export const AppThemeProvider = ({ children }: IThemeChildren) => {
   }, []);
 
   const theme = useMemo(() => {
-    if (themeName === "light") return LightTheme;
+    if (themeName === "light") return lightTheme;
 
-    return DarkTheme;
+    return darkTheme;
   }, [themeName]);
 
   return (
@@ -43,4 +42,8 @@ export const AppThemeProvider = ({ children }: IThemeChildren) => {
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
+};
+
+export const useAppThemeContext = () => {
+  return useContext(ThemeContext);
 };

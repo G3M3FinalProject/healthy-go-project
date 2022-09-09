@@ -1,6 +1,6 @@
-export const LightTheme = {
-  title: "light",
+import { DefaultTheme } from "styled-components";
 
+export const lightTheme = {
   colors: {
     contrastTextWhite: "#ffffff",
     contrastTextBlack: "#000",

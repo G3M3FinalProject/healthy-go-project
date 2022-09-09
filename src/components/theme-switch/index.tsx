@@ -4,7 +4,8 @@ import { useAppThemeContext } from "../../contexts/themeProvider";
 import { Container } from "./styles";
 
 const Theme = () => {
-  const { toggleTheme, themeName } = useAppThemeContext();
+  const { themeName, toggleTheme } = useAppThemeContext();
+
   return (
     <>
       {themeName === "light" ? (

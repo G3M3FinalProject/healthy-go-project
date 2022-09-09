@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import { HTMLInputTypeAttribute, useEffect, useState } from "react";
 import { InputHTMLAttributes } from "react";
 import { Control, Controller, UseFormRegister } from "react-hook-form";
-import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineWarning } from "react-icons/ai";
 import InputMask from "react-input-mask";
 
-import { InputLg, ButtonLg, ButtonMd, Search } from "./styles";
+import { InputLg, ButtonLg } from "./styles";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errors?: string;
   registerName: string;
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
-  type: string;
+  type: HTMLInputTypeAttribute | undefined;
   defaultValue?: string;
   maxLength?: number;
 }
@@ -40,7 +38,7 @@ export const GlobalInputLg = ({
   errors,
 }: InputProps) => {
   return (
-    <InputLg error={errors}>
+    <InputLg errors={errors}>
       <input
         type={type}
         {...register(registerName)}
@@ -66,7 +64,7 @@ export const GlobalInputPassword = ({
   errors,
 }: InputProps) => {
   return (
-    <InputLg error={errors}>
+    <InputLg errors={errors}>
       <input
         type={type}
         {...register(registerName)}
@@ -92,7 +90,7 @@ export const GlobalInputMask = ({
   defaultValue,
 }: IInputMask) => {
   return (
-    <InputLg error={errors}>
+    <InputLg errors={errors}>
       <Controller
         control={control}
         name={registerName}
@@ -124,7 +122,7 @@ interface IPropsButton {
   children: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClick?: any;
-  type?: string;
+  type?: "button" | "reset" | "submit";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   disabled?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -178,18 +176,5 @@ export const GlobalButtonLg = ({
       )}
       <span className="content">{children}</span>
     </ButtonLg>
-  );
-};
-
-export const GlobalButtonMd = ({ children }: IPropsButton) => {
-  return <ButtonMd>{children}</ButtonMd>;
-};
-
-export const SearchBar = () => {
-  return (
-    <Search>
-      <AiOutlineSearch style={{ width: "25px", height: "25px" }} />
-      <input placeholder="Pesquisar por..." />
-    </Search>
   );
 };

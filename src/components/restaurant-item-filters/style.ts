@@ -1,7 +1,7 @@
 import styled from "styled-components";
-interface IButtonFilter {
-  onHoverMessage: string;
-}
+// interface IButtonFilter {
+//   onHoverMessage: string;
+// }
 
 export const ContainerFilter = styled.div`
   display: flex;

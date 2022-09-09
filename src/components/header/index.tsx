@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
+import { ThemeContext } from "styled-components";
+import { useOnClickOutside } from "usehooks-ts";
 
 import darkflag from "../../assets/darkflag.png";
 import flag from "../../assets/flag.png";
@@ -38,32 +40,26 @@ const Header = () => {
   const [isMobile, setMobile] = useState(window.innerWidth < 426);
   const [isOpenCart, setisOpenCart] = useState<boolean>(false);
   const { amountCart } = useCart();
-  const { themeName } = useAppThemeContext();
   const navigate = useNavigate();
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  const ref = useRef(null);
   const scrollPosition = useScrollPosition();
+  const { themeName } = useAppThemeContext();
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 425);
     setMobile(window.innerWidth < 426);
   };
+
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handler = (event: any) => {
-      if (!modalRef.current?.contains(event.target)) {
-        setisModalMenuOpen(false);
-      }
-    };
-    document.addEventListener("click", handler);
-    return () => {
-      document.removeEventListener("click", handler);
-    };
-  });
+  const handleClickOutside = () => {
+    setisModalMenuOpen(false);
+  };
+
+  useOnClickOutside(ref, handleClickOutside);
 
   return (
     <motion.div
@@ -110,7 +106,7 @@ const Header = () => {
 
           <HamburguerMenu
             onClick={() => setisModalMenuOpen(!isModalMenuOpen)}
-            ref={modalRef}
+            ref={ref}
             open={isModalMenuOpen}
           >
             <HamburguerLine className="line-1" />
@@ -124,7 +120,7 @@ const Header = () => {
                 <Paragraph>
                   <CartBackground
                     onClick={() => setisModalMenuOpen(!isModalMenuOpen)}
-                    ref={modalRef}
+                    ref={ref}
                   >
                     <p>Olá, {user.name}</p>
                     <MdKeyboardArrowDown />

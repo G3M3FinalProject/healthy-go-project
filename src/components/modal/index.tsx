@@ -6,7 +6,8 @@ import { ModalContainer, ModalMain } from "./styles";
 interface IModalProps {
   children: ReactNode;
 }
-const modalRef = useRef();
+
+const modalRef = useRef<HTMLHeadingElement>(null);
 
 const Modal = ({ children }: IModalProps) => {
   return (

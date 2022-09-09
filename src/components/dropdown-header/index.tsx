@@ -16,6 +16,7 @@ const DropDownModal = () => {
   const { user, logoutUser } = useAuthUserContext();
   const { setCart } = useAuthUserContext();
   const navigate = useNavigate();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -26,7 +26,7 @@ export const Modal = styled.div`
   padding: 1.5rem;
   gap: 1rem;
 
-  background: #ffffff;
+  background: ${(props) => props.theme.colors.primary};
   border-radius: 10px;
 
   span {
@@ -42,7 +42,7 @@ export const Modal = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    color: #434242;
+    color: ${(props) => props.theme.colors.placeholder};
   }
 
   p {

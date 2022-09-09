@@ -33,7 +33,7 @@ export const SearchInputRestaurants = () => {
   };
 
   return (
-    <SearchInputStyle isModalMenuOpen={isModalMenuOpen}>
+    <SearchInputStyle isMenuOpen={isModalMenuOpen}>
       <form onSubmit={(e) => getFilteredRestaurant(e)}>
         <input
           onChange={(event) => setRestaurantSearched(event.target.value)}

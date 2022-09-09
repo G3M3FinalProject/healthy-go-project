@@ -1,22 +1,37 @@
-// import { useCallback, useState } from "react";
+import { useState, useEffect } from "react";
 
-// function persistItem(key: string, value: string) {
-//   localStorage.setItem(key, value);
-//   return value;
-// }
+const useLocalState = (key, defaultValue) => {
+  const [value, setValue] = useState(() => {
+    const storedValue = localStorage.getItem(key);
 
-// export function usePersistState(key: string, initialValue?: string) {
-//   const [state, setState] = useState(
-//     () => localStorage.getItem(key) || persistItem(key, initialValue),
-//   );
-//   const setStateAndPersist = useCallback(
-//     (newState: string) => {
-//       setState(newState);
-//       return persistItem(key, newState);
-//     },
-//     [key, setState],
-//   );
-//   return [state, setStateAndPersist];
-// }
+    return storedValue === null ? defaultValue : JSON.parse(storedValue);
+  });
 
-export {};
+  useEffect(() => {
+    const listener = (e) => {
+      if (e.storageArea === localStorage && e.key === key) {
+        setValue(JSON.parse(e.newValue));
+      }
+    };
+    window.addEventListener("storage", listener);
+
+    return () => {
+      window.removeEventListener("storage", listener);
+    };
+  }, [key]);
+
+  const setValueinLocalStorage = (newValue) => {
+    setValue((currentValue) => {
+      const result =
+        typeof newValue === "function" ? newValue(currentValue) : newValue;
+
+      localStorage.setItem(key, JSON.stringify(result));
+
+      return result;
+    });
+  };
+
+  return [value, setValueinLocalStorage];
+};
+
+export default useLocalState;

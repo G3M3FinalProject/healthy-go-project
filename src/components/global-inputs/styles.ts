@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IInputLg {
-  error: boolean;
+  errors?: string;
 }
 
 export const InputLg = styled.div<IInputLg>`
@@ -18,8 +18,8 @@ export const InputLg = styled.div<IInputLg>`
 
     border-radius: 10px;
     border: 1px solid;
-    border-color: ${({ error }) =>
-      error ? "rgba(255, 0, 0, 1)" : "rgba(67, 66, 66, 1)"};
+    border-color: ${({ errors }) =>
+      errors ? "rgba(255, 0, 0, 1)" : "rgba(67, 66, 66, 1)"};
 
     background-color: #f7f6f3;
     color: black;
@@ -67,8 +67,8 @@ export const InputLg = styled.div<IInputLg>`
     background-color: #f7f6f3;
 
     pointer-events: none;
-    color: ${({ error }) =>
-      error ? "rgba(255, 0, 0, 1)" : "var(--placeholder)"};
+    color: ${({ errors }) =>
+      errors ? "rgba(255, 0, 0, 1)" : "var(--placeholder)"};
 
     transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 

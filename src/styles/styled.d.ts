@@ -2,8 +2,6 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    title: string;
-
     colors: {
       contrastTextWhite: string;
       contrastTextBlack: string;
@@ -17,7 +15,9 @@ declare module "styled-components" {
       red: string;
 
       brandGreen: string;
+      LocationGreen: string;
       buttonGreen: string;
+      textGreen: string;
       lightGreen: string;
       lighterGreen: string;
       lightGreenTransparent: string;

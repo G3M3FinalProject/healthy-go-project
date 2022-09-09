@@ -50,7 +50,7 @@ export const SearchInputProducts = () => {
     setFilteredMenu(newMenuObj);
   };
   return (
-    <SearchInputStyle isModalMenuOpen={isModalMenuOpen}>
+    <SearchInputStyle isMenuOpen={isModalMenuOpen}>
       <form onSubmit={(e) => getFilteredProduct(e)}>
         <input
           onChange={(event) => setProductSearched(event.target.value)}

@@ -1,6 +1,6 @@
-export const DarkTheme = {
-  title: "dark",
+import { DefaultTheme } from "styled-components";
 
+export const darkTheme = {
   colors: {
     contrastTextWhite: "#000",
     contrastTextBlack: "#FFF",
