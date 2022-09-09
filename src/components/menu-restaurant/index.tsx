@@ -8,7 +8,6 @@ import {
   IProduct,
   useRestaurantProductsContext,
 } from "../../contexts/restaurantProductsContext";
-import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import Loading from "../loading";
 import {
   ContainerMenu,
@@ -18,8 +17,8 @@ import {
 } from "./styles";
 
 export const MenuRestaurant = () => {
-  const { filteredMenu } = useRestaurantProductsContext();
-  const { allRestaurants } = useRestaurantsContext();
+  const { filteredMenu, setFilteredMenu, restaurantInfo } =
+    useRestaurantProductsContext();
 
   const { user } = useAuthUserContext();
   const { addToCart } = useCart();
@@ -59,6 +58,7 @@ export const MenuRestaurant = () => {
                   {value?.map((product: IProduct) => {
                     return (
                       <ContainerProduct
+                        isMessageButtonAdd={product.messageButtonProduct}
                         key={Math.floor(Date.now() * Math.random()).toString(
                           36,
                         )}
@@ -81,6 +81,28 @@ export const MenuRestaurant = () => {
                               Object.keys(user as IUser).length !== 0
                             ) {
                               addToCart(product);
+
+                              const actualIndex = restaurantInfo.menu[
+                                key
+                              ].findIndex((prod) => prod.id === product.id);
+                              console.log(actualIndex);
+
+                              setFilteredMenu((old) => {
+                                const newMenu = { ...old };
+                                newMenu[key][actualIndex].messageButtonProduct =
+                                  "Produto adicionado!";
+                                return { ...newMenu };
+                              });
+                              setTimeout(() => {
+                                setFilteredMenu((old) => {
+                                  const newMenu = { ...old };
+                                  newMenu[key][
+                                    actualIndex
+                                  ].messageButtonProduct =
+                                    "Adicionar ao carrinho";
+                                  return { ...newMenu };
+                                });
+                              }, 1500);
                             } else {
                               toast.error(
                                 "Você precisa estar logado para adicionar produtos ao carrinho!",
@@ -93,7 +115,7 @@ export const MenuRestaurant = () => {
                             }
                           }}
                         >
-                          Adicionar ao carrinho
+                          {product.messageButtonProduct}
                         </button>
                       </ContainerProduct>
                     );

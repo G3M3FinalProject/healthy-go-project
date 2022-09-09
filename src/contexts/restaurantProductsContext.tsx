@@ -5,10 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
-import { api } from "../services";
 import { useRestaurantsContext } from "./restaurantsContext";
 
 interface IRestaurantProductsProviderData {
@@ -33,6 +31,7 @@ export interface IProduct {
   amount: number;
   amountPrice: number;
   restaurantID: number;
+  messageButtonProduct?: string;
 }
 
 export interface IMenu {
@@ -70,9 +69,37 @@ export const RestaurantProductsProvider = ({
       const restaurantSelected = allRestaurants.find(
         (restaurant) => restaurant.id === +id,
       );
+
+      //percorrer os 3 array de objetos adicionando Adicionar ao carrinho!
+
       if (restaurantSelected) {
-        setFilteredMenu(restaurantSelected?.menu);
-        setRestaurantInfo(restaurantSelected);
+        const newMenuArray = Object.entries(restaurantSelected.menu).map(
+          ([key, value]) => {
+            return value?.map((product) => {
+              const newProduct = {
+                ...product,
+                messageButtonProduct: "Adicionar ao carrinho",
+              };
+              return newProduct;
+            });
+          },
+        );
+
+        const newMenuObj = {
+          food: newMenuArray[0],
+          drinks: newMenuArray[1],
+          deserts: newMenuArray[2],
+        };
+
+        const newRestaurantSelected = {
+          ...restaurantSelected,
+          menu: newMenuObj,
+        };
+        console.log(newRestaurantSelected);
+
+        console.log(newRestaurantSelected);
+        setFilteredMenu(newRestaurantSelected?.menu);
+        setRestaurantInfo(newRestaurantSelected);
       }
     }
   }, [id, allRestaurants]);

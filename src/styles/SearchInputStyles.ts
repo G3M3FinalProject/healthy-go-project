@@ -12,15 +12,19 @@ export const SearchInputStyle = styled.div<ISearchProps>`
 
   width: 71.438%;
   height: 2.375rem;
+  border: 2px solid transparent;
 
+  &:focus-within {
+    border: 2px solid rgba(var(--brand-green));
+  }
   gap: 1rem;
   z-index: ${({ isModalMenuOpen }) => (isModalMenuOpen ? -1 : 0)};
   border-radius: 25px;
-  border: none;
+  box-shadow: 0px 2px 2px ${(props) => props.theme.colors.lightBorder};
 
   background-color: rgba(228, 249, 234, 1);
 
-  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(4px 4px 4px rgba(228, 249, 234, 0.25));
 
   color: rgba(110, 110, 110, 1);
 
@@ -48,6 +52,7 @@ export const SearchInputStyle = styled.div<ISearchProps>`
       svg {
         /* width: 28px; */
         /* font: 20px; */
+        fill: rgba(var(--brand-green));
         margin-right: 5px;
         color: var(--placeholder);
         width: 1.4rem;

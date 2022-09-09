@@ -137,7 +137,7 @@ export const Container = styled.div`
           align-items: center;
           padding: 0.4rem;
           height: 1.8rem;
-
+          min-width: 100px;
           gap: 1.5rem;
           background-color: rgba(0, 0, 0, 0.1);
           border-radius: 4px;
@@ -253,6 +253,7 @@ export const Container = styled.div`
             align-items: center;
             padding: 1rem;
             height: 1.8rem;
+            min-width: 116px;
 
             gap: 1.5rem;
             background-color: rgba(0, 0, 0, 0.1);

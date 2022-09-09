@@ -9,6 +9,7 @@ export const Container = styled.div`
   border-radius: 16px;
   padding-bottom: 10px;
   border: 1px solid rgba(var(--brand-light-green), 1);
+  /* border: 1px solid rgb(198 198 198); */
 `;
 export const ContainerHeader = styled.header`
   display: flex;
@@ -23,7 +24,7 @@ export const ContainerHeader = styled.header`
     margin-left: 0.5rem;
 
     h3 {
-      font-family: "Courgette";
+      font-family: "Petrona";
       font-weight: 500;
       font-size: 48px;
 

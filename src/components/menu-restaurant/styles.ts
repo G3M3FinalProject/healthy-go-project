@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IContainerProductProps {
+  isMessageButtonAdd: string;
+}
+
 export const ContainerMenu = styled.div`
   padding-left: 0.5rem;
   display: flex;
@@ -40,11 +44,12 @@ export const ContainerDivMenu = styled.div`
   }
 `;
 
-export const ContainerProduct = styled.li`
+export const ContainerProduct = styled.li<IContainerProductProps>`
   display: grid;
   grid-template-areas: "img title title" "img types types" "img price btn";
-  border: 1px solid rgba(var(--brand-light-green), 1);
   border-bottom: 1px solid rgba(var(--brand-light-green), 1);
+  border: 1px solid rgb(198 198 198);
+
   border-radius: 10px;
   height: 140px;
   width: 100%;
@@ -79,6 +84,11 @@ export const ContainerProduct = styled.li`
     grid-area: btn;
     align-self: center;
     background-color: rgba(var(--button-green), 1);
+    background-color: ${({ isMessageButtonAdd }) =>
+      isMessageButtonAdd === "Produto adicionado!"
+        ? " #54a656"
+        : "rgba(var(--button-green), 1)"};
+
     border-radius: 20px;
     font-size: 0.8rem;
     padding: 0.4rem;
@@ -89,9 +99,11 @@ export const ContainerProduct = styled.li`
     font-family: Petrona;
     margin-right: 0.3rem;
     &:hover {
-      background-color: rgba(var(--brand-light-green-2), 1);
-      color: var(--text-black);
+      background-color: #54a656;
     }
+  }
+  .productAddedToCart {
+    background-color: blue;
   }
   @media screen and (min-width: 420px) {
     padding: 5px;

@@ -1,12 +1,25 @@
 import { useAuthUserContext } from "../../contexts/authUserContext";
-import { Container, Wrapper, OrderContainer, OrderInfo } from "./styles";
+import {
+  Container,
+  Wrapper,
+  OrderContainer,
+  OrderInfo,
+  TextEmptyRequest,
+} from "./styles";
 
 const UserRequestsItems = () => {
   const { user } = useAuthUserContext();
+  console.log(user?.requests);
   return (
     <Container>
       <h2>Meus pedidos</h2>
       <Wrapper>
+        {!user?.requests && (
+          <TextEmptyRequest>
+            Finalize alguma compra e volte aqui para verificar o histórico dos
+            seus pedidos!
+          </TextEmptyRequest>
+        )}
         {user?.requests?.map((request) => {
           return (
             <OrderContainer key={request.id}>

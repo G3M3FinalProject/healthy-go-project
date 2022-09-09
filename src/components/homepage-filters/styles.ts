@@ -38,7 +38,7 @@ export const FilterButton = styled.button<IFilterButtonProps>`
       ? "rgba(var(--button-green), 1)"
       : "rgba(var(--brand-light-green-2), 1)"};
   color: ${({ isActive }) => (isActive ? "white" : "black")};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 2px ${(props) => props.theme.colors.lightBorder};
   transition: all 250ms;
 
   &:hover {

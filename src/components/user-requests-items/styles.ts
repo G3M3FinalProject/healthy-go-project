@@ -17,6 +17,12 @@ export const Container = styled.div`
   }
 `;
 
+export const TextEmptyRequest = styled.h3`
+  color: ${(props) => props.theme.colors.contrastTextBlack};
+  font-size: 1rem;
+  text-align: center;
+`;
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -15,6 +15,8 @@ export interface ICheckOut {
 
 export function ResumeCheckout() {
   const { summaryCart, subTotalCart, totalCart, freightCart } = useCart();
+  const hasDiscount = totalCart - 80 >= 0;
+
   return (
     <ContainerResume>
       <h3>Resumo</h3>
@@ -40,6 +42,12 @@ export function ResumeCheckout() {
         <p>Frete</p>
         <p>R$ {freightCart.toFixed(2)}</p>
       </span>
+      {hasDiscount && (
+        <span>
+          <p>Desconto</p>
+          <p>R$ {((subTotalCart + freightCart) * 0.1).toFixed(2)}</p>
+        </span>
+      )}
       <DivImgCheck>
         <img src={transation} />
       </DivImgCheck>

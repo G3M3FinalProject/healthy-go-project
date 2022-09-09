@@ -1,7 +1,4 @@
 import styled from "styled-components";
-interface IButtonFilter {
-  onHoverMessage: string;
-}
 
 export const ContainerFilter = styled.div`
   display: flex;
@@ -29,6 +26,7 @@ export const ButtonFilter = styled.button`
 
   img {
     width: 38px;
+
     height: 36px;
   }
 

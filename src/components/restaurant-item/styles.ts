@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   a {
     cursor: pointer;
-    border: 1px solid #c2c2c2;
+    border: 1px solid rgb(198 198 198);
     border-radius: 25px;
     text-decoration: none;
     height: 80px;
@@ -25,10 +25,6 @@ export const Container = styled.div`
         border-radius: 25px 0px 0px 25px;
       }
       grid-area: figure;
-    }
-
-    &:hover {
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
     @media (min-width: 1024px) {

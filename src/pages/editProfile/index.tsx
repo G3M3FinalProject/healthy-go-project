@@ -11,6 +11,7 @@ import {
   GlobalInputLg,
   GlobalInputMask,
 } from "../../components/global-inputs";
+import { TextEmptyRequest } from "../../components/user-requests-items/styles";
 import { useAuthUserContext } from "../../contexts/authUserContext";
 import { useModalContext } from "../../contexts/modalContext";
 import { editFormSchema } from "../../validations";
@@ -24,6 +25,7 @@ import {
   RightDiv,
   DivButton,
   DivAdress,
+  EmptyAddress,
 } from "./styles";
 import { CenteringContainer, Form, FormDiv } from "./styles";
 
@@ -90,7 +92,6 @@ const EditProfile = () => {
                   register={register}
                   registerName="name"
                 />
-                <Paragragh>{errors.name && errors.name.message}</Paragragh>
                 <GlobalInputLg
                   type="date"
                   label="Data de nascimento *"
@@ -125,6 +126,14 @@ const EditProfile = () => {
             </DivAdress>
 
             <CardAdress>
+              {!user?.address && (
+                <EmptyAddress>
+                  <TextEmptyRequest>
+                    Você não tem nenhum endereço registrado! Adicione algum
+                    endereço clicando no botão abaixo!
+                  </TextEmptyRequest>
+                </EmptyAddress>
+              )}
               {user?.address?.map((address) => {
                 return (
                   <Card key={address.id}>

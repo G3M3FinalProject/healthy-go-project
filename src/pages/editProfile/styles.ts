@@ -253,3 +253,8 @@ export const DivAdress = styled.div`
     color: ${(props) => props.theme.colors.LocationGreen};
   }
 `;
+
+export const EmptyAddress = styled.div`
+  margin-top: 5rem;
+  width: 20rem;
+`;
