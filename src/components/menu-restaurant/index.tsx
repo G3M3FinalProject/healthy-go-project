@@ -8,6 +8,7 @@ import {
   IProduct,
   useRestaurantProductsContext,
 } from "../../contexts/restaurantProductsContext";
+import { useRestaurantsContext } from "../../contexts/restaurantsContext";
 import Loading from "../loading";
 import {
   ContainerMenu,
@@ -18,6 +19,8 @@ import {
 
 export const MenuRestaurant = () => {
   const { filteredMenu } = useRestaurantProductsContext();
+  const { allRestaurants } = useRestaurantsContext();
+
   const { user } = useAuthUserContext();
   const { addToCart } = useCart();
 

@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 import { api } from "../services";
+import { useRestaurantsContext } from "./restaurantsContext";
 
 interface IRestaurantProductsProviderData {
   restaurantInfo: IRestaurantInfo;
@@ -58,27 +59,23 @@ const RestaurantProductsContext = createContext(
 export const RestaurantProductsProvider = ({
   children,
 }: IRestaurantProductsProps) => {
+  const { allRestaurants } = useRestaurantsContext();
   const [restaurantInfo, setRestaurantInfo] = useState<IRestaurantInfo>(
     {} as IRestaurantInfo,
   );
   const [filteredMenu, setFilteredMenu] = useState<IMenu>({} as IMenu);
   const { id } = useParams();
-
   useEffect(() => {
     if (id) {
-      api
-        .get(`/restaurants/${id}`)
-        .then((response) => {
-          setRestaurantInfo(response.data);
-          setFilteredMenu(response.data.menu);
-        })
-        .catch(() =>
-          toast.error(
-            "Não foi possível acessar esse restaurante no nosso banco de dados.",
-          ),
-        );
+      const restaurantSelected = allRestaurants.find(
+        (restaurant) => restaurant.id === +id,
+      );
+      if (restaurantSelected) {
+        setFilteredMenu(restaurantSelected?.menu);
+        setRestaurantInfo(restaurantSelected);
+      }
     }
-  }, [id]);
+  }, [id, allRestaurants]);
 
   return (
     <RestaurantProductsContext.Provider
