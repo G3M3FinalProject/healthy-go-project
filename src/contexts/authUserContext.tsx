@@ -131,7 +131,10 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
           setCart(res.data.cart);
         })
         .catch(() => {
-          localStorage.clear();
+          localStorage.removeItem("@healthyGo-userId");
+          localStorage.removeItem("@healthyGo-token");
+          localStorage.removeItem("@healthyGo-user");
+
           setUser({} as IUser);
           setCart([] as IProduct[]);
         });
@@ -167,7 +170,9 @@ export const AuthUserProvider = ({ children }: IAuthUserProps) => {
     setUser({} as IUser);
     setCart([] as IProduct[]);
 
-    localStorage.clear();
+    localStorage.removeItem("@healthyGo-userId");
+    localStorage.removeItem("@healthyGo-token");
+    localStorage.removeItem("@healthyGo-user");
   };
 
   const removeAddress = (data: ICompleteAddress, id: string) => {
