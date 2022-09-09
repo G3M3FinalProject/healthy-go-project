@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import { ThemeContext } from "styled-components";
 import { useOnClickOutside } from "usehooks-ts";
 
 import darkflag from "../../assets/darkflag.png";
@@ -15,7 +14,6 @@ import mobileflag from "../../assets/mobileflag.png";
 import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
 import { useCart } from "../../contexts/cartContext";
 import { useModalContext } from "../../contexts/modalContext";
-import { useAppThemeContext } from "../../contexts/themeProvider";
 import Cart from "../cart";
 import { useScrollPosition } from "../cart-header-hooks";
 import DropDownModal from "../dropdown-header";
@@ -33,17 +31,16 @@ import {
   CartBackground,
 } from "./styles";
 
-const Header = () => {
+const Header = ({ theme }) => {
   const { user } = useAuthUserContext();
   const { setisModalMenuOpen, isModalMenuOpen } = useModalContext();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 425);
   const [isMobile, setMobile] = useState(window.innerWidth < 426);
   const [isOpenCart, setisOpenCart] = useState<boolean>(false);
+  const scrollPosition = useScrollPosition();
   const { amountCart } = useCart();
   const navigate = useNavigate();
   const ref = useRef(null);
-  const scrollPosition = useScrollPosition();
-  const { themeName } = useAppThemeContext();
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 425);
@@ -68,7 +65,7 @@ const Header = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      {themeName === "light" ? (
+      {theme === "light" ? (
         <picture>
           <Source media="(max-width: 425px)" srcSet={mobileflag} />
           <Source media="(min-width: 426px)" srcSet={flag} />

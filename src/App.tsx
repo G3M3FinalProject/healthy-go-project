@@ -1,23 +1,26 @@
+import { ThemeProvider } from "styled-components";
+
 import Header from "./components/header";
 import { ToasterContainer } from "./components/toaster-container";
 import { Providers } from "./contexts";
-import { AppThemeProvider, useAppThemeContext } from "./contexts/themeProvider";
+import { useDarkMode } from "./contexts/darkModeProvider";
 import AppRoutes from "./routes";
 import GlobalStyle from "./styles/GlobalStyles";
+import { darkTheme, lightTheme } from "./styles/themes/theme";
 
 function App() {
-  const { toggleTheme } = useAppThemeContext();
+  const [theme] = useDarkMode();
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   return (
-    <AppThemeProvider>
+    <ThemeProvider theme={themeMode}>
       <Providers>
         <GlobalStyle />
-        <Header />
-        <button onClick={toggleTheme}>cliqe</button>
+        <Header theme={theme} />
         <AppRoutes />
         <ToasterContainer />
       </Providers>
-    </AppThemeProvider>
+    </ThemeProvider>
   );
 }
 

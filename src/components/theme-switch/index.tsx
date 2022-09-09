@@ -1,26 +1,10 @@
+import React from "react";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 
-import { useAppThemeContext } from "../../contexts/themeProvider";
 import { Container } from "./styles";
 
-const Theme = () => {
-  const { themeName, toggleTheme } = useAppThemeContext();
-
-  return (
-    <>
-      {themeName === "light" ? (
-        <>
-          <BsFillMoonFill style={{ color: "black" }} />
-          <Container onClick={toggleTheme}>Go Dark</Container>
-        </>
-      ) : (
-        <>
-          <BsFillSunFill />
-          <Container onClick={toggleTheme}>Go light</Container>
-        </>
-      )}
-    </>
-  );
+const Toggle = ({ theme, toggleTheme }) => {
+  return <Container onClick={toggleTheme}>Go Dark</Container>;
 };
 
-export default Theme;
+export default Toggle;

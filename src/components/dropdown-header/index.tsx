@@ -9,11 +9,13 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { IUser, useAuthUserContext } from "../../contexts/authUserContext";
-import Theme from "../theme-switch";
+import { useDarkMode } from "../../contexts/darkModeProvider";
+import Toggle from "../theme-switch";
 import { Container, Menu, Arrow } from "./styles";
 
 const DropDownModal = () => {
   const { user, logoutUser } = useAuthUserContext();
+  const [theme, themeToggler] = useDarkMode();
   const { setCart } = useAuthUserContext();
   const navigate = useNavigate();
 
@@ -34,7 +36,7 @@ const DropDownModal = () => {
               <p>Editar perfil</p>
             </Menu>
             <Menu>
-              <Theme />
+              <Toggle theme={theme} toggleTheme={themeToggler} />
             </Menu>
             <Menu onClick={() => navigate("/requests", { replace: true })}>
               <BsHandbagFill />

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.span`
+export const Container = styled.button`
   display: flex;
   position: relative;
 
