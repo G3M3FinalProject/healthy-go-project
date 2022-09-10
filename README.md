@@ -53,6 +53,7 @@ Além de consumirmos a API Geolocation/DB e uma API com os dados dos restaurante
 - [x] Página para Cadastro de usuário;
 - [x] Não é possível adicionar produtos ao carrinho deslogado, sendo enviado feedbacks ao usuário quando tenta adicionar produtos ao carrinho deslogado, indicando o Login;
 - [x] Usuário logado pode editar perfil, tendo suas informações salvas na API, além de adicionar endereços e remove-los;
+- [x] Usuário tem a opção de pegar o endereço através da localização atual, os dados são retirados da API Geolocation/DB ;
 - [x] Usuário logado pode adicionar produtos ao carrinho através dos restaurantes, podendo adicionar produtos de diversos restaurantes. O Frete é calculado numa taxa fixa por restaurante;
 - [x] Usuário logado pode manipular seu carrinho (adicionando, diminuindo e removendo produtos) através do próprio carrinho;
 - [x] Usuário logado pode finalizar seu pedido, redirecionando para a página de CheckOut, onde há campos para o registro de Cartão de Débito/Crédito, além do resumo do pedido do usuário;
