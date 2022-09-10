@@ -8,8 +8,8 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 16px;
   padding-bottom: 10px;
-  border: 1px solid rgba(var(--brand-light-green), 1);
-  /* border: 1px solid rgb(198 198 198); */
+  /* border: 1px solid rgba(var(--brand-light-green), 1); */
+  border: 1px solid rgb(198 198 198);
 `;
 export const ContainerHeader = styled.header`
   display: flex;
