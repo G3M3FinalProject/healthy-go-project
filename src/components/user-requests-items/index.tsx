@@ -9,7 +9,6 @@ import {
 
 const UserRequestsItems = () => {
   const { user } = useAuthUserContext();
-  console.log(user?.requests);
   return (
     <Container>
       <h2>Meus pedidos</h2>

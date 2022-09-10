@@ -95,9 +95,7 @@ export const RestaurantProductsProvider = ({
           ...restaurantSelected,
           menu: newMenuObj,
         };
-        console.log(newRestaurantSelected);
 
-        console.log(newRestaurantSelected);
         setFilteredMenu(newRestaurantSelected?.menu);
         setRestaurantInfo(newRestaurantSelected);
       }

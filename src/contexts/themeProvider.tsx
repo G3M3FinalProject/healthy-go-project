@@ -26,7 +26,6 @@ export const useAppThemeContext = () => useContext(ThemeContext);
 
 export const AppThemeProvider = ({ children }: IThemeChildren) => {
   const [themeName, setThemeName] = useState<"light" | "dark">("light");
-  console.log(themeName);
   const localTheme = localStorage.getItem("@healthyGo-theme");
 
   if (!localTheme) localStorage.setItem("@healthyGo-theme", "light");

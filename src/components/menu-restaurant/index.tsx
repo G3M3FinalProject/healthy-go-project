@@ -85,7 +85,6 @@ export const MenuRestaurant = () => {
                               const actualIndex = restaurantInfo.menu[
                                 key
                               ].findIndex((prod) => prod.id === product.id);
-                              console.log(actualIndex);
 
                               setFilteredMenu((old) => {
                                 const newMenu = { ...old };
