@@ -27,7 +27,9 @@ export const FormDiv = styled.div`
 
   text-align: center;
 
-  > p {
+  > h1 {
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -122,7 +124,7 @@ export const EffectDiv = styled.div`
     cursor: pointer;
     display: inline-block;
     position: relative;
-    color: black;
+    color: ${(props) => props.theme.colors.contrastTextBlack};
   }
 
   & > p::after {
@@ -133,7 +135,8 @@ export const EffectDiv = styled.div`
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: black;
+    background-color: ${(props) => props.theme.colors.contrastTextBlack};
+
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
@@ -146,7 +149,6 @@ export const EffectDiv = styled.div`
 
 export const Back = styled.p`
   font-size: 1.2rem;
-
   text-align: center;
 
   margin-top: 15px;

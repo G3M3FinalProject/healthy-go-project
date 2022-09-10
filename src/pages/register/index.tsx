@@ -51,7 +51,7 @@ const UserRegister = () => {
     >
       <CenteringContainer>
         <FormDiv>
-          <p>CADASTRO</p>
+          <h1>CADASTRO</h1>
           <Form onSubmit={handleSubmit(Submit)}>
             <GlobalInputLg
               type="text"

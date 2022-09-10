@@ -106,6 +106,21 @@ export const ContainerResume = styled.div`
   }
 `;
 
+export const TableHeader = styled.div`
+  p:nth-child(1) {
+    width: 10px;
+  }
+  p:nth-child(2) {
+    flex: 4;
+  }
+  p:nth-child(3) {
+    flex: 1;
+  }
+  p:nth-child(3) {
+    justify-self: flex-end;
+  }
+`;
+
 export const DivImgCheck = styled.span`
   width: 100%;
 

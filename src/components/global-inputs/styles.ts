@@ -42,14 +42,14 @@ export const InputLg = styled.div<IInputLg>`
 
     &:focus ~ label {
       top: -0.5rem;
-      font-size: 19px;
+      font-size: 17px;
       left: 0.8rem;
       color: #248b24;
     }
 
     &:not(:placeholder-shown) ~ label {
       top: -0.65rem;
-      font-size: 19px;
+      font-size: 17px;
       left: 0.8rem;
     }
   }
@@ -74,7 +74,8 @@ export const InputLg = styled.div<IInputLg>`
 
     font-style: normal;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 17px;
+
     line-height: 25px;
   }
   & > div {

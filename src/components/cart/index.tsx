@@ -21,8 +21,8 @@ const Cart = ({ setisOpenCart }) => {
     subTotalCart,
   } = useCart();
   const { cart } = useAuthUserContext();
-  const priceToDiscount = 80 - totalCart;
-  const hasDiscount = 80 - totalCart >= 0;
+  const priceToDiscount = 80 - subTotalCart;
+  const hasDiscount = subTotalCart - 80 >= 0;
   const modalRef = useRef<HTMLHeadingElement>(null);
   const navigate = useNavigate();
 
@@ -118,7 +118,7 @@ const Cart = ({ setisOpenCart }) => {
               </div>
             ) : (
               <div className="desconto">
-                {hasDiscount ? (
+                {!hasDiscount ? (
                   <div>
                     <p>
                       Gaste mais R$ {priceToDiscount.toFixed(2)} e ganhe
@@ -154,7 +154,7 @@ const Cart = ({ setisOpenCart }) => {
                   <p>Desconto</p>
                   <p>
                     R${" "}
-                    {!hasDiscount
+                    {hasDiscount
                       ? ((subTotalCart + freightCart) * 0.1).toFixed(2)
                       : 0}
                   </p>

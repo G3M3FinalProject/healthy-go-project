@@ -6,6 +6,7 @@ import {
   DivImgCheck,
   DivTT,
   SummaryRestaurant,
+  TableHeader,
 } from "./style";
 
 export interface ICheckOut {
@@ -15,22 +16,24 @@ export interface ICheckOut {
 
 export function ResumeCheckout() {
   const { summaryCart, subTotalCart, totalCart, freightCart } = useCart();
-  const hasDiscount = totalCart - 80 >= 0;
+  const hasDiscount = subTotalCart - 80 >= 0;
 
   return (
     <ContainerResume>
       <h3>Resumo</h3>
-      <div>
+      <TableHeader>
+        <p></p>
         <p>Descrição</p>
+
         <p>Valor</p>
-      </div>
+      </TableHeader>
       {summaryCart?.map((product) => {
         return (
           <SummaryRestaurant key={product.restaurant}>
             <img src={product.logo} alt={product.restaurant} />
             <h4>{product.restaurant}</h4>
-            <p>{product.amount}</p>
-            <p>R$ {product.price.toFixed(2)}</p>
+
+            <p className="price">R$ {product.price.toFixed(2)}</p>
           </SummaryRestaurant>
         );
       })}
