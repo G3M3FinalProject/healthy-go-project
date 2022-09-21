@@ -142,6 +142,14 @@ export const CategoriesStyled = styled.div`
       border-radius: 16px;
     }
   }
+  @media (min-width: 1280px) {
+    & > span {
+      font-weight: 600;
+
+      font-size: 0.85rem;
+      padding: 4px 8px;
+    }
+  }
 `;
 
 export const IconItem = styled.div`
