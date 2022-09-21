@@ -79,7 +79,7 @@ const AdressModal = () => {
               />
             </button>
           </Header>
-          <LocationDiv>
+          {/* <LocationDiv>
             <FaCompass />
             <button
               onClick={() => {
@@ -88,7 +88,7 @@ const AdressModal = () => {
             >
               Usar localização atual
             </button>
-          </LocationDiv>
+          </LocationDiv> */}
           <form onSubmit={handleSubmit(onSuccess)}>
             <GlobalInputLg
               label="Identificação do Endereço"
