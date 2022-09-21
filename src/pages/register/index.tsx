@@ -86,7 +86,7 @@ const UserRegister = () => {
         </FormDiv>
       </CenteringContainer>
       <EffectDiv onClick={() => navigate("/login", { replace: true })}>
-        <Back>Já tem cadastro? Faça o login</Back>
+        <Back>Já tem cadastro? Faça login!</Back>
       </EffectDiv>
     </motion.div>
   );
