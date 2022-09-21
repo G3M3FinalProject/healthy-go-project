@@ -31,7 +31,7 @@ export const InputLg = styled.div<IInputLg>`
     outline: none;
 
     &::placeholder {
-      color: var(--placeholder);
+      color: ${(props) => props.theme.colors.placeholder};
     }
 
     &:focus {
@@ -98,8 +98,10 @@ export const InputLg = styled.div<IInputLg>`
     }
   }
 `;
-
-export const ButtonLg = styled.button`
+interface IButtonLgProps {
+  disabled?: boolean;
+}
+export const ButtonLg = styled.button<IButtonLgProps>`
   width: 100%;
 
   border: none;
@@ -109,7 +111,9 @@ export const ButtonLg = styled.button`
   padding: 14px 24px;
   border-radius: 15px;
 
-  background: linear-gradient(to right, #12753a, #8ac926);
+  background: ${({ disabled }) =>
+    disabled ? "grey" : "linear-gradient(to right, #12753a, #8ac926)"};
+
   color: #fff;
   font-size: 18px;
   font-weight: 500;
@@ -166,7 +170,7 @@ export const Search = styled.div`
   border-radius: 25px;
   border: none;
 
-  background-color: rgba(228, 249, 234, 1);
+  background-color: ${(props) => props.theme.colors.lightGreen};
 
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 
@@ -177,7 +181,7 @@ export const Search = styled.div`
   input {
     font-size: 15px;
     font-weight: 500;
-    background-color: rgba(228, 249, 234, 1);
+    background-color: ${(props) => props.theme.colors.lightGreen};
   }
 `;
 

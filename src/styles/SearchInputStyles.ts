@@ -22,9 +22,9 @@ export const SearchInputStyle = styled.div<ISearchProps>`
   border-radius: 25px;
   box-shadow: 0px 2px 2px ${(props) => props.theme.colors.lightBorder};
 
-  background-color: rgba(228, 249, 234, 1);
+  background-color: ${(props) => props.theme.colors.lightGreen};
 
-  filter: drop-shadow(4px 4px 4px rgba(228, 249, 234, 0.25));
+  filter: drop-shadow(4px 4px 4px ${(props) => props.theme.colors.lightGreen});
 
   color: rgba(110, 110, 110, 1);
 
@@ -43,21 +43,21 @@ export const SearchInputStyle = styled.div<ISearchProps>`
       font-size: 15px;
       font-weight: 500;
 
-      background-color: rgba(228, 249, 234, 1);
+      background-color: ${(props) => props.theme.colors.lightGreen};
     }
 
     button {
-      background-color: rgba(228, 249, 234, 1);
+      background-color: ${(props) => props.theme.colors.lightGreen};
 
       svg {
         /* width: 28px; */
         /* font: 20px; */
-        fill: rgba(var(--brand-green));
+        fill: ${(props) => props.theme.colors.searchButton};
         margin-right: 5px;
-        color: var(--placeholder);
+        color: ${(props) => props.theme.colors.placeholder};
         width: 1.4rem;
         height: 1.4rem;
-        background-color: rgba(228, 249, 234, 1);
+        background-color: ${(props) => props.theme.colors.lightGreen};
       }
     }
   }

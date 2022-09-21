@@ -22,11 +22,17 @@ declare module "styled-components" {
       lighterGreen: string;
       lightGreenTransparent: string;
 
+      searchButton: string;
+
       cartBackground: string;
       cartLightBackground: string;
 
       body: string;
       backgroundTransparent: string;
+      categories: string;
+
+      backgroundImageFilter: string;
+      placeholder: string;
     };
   }
 }

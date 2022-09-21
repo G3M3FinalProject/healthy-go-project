@@ -123,7 +123,9 @@ export const ContainerCategory = styled.p`
   display: flex;
   align-self: center;
   span {
-    background-color: var(--gray-100);
+    background-color: ${(props) => props.theme.colors.categories};
+    color: ${(props) => props.theme.colors.contrastTextBlack};
+
     margin-left: 5px;
     padding: 5px;
     border-radius: 10px;

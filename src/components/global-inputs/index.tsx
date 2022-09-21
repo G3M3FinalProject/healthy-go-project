@@ -135,6 +135,7 @@ export const GlobalButtonLg = ({
   children,
   onClick,
   type,
+  disabled,
   form,
 }: IPropsButton) => {
   const [isRipple, setIsRipple] = useState(false);
@@ -164,7 +165,7 @@ export const GlobalButtonLg = ({
   };
 
   return (
-    <ButtonLg onClick={handleClick} type={type} form={form}>
+    <ButtonLg onClick={handleClick} type={type} form={form} disabled={disabled}>
       {isRipple ? (
         <span
           className="ripple"

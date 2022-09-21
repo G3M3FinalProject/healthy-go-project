@@ -21,7 +21,8 @@ export const ContainerFilter = styled.div`
 export const ButtonFilter = styled.button`
   width: 38px;
   height: 36px;
-  background: #f7f6f3;
+  background: ${({ theme }) => theme.colors.backgroundImageFilter};
+
   position: relative;
 
   img {

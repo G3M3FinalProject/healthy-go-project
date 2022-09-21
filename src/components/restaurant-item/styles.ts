@@ -100,6 +100,19 @@ export const ContainerMainText = styled.div`
     overflow: hidden;
   }
 
+  @media (min-width: 768px) {
+    & > p {
+      font-size: 0.8rem;
+      line-height: 0.85rem;
+      max-height: 1.7rem;
+    }
+    .restaurant__title-rate {
+      & > h3 {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
   @media (min-width: 1024px) {
     & > p {
       font-size: 0.9rem;
@@ -123,9 +136,9 @@ export const CategoriesStyled = styled.div`
       font-weight: 700;
       font-size: 0.75rem;
       text-transform: capitalize;
-      color: var(--text-black);
-      background: rgba(214, 214, 214, 0.4);
-      padding: 2px;
+      background-color: ${(props) => props.theme.colors.categories};
+      color: ${(props) => props.theme.colors.contrastTextBlack};
+      padding: 3px 3.5px;
       border-radius: 16px;
     }
   }

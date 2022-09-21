@@ -33,11 +33,24 @@ export const FilterButton = styled.button<IFilterButtonProps>`
   font-size: 15px;
   font-weight: 500;
   font-family: "Petrona", serif;
-  background: ${({ isActive }) =>
-    isActive
+  background-color: ${(props) => props.theme.colors.lightGreen};
+  //props.theme.colors.lightGreen
+  //props.theme.colors.lightGreen
+  /* background: ${(props) =>
+    props.isActive
       ? "rgba(var(--button-green), 1)"
       : "rgba(var(--brand-light-green-2), 1)"};
+       */
+  background: ${(props) =>
+    props.isActive
+      ? props.theme.colors.buttonGreen
+      : props.theme.colors.lightGreen};
   color: ${({ isActive }) => (isActive ? "white" : "black")};
+  color: ${({ isActive, theme }) => {
+    if (theme.title === "dark") return "white";
+    return isActive ? "white" : "black" || "white";
+  }};
+
   box-shadow: 0px 2px 2px ${(props) => props.theme.colors.lightBorder};
   transition: all 250ms;
 
