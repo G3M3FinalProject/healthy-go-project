@@ -64,11 +64,4 @@ Além de consumirmos a API Geolocation/DB e uma API com os dados dos restaurante
 - [x] Responsivo para telas entre 320px e 4k;
 - [x] Dark-Mode;
 
-### Membros
 
-- <a href="https://github.com/lolaeurich">Paola Eurich(Cargo) </a>;
-- <a href="https://github.com/exemplo">Jefferson Freitas(Cargo);<a>
-- <a href="https://github.com/Bravineugenio">Eugenio Bravin(Cargo);<a>
-- <a href="https://github.com/exemplo">Geovane Oliveira(Cargo);<a>
-- <a href="https://github.com/exemplo">Geferson Almeida(Cargo)<a>
-- <a href="https://github.com/exemplo">Daniel Carvalho(Cargo)<a>
