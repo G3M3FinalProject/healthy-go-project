@@ -66,8 +66,9 @@ Além de consumirmos a API Geolocation/DB e uma API com os dados dos restaurante
 
 ### Membros
 
-- <a href="https://github.com/ahmandi">Amanda Rodrigues (Scrum-Master) </a>;
-- <a href="https://github.com/CarolPezzin">Carol Pezzin(Quality Assurance);<a>
-- <a href="https://github.com/Bravineugenio">Eugenio Bravin(Product-Owner);<a>
-- <a href="https://github.com/guiwustro">Guilherme Wustro(Tech-Leader);<a>
-- <a href="https://github.com/QuerenHope">Queren Hope (Quality Assurance)<a>
+- <a href="https://github.com/lolaeurich">Paola Eurich(Cargo) </a>;
+- <a href="https://github.com/exemplo">Jefferson Freitas(Cargo);<a>
+- <a href="https://github.com/Bravineugenio">Eugenio Bravin(Cargo);<a>
+- <a href="https://github.com/exemplo">Geovane Oliveira(Cargo);<a>
+- <a href="https://github.com/exemplo">Geferson Almeida(Cargo)<a>
+- <a href="https://github.com/exemplo">Daniel Carvalho(Cargo)<a>
