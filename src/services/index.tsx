@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://healthy-go.herokuapp.com",
+  baseURL: "https://api-healthygo.onrender.com",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
